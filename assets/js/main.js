@@ -1,9 +1,3 @@
-// Generate random pastel color - ADD THIS BEFORE YOUR EXISTING CODE
-function getRandomPastelColor() {
-  const hue = Math.floor(Math.random() * 360);
-  return `hsl(${hue}, 70%, 80%)`;
-}
-
 document.addEventListener(
   "DOMContentLoaded",
   function () {
@@ -11,7 +5,7 @@ document.addEventListener(
     particlesJS("particles-js", {
       particles: {
         number: { value: 160, density: { enable: !0, value_area: 500 } },
-        color: { value: getRandomPastelColor() }, // CHANGE THIS LINE
+        color: { value: "#aaffaa" },
         shape: {
           type: "circle",
           stroke: { width: 0, color: "#aaffaa" },
