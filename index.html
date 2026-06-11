@@ -93,19 +93,20 @@ nav ul a.nav-icon:hover svg { fill: var(--orange); }
   font-weight: 800; line-height: 1.02; letter-spacing: -0.025em;
 }
 .hero h1 .line { display: block; overflow: hidden; }
-.hero h1 .line span { display: inline-block; transform: translateY(110%); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
-.hero h1 .line:nth-child(2) span { animation-delay: .15s; }
-.hero h1 .line:nth-child(3) span { animation-delay: .3s; }
+.hero h1 .line > span { display: inline-block; transform: translateY(110%); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .15s; }
+.hero h1 .line:nth-child(3) > span { animation-delay: .3s; }
 @keyframes rise { to { transform: translateY(0); } }
 .hero .mark {
-  position: relative; white-space: nowrap;
-}
-.hero .mark::after {
-  content: ''; position: absolute; left: -2%; right: -2%; bottom: 8%; height: 38%;
-  background: var(--peach); z-index: -1; transform: scaleX(0); transform-origin: left;
+  white-space: nowrap;
+  padding: 0 .06em; margin: 0 -.06em;
+  background-image: linear-gradient(var(--peach), var(--peach));
+  background-repeat: no-repeat;
+  background-size: 0% 38%;
+  background-position: 0 87%;
   animation: paint .5s ease 1s forwards;
 }
-@keyframes paint { to { transform: scaleX(1); } }
+@keyframes paint { to { background-size: 100% 38%; } }
 .hero p.tag {
   margin-top: 28px; font-size: clamp(17px, 2.2vw, 21px); max-width: 44ch; color: #3a3d4a;
   opacity: 0; animation: fadeUp .8s ease .6s forwards;
@@ -299,7 +300,8 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal, .hero h1 .line span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
+  .reveal, .hero h1 .line > span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
+  .hero .mark { background-size: 100% 38%; }
   .hero-art .traveler, .hero-art .pulse { display: none; }
   .radar-shape, .radar-dot { opacity: 1; }
 }
@@ -414,7 +416,7 @@ footer {
     <div>
       <p>I'm an Italian data journalist with a computer science soul. For over a decade I've been mixing algorithms with shoe-leather reporting to tell stories about migration, the environment and the people behind the numbers.</p>
       <p>As Chief Data Officer at Code for Africa, the continent's largest network of civic technology and data journalism labs, I build teams of developers, designers and storytellers producing cross-border journalism and digital tools for civic engagement.</p>
-      <p>My projects have been published by Der Spiegel, El País, The Guardian, Al Jazeera, De Correspondent and Internazionale. I've been an ICFJ Knight Fellow, and I teach and train journalists across Europe and Africa.</p>
+      <p>My projects have been published by Der Spiegel, El País, The Guardian, Daily Maverick and Internazionale. I've been an ICFJ Knight Fellow, and I teach and train journalists across Europe and Africa.</p>
     </div>
     <div class="stats">
       <div class="stat"><div class="num">10+</div><div class="label">years of data journalism</div></div>
@@ -463,6 +465,7 @@ footer {
     <img src="assets/partners/guardian.png" alt="The Guardian">
     <img src="assets/partners/internazionale.png" alt="Internazionale">
     <img src="assets/partners/codeforafrica.png" alt="Code for Africa">
+    <img src="assets/partners/nutgraf.png" alt="Nutgraf">
     <img src="assets/partners/icfj.png" alt="ICFJ">
     <img src="assets/partners/pulitzercenter.png" alt="Pulitzer Center">
     <img src="assets/partners/bbcmediaaction.png" alt="BBC Media Action">
@@ -478,6 +481,7 @@ footer {
     <img src="assets/partners/guardian.png" alt="">
     <img src="assets/partners/internazionale.png" alt="">
     <img src="assets/partners/codeforafrica.png" alt="">
+    <img src="assets/partners/nutgraf.png" alt="">
     <img src="assets/partners/icfj.png" alt="">
     <img src="assets/partners/pulitzercenter.png" alt="">
     <img src="assets/partners/bbcmediaaction.png" alt="">
