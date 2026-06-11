@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Jacopo Ottaviani</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<style>
+  :root {
+    --ink: #14161f;
+    --paper: #f6f5f0;
+    --grid: #d8d6cc;
+    --blue: #2f5fe3;
+    --coral: #ff5c39;
+    --yellow: #ffd23f;
+    --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    min-height: 100vh;
+  }
+
+  .skills-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 32px;
+  }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .section-tag::before {
+    content: "";
+    width: 28px;
+    height: 3px;
+    background: var(--coral);
+  }
+
+  h2 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 56px;
+  }
+  h2 .accent { color: var(--coral); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(300px, 0.9fr);
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* ---- Radar ---- */
+  .radar-wrap { position: relative; }
+
+  .radar-svg { width: 100%; height: auto; display: block; }
+
+  .radar-ring {
+    fill: none;
+    stroke: var(--ink);
+    stroke-opacity: 0.14;
+    stroke-width: 1;
+  }
+  .radar-spoke {
+    stroke: var(--ink);
+    stroke-opacity: 0.14;
+    stroke-width: 1;
+  }
+
+  .radar-shape {
+    fill: var(--blue);
+    fill-opacity: 0.16;
+    stroke: var(--blue);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    transition: all 0.25s ease;
+  }
+
+  .radar-dot {
+    fill: var(--paper);
+    stroke: var(--blue);
+    stroke-width: 2.5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .radar-dot:hover, .radar-dot.active {
+    fill: var(--coral);
+    stroke: var(--coral);
+    r: 8;
+  }
+
+  .radar-label {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    fill: var(--ink);
+    cursor: pointer;
+    transition: fill 0.2s ease;
+  }
+  .radar-label:hover, .radar-label.active { fill: var(--coral); font-weight: 700; }
+
+  .radar-value {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    fill: var(--coral);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .radar-value.show { opacity: 1; }
+
+  /* draw-in animation */
+  .radar-shape, .radar-dot { opacity: 0; }
+  .radar-wrap.in .radar-shape {
+    opacity: 1;
+    animation: pop 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transform-origin: 50% 50%;
+  }
+  .radar-wrap.in .radar-dot {
+    animation: dotIn 0.4s ease both;
+  }
+  @keyframes pop {
+    from { transform: scale(0.05); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  @keyframes dotIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ---- Text panel ---- */
+  .skills-text .lede {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .skill-detail {
+    border: 2px solid var(--ink);
+    background: #fff;
+    box-shadow: 6px 6px 0 var(--yellow);
+    padding: 24px;
+    min-height: 168px;
+    transition: box-shadow 0.2s ease;
+  }
+  .skill-detail.highlight { box-shadow: 6px 6px 0 var(--coral); }
+
+  .skill-detail h3 {
+    font-family: var(--mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .skill-detail h3 .score {
+    color: var(--coral);
+    font-size: 16px;
+  }
+  .skill-detail p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #3a3d4a;
+  }
+
+  .skill-detail .hint {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: #8a8d99;
+  }
+
+  @media (max-width: 820px) {
+    .skills-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-section { padding: 56px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="skills-section" id="skills">
+  <div class="section-tag">02 / Skills</div>
+  <h2>What I bring<span class="accent">.</span></h2>
+
+  <div class="skills-grid">
+    <div class="radar-wrap" id="radarWrap">
+      <svg class="radar-svg" id="radar" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar chart of eight skill areas"></svg>
+    </div>
+
+    <div class="skills-text">
+      <p class="lede">
+        A decade of newsroom and field experience, condensed into eight axes.
+        Data journalism lives at the intersection of disciplines: this is how
+        mine balances out. Hover the chart to explore each one.
+      </p>
+      <div class="skill-detail" id="skillDetail">
+        <h3 id="detailTitle">Overview <span class="score" id="detailScore"></span></h3>
+        <p id="detailText">
+          The strongest axes are computer science and journalism: code as a
+          reporting tool, narrative as its delivery. Around them, data,
+          strategy, management and mentorship skills turn ideas into shipped,
+          award-winning projects.
+        </p>
+        <p class="hint" id="detailHint">→ hover a point on the radar</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const skills = [
+    { name: "Research", value: 80, text: "Investigative method, source-finding and verification. From FOIA requests to field reporting across Europe and Africa, every project starts with rigorous research." },
+    { name: "Data", value: 80, text: "The core craft: scraping, cleaning, analysing and interrogating datasets until they give up a story. Stats, geospatial analysis and a healthy distrust of averages." },
+    { name: "Design", value: 70, text: "Information design and visual storytelling. Knowing when a chart clarifies and when it lies, and shaping interactives that respect the reader." },
+    { name: "Computer science", value: 90, text: "Code as a reporting tool: Python, JavaScript, databases and reproducible pipelines. Enough engineering to build, automate and ship." },
+    { name: "Journalism & storytelling", value: 90, text: "Reporting, writing and narrative craft across formats and languages. Finding the human story in the data and making it land with an audience." },
+    { name: "Project management", value: 80, text: "Leading distributed, multidisciplinary teams of reporters, developers and designers across time zones and deadlines." },
+    { name: "Strategy", value: 80, text: "Editorial and product strategy: choosing which stories matter, where to invest resources, and how journalism stays sustainable." },
+    { name: "Teaching & mentorship", value: 80, text: "Training journalists in data skills across newsrooms, universities and fellowships. Skills compound when shared." }
+  ];
+
+  const svg = document.getElementById("radar");
+  const NS = "http://www.w3.org/2000/svg";
+  const cx = 280, cy = 280, R = 185;
+  const N = skills.length;
+
+  const angle = i => (Math.PI * 2 * i) / N - Math.PI / 2;
+  const pt = (i, r) => [cx + r * Math.cos(angle(i)), cy + r * Math.sin(angle(i))];
+
+  // rings
+  [0.25, 0.5, 0.75, 1].forEach(f => {
+    const ring = document.createElementNS(NS, "polygon");
+    ring.setAttribute("points", skills.map((_, i) => pt(i, R * f).join(",")).join(" "));
+    ring.setAttribute("class", "radar-ring");
+    svg.appendChild(ring);
+  });
+
+  // spokes
+  skills.forEach((_, i) => {
+    const [x, y] = pt(i, R);
+    const line = document.createElementNS(NS, "line");
+    line.setAttribute("x1", cx); line.setAttribute("y1", cy);
+    line.setAttribute("x2", x);  line.setAttribute("y2", y);
+    line.setAttribute("class", "radar-spoke");
+    svg.appendChild(line);
+  });
+
+  // data shape
+  const shape = document.createElementNS(NS, "polygon");
+  shape.setAttribute("points", skills.map((s, i) => pt(i, R * s.value / 100).join(",")).join(" "));
+  shape.setAttribute("class", "radar-shape");
+  svg.appendChild(shape);
+
+  // labels, dots, value tags
+  const dots = [], labels = [], values = [];
+  const detailTitle = document.getElementById("detailTitle");
+  const detailScore = document.getElementById("detailScore");
+  const detailText = document.getElementById("detailText");
+  const detailHint = document.getElementById("detailHint");
+  const detailBox = document.getElementById("skillDetail");
+  const defaults = {
+    title: detailTitle.childNodes[0].textContent,
+    text: detailText.textContent
+  };
+
+  skills.forEach((s, i) => {
+    const [lx, ly] = pt(i, R + 30);
+    const label = document.createElementNS(NS, "text");
+    label.setAttribute("x", lx); label.setAttribute("y", ly);
+    label.setAttribute("class", "radar-label");
+    const cos = Math.cos(angle(i));
+    label.setAttribute("text-anchor", Math.abs(cos) < 0.3 ? "middle" : cos > 0 ? "start" : "end");
+    label.setAttribute("dominant-baseline", "middle");
+    // wrap long labels on two lines
+    const words = s.name.split(" ");
+    if (words.length > 1 && s.name.length > 12) {
+      const mid = Math.ceil(words.length / 2);
+      [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, li) => {
+        const tspan = document.createElementNS(NS, "tspan");
+        tspan.setAttribute("x", lx);
+        tspan.setAttribute("dy", li === 0 ? "-0.35em" : "1.2em");
+        tspan.textContent = line;
+        label.appendChild(tspan);
+      });
+    } else {
+      label.textContent = s.name;
+    }
+    svg.appendChild(label);
+    labels.push(label);
+
+    const [dx, dy] = pt(i, R * s.value / 100);
+    const val = document.createElementNS(NS, "text");
+    val.setAttribute("x", dx); val.setAttribute("y", dy - 14);
+    val.setAttribute("text-anchor", "middle");
+    val.setAttribute("class", "radar-value");
+    val.textContent = s.value;
+    svg.appendChild(val);
+    values.push(val);
+
+    const dot = document.createElementNS(NS, "circle");
+    dot.setAttribute("cx", dx); dot.setAttribute("cy", dy);
+    dot.setAttribute("r", 6);
+    dot.setAttribute("class", "radar-dot");
+    dot.style.animationDelay = (0.5 + i * 0.06) + "s";
+    svg.appendChild(dot);
+    dots.push(dot);
+
+    const select = () => setActive(i);
+    const deselect = () => setActive(null);
+    [dot, label].forEach(el => {
+      el.addEventListener("mouseenter", select);
+      el.addEventListener("mouseleave", deselect);
+      el.addEventListener("click", select);
+    });
+  });
+
+  function setActive(i) {
+    dots.forEach((d, j) => d.classList.toggle("active", j === i));
+    labels.forEach((l, j) => l.classList.toggle("active", j === i));
+    values.forEach((v, j) => v.classList.toggle("show", j === i));
+    if (i === null) {
+      detailTitle.childNodes[0].textContent = defaults.title;
+      detailScore.textContent = "";
+      detailText.textContent = defaults.text;
+      detailHint.style.display = "";
+      detailBox.classList.remove("highlight");
+    } else {
+      detailTitle.childNodes[0].textContent = skills[i].name + " ";
+      detailScore.textContent = skills[i].value + "/100";
+      detailText.textContent = skills[i].text;
+      detailHint.style.display = "none";
+      detailBox.classList.add("highlight");
+    }
+  }
+
+  // animate on scroll into view
+  const wrap = document.getElementById("radarWrap");
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { wrap.classList.add("in"); io.disconnect(); }
+    });
+  }, { threshold: 0.3 });
+  io.observe(wrap);
+})();
+</script>
+
+</body>
+</html>
