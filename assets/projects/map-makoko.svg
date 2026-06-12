@@ -1,0 +1,22 @@
+<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <circle cx="260" cy="100" r="84" fill="#FFDCC2" opacity=".45"/>
+  <g stroke="#1A1A1A" stroke-width="1.5" opacity=".35">
+    <path d="M60 36 h12 M66 30 v12"/>
+    <path d="M444 52 h12 M450 46 v12"/>
+  </g>
+  <!-- dotted water lines -->
+  <g fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10">
+    <path d="M50 158 Q 155 144 260 158 T 470 158"/>
+    <path d="M80 180 Q 170 168 260 180 T 440 180"/>
+    <path d="M120 202 Q 190 192 260 202 T 400 202"/>
+  </g>
+  <!-- canoe hull -->
+  <path d="M148 104 C 200 126, 320 126, 372 104 L 348 134 C 300 150, 220 150, 172 134 Z" fill="#1A1A1A"/>
+  <!-- paddler -->
+  <circle cx="244" cy="96" r="9" fill="#FF7A29"/>
+  <path d="M268 70 L 296 122" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+  <!-- bow + stern nodes -->
+  <circle cx="148" cy="104" r="6" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <circle cx="372" cy="104" r="6" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <text x="350" y="44" font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="11" fill="#8a8d99">6.4965°N 3.3903°E</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <circle cx="260" cy="110" r="86" fill="#FFDCC2" opacity=".45"/>
+  <g stroke="#1A1A1A" stroke-width="1.5" opacity=".35">
+    <path d="M52 44 h12 M58 38 v12"/>
+    <path d="M456 168 h12 M462 162 v12"/>
+  </g>
+  <!-- dotted compass ring -->
+  <circle cx="260" cy="110" r="68" fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
+  <!-- cardinal ticks -->
+  <g stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round">
+    <path d="M260 26 v12"/>
+    <path d="M260 182 v12"/>
+    <path d="M168 110 h12"/>
+    <path d="M340 110 h12"/>
+  </g>
+  <!-- needle, rotated -->
+  <g transform="rotate(32 260 110)">
+    <polygon points="260,48 247,110 273,110" fill="#FF7A29"/>
+    <polygon points="260,172 247,110 273,110" fill="#1A1A1A"/>
+  </g>
+  <circle cx="260" cy="110" r="7" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <text x="276" y="34" font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="12" fill="#8a8d99">N</text>
+  <text x="376" y="196" font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="11" fill="#8a8d99">EU-MED ROUTE</text>
+</svg>

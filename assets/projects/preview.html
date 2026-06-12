@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project illustrations — preview</title>
+<style>
+:root {
+  --ink: #1A1A1A; --paper: #FFFFFF; --grid: #ECECE8;
+  --green: #0E8C5A; --orange: #FF7A29; --peach: #FFDCC2;
+  --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--sans);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  padding: 48px 32px 80px;
+}
+h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+p.sub { font-family: var(--mono); font-size: 13px; color: #8a8d99; margin-bottom: 40px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; max-width: 1300px; margin: 0 auto; }
+.card {
+  background: #fff; border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--peach);
+}
+.banner {
+  height: 110px; border-bottom: 2px solid var(--ink); overflow: hidden;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.big {
+  border-top: 2px dashed var(--grid); overflow: hidden;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.big img { width: 100%; display: block; }
+.meta { padding: 14px 18px; display: flex; justify-content: space-between; align-items: baseline; }
+.meta h2 { font-size: 17px; font-weight: 800; }
+.meta span { font-family: var(--mono); font-size: 12px; color: #8a8d99; }
+header { max-width: 1300px; margin: 0 auto; }
+.label { font-family: var(--mono); font-size: 11px; color: #8a8d99; padding: 6px 18px 0; text-transform: uppercase; letter-spacing: .08em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Project illustrations<span style="color:var(--orange)">.</span></h1>
+  <p class="sub">8 options · hero-art style · top = card banner crop (110px), bottom = full artwork</p>
+</header>
+<div class="grid">
+  <div class="card">
+    <div class="banner"><img src="migrants-files.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="migrants-files.svg" alt=""></div>
+    <div class="meta"><h2>The Migrants' Files</h2><span>🧭 compass</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="map-makoko.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="map-makoko.svg" alt=""></div>
+    <div class="meta"><h2>Map Makoko</h2><span>🛶 canoe</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="africa-mining-watch.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="africa-mining-watch.svg" alt=""></div>
+    <div class="meta"><h2>Africa Mining Watch</h2><span>⛏️ satellite scan</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="msf-rescue.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="msf-rescue.svg" alt=""></div>
+    <div class="meta"><h2>MSF Search and Rescue</h2><span>🚢 ship</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="generation-e.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="generation-e.svg" alt=""></div>
+    <div class="meta"><h2>Generation E</h2><span>✈️ flight arcs</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="patriegalere.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="patriegalere.svg" alt=""></div>
+    <div class="meta"><h2>PatrieGalere</h2><span>⛓️ chain</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="strademortali.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="strademortali.svg" alt=""></div>
+    <div class="meta"><h2>StradeMortali</h2><span>🚦 intersection</span></div>
+  </div>
+  <div class="card">
+    <div class="banner"><img src="lungs-earth.svg" alt=""></div>
+    <div class="label">full artwork</div>
+    <div class="big"><img src="lungs-earth.svg" alt=""></div>
+    <div class="meta"><h2>Lungs of the Earth</h2><span>🌳 forests</span></div>
+  </div>
+</div>
+</body>
+</html>

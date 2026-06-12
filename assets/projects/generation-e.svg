@@ -1,0 +1,26 @@
+<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <circle cx="270" cy="105" r="86" fill="#FFDCC2" opacity=".45"/>
+  <g stroke="#1A1A1A" stroke-width="1.5" opacity=".35">
+    <path d="M52 60 h12 M58 54 v12"/>
+    <path d="M458 170 h12 M464 164 v12"/>
+  </g>
+  <!-- emigration arcs, south to north -->
+  <g fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10">
+    <path d="M86 178 Q 160 70 320 58"/>
+    <path d="M222 186 Q 290 110 414 92"/>
+    <path d="M86 178 Q 250 200 414 92"/>
+  </g>
+  <!-- nodes -->
+  <circle cx="86" cy="178" r="7" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <circle cx="222" cy="186" r="7" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <circle cx="414" cy="92" r="7" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <!-- paper plane at arc tip -->
+  <g transform="rotate(8 320 58)">
+    <polygon points="348,52 300,72 318,62 320,80" fill="#FF7A29"/>
+  </g>
+  <g font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="12" fill="#8a8d99">
+    <text x="62" y="204">LIS</text>
+    <text x="206" y="210">ROM</text>
+    <text x="430" y="84">BER</text>
+  </g>
+</svg>
