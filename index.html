@@ -423,7 +423,7 @@ footer {
       <p>My projects have been published by Der Spiegel, El País, The Guardian, Daily Maverick and Internazionale. I've been an ICFJ Knight Fellow, and I teach and train journalists across Europe and Africa.</p>
     </div>
     <div class="stats">
-      <div class="stat"><div class="num">10+</div><div class="label">years of data journalism</div></div>
+      <div class="stat"><div class="num"><span id="years-count"></span>+</div><div class="label">years of data journalism</div></div>
       <div class="stat"><div class="num">4</div><div class="label">continents published in</div></div>
       <div class="stat"><div class="num">5+</div><div class="label">international awards</div></div>
       <div class="stat"><div class="num">∞</div><div class="label">curiosity</div></div>
@@ -614,7 +614,9 @@ footer {
 </footer>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+const _now = new Date().getFullYear();
+document.getElementById('year').textContent = _now;
+document.getElementById('years-count').textContent = _now - 2011;
 
 const revealIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
@@ -623,14 +625,14 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 
 (function () {
   const skills = [
-    { name: "Research", value: 80, text: "Investigative method, source-finding and verification. From FOIA requests to field reporting across Europe and Africa, every project starts with rigorous research." },
-    { name: "Data", value: 80, text: "The core craft: scraping, cleaning, analysing and interrogating datasets until they give up a story. Stats, geospatial analysis and a healthy distrust of averages." },
-    { name: "Design", value: 70, text: "Information design and visual storytelling. Knowing when a chart clarifies and when it lies, and shaping interactives that respect the reader." },
-    { name: "Computer science", value: 90, text: "Code as a reporting tool: Python, JavaScript, databases and reproducible pipelines. Enough engineering to build, automate and ship." },
-    { name: "Journalism & storytelling", value: 90, text: "Reporting, writing and narrative craft across formats and languages. Finding the human story in the data and making it land with an audience." },
-    { name: "Project management", value: 80, text: "Leading distributed, multidisciplinary teams of reporters, developers and designers across time zones and deadlines." },
+    { name: "Journalism", value: 80, text: "Reporting, writing and narrative craft across formats and languages. Finding the human story in the data and making it land with an audience." },
     { name: "Strategy", value: 80, text: "Editorial and product strategy: choosing which stories matter, where to invest resources, and how journalism stays sustainable." },
-    { name: "Teaching & mentorship", value: 80, text: "Training journalists in data skills across newsrooms, universities and fellowships. Skills compound when shared." }
+    { name: "Design", value: 80, text: "Information design and visual storytelling. Knowing when a chart clarifies and when it lies, and shaping interactives that respect the reader." },
+    { name: "Teaching & mentorship", value: 80, text: "Training journalists in data skills across newsrooms, universities and fellowships. Skills compound when shared." },
+    { name: "Data", value: 80, text: "The core craft: scraping, cleaning, analysing and interrogating datasets until they give up a story. Stats, geospatial analysis and a healthy distrust of averages." },
+    { name: "Management", value: 80, text: "Leading distributed, multidisciplinary teams of reporters, developers and designers across time zones and deadlines." },
+    { name: "Research", value: 70, text: "Investigative method, source-finding and verification. From FOIA requests to field reporting across Europe and Africa, every project starts with rigorous research." },
+    { name: "Computer science", value: 80, text: "Code as a reporting tool: Python, JavaScript, databases and reproducible pipelines. Enough engineering to build, automate and ship." }
   ];
 
   const svg = document.getElementById("radar");
