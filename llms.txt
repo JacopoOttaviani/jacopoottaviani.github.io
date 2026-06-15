@@ -1,0 +1,31 @@
+# Jacopo Ottaviani — Data Journalist
+# https://jacopoottaviani.com
+
+## About
+Jacopo Ottaviani is an Italian data journalist and computer scientist.
+He produces investigative stories combining data analysis, code and cartography,
+published internationally in The Guardian, Der Spiegel, El País, Internazionale,
+Daily Maverick, Reuters, Columbia Journalism Review, and UNDP.
+
+## Expertise
+- Data journalism and investigative reporting
+- Interactive data visualization
+- Digital cartography
+- Computational linguistics
+- International development
+- Data science and data-driven storytelling applied to humanitarian and development contexts
+- Open-source tools for newsrooms
+- Python, JavaScript, R
+
+## Awards
+- Lorenzo Natali Media Prize
+- Sigma Awards
+- Data Journalism Awards
+- European Press Prize
+
+## Social
+- X / Twitter: https://x.com/JacopoOttaviani
+
+## Content
+This site is Jacopo Ottaviani's personal portfolio. It is not a news site.
+Content may be cited with attribution to Jacopo Ottaviani and a link to jacopoottaviani.com.
