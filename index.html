@@ -516,10 +516,7 @@ footer {
       <div class="skill-detail" id="skillDetail">
         <h3 id="detailTitle">Overview <span class="score" id="detailScore"></span></h3>
         <p id="detailText">
-          The strongest axes are computer science and journalism: code as a
-          reporting tool, narrative as its delivery. Around them, data,
-          strategy, management and mentorship skills turn ideas into shipped,
-          award-winning projects.
+          I think of data as the connective tissue between disciplines. Research feeds the analysis. Code makes it reproducible. Design makes it readable. Strategy makes it matter. AI sits across all of it, a force multiplier that makes every axis of this chart sharper.
         </p>
         <p class="hint" id="detailHint">→ hover a point on the radar</p>
       </div>
@@ -589,7 +586,7 @@ footer {
         <p>Putting Lagos' floating community of 250,000 people on the map, with drones, canoes and local women trained as mappers. With Code for Africa and the Pulitzer Center.</p>
         <span class="award">🏆 Sigma Award 2021</span>
         <div class="links">
-          <a class="plink" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">Urbanet →</a>
+          <a class="plink" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">Visit →</a>
         </div>
       </div>
     </div>
@@ -620,9 +617,9 @@ footer {
       <div class="body">
         <h3>Generation E</h3>
         <p>A crowdsourced, cross-border investigation into the new wave of young Southern Europeans emigrating after the financial crisis.</p>
-        <span class="award">📰 Featured in CJR</span>
+        <span class="award">📰 Featured on Columbia Journalism Review</span>
         <div class="links">
-          <a class="plink" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">Columbia Journalism Review →</a>
+          <a class="plink" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">Visit →</a>
         </div>
       </div>
     </div>
@@ -630,7 +627,7 @@ footer {
       <div class="banner"><img src="assets/projects/patriegalere.svg" alt="" loading="lazy"></div>
       <div class="body">
         <h3>PatrieGalere</h3>
-        <p>An interactive map of deaths in Italian prisons since 2002. Hand-coded in 2011 and published by The Guardian, it is recognised as Italy's first data journalism project.</p>
+        <p>An interactive map of deaths in Italian prisons since 2002. Published by The Guardian, it is recognised as Italy's first data journalism project.</p>
         <span class="award">🇮🇹 Italy's first data journalism project</span>
         <div class="links">
           <a class="plink" href="https://jacopoottaviani.com/PatrieGalere.eu/" target="_blank" rel="noopener">Visit →</a>
@@ -653,9 +650,9 @@ footer {
       <div class="body">
         <h3>Lungs of the Earth</h3>
         <p>A data-driven journey across the world's great rainforests, from the Amazon to the Congo Basin to Indonesia.</p>
-        <span class="award">🌍 Published internationally</span>
+        <span class="award">🌍 Published in six countries</span>
         <div class="links">
-          <a class="plink" href="https://pulitzercenter.org/projects/lungs-earth-central-africa" target="_blank" rel="noopener">Pulitzer Center →</a>
+          <a class="plink" href="https://pulitzercenter.org/projects/lungs-earth-central-africa" target="_blank" rel="noopener">Visit →</a>
         </div>
       </div>
     </div>
@@ -694,14 +691,14 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 
 (function () {
   const skills = [
-    { name: "Narratives", value: 80, text: "Reporting, writing and narrative craft across formats and languages. Finding the human story in the data and making it land with an audience." },
+    { name: "Narratives", value: 75, text: "Reporting, writing and narrative craft across formats and languages. Finding the human story in the data and making it land with an audience." },
     { name: "Strategy", value: 80, text: "Editorial and product strategy: choosing which stories matter, where to invest resources, and how journalism stays sustainable." },
-    { name: "Data", value: 80, text: "The core craft: scraping, cleaning, analysing and interrogating datasets until they give up a story. Stats, geospatial analysis and a healthy distrust of averages." },
-    { name: "Computer science", value: 80, text: "Code as a reporting tool: Python, JavaScript, databases and reproducible pipelines. Enough engineering to build, automate and ship." },
-    { name: "Research", value: 80, text: "Investigative method, source-finding and verification. From FOIA requests to field reporting across Europe and Africa, every project starts with rigorous research." },
+    { name: "Data", value: 90, text: "The core craft: scraping, cleaning, analysing and interrogating datasets until they give up a story. Stats, geospatial analysis and a healthy distrust of averages." },
+    { name: "Computer science", value: 90, text: "Code as a reporting tool: Python, JavaScript, databases and reproducible pipelines. Enough engineering to build, automate and ship." },
+    { name: "Research", value: 70, text: "Investigative method, source-finding and verification. From FOIA requests to field reporting across Europe and Africa, every project starts with rigorous research." },
     { name: "Management", value: 80, text: "Leading distributed, multidisciplinary teams of reporters, developers and designers across time zones and deadlines." },
-    { name: "Design", value: 80, text: "Information design and visual storytelling. Knowing when a chart clarifies and when it lies, and shaping interactives that respect the reader." },
-    { name: "Teaching & mentorship", value: 80, text: "Training journalists in data skills across newsrooms, universities and fellowships. Skills compound when shared." }
+    { name: "Design", value: 90, text: "Information design and visual storytelling. Knowing when a chart clarifies and when it lies, and shaping interactives that respect the reader." },
+    { name: "Teaching & mentorship", value: 75, text: "Training journalists in data skills across newsrooms, universities and fellowships. Skills compound when shared." }
   ];
 
   const svg = document.getElementById("radar");
