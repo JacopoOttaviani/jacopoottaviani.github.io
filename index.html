@@ -300,7 +300,9 @@ h2 .accent { color: var(--orange); }
 .marquee .name:hover { color: var(--green); }
 
 /* ---------- 04 / work ---------- */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+@media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
 .card {
   background: #fff; border: 2px solid var(--ink); overflow: hidden;
   text-decoration: none; color: var(--ink); display: flex; flex-direction: column;
@@ -349,7 +351,34 @@ h2 .accent { color: var(--orange); }
 }
 .plink:hover { background: var(--ink); color: var(--paper); }
 
-/* ---------- 05 / contact ---------- */
+/* ---------- 05 / publications ---------- */
+.pubs { display: flex; flex-direction: column; gap: 20px; }
+.pub {
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 24px; align-items: center;
+  background: #fff; border: 2px solid var(--ink); padding: 24px 28px;
+  text-decoration: none; color: var(--ink);
+  box-shadow: 6px 6px 0 var(--peach);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.pub:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
+.pub-outlet {
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; line-height: 1.5;
+  color: var(--green);
+}
+.pub-main h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; }
+.pub-main p { font-size: 14.5px; color: #3a3d4a; margin-top: 6px; }
+.pub-arrow {
+  font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--ink);
+  transition: color .2s ease, transform .2s ease;
+}
+.pub:hover .pub-arrow { color: var(--orange); transform: translateX(4px); }
+@media (max-width: 720px) {
+  .pub { grid-template-columns: 1fr; gap: 10px; }
+  .pub-arrow { display: none; }
+}
+
+/* ---------- 06 / contact ---------- */
 #contact { text-align: center; padding-bottom: 120px; }
 #contact .section-tag { justify-content: center; }
 #contact h2 { margin-bottom: 16px; }
@@ -379,7 +408,8 @@ footer {
     <li><a href="#skills">02 Skills</a></li>
     <li><a href="#partners">03 Partners</a></li>
     <li><a href="#work">04 Work</a></li>
-    <li><a href="#contact">05 Say hi</a></li>
+    <li><a href="#publications">05 Essays</a></li>
+    <li><a href="#contact">06 Say hi</a></li>
     <li class="lang-item">
       <div class="lang-switch">
         <a href="/" class="active">EN</a>
@@ -591,6 +621,17 @@ footer {
       </div>
     </div>
     <div class="card">
+      <div class="banner"><img src="assets/projects/ewaste-burn.svg" alt="" loading="lazy"></div>
+      <div class="body">
+        <h3>E-Waste Republic</h3>
+        <p>A data-driven documentary on electronic waste in Ghana, with visualisations, scientific sources and on-the-ground reportage.</p>
+        <span class="award">🏆 Lorenzo Natali Media Prize</span>
+        <div class="links">
+          <a class="plink" href="https://interactive.aljazeera.com/aje/2015/ewaste/index.html" target="_blank" rel="noopener">Visit →</a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
       <div class="banner"><img src="assets/projects/africa-mining-watch.svg" alt="" loading="lazy"></div>
       <div class="body">
         <h3>Africa Mining Watch</h3>
@@ -659,8 +700,43 @@ footer {
   </div>
 </section>
 
+<section id="publications" class="reveal">
+  <div class="section-tag">05 / Essays</div>
+  <h2>Selected publications<span class="accent">.</span></h2>
+  <div class="pubs">
+
+    <a class="pub" href="https://reutersinstitute.politics.ox.ac.uk/news/weeks-work-days-how-i-rebuilt-two-data-journalism-projects-ai" target="_blank" rel="noopener">
+      <div class="pub-outlet">Reuters Institute,<br>University of Oxford</div>
+      <div class="pub-main">
+        <h3>From weeks of work to days: How I rebuilt two data journalism projects with AI</h3>
+        <p>How generative AI turned two multi-week data visualisation builds into a matter of days, and what that means for the craft.</p>
+      </div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">
+      <div class="pub-outlet">Urbanet, GIZ</div>
+      <div class="pub-main">
+        <h3>Mapping Makoko: A community stating its right to exist</h3>
+        <p>How a community-led mapping project put one of Lagos' largest informal settlements on the map, with drones, canoes and open data.</p>
+      </div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">
+      <div class="pub-outlet">Columbia<br>Journalism Review</div>
+      <div class="pub-main">
+        <h3>European Union journalists cross borders for story collaboration</h3>
+        <p>A CJR feature on cross-border data journalism in Europe, covering The Migrants' Files and Generation E.</p>
+      </div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+  </div>
+</section>
+
 <section id="contact" class="reveal">
-  <div class="section-tag">05 / Say hi</div>
+  <div class="section-tag">06 / Say hi</div>
   <h2>Got a story hiding in your data<span class="accent">?</span></h2>
   <p>I'm always up for collaborations, talks, trainings and ambitious cross-border projects. Let's talk.</p>
   <div class="cta-row">

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PREVIEW — Selected publications</title>
+<style>
+:root {
+  --ink: #1A1A1A;
+  --paper: #FFFFFF;
+  --grid: #ECECE8;
+  --green: #0E8C5A;
+  --orange: #FF7A29;
+  --peach: #FFDCC2;
+  --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+::selection { background: var(--peach); color: var(--ink); }
+
+.preview-banner {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper); text-align: center; padding: 8px 16px;
+}
+.preview-banner b { color: var(--orange); }
+
+section { max-width: 1200px; margin: 0 auto; padding: 80px 32px; }
+.section-tag {
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--green);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.section-tag::before { content: ""; width: 28px; height: 3px; background: var(--orange); }
+h2 {
+  font-size: clamp(34px, 5vw, 56px); font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: 16px;
+}
+h2 .accent { color: var(--orange); }
+.section-lede { font-size: 17.5px; color: #3a3d4a; max-width: 62ch; margin-bottom: 44px; }
+
+/* ---------- publications list ---------- */
+.pubs { display: flex; flex-direction: column; gap: 20px; }
+.pub {
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 24px; align-items: center;
+  background: #fff; border: 2px solid var(--ink); padding: 24px 28px;
+  text-decoration: none; color: var(--ink);
+  box-shadow: 6px 6px 0 var(--peach);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.pub:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
+.pub-outlet {
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; line-height: 1.5;
+  color: var(--green);
+}
+.pub-main h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; }
+.pub-main p { font-size: 14.5px; color: #3a3d4a; margin-top: 6px; }
+.pub-arrow {
+  font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--ink);
+  transition: color .2s ease, transform .2s ease;
+}
+.pub:hover .pub-arrow { color: var(--orange); transform: translateX(4px); }
+@media (max-width: 720px) {
+  .pub { grid-template-columns: 1fr; gap: 10px; }
+  .pub-arrow { display: none; }
+}
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">Preview — <b>05 / Selected publications</b> — would sit between Portfolio and Say hi</div>
+
+<section id="publications" class="reveal">
+  <div class="section-tag">05 / Essays</div>
+  <h2>Selected publications<span class="accent">.</span></h2>
+  <div class="pubs">
+
+    <a class="pub" href="https://reutersinstitute.politics.ox.ac.uk/news/weeks-work-days-how-i-rebuilt-two-data-journalism-projects-ai" target="_blank" rel="noopener">
+      <div class="pub-outlet">Reuters Institute,<br>University of Oxford</div>
+      <div class="pub-main">
+        <h3>From weeks of work to days: How I rebuilt two data journalism projects with AI</h3>
+        <p>How generative AI turned two multi-week data visualisation builds into a matter of days, and what that means for the craft.</p>
+      </div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">
+      <div class="pub-outlet">Urbanet, GIZ</div>
+      <div class="pub-main">
+        <h3>Mapping Makoko: A community stating its right to exist</h3>
+        <p>How a community-led mapping project put one of Lagos' largest informal settlements on the map, with drones, canoes and open data.</p>
+      </div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+    <a class="pub" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">
+      <div class="pub-outlet">Columbia<br>Journalism Review</div>
+      <div class="pub-main">
+        <h3>European Union journalists cross borders for story collaboration</h3>
+        <p>A CJR feature on cross-border data journalism in Europe, covering The Migrants' Files and Generation E.</p>
+      </div>
+      <div class="pub-arrow">↗</div>
+    </a>
+
+  </div>
+</section>
+
+<script>
+const revealIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+</script>
+
+</body>
+</html>
