@@ -378,6 +378,31 @@ h2 .accent { color: var(--orange); }
   .pub-arrow { display: none; }
 }
 
+/* ---------- 02b / slider competenze + parole chiave ---------- */
+.slider { overflow: hidden; }
+.slides {
+  display: flex; width: 200%;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.slide { width: 50%; flex-shrink: 0; padding: 4px 10px 12px 4px; box-sizing: border-box; }
+.slider-dots { display: flex; gap: 12px; justify-content: center; margin-top: 30px; }
+.sdot {
+  width: 13px; height: 13px; border-radius: 50%; padding: 0;
+  border: 2px solid var(--ink); background: #fff; cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.sdot:hover { transform: scale(1.2); }
+.sdot.active { background: var(--orange); }
+.vor-count { font-family: var(--mono); font-size: 12px; color: #8a8d99; margin: 0 0 14px; }
+.vor-svg {
+  width: 100%; height: auto; display: block;
+  border: 2px solid var(--ink); background: var(--ink);
+  box-shadow: 8px 8px 0 var(--peach);
+}
+.vor-cell { cursor: pointer; transition: fill .35s ease; }
+.vor-label { pointer-events: none; text-transform: uppercase; transition: opacity .4s ease; }
+.vor-dot { pointer-events: none; }
+
 /* ---------- 06 / contact ---------- */
 #contact { text-align: center; padding-bottom: 120px; }
 #contact .section-tag { justify-content: center; }
@@ -533,26 +558,56 @@ footer {
 <section id="skills">
   <div class="section-tag">02 / Competenze</div>
   <h2>Cosa porto<span class="accent">.</span></h2>
-  <div class="skills-grid">
-    <div class="radar-wrap" id="radarWrap">
-      <svg class="radar-svg" id="radar" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grafico radar di otto aree di competenza"></svg>
-    </div>
-    <div class="skills-text">
-      <p class="lede">
-        Oltre quindici anni tra dataset e mondo reale, distillati in otto dimensioni.
-        Il data journalism è per definizione una disciplina ibrida — qui vedete come si distribuisce il mio.
-        Esplorate il grafico per scoprire ogni area.
-      </p>
-      <div class="skill-detail" id="skillDetail">
-        <h3 id="detailTitle">Panoramica <span class="score" id="detailScore"></span></h3>
-        <p id="detailText">
-          Gli assi più forti sono l'informatica e il giornalismo: il codice come strumento
-          di reportage, la narrazione come sua forma di consegna. Attorno a loro, le competenze
-          in dati, strategia, gestione e mentorship trasformano le idee in progetti pubblicati e premiati.
-        </p>
-        <p class="hint" id="detailHint">→ passa il mouse su un punto del radar</p>
+  <div class="slider" id="skillsSlider">
+    <div class="slides" id="skillsSlides">
+      <div class="slide">
+        <div class="skills-grid">
+          <div class="radar-wrap" id="radarWrap">
+            <svg class="radar-svg" id="radar" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grafico radar di otto aree di competenza"></svg>
+          </div>
+          <div class="skills-text">
+            <p class="lede">
+              Oltre quindici anni tra dataset e mondo reale, distillati in otto dimensioni.
+              Il data journalism è per definizione una disciplina ibrida — qui vedete come si distribuisce il mio.
+              Esplorate il grafico per scoprire ogni area.
+            </p>
+            <div class="skill-detail" id="skillDetail">
+              <h3 id="detailTitle">Panoramica <span class="score" id="detailScore"></span></h3>
+              <p id="detailText">
+                Gli assi più forti sono l'informatica e il giornalismo: il codice come strumento
+                di reportage, la narrazione come sua forma di consegna. Attorno a loro, le competenze
+                in dati, strategia, gestione e mentorship trasformano le idee in progetti pubblicati e premiati.
+              </p>
+              <p class="hint" id="detailHint">→ passa il mouse su un punto del radar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="skills-grid">
+          <div>
+            <svg class="vor-svg" id="vorSvg" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mosaico di Voronoi animato che nasconde undici parole chiave; clicca un pezzo per svelarne una"></svg>
+          </div>
+          <div class="skills-text">
+            <p class="lede">
+              Le competenze sono solo metà del quadro. Queste sono le idee che ispirano
+              me e i partner, i clienti e gli studenti con cui lavoro, nascoste in un
+              mosaico in movimento. Cliccate i pezzi per svelarle.
+            </p>
+            <p class="vor-count" id="vorCount">0 / 11 svelate — clicca i pezzi</p>
+            <div class="skill-detail" id="vorDetail">
+              <h3 id="vorTitle">Parole chiave</h3>
+              <p id="vorText">Undici parole si nascondono sotto questo mosaico. Ognuna è un filo che attraversa il mio lavoro. Clicca un pezzo per svelarla; cliccala di nuovo per nasconderla.</p>
+              <p class="hint" id="vorHint">→ clicca un pezzo del mosaico</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="slider-dots" aria-label="Viste della sezione competenze">
+    <button class="sdot active" id="sdot0" aria-label="Mostra il radar delle competenze"></button>
+    <button class="sdot" id="sdot1" aria-label="Mostra il mosaico delle parole chiave"></button>
   </div>
 </section>
 
@@ -895,6 +950,189 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
     });
   }, { threshold: 0.3 });
   radarIO.observe(wrap);
+})();
+
+(function () {
+  const W = 640, H = 430, NS = "http://www.w3.org/2000/svg";
+  const MONO = "SF Mono, IBM Plex Mono, Menlo, Consolas, monospace";
+  const INK = "#1A1A1A", GREEN = "#0E8C5A", ORANGE = "#FF7A29", HOVER = "#3a3d4a";
+  const INTRO = {
+    t: "Parole chiave",
+    d: "Undici parole si nascondono sotto questo mosaico. Ognuna è un filo che attraversa il mio lavoro. Clicca un pezzo per svelarla; cliccala di nuovo per nasconderla.",
+  };
+  const data = [
+    { k: "agenti", d: "Delegare è un mestiere nuovo. Costruisco e dirigo agenti AI che scandagliano, ordinano e riassumono, liberando tempo umano per ciò che le macchine non sanno fare: il giudizio." },
+    { k: "visualizzazione", d: "Un buon grafico è un argomento che si vede. Uso la forma visiva per rendere le prove complesse leggibili, memorabili e impossibili da ignorare." },
+    { k: "cartografia", d: "Le mappe decidono cosa esiste. Disegnare un luogo è un atto di riconoscimento: uso la cartografia per mettere agli atti ciò che viene trascurato." },
+    { k: "cooperazione", d: "Nessuno vede il quadro intero da solo. Quando le persone lavorano insieme oltre i confini, frammenti sparsi diventano una verità condivisa." },
+    { k: "data design", d: "I dati hanno una forma prima di avere una storia. Progetto le strutture che permettono a una storia di essere trovata, verificata e raccontata di nuovo." },
+    { k: "umanizzazione", d: "Dietro ogni riga c'è una vita. Il mio lavoro è tenere visibile la persona dentro il numero, perché le statistiche ritrovino il loro peso." },
+    { k: "alfabetizzazione", d: "Ho aiutato centinaia di persone a leggere, interrogare e usare i dati. Ogni competenza trasmessa moltiplica ciò che viene capito e raccontato." },
+    { k: "democratizzazione", d: "Strumenti e dati chiusi in mani esperte servono gli esperti. Io li spingo verso l'esterno, alle comunità e alle aule che ne hanno più bisogno." },
+    { k: "pubblici", d: "Una storia che non viene letta non è accaduta. Seguo le persone ovunque si ritrovino, e do forma al racconto per incontrarle lì." },
+    { k: "grant", d: "Trovare fondi è un'arte. Progetto e vinco grant che comprano l'unica cosa che le idee ambiziose non possono fingere: il tempo." },
+    { k: "convergenza", d: "Le cose più interessanti accadono dove i campi si toccano. Codice, design, narrazione: sto dove si incontrano e faccio da traduttore." }
+  ];
+  const base = [[95,80],[265,58],[468,70],[582,160],[122,215],[330,200],[518,265],[95,360],[300,355],[510,385],[215,295]];
+  const fills = [GREEN, ORANGE, "#FFFFFF", ORANGE, GREEN, "#FFFFFF", GREEN, ORANGE, "#FFFFFF", GREEN, ORANGE];
+  const svg = document.getElementById("vorSvg");
+  if (!svg) return;
+  const N = data.length;
+  const seeds = base.map(([x, y], i) => ({
+    x, y,
+    ax: 9 + (i % 3) * 3, ay: 8 + ((i + 1) % 3) * 3,
+    fx: .25 + .07 * (i % 4), fy: .3 + .06 * (i % 3),
+    px: i * 1.7, py: i * 2.3
+  }));
+  const cells = [], revealed = [];
+  let count = 0;
+  const countEl = document.getElementById("vorCount");
+  const panel = document.getElementById("vorDetail");
+  const setPanel = (t, d, h) => {
+    document.getElementById("vorTitle").textContent = t;
+    document.getElementById("vorText").textContent = d;
+    document.getElementById("vorHint").textContent = h;
+  };
+  const setCount = () => {
+    countEl.textContent = count + " / " + N + " svelate" +
+      (count === 0 ? " — clicca i pezzi" : (count < N ? " — continua a cliccare" : " — il quadro completo"));
+  };
+
+  data.forEach((d, i) => {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("class", "vor-cell");
+    p.setAttribute("stroke", "#FFFFFF");
+    p.setAttribute("stroke-width", "3");
+    p.setAttribute("stroke-linejoin", "round");
+    p.setAttribute("fill", INK);
+    svg.appendChild(p);
+
+    const dot = document.createElementNS(NS, "circle");
+    dot.setAttribute("class", "vor-dot");
+    dot.setAttribute("r", "6");
+    dot.setAttribute("fill", INK);
+    dot.setAttribute("stroke", "#FFFFFF");
+    dot.setAttribute("stroke-width", "2.5");
+    svg.appendChild(dot);
+
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("class", "vor-label");
+    t.setAttribute("text-anchor", "middle");
+    t.setAttribute("font-family", MONO);
+    t.setAttribute("font-size", "12.5");
+    t.setAttribute("font-weight", "700");
+    t.setAttribute("letter-spacing", ".06em");
+    t.setAttribute("opacity", "0");
+    const words = d.k.toUpperCase().split(" ");
+    words.forEach((w, wi) => {
+      const ts = document.createElementNS(NS, "tspan");
+      ts.setAttribute("x", "0");
+      ts.setAttribute("dy", wi === 0 ? (words.length > 1 ? "-0.35em" : "0.35em") : "1.25em");
+      ts.textContent = w;
+      t.appendChild(ts);
+    });
+    svg.appendChild(t);
+
+    p.addEventListener("mouseenter", () => { if (!revealed[i]) p.setAttribute("fill", HOVER); });
+    p.addEventListener("mouseleave", () => { if (!revealed[i]) p.setAttribute("fill", INK); });
+    p.addEventListener("click", () => {
+      if (!revealed[i]) {
+        revealed[i] = true; count++;
+        p.setAttribute("fill", fills[i]);
+        t.setAttribute("opacity", "1");
+        t.setAttribute("fill", fills[i] === GREEN ? "#FFFFFF" : INK);
+        dot.style.display = "none";
+        setPanel(data[i].k, data[i].d, "→ " + (count < N ? (N - count) + " ancora nascoste" : "tutti i pezzi svelati"));
+      } else {
+        revealed[i] = false; count--;
+        p.setAttribute("fill", INK);
+        t.setAttribute("opacity", "0");
+        dot.style.display = "";
+        setPanel(INTRO.t, INTRO.d, "→ " + (N - count) + " ancora nascoste");
+      }
+      setCount();
+      panel.classList.add("highlight");
+      setTimeout(() => panel.classList.remove("highlight"), 450);
+    });
+    cells.push({ path: p, dot, label: t });
+  });
+
+  function clipCell(i, pts) {
+    let poly = [[1.5, 1.5], [W - 1.5, 1.5], [W - 1.5, H - 1.5], [1.5, H - 1.5]];
+    for (let j = 0; j < pts.length; j++) {
+      if (j === i) continue;
+      const a = pts[i], b = pts[j];
+      const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+      const dx = b[0] - a[0], dy = b[1] - a[1];
+      const out = [];
+      for (let k = 0; k < poly.length; k++) {
+        const p = poly[k], q = poly[(k + 1) % poly.length];
+        const sp = (p[0] - mx) * dx + (p[1] - my) * dy;
+        const sq = (q[0] - mx) * dx + (q[1] - my) * dy;
+        if (sp <= 0) out.push(p);
+        if ((sp < 0 && sq > 0) || (sp > 0 && sq < 0)) {
+          const tt = sp / (sp - sq);
+          out.push([p[0] + tt * (q[0] - p[0]), p[1] + tt * (q[1] - p[1])]);
+        }
+      }
+      poly = out;
+      if (poly.length === 0) return poly;
+    }
+    return poly;
+  }
+
+  function draw(t) {
+    const pts = seeds.map(s => [s.x + s.ax * Math.sin(t * s.fx + s.px), s.y + s.ay * Math.cos(t * s.fy + s.py)]);
+    for (let i = 0; i < pts.length; i++) {
+      const poly = clipCell(i, pts);
+      if (poly.length < 3) continue;
+      cells[i].path.setAttribute("d", "M" + poly.map(p => p[0].toFixed(1) + " " + p[1].toFixed(1)).join("L") + "Z");
+      let cx = 0, cy = 0;
+      poly.forEach(p => { cx += p[0]; cy += p[1]; });
+      cx /= poly.length; cy /= poly.length;
+      cells[i].dot.setAttribute("cx", cx);
+      cells[i].dot.setAttribute("cy", cy);
+      cells[i].label.setAttribute("transform", "translate(" + cx + "," + cy + ")");
+    }
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) {
+    draw(0);
+  } else {
+    const loop = now => { draw(now / 1000); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  }
+})();
+
+(function () {
+  const slides = document.getElementById("skillsSlides");
+  const slider = document.getElementById("skillsSlider");
+  if (!slides || !slider) return;
+  const dots = [document.getElementById("sdot0"), document.getElementById("sdot1")];
+  let cur = 0;
+  function go(i) {
+    cur = Math.max(0, Math.min(dots.length - 1, i));
+    slides.style.transform = "translateX(-" + (cur * 100 / dots.length) + "%)";
+    dots.forEach((d, j) => d.classList.toggle("active", j === cur));
+  }
+  dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+  let sx = null, sy = null;
+  slider.addEventListener("touchstart", e => {
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, { passive: true });
+  slider.addEventListener("touchend", e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1));
+    sx = null;
+  }, { passive: true });
+  slider.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") go(cur + 1);
+    if (e.key === "ArrowLeft") go(cur - 1);
+  });
+  slider.setAttribute("tabindex", "0");
 })();
 </script>
 

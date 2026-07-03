@@ -378,6 +378,31 @@ h2 .accent { color: var(--orange); }
   .pub-arrow { display: none; }
 }
 
+/* ---------- 02b / skills slider + keywords ---------- */
+.slider { overflow: hidden; }
+.slides {
+  display: flex; width: 200%;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.slide { width: 50%; flex-shrink: 0; padding: 4px 10px 12px 4px; box-sizing: border-box; }
+.slider-dots { display: flex; gap: 12px; justify-content: center; margin-top: 30px; }
+.sdot {
+  width: 13px; height: 13px; border-radius: 50%; padding: 0;
+  border: 2px solid var(--ink); background: #fff; cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.sdot:hover { transform: scale(1.2); }
+.sdot.active { background: var(--orange); }
+.vor-count { font-family: var(--mono); font-size: 12px; color: #8a8d99; margin: 0 0 14px; }
+.vor-svg {
+  width: 100%; height: auto; display: block;
+  border: 2px solid var(--ink); background: var(--ink);
+  box-shadow: 8px 8px 0 var(--peach);
+}
+.vor-cell { cursor: pointer; transition: fill .35s ease; }
+.vor-label { pointer-events: none; text-transform: uppercase; transition: opacity .4s ease; }
+.vor-dot { pointer-events: none; }
+
 /* ---------- 06 / contact ---------- */
 #contact { text-align: center; padding-bottom: 120px; }
 #contact .section-tag { justify-content: center; }
@@ -533,24 +558,54 @@ footer {
 <section id="skills">
   <div class="section-tag">02 / Skills</div>
   <h2>What I bring<span class="accent">.</span></h2>
-  <div class="skills-grid">
-    <div class="radar-wrap" id="radarWrap">
-      <svg class="radar-svg" id="radar" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar chart of eight skill areas"></svg>
-    </div>
-    <div class="skills-text">
-      <p class="lede">
-        A decade of newsroom and field experience, condensed into eight axes.
-        Data journalism lives at the intersection of disciplines: this is how
-        mine balances out. Hover the chart to explore each one.
-      </p>
-      <div class="skill-detail" id="skillDetail">
-        <h3 id="detailTitle">Overview <span class="score" id="detailScore"></span></h3>
-        <p id="detailText">
-          I think of data as the connective tissue between disciplines. Research feeds the analysis. Code makes it reproducible. Design makes it readable. Strategy makes it matter. AI sits across all of it, a force multiplier that makes every axis of this chart sharper.
-        </p>
-        <p class="hint" id="detailHint">→ hover a point on the radar</p>
+  <div class="slider" id="skillsSlider">
+    <div class="slides" id="skillsSlides">
+      <div class="slide">
+        <div class="skills-grid">
+          <div class="radar-wrap" id="radarWrap">
+            <svg class="radar-svg" id="radar" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar chart of eight skill areas"></svg>
+          </div>
+          <div class="skills-text">
+            <p class="lede">
+              A decade of newsroom and field experience, condensed into eight axes.
+              Data journalism lives at the intersection of disciplines: this is how
+              mine balances out. Hover the chart to explore each one.
+            </p>
+            <div class="skill-detail" id="skillDetail">
+              <h3 id="detailTitle">Overview <span class="score" id="detailScore"></span></h3>
+              <p id="detailText">
+                I think of data as the connective tissue between disciplines. Research feeds the analysis. Code makes it reproducible. Design makes it readable. Strategy makes it matter. AI sits across all of it, a force multiplier that makes every axis of this chart sharper.
+              </p>
+              <p class="hint" id="detailHint">→ hover a point on the radar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="skills-grid">
+          <div>
+            <svg class="vor-svg" id="vorSvg" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated Voronoi mosaic hiding eleven keywords; click a piece to unveil one"></svg>
+          </div>
+          <div class="skills-text">
+            <p class="lede">
+              Skills are only half the picture. These are the ideas that inspire
+              me and the partners, clients and students I work with, hidden in a
+              moving mosaic. Click the pieces to unveil them.
+            </p>
+            <p class="vor-count" id="vorCount">0 / 11 unveiled — click the pieces</p>
+            <div class="skill-detail" id="vorDetail">
+              <h3 id="vorTitle">Keywords</h3>
+              <p id="vorText">Eleven words hide under this mosaic. Each one is a thread running through my work. Click a piece to unveil one; click it again to tuck it away.</p>
+              <p class="hint" id="vorHint">→ click a piece of the mosaic</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="slider-dots" aria-label="Skills views">
+    <button class="sdot active" id="sdot0" aria-label="Show skills radar"></button>
+    <button class="sdot" id="sdot1" aria-label="Show keywords mosaic"></button>
   </div>
 </section>
 
@@ -893,6 +948,189 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
     });
   }, { threshold: 0.3 });
   radarIO.observe(wrap);
+})();
+
+(function () {
+  const W = 640, H = 430, NS = "http://www.w3.org/2000/svg";
+  const MONO = "SF Mono, IBM Plex Mono, Menlo, Consolas, monospace";
+  const INK = "#1A1A1A", GREEN = "#0E8C5A", ORANGE = "#FF7A29", HOVER = "#3a3d4a";
+  const INTRO = {
+    t: "Keywords",
+    d: "Eleven words hide under this mosaic. Each one is a thread running through my work. Click a piece to unveil one; click it again to tuck it away.",
+  };
+  const data = [
+    { k: "agents", d: "Delegation is a new craft. I build and direct AI agents that scan, sort and summarise, freeing human time for what machines can't do: judgement." },
+    { k: "visualisation", d: "A good chart is an argument you can see. I use visual form to make complex evidence legible, memorable and hard to ignore." },
+    { k: "cartography", d: "Maps decide what exists. Drawing a place is an act of recognition: I use cartography to put the overlooked on the record." },
+    { k: "cooperation", d: "No one sees the whole picture alone. When people work together across borders, scattered fragments become one shared truth." },
+    { k: "data design", d: "Data has a shape before it has a story. I design the structures that let a story be found, checked and retold." },
+    { k: "humanisation", d: "Behind every row is a life. My job is to keep the person visible inside the number, so statistics regain their weight." },
+    { k: "literacy", d: "I've helped hundreds of people learn to read, question and use data. Every skill transferred multiplies what gets understood and told." },
+    { k: "democratisation", d: "Tools and data locked in expert hands serve experts. I push them outward, to the communities and classrooms that need them most." },
+    { k: "audiences", d: "A story that isn't read didn't happen. I follow people to wherever they gather, and shape the telling to meet them there." },
+    { k: "grants", d: "Finding money is an art. I design and win grants that buy the one thing ambitious ideas can't fake: time." },
+    { k: "convergence", d: "The most interesting things happen where fields touch. Code, design, storytelling: I stand where they meet and translate between them." }
+  ];
+  const base = [[95,80],[265,58],[468,70],[582,160],[122,215],[330,200],[518,265],[95,360],[300,355],[510,385],[215,295]];
+  const fills = [GREEN, ORANGE, "#FFFFFF", ORANGE, GREEN, "#FFFFFF", GREEN, ORANGE, "#FFFFFF", GREEN, ORANGE];
+  const svg = document.getElementById("vorSvg");
+  if (!svg) return;
+  const N = data.length;
+  const seeds = base.map(([x, y], i) => ({
+    x, y,
+    ax: 9 + (i % 3) * 3, ay: 8 + ((i + 1) % 3) * 3,
+    fx: .25 + .07 * (i % 4), fy: .3 + .06 * (i % 3),
+    px: i * 1.7, py: i * 2.3
+  }));
+  const cells = [], revealed = [];
+  let count = 0;
+  const countEl = document.getElementById("vorCount");
+  const panel = document.getElementById("vorDetail");
+  const setPanel = (t, d, h) => {
+    document.getElementById("vorTitle").textContent = t;
+    document.getElementById("vorText").textContent = d;
+    document.getElementById("vorHint").textContent = h;
+  };
+  const setCount = () => {
+    countEl.textContent = count + " / " + N + " unveiled" +
+      (count === 0 ? " — click the pieces" : (count < N ? " — keep clicking" : " — the full picture"));
+  };
+
+  data.forEach((d, i) => {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("class", "vor-cell");
+    p.setAttribute("stroke", "#FFFFFF");
+    p.setAttribute("stroke-width", "3");
+    p.setAttribute("stroke-linejoin", "round");
+    p.setAttribute("fill", INK);
+    svg.appendChild(p);
+
+    const dot = document.createElementNS(NS, "circle");
+    dot.setAttribute("class", "vor-dot");
+    dot.setAttribute("r", "6");
+    dot.setAttribute("fill", INK);
+    dot.setAttribute("stroke", "#FFFFFF");
+    dot.setAttribute("stroke-width", "2.5");
+    svg.appendChild(dot);
+
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("class", "vor-label");
+    t.setAttribute("text-anchor", "middle");
+    t.setAttribute("font-family", MONO);
+    t.setAttribute("font-size", "12.5");
+    t.setAttribute("font-weight", "700");
+    t.setAttribute("letter-spacing", ".06em");
+    t.setAttribute("opacity", "0");
+    const words = d.k.toUpperCase().split(" ");
+    words.forEach((w, wi) => {
+      const ts = document.createElementNS(NS, "tspan");
+      ts.setAttribute("x", "0");
+      ts.setAttribute("dy", wi === 0 ? (words.length > 1 ? "-0.35em" : "0.35em") : "1.25em");
+      ts.textContent = w;
+      t.appendChild(ts);
+    });
+    svg.appendChild(t);
+
+    p.addEventListener("mouseenter", () => { if (!revealed[i]) p.setAttribute("fill", HOVER); });
+    p.addEventListener("mouseleave", () => { if (!revealed[i]) p.setAttribute("fill", INK); });
+    p.addEventListener("click", () => {
+      if (!revealed[i]) {
+        revealed[i] = true; count++;
+        p.setAttribute("fill", fills[i]);
+        t.setAttribute("opacity", "1");
+        t.setAttribute("fill", fills[i] === GREEN ? "#FFFFFF" : INK);
+        dot.style.display = "none";
+        setPanel(data[i].k, data[i].d, "→ " + (count < N ? (N - count) + " still hidden" : "all pieces unveiled"));
+      } else {
+        revealed[i] = false; count--;
+        p.setAttribute("fill", INK);
+        t.setAttribute("opacity", "0");
+        dot.style.display = "";
+        setPanel(INTRO.t, INTRO.d, "→ " + (N - count) + " still hidden");
+      }
+      setCount();
+      panel.classList.add("highlight");
+      setTimeout(() => panel.classList.remove("highlight"), 450);
+    });
+    cells.push({ path: p, dot, label: t });
+  });
+
+  function clipCell(i, pts) {
+    let poly = [[1.5, 1.5], [W - 1.5, 1.5], [W - 1.5, H - 1.5], [1.5, H - 1.5]];
+    for (let j = 0; j < pts.length; j++) {
+      if (j === i) continue;
+      const a = pts[i], b = pts[j];
+      const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+      const dx = b[0] - a[0], dy = b[1] - a[1];
+      const out = [];
+      for (let k = 0; k < poly.length; k++) {
+        const p = poly[k], q = poly[(k + 1) % poly.length];
+        const sp = (p[0] - mx) * dx + (p[1] - my) * dy;
+        const sq = (q[0] - mx) * dx + (q[1] - my) * dy;
+        if (sp <= 0) out.push(p);
+        if ((sp < 0 && sq > 0) || (sp > 0 && sq < 0)) {
+          const tt = sp / (sp - sq);
+          out.push([p[0] + tt * (q[0] - p[0]), p[1] + tt * (q[1] - p[1])]);
+        }
+      }
+      poly = out;
+      if (poly.length === 0) return poly;
+    }
+    return poly;
+  }
+
+  function draw(t) {
+    const pts = seeds.map(s => [s.x + s.ax * Math.sin(t * s.fx + s.px), s.y + s.ay * Math.cos(t * s.fy + s.py)]);
+    for (let i = 0; i < pts.length; i++) {
+      const poly = clipCell(i, pts);
+      if (poly.length < 3) continue;
+      cells[i].path.setAttribute("d", "M" + poly.map(p => p[0].toFixed(1) + " " + p[1].toFixed(1)).join("L") + "Z");
+      let cx = 0, cy = 0;
+      poly.forEach(p => { cx += p[0]; cy += p[1]; });
+      cx /= poly.length; cy /= poly.length;
+      cells[i].dot.setAttribute("cx", cx);
+      cells[i].dot.setAttribute("cy", cy);
+      cells[i].label.setAttribute("transform", "translate(" + cx + "," + cy + ")");
+    }
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) {
+    draw(0);
+  } else {
+    const loop = now => { draw(now / 1000); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  }
+})();
+
+(function () {
+  const slides = document.getElementById("skillsSlides");
+  const slider = document.getElementById("skillsSlider");
+  if (!slides || !slider) return;
+  const dots = [document.getElementById("sdot0"), document.getElementById("sdot1")];
+  let cur = 0;
+  function go(i) {
+    cur = Math.max(0, Math.min(dots.length - 1, i));
+    slides.style.transform = "translateX(-" + (cur * 100 / dots.length) + "%)";
+    dots.forEach((d, j) => d.classList.toggle("active", j === cur));
+  }
+  dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+  let sx = null, sy = null;
+  slider.addEventListener("touchstart", e => {
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, { passive: true });
+  slider.addEventListener("touchend", e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1));
+    sx = null;
+  }, { passive: true });
+  slider.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") go(cur + 1);
+    if (e.key === "ArrowLeft") go(cur - 1);
+  });
+  slider.setAttribute("tabindex", "0");
 })();
 </script>
 
