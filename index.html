@@ -379,12 +379,46 @@ h2 .accent { color: var(--orange); }
 }
 
 /* ---------- 02b / skills slider + keywords ---------- */
+.slider-wrap { position: relative; }
 .slider { overflow: hidden; }
 .slides {
   display: flex; width: 200%;
   transition: transform .45s cubic-bezier(.2,.7,.2,1);
 }
-.slide { width: 50%; flex-shrink: 0; padding: 4px 10px 12px 4px; box-sizing: border-box; }
+.slide {
+  width: 50%; flex-shrink: 0; padding: 4px 4px 12px 4px; box-sizing: border-box;
+  display: flex; align-items: center;
+}
+.slide > .skills-grid { width: 100%; }
+.slides .slide:nth-child(1) { padding-right: 76px; }
+.slides .slide:nth-child(2) { padding-left: 76px; }
+.swipe-hint {
+  position: absolute; top: 50%; z-index: 6;
+  transform: translateY(-50%);
+  font-family: var(--mono); font-weight: 800; font-size: 52px; line-height: 1;
+  color: var(--ink); background: none; border: none; padding: 6px 2px; margin: 0;
+  cursor: pointer; opacity: .5;
+}
+.swipe-hint.is-hidden { display: none; }
+.swipe-hint--next { right: 8px; animation: swipeNudgeRight 1.8s ease-in-out infinite; }
+.swipe-hint--prev { left: 8px; animation: swipeNudgeLeft 1.8s ease-in-out infinite; }
+.swipe-hint--next:hover, .swipe-hint--next:focus-visible { opacity: 1; animation-play-state: paused; transform: translateY(-50%) translateX(6px); }
+.swipe-hint--prev:hover, .swipe-hint--prev:focus-visible { opacity: 1; animation-play-state: paused; transform: translateY(-50%) translateX(-6px); }
+@keyframes swipeNudgeRight {
+  0%, 100% { transform: translateY(-50%) translateX(0); opacity: .5; }
+  50% { transform: translateY(-50%) translateX(8px); opacity: .95; }
+}
+@keyframes swipeNudgeLeft {
+  0%, 100% { transform: translateY(-50%) translateX(0); opacity: .5; }
+  50% { transform: translateY(-50%) translateX(-8px); opacity: .95; }
+}
+@media (max-width: 820px) {
+  .slides .slide:nth-child(1) { padding-right: 40px; }
+  .slides .slide:nth-child(2) { padding-left: 40px; }
+  .swipe-hint { font-size: 28px; padding: 4px 0; }
+  .swipe-hint--next { right: 4px; }
+  .swipe-hint--prev { left: 4px; }
+}
 .slider-dots { display: flex; gap: 12px; justify-content: center; margin-top: 30px; }
 .sdot {
   width: 13px; height: 13px; border-radius: 50%; padding: 0;
@@ -558,6 +592,7 @@ footer {
 <section id="skills">
   <div class="section-tag">02 / Skills</div>
   <h2>What I bring<span class="accent">.</span></h2>
+  <div class="slider-wrap">
   <div class="slider" id="skillsSlider">
     <div class="slides" id="skillsSlides">
       <div class="slide">
@@ -602,6 +637,9 @@ footer {
         </div>
       </div>
     </div>
+  </div>
+  <button class="swipe-hint swipe-hint--next" id="swipeHintNext" type="button" aria-label="Swipe to see the keywords mosaic">&rsaquo;</button>
+  <button class="swipe-hint swipe-hint--prev is-hidden" id="swipeHintPrev" type="button" aria-label="Swipe back to the skills radar">&lsaquo;</button>
   </div>
   <div class="slider-dots" aria-label="Skills views">
     <button class="sdot active" id="sdot0" aria-label="Show skills radar"></button>
@@ -959,7 +997,7 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
     d: "Eleven words hide under this mosaic. Each one is a thread running through my work. Click a piece to unveil one; click it again to tuck it away.",
   };
   const data = [
-    { k: "agents", d: "Delegation is a new craft. I build and direct AI agents that scan, sort and summarise, freeing human time for what machines can't do: judgement." },
+    { k: "agents", d: "Coordination is a new craft. I build teams of AI agents and humans working together, each doing what it does best, so judgement stays where it belongs." },
     { k: "visualisation", d: "A good chart is an argument you can see. I use visual form to make complex evidence legible, memorable and hard to ignore." },
     { k: "cartography", d: "Maps decide what exists. Drawing a place is an act of recognition: I use cartography to put the overlooked on the record." },
     { k: "cooperation", d: "No one sees the whole picture alone. When people work together across borders, scattered fragments become one shared truth." },
@@ -1108,13 +1146,19 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
   const slider = document.getElementById("skillsSlider");
   if (!slides || !slider) return;
   const dots = [document.getElementById("sdot0"), document.getElementById("sdot1")];
+  const swipeNext = document.getElementById("swipeHintNext");
+  const swipePrev = document.getElementById("swipeHintPrev");
   let cur = 0;
   function go(i) {
     cur = Math.max(0, Math.min(dots.length - 1, i));
     slides.style.transform = "translateX(-" + (cur * 100 / dots.length) + "%)";
     dots.forEach((d, j) => d.classList.toggle("active", j === cur));
+    if (swipeNext) swipeNext.classList.toggle("is-hidden", cur >= dots.length - 1);
+    if (swipePrev) swipePrev.classList.toggle("is-hidden", cur <= 0);
   }
   dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+  if (swipeNext) swipeNext.addEventListener("click", () => go(cur + 1));
+  if (swipePrev) swipePrev.addEventListener("click", () => go(cur - 1));
   let sx = null, sy = null;
   slider.addEventListener("touchstart", e => {
     sx = e.touches[0].clientX; sy = e.touches[0].clientY;
