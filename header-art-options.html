@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header art options — Workshops page</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root {
+  --board: #0C3B2A;
+  --board-deep: #092E21;
+  --chalk: #F7F4EA;
+  --chalk-dim: #BFD0C4;
+  --grid: rgba(247,244,234,0.07);
+  --green: #0E8C5A;
+  --orange: #FF7A29;
+  --peach: #FFDCC2;
+  --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--board);
+  color: var(--chalk);
+  font-family: var(--sans);
+  line-height: 1.6;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  padding: 56px 32px 80px;
+}
+h1 {
+  max-width: 1400px; margin: 0 auto 8px;
+  font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em;
+}
+h1 .accent { color: var(--orange); }
+.lede {
+  max-width: 1400px; margin: 0 auto 40px; color: var(--chalk-dim); font-size: 16px;
+}
+.options {
+  max-width: 1150px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+}
+@media (max-width: 900px) { .options { grid-template-columns: 1fr; max-width: 560px; } }
+.option {
+  background: var(--board-deep); border: 2px solid var(--chalk);
+  box-shadow: 6px 6px 0 var(--green);
+  padding: 24px; display: flex; flex-direction: column; gap: 18px;
+}
+.option .tag {
+  font-family: var(--mono); font-size: 13px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--peach);
+  display: flex; align-items: center; gap: 10px;
+}
+.option .tag::before { content: ""; width: 24px; height: 3px; background: var(--orange); }
+.option .tag .badge {
+  margin-left: auto; color: var(--board-deep); background: var(--peach);
+  padding: 2px 8px; font-size: 11px; border: 1.5px solid var(--chalk);
+}
+.option svg { width: 100%; height: auto; display: block; }
+.option p { font-size: 14px; color: var(--chalk-dim); }
+</style>
+</head>
+<body>
+
+<h1>Header art options<span class="accent">.</span></h1>
+<p class="lede">Four animated illustrations for the workshops hero, side by side on the same chalkboard background. Tell me which one you want and I'll swap it into the header.</p>
+
+<div class="options">
+
+  <!-- ═══════════ CURRENT: RISING CHART ═══════════ -->
+  <div class="option">
+    <div class="tag">Rising chart <span class="badge">current</span></div>
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" aria-label="Chalk chart with rising bars and a map pin">
+      <g fill="none" stroke="#F7F4EA" stroke-width="3" stroke-linecap="round" opacity=".9">
+        <path d="M70 400 V120" stroke-dasharray="6 8"/>
+        <path d="M70 400 H410" stroke-dasharray="6 8"/>
+        <rect x="110" y="300" width="44" height="100" stroke="#FFDCC2"/>
+        <rect x="180" y="250" width="44" height="150" stroke="#FFDCC2"/>
+        <rect x="250" y="190" width="44" height="210" stroke="#FFDCC2"/>
+        <rect x="320" y="150" width="44" height="250" stroke="#FFDCC2"/>
+        <path id="riseline1" d="M90 340 Q 180 320 250 240 T 400 130" stroke="#FF7A29" stroke-width="3.5"/>
+      </g>
+      <circle r="6" fill="#FF7A29">
+        <animateMotion dur="4.5s" repeatCount="indefinite"><mpath href="#riseline1"/></animateMotion>
+      </circle>
+      <g fill="none" stroke-width="3" stroke-linecap="round">
+        <path d="M395 95 c0 -22 18 -34 33 -34 s33 12 33 34 c0 20 -33 48 -33 48 s-33 -28 -33 -48z" stroke="#F7F4EA"/>
+        <circle cx="428" cy="93" r="9" stroke="#FF7A29"/>
+      </g>
+      <g stroke="#F7F4EA" stroke-width="2" opacity=".5">
+        <path d="M60 70 h14 M67 63 v14"/>
+        <path d="M430 400 h14 M437 393 v14"/>
+        <path d="M330 55 h14 M337 48 v14"/>
+      </g>
+      <circle cx="400" cy="130" r="8" fill="none" stroke="#FFDCC2" stroke-width="2">
+        <animate attributeName="r" values="8;24" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    <p>Four chalk bars, a rising trend line with a traveling dot, and a map pin at the peak.</p>
+  </div>
+
+  <!-- ═══════════ OPTION A: COMPASS ═══════════ -->
+  <div class="option">
+    <div class="tag">Compass <span class="badge">option a</span></div>
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" aria-label="Chalk compass with a swinging needle">
+      <defs>
+        <path id="rim" d="M 240 78 A 162 162 0 1 1 239.9 78"/>
+      </defs>
+      <!-- outer dashed ring -->
+      <circle cx="240" cy="240" r="162" fill="none" stroke="#F7F4EA" stroke-width="3" stroke-dasharray="6 8" stroke-linecap="round" opacity=".9"/>
+      <!-- inner ring -->
+      <circle cx="240" cy="240" r="126" fill="none" stroke="#F7F4EA" stroke-width="1.5" opacity=".4"/>
+      <!-- degree ticks every 30° -->
+      <g stroke="#FFDCC2" stroke-width="2.5" stroke-linecap="round" opacity=".8">
+        <line x1="240" y1="96" x2="240" y2="114"/>
+        <line x1="312" y1="115.3" x2="303" y2="130.9"/>
+        <line x1="364.7" y1="168" x2="349.1" y2="177"/>
+        <line x1="384" y1="240" x2="366" y2="240"/>
+        <line x1="364.7" y1="312" x2="349.1" y2="303"/>
+        <line x1="312" y1="364.7" x2="303" y2="349.1"/>
+        <line x1="240" y1="384" x2="240" y2="366"/>
+        <line x1="168" y1="364.7" x2="177" y2="349.1"/>
+        <line x1="115.3" y1="312" x2="130.9" y2="303"/>
+        <line x1="96" y1="240" x2="114" y2="240"/>
+        <line x1="115.3" y1="168" x2="130.9" y2="177"/>
+        <line x1="168" y1="115.3" x2="177" y2="130.9"/>
+      </g>
+      <!-- cardinal letters -->
+      <g font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">
+        <text x="240" y="66" fill="#FF7A29">N</text>
+        <text x="424" y="249" fill="#F7F4EA">E</text>
+        <text x="240" y="440" fill="#F7F4EA">S</text>
+        <text x="56" y="249" fill="#F7F4EA">W</text>
+      </g>
+      <!-- needle: orange north, chalk outline south, swinging as it settles -->
+      <g stroke-linejoin="round">
+        <animateTransform attributeName="transform" type="rotate"
+          values="-24 240 240; 58 240 240; 22 240 240; 46 240 240; 32 240 240; 38 240 240; -24 240 240"
+          keyTimes="0; .22; .42; .6; .76; .88; 1"
+          calcMode="spline"
+          keySplines=".4 0 .2 1; .4 0 .2 1; .4 0 .2 1; .4 0 .2 1; .4 0 .2 1; .4 0 .2 1"
+          dur="9s" repeatCount="indefinite"/>
+        <polygon points="240,122 226,240 254,240" fill="#FF7A29"/>
+        <polygon points="240,358 226,240 254,240" fill="none" stroke="#F7F4EA" stroke-width="3"/>
+      </g>
+      <!-- center cap -->
+      <circle cx="240" cy="240" r="11" fill="#092E21" stroke="#F7F4EA" stroke-width="3"/>
+      <!-- dot traveling around the rim -->
+      <circle r="5.5" fill="#FF7A29">
+        <animateMotion dur="10s" repeatCount="indefinite"><mpath href="#rim"/></animateMotion>
+      </circle>
+      <!-- pulsing ring at north -->
+      <circle cx="240" cy="98" r="7" fill="none" stroke="#FFDCC2" stroke-width="2">
+        <animate attributeName="r" values="7;22" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <!-- sparkles -->
+      <g stroke="#F7F4EA" stroke-width="2" opacity=".5">
+        <path d="M52 84 h14 M59 77 v14"/>
+        <path d="M420 402 h14 M427 395 v14"/>
+        <path d="M430 60 h14 M437 53 v14"/>
+      </g>
+    </svg>
+    <p>A chalk compass rose: the needle swings and settles, a dot patrols the rim, north pulses in peach.</p>
+  </div>
+
+  <!-- ═══════════ OPTION B: MAP ═══════════ -->
+  <div class="option">
+    <div class="tag">Map <span class="badge">option b</span></div>
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" aria-label="Chalk map with pins and an animated route">
+      <defs>
+        <path id="route" d="M120 330 Q 150 235 240 180 Q 335 125 368 310"/>
+      </defs>
+      <!-- coastline / landmass -->
+      <path d="M96 130
+               Q 150 74 232 92 Q 300 106 344 84 Q 408 60 424 132
+               Q 436 186 408 238 Q 388 274 404 322 Q 418 372 362 396
+               Q 300 422 232 402 Q 180 388 136 404 Q 78 422 66 356
+               Q 56 300 84 252 Q 106 216 88 176 Q 78 150 96 130 Z"
+            fill="none" stroke="#F7F4EA" stroke-width="3" stroke-dasharray="6 8" stroke-linecap="round" opacity=".9"/>
+      <!-- inner contour -->
+      <path d="M140 170 Q 190 130 260 142 Q 330 154 360 190 Q 380 226 356 268 Q 330 310 268 316 Q 200 322 160 284 Q 124 248 140 170 Z"
+            fill="none" stroke="#F7F4EA" stroke-width="1.5" opacity=".22"/>
+      <!-- lake -->
+      <path d="M196 236 Q 220 218 248 232 Q 268 244 252 262 Q 230 282 206 266 Q 188 252 196 236 Z"
+            fill="none" stroke="#FFDCC2" stroke-width="2" opacity=".5"/>
+      <!-- dotted route between pins -->
+      <use href="#route" fill="none" stroke="#FFDCC2" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.1 10"/>
+      <!-- traveling dot along the route -->
+      <circle r="6" fill="#FF7A29">
+        <animateMotion dur="5s" repeatCount="indefinite"><mpath href="#route"/></animateMotion>
+      </circle>
+      <!-- pins (tips at 120,330 / 240,180 / 368,310) -->
+      <g fill="none" stroke-width="3.5" stroke-linecap="round">
+        <g transform="translate(120,330) scale(.72) translate(-428,-143)">
+          <path d="M395 95 c0 -22 18 -34 33 -34 s33 12 33 34 c0 20 -33 48 -33 48 s-33 -28 -33 -48z" stroke="#F7F4EA"/>
+          <circle cx="428" cy="93" r="9" stroke="#0E8C5A"/>
+        </g>
+        <g transform="translate(240,180) scale(.72) translate(-428,-143)">
+          <path d="M395 95 c0 -22 18 -34 33 -34 s33 12 33 34 c0 20 -33 48 -33 48 s-33 -28 -33 -48z" stroke="#F7F4EA"/>
+          <circle cx="428" cy="93" r="9" stroke="#FFDCC2"/>
+        </g>
+        <g transform="translate(368,310) scale(.72) translate(-428,-143)">
+          <path d="M395 95 c0 -22 18 -34 33 -34 s33 12 33 34 c0 20 -33 48 -33 48 s-33 -28 -33 -48z" stroke="#F7F4EA"/>
+          <circle cx="428" cy="93" r="9" stroke="#FF7A29"/>
+        </g>
+      </g>
+      <!-- pulsing ring at destination pin -->
+      <circle cx="368" cy="274" r="9" fill="none" stroke="#FFDCC2" stroke-width="2">
+        <animate attributeName="r" values="9;26" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <!-- pulsing ring at start pin, offset beat -->
+      <circle cx="120" cy="294" r="9" fill="none" stroke="#0E8C5A" stroke-width="2">
+        <animate attributeName="r" values="9;24" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".6;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+      </circle>
+      <!-- mini compass in the corner -->
+      <g opacity=".85">
+        <circle cx="430" cy="72" r="26" fill="none" stroke="#F7F4EA" stroke-width="2.5"/>
+        <g>
+          <animateTransform attributeName="transform" type="rotate"
+            values="-14 430 72; 14 430 72; -14 430 72" dur="6s" repeatCount="indefinite"
+            calcMode="spline" keyTimes="0; .5; 1" keySplines=".45 0 .55 1; .45 0 .55 1"/>
+          <polygon points="430,52 425,72 435,72" fill="#FF7A29"/>
+          <polygon points="430,92 425,72 435,72" fill="none" stroke="#F7F4EA" stroke-width="2"/>
+        </g>
+        <text x="430" y="40" font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#F7F4EA" text-anchor="middle">N</text>
+      </g>
+      <!-- sparkles -->
+      <g stroke="#F7F4EA" stroke-width="2" opacity=".5">
+        <path d="M52 60 h14 M59 53 v14"/>
+        <path d="M60 430 h14 M67 423 v14"/>
+      </g>
+    </svg>
+    <p>A chalk-sketched territory with a dotted route hopping between three pins, a traveling dot, and a mini compass.</p>
+  </div>
+
+  <!-- ═══════════ OPTION C: ROSA DEI VENTI ═══════════ -->
+  <div class="option">
+    <div class="tag">Rosa dei venti <span class="badge">option c</span></div>
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" aria-label="Chalk rosa dei venti with the eight Italian winds">
+      <defs>
+        <path id="rosaRim" d="M 240 82 A 158 158 0 1 1 239.9 82"/>
+      </defs>
+      <!-- outer dashed ring, slowly rotating -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0 240 240" to="360 240 240" dur="80s" repeatCount="indefinite"/>
+        <circle cx="240" cy="240" r="158" fill="none" stroke="#F7F4EA" stroke-width="3" stroke-dasharray="6 8" stroke-linecap="round" opacity=".9"/>
+      </g>
+      <!-- inner ring -->
+      <circle cx="240" cy="240" r="118" fill="none" stroke="#F7F4EA" stroke-width="1.5" opacity=".3"/>
+      <!-- the rose: gentle breathing sway -->
+      <g stroke-linejoin="round">
+        <animateTransform attributeName="transform" type="rotate"
+          values="-4 240 240; 4 240 240; -4 240 240" keyTimes="0; .5; 1"
+          calcMode="spline" keySplines=".45 0 .55 1; .45 0 .55 1"
+          dur="12s" repeatCount="indefinite"/>
+        <!-- diagonal points (shorter), peach -->
+        <g>
+          <!-- NE -->
+          <polygon points="314.2,165.8 240,195 240,240" fill="#FFDCC2"/>
+          <polygon points="314.2,165.8 285,240 240,240" fill="none" stroke="#FFDCC2" stroke-width="2.5"/>
+          <!-- SE -->
+          <polygon points="314.2,314.2 285,240 240,240" fill="#FFDCC2"/>
+          <polygon points="314.2,314.2 240,285 240,240" fill="none" stroke="#FFDCC2" stroke-width="2.5"/>
+          <!-- SW -->
+          <polygon points="165.8,314.2 240,285 240,240" fill="#FFDCC2"/>
+          <polygon points="165.8,314.2 195,240 240,240" fill="none" stroke="#FFDCC2" stroke-width="2.5"/>
+          <!-- NW -->
+          <polygon points="165.8,165.8 195,240 240,240" fill="#FFDCC2"/>
+          <polygon points="165.8,165.8 240,195 240,240" fill="none" stroke="#FFDCC2" stroke-width="2.5"/>
+        </g>
+        <!-- cardinal points (longer): orange half + chalk-outline half -->
+        <g>
+          <!-- N -->
+          <polygon points="240,92 208.2,208.2 240,240" fill="#FF7A29"/>
+          <polygon points="240,92 271.8,208.2 240,240" fill="none" stroke="#F7F4EA" stroke-width="3"/>
+          <!-- E -->
+          <polygon points="388,240 271.8,208.2 240,240" fill="#FF7A29"/>
+          <polygon points="388,240 271.8,271.8 240,240" fill="none" stroke="#F7F4EA" stroke-width="3"/>
+          <!-- S -->
+          <polygon points="240,388 271.8,271.8 240,240" fill="#FF7A29"/>
+          <polygon points="240,388 208.2,271.8 240,240" fill="none" stroke="#F7F4EA" stroke-width="3"/>
+          <!-- W -->
+          <polygon points="92,240 208.2,271.8 240,240" fill="#FF7A29"/>
+          <polygon points="92,240 208.2,208.2 240,240" fill="none" stroke="#F7F4EA" stroke-width="3"/>
+        </g>
+        <!-- center cap -->
+        <circle cx="240" cy="240" r="10" fill="#092E21" stroke="#F7F4EA" stroke-width="3"/>
+      </g>
+      <!-- the eight winds -->
+      <g font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="12.5" font-weight="700" letter-spacing="1">
+        <text x="240" y="52" fill="#FF7A29" text-anchor="middle">TRAMONTANA</text>
+        <text x="352" y="120" fill="#BFD0C4" text-anchor="start">GRECALE</text>
+        <text x="418" y="245" fill="#F7F4EA" text-anchor="start">LEVANTE</text>
+        <text x="352" y="372" fill="#BFD0C4" text-anchor="start">SCIROCCO</text>
+        <text x="240" y="444" fill="#F7F4EA" text-anchor="middle">OSTRO</text>
+        <text x="128" y="372" fill="#BFD0C4" text-anchor="end">LIBECCIO</text>
+        <text x="62" y="245" fill="#F7F4EA" text-anchor="end">PONENTE</text>
+        <text x="128" y="120" fill="#BFD0C4" text-anchor="end">MAESTRALE</text>
+      </g>
+      <!-- dot sailing around the rim -->
+      <circle r="5.5" fill="#FF7A29">
+        <animateMotion dur="14s" repeatCount="indefinite"><mpath href="#rosaRim"/></animateMotion>
+      </circle>
+      <!-- pulsing ring at tramontana -->
+      <circle cx="240" cy="92" r="7" fill="none" stroke="#FFDCC2" stroke-width="2">
+        <animate attributeName="r" values="7;22" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <!-- gusts blowing in from maestrale (NW) -->
+      <g fill="none" stroke="#F7F4EA" stroke-width="2" stroke-linecap="round">
+        <path d="M46 142 q 18 -10 36 -2">
+          <animate attributeName="opacity" values="0;.7;0" dur="3.5s" repeatCount="indefinite"/>
+        </path>
+        <path d="M40 162 q 24 -12 48 -3">
+          <animate attributeName="opacity" values="0;.7;0" dur="3.5s" begin="1.2s" repeatCount="indefinite"/>
+        </path>
+      </g>
+    </svg>
+    <p>The classic eight-pointed rosa dei venti with the Italian winds — Tramontana pulses, the rose sways gently, a dot sails the rim and Maestrale gusts in from the north-west.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
