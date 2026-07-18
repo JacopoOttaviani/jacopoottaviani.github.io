@@ -1,0 +1,35 @@
+<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <circle cx="252" cy="106" r="86" fill="#FFDCC2" opacity=".45"/>
+  <g stroke="#1A1A1A" stroke-width="1.5" opacity=".35">
+    <path d="M56 44 h12 M62 38 v12"/>
+    <path d="M448 40 h12 M454 34 v12"/>
+  </g>
+  <!-- storm dashes over the sea -->
+  <g stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round">
+    <path d="M336 48 l-6 16"/>
+    <path d="M376 36 l-6 16"/>
+    <path d="M414 52 l-6 16"/>
+  </g>
+  <!-- cliff with wave-cut notch -->
+  <path d="M40 200 V96 H236 V148 L222 160 L236 172 V200 Z" fill="#1A1A1A"/>
+  <!-- former coastline: land already lost to the sea -->
+  <path d="M236 96 H320 V164" fill="none" stroke="#FF7A29" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10"/>
+  <!-- sea: dotted swell lines -->
+  <g fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10">
+    <path d="M252 168 Q 310 160 368 168 T 480 168"/>
+    <path d="M262 186 Q 314 180 366 186 T 472 186"/>
+  </g>
+  <!-- collapsed block at the cliff foot -->
+  <path d="M238 150 L282 161 L272 192 L234 178 Z" fill="#FF7A29"/>
+  <!-- house on the cliff edge -->
+  <g>
+    <path d="M188 96 v-16 h20 v16 Z" fill="#1A1A1A"/>
+    <path d="M186 80 l12 -10 12 10 Z" fill="#FF7A29"/>
+  </g>
+  <!-- sensor node + detection ring at the cliff edge -->
+  <circle cx="236" cy="96" r="6" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <circle cx="236" cy="96" r="24" fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10"/>
+  <!-- monitoring buoy -->
+  <circle cx="424" cy="168" r="5" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  <text x="60" y="60" font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="11" fill="#8a8d99">COSTE · EROSIONE ALTA IN 54 COMUNI</text>
+</svg>
