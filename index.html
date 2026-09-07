@@ -387,16 +387,17 @@ h2 .accent { color: var(--orange); }
 .slider-wrap { position: relative; }
 .slider { overflow: hidden; }
 .slides {
-  display: flex; width: 200%;
+  display: flex; width: 300%;
   transition: transform .45s cubic-bezier(.2,.7,.2,1);
 }
 .slide {
-  width: 50%; flex-shrink: 0; padding: 4px 4px 12px 4px; box-sizing: border-box;
+  width: 33.3333%; flex-shrink: 0; padding: 4px 4px 12px 4px; box-sizing: border-box;
   display: flex; align-items: center;
 }
 .slide > .skills-grid { width: 100%; }
 .slides .slide:nth-child(1) { padding-right: 76px; }
-.slides .slide:nth-child(2) { padding-left: 76px; }
+.slides .slide:nth-child(2) { padding-left: 76px; padding-right: 76px; }
+.slides .slide:nth-child(3) { padding-left: 76px; }
 .swipe-hint {
   position: absolute; top: 50%; z-index: 6;
   transform: translateY(-50%);
@@ -418,8 +419,9 @@ h2 .accent { color: var(--orange); }
   50% { transform: translateY(-50%) translateX(-8px); opacity: .95; }
 }
 @media (max-width: 820px) {
-  .slides .slide:nth-child(1) { padding-right: 40px; }
-  .slides .slide:nth-child(2) { padding-left: 40px; }
+  .slides .slide:nth-child(1) { padding-right: 32px; }
+  .slides .slide:nth-child(2) { padding-left: 32px; padding-right: 32px; }
+  .slides .slide:nth-child(3) { padding-left: 32px; }
   .swipe-hint { font-size: 28px; padding: 4px 0; }
   .swipe-hint--next { right: 4px; }
   .swipe-hint--prev { left: 4px; }
@@ -441,6 +443,16 @@ h2 .accent { color: var(--orange); }
 .vor-cell { cursor: pointer; transition: fill .35s ease; }
 .vor-label { pointer-events: none; text-transform: uppercase; transition: opacity .4s ease; }
 .vor-dot { pointer-events: none; }
+
+/* ---------- 02c / skills sankey ---------- */
+.sk-svg { width: 100%; height: auto; display: block; }
+.sk-node { fill: var(--ink); }
+.sk-link { fill: var(--green); fill-opacity: .28; transition: fill-opacity .2s ease, fill .2s ease; }
+.sk-link.on { fill: var(--orange); fill-opacity: .85; }
+.sk-link.dim { fill-opacity: .06; }
+.sk-label { font-family: var(--mono); font-size: 11.5px; fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; transition: fill .2s ease; }
+.sk-label.dim { fill: #b8b9bf; }
+.sk-hit { fill: transparent; cursor: pointer; }
 
 /* ---------- 06 / contact ---------- */
 #contact { text-align: center; padding-bottom: 120px; }
@@ -642,14 +654,32 @@ footer {
           </div>
         </div>
       </div>
+      <div class="slide">
+        <div class="skills-grid">
+          <div>
+            <svg class="sk-svg" id="sankey" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sankey diagram linking eight skills, seven methods and ten projects"></svg>
+          </div>
+          <div class="skills-text">
+            <p class="lede">
+              Skills are inputs. This is what they turn into: eight crafts flow through seven methods and come out as ten stories. Hover a node to follow its thread.
+            </p>
+            <div class="skill-detail" id="skDetail">
+              <h3 id="skTitle">Craft → method → story</h3>
+              <p id="skText">Every project on this site is a braid of several skills. The width of each ribbon is how much a craft mattered to a piece of work. The portfolio below is the right-hand column of this diagram.</p>
+              <p class="hint" id="skHint">→ hover a skill, a method or a project</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <button class="swipe-hint swipe-hint--next" id="swipeHintNext" type="button" aria-label="Swipe to see the keywords mosaic">&rsaquo;</button>
-  <button class="swipe-hint swipe-hint--prev is-hidden" id="swipeHintPrev" type="button" aria-label="Swipe back to the skills radar">&lsaquo;</button>
+  <button class="swipe-hint swipe-hint--next" id="swipeHintNext" type="button" aria-label="Show next view">&rsaquo;</button>
+  <button class="swipe-hint swipe-hint--prev is-hidden" id="swipeHintPrev" type="button" aria-label="Show previous view">&lsaquo;</button>
   </div>
   <div class="slider-dots" aria-label="Skills views">
     <button class="sdot active" id="sdot0" aria-label="Show skills radar"></button>
     <button class="sdot" id="sdot1" aria-label="Show keywords mosaic"></button>
+    <button class="sdot" id="sdot2" aria-label="Show skills Sankey"></button>
   </div>
 </section>
 
@@ -1150,10 +1180,114 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 })();
 
 (function () {
+  const svg = document.getElementById("sankey");
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n; };
+  const cols = [["Data", "Computer science", "Design", "Narratives", "Research", "Strategy", "Management", "Teaching"], ["Satellite & AI", "Drones & community maps", "Scraping & open data", "Crowdsourcing", "Cross-border teams", "Interactive cartography", "Longform & documentary"], ["Africa Mining Watch", "Lungs of the Earth", "Italia Fragile", "Map Makoko", "Migrants' Files", "PatrieGalere", "StradeMortali", "Generation E", "E-Waste Republic", "Search and Rescue"]];
+  const desc = [
+      "The core craft feeds almost everything: scraping and open-data work, satellite pipelines, crowdsourced datasets.",
+      "Code is what makes the satellite and scraping methods possible at scale.",
+      "Information design shapes the interactive maps and the longform pieces.",
+      "Writing and narrative craft carry the documentary work and the crowdsourced stories.",
+      "Verification and source-finding underpin the cross-border investigations.",
+      "Deciding which stories get resources: the cross-border collaborations and the satellite platform.",
+      "Distributed teams of reporters, developers and mappers across time zones.",
+      "Training the community mappers of Makoko and the contributors of crowdsourced projects.",
+      "Machine learning on imagery, from illegal mines to rainforest loss.",
+      "Putting the unmapped on the map, with the people who live there.",
+      "Building datasets from what the state publishes, and what it does not.",
+      "Readers as reporters, at continental scale.",
+      "Newsrooms in several countries working one story.",
+      "Maps the reader can interrogate.",
+      "Data as the spine of a documentary narrative.",
+      "Satellite imagery and AI mapping illegal mining across Africa.",
+      "A data-driven journey across the world's rainforests, in six countries.",
+      "Italy's hydrogeological fragility, municipality by municipality.",
+      "Lagos' floating community of 250,000, mapped by drones and local women.",
+      "The human cost of Fortress Europe, counted. Data Journalism Award 2014.",
+      "Deaths in Italian prisons since 2002, Italy's first data journalism project.",
+      "Rome's most dangerous intersections, from open data.",
+      "Young Southern Europeans leaving after the crisis, crowdsourced.",
+      "Electronic waste in Ghana, a data-driven documentary.",
+      "MSF's missions in the Mediterranean, on an interactive map."
+  ];
+  // [sourceCol, sourceIdx, targetIdx, weight]
+  const raw = [[0, 0, 2, 3], [0, 0, 0, 2], [0, 0, 3, 1], [0, 0, 5, 1], [0, 1, 0, 2], [0, 1, 2, 2], [0, 1, 5, 1], [0, 2, 5, 3], [0, 2, 6, 2], [0, 3, 6, 3], [0, 3, 3, 1], [0, 4, 2, 1], [0, 4, 4, 2], [0, 4, 6, 1], [0, 5, 4, 2], [0, 5, 0, 1], [0, 6, 4, 2], [0, 6, 1, 2], [0, 7, 1, 2], [0, 7, 3, 1], [1, 0, 0, 3], [1, 0, 1, 2], [1, 0, 2, 1], [1, 1, 3, 3], [1, 2, 4, 2], [1, 2, 5, 2], [1, 2, 6, 2], [1, 2, 2, 1], [1, 3, 7, 2], [1, 3, 4, 1], [1, 3, 3, 1], [1, 4, 4, 2], [1, 4, 7, 2], [1, 4, 1, 2], [1, 4, 8, 1], [1, 4, 0, 1], [1, 4, 9, 1], [1, 5, 9, 3], [1, 5, 5, 1], [1, 5, 6, 1], [1, 5, 3, 1], [1, 5, 2, 1], [1, 6, 8, 3], [1, 6, 1, 2], [1, 6, 2, 1]];
+  const nodes = [];
+  cols.forEach((c, ci) => c.forEach((name, i) => nodes.push({ name, col: ci, i, inV: 0, outV: 0, links: [] })));
+  const node = (ci, i) => nodes.find(n => n.col === ci && n.i === i);
+  const links = raw.map(([sc, si, ti, w]) => {
+    const s = node(sc, si), t = node(sc + 1, ti);
+    const l = { s, t, w };
+    s.outV += w; t.inV += w; s.links.push(l); t.links.push(l);
+    return l;
+  });
+  nodes.forEach(n => n.v = Math.max(n.inV, n.outV));
+
+  const H = 430, PADY = 14, NW = 12, X = [124, 304, 486];
+  const k = Math.min(...cols.map((c, ci) => (H - 20 - PADY * (c.length - 1)) / nodes.filter(n => n.col === ci).reduce((s, n) => s + n.v, 0)));
+  cols.forEach((c, ci) => {
+    const col = nodes.filter(n => n.col === ci);
+    const used = col.reduce((s, n) => s + n.v * k, 0) + PADY * (col.length - 1);
+    let y = (H - used) / 2;
+    col.forEach(n => { n.x = X[ci]; n.y0 = y; n.h = n.v * k; y += n.h + PADY; n.outY = n.y0; n.inY = n.y0; });
+  });
+
+  const gLinks = el("g", {}, svg), gNodes = el("g", {}, svg), gLabels = el("g", {}, svg);
+  links.forEach(l => {
+    const w = l.w * k, y0 = l.s.outY, y1 = l.t.inY;
+    l.s.outY += w; l.t.inY += w;
+    const x0 = l.s.x + NW, x1 = l.t.x, cx = (x0 + x1) / 2;
+    l.el = el("path", { class: "sk-link", d: `M${x0},${y0} C${cx},${y0} ${cx},${y1} ${x1},${y1} L${x1},${y1 + w} C${cx},${y1 + w} ${cx},${y0 + w} ${x0},${y0 + w} Z` }, gLinks);
+  });
+  nodes.forEach(n => {
+    el("rect", { x: n.x, y: n.y0, width: NW, height: n.h, class: "sk-node" }, gNodes);
+    n.label = el("text", { x: n.col === 0 ? n.x - 6 : n.x + NW + 6, y: n.y0 + n.h / 2 + 4, "text-anchor": n.col === 0 ? "end" : "start", class: "sk-label" }, gLabels);
+    n.label.textContent = n.name;
+    const hit = el("rect", { x: n.col === 0 ? n.x - 118 : n.x, y: n.y0 - 3, width: n.col === 0 ? 118 + NW : NW + 150, height: n.h + 6, class: "sk-hit" }, gLabels);
+    hit.addEventListener("mouseenter", () => focus(n));
+    hit.addEventListener("mouseleave", reset);
+    hit.addEventListener("click", () => focus(n));
+  });
+
+  const title = document.getElementById("skTitle"), text = document.getElementById("skText"), hint = document.getElementById("skHint"), panel = document.getElementById("skDetail");
+  const T = {"title": "Craft → method → story", "text": "Every project on this site is a braid of several skills. The width of each ribbon is how much a craft mattered to a piece of work. The portfolio below is the right-hand column of this diagram.", "hint": "→ hover a skill, a method or a project", "kinds": ["craft", "method", "story"], "up": " Draws on {n} of the eight crafts.", "down": " Flows into {n} of the ten stories.", "units": " units of flow"};
+  function reachable(n0) {
+    const set = new Set([n0]), lset = new Set();
+    const walk = (n, dir) => n.links.forEach(l => {
+      const nxt = dir > 0 ? (l.s === n ? l.t : null) : (l.t === n ? l.s : null);
+      if (nxt && !lset.has(l)) { lset.add(l); set.add(nxt); walk(nxt, dir); }
+    });
+    walk(n0, 1); walk(n0, -1);
+    return { set, lset };
+  }
+  function focus(n) {
+    const { set, lset } = reachable(n);
+    links.forEach(l => { l.el.classList.toggle("on", lset.has(l)); l.el.classList.toggle("dim", !lset.has(l)); });
+    nodes.forEach(m => m.label.classList.toggle("dim", !set.has(m)));
+    const idx = cols.slice(0, n.col).reduce((s, c) => s + c.length, 0) + n.i;
+    let extra = "";
+    if (n.col === 2) extra = T.up.replace("{n}", [...set].filter(x => x.col === 0).length);
+    if (n.col === 0) extra = T.down.replace("{n}", [...set].filter(x => x.col === 2).length);
+    title.textContent = n.name;
+    text.textContent = desc[idx] + extra;
+    hint.textContent = "→ " + T.kinds[n.col] + " · " + n.v + T.units;
+    panel.classList.add("highlight");
+  }
+  function reset() {
+    links.forEach(l => l.el.classList.remove("on", "dim"));
+    nodes.forEach(m => m.label.classList.remove("dim"));
+    title.textContent = T.title; text.textContent = T.text; hint.textContent = T.hint;
+    panel.classList.remove("highlight");
+  }
+})();
+
+(function () {
   const slides = document.getElementById("skillsSlides");
   const slider = document.getElementById("skillsSlider");
   if (!slides || !slider) return;
-  const dots = [document.getElementById("sdot0"), document.getElementById("sdot1")];
+  const dots = [document.getElementById("sdot0"), document.getElementById("sdot1"), document.getElementById("sdot2")];
   const swipeNext = document.getElementById("swipeHintNext");
   const swipePrev = document.getElementById("swipeHintPrev");
   let cur = 0;
