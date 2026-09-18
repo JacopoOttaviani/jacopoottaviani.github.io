@@ -659,11 +659,11 @@ footer {
       <div class="slide">
         <div class="skills-grid">
           <div>
-            <svg class="sk-svg" id="sankey" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramma di Sankey che collega otto competenze, sette metodi e dieci progetti"></svg>
+            <svg class="sk-svg" id="sankey" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramma di Sankey che collega otto competenze, sette metodi e dodici progetti"></svg>
           </div>
           <div class="skills-text">
             <p class="lede">
-              Le competenze sono input. Ecco in cosa si trasformano: otto mestieri attraversano sette metodi e diventano dieci storie. Passate il cursore su un nodo per seguirne il filo.
+              Le competenze sono input. Ecco in cosa si trasformano: otto mestieri attraversano sette metodi e diventano dodici storie. Passate il cursore su un nodo per seguirne il filo.
             </p>
             <div class="skill-detail" id="skDetail">
               <h3 id="skTitle">Mestiere → metodo → storia</h3>
@@ -836,6 +836,28 @@ footer {
         <span class="award">✦ Made with Fable 5</span>
         <div class="links">
           <a class="plink" href="https://jacopoottaviani.com/italia-fragile/" target="_blank" rel="noopener">Visita →</a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="banner"><img src="../assets/projects/juxmaps-a.svg" alt="" loading="lazy"></div>
+      <div class="body">
+        <h3>JuxMaps</h3>
+        <p>Mappe antiche sovrapposte alle città che sono diventate. Uno strumento che stende 41 carte storiche georeferenziate, dal 1550 al 1966, sulle mappe di otto città, da Londra a Città del Messico, per dissolvere o scorrere tra passato e presente.</p>
+        <span class="award">✦ Dal Plus AI Sprint</span>
+        <div class="links">
+          <a class="plink" href="https://jacopoottaviani.com/juxmaps/" target="_blank" rel="noopener">Visita →</a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="banner"><img src="../assets/projects/africa-infra-watch-a.svg" alt="" loading="lazy"></div>
+      <div class="body">
+        <h3>Africa Infra Watch</h3>
+        <p>Una mappa interattiva delle infrastrutture annunciate, approvate e in costruzione in Africa, costruita su tre fonti aperte che non condividono alcun identificativo: il tracker energetico di Global Energy Monitor, i finanziamenti della Banca Africana di Sviluppo via IATI e i cantieri tracciati su OpenStreetMap.</p>
+        <span class="award">🗺️ Tre fonti aperte, una mappa</span>
+        <div class="links">
+          <a class="plink" href="https://jacopoottaviani.com/africa-infra-watch/" target="_blank" rel="noopener">Visita →</a>
         </div>
       </div>
     </div>
@@ -1195,7 +1217,7 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
   if (!svg) return;
   const NS = "http://www.w3.org/2000/svg";
   const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n; };
-  const cols = [["Dati", "Informatica", "Design", "Narrazioni", "Ricerca", "Strategia", "Management", "Formazione"], ["Satellite & AI", "Droni & mappe di comunità", "Scraping & open data", "Crowdsourcing", "Team transfrontalieri", "Cartografia interattiva", "Longform & documentario"], ["Africa Mining Watch", "Polmoni della Terra", "Italia Fragile", "Map Makoko", "Migrants' Files", "PatrieGalere", "StradeMortali", "Generation E", "E-Waste Republic", "Search and Rescue"]];
+  const cols = [["Dati", "Informatica", "Design", "Narrazioni", "Ricerca", "Strategia", "Management", "Formazione"], ["Satellite & AI", "Droni & mappe di comunità", "Scraping & open data", "Crowdsourcing", "Team transfrontalieri", "Cartografia interattiva", "Longform & documentario"], ["Africa Mining Watch", "Polmoni della Terra", "Italia Fragile", "Map Makoko", "Migrants' Files", "PatrieGalere", "StradeMortali", "Generation E", "E-Waste Republic", "Search and Rescue", "JuxMaps", "Africa Infra Watch"]];
   const desc = [
       "Il mestiere di base alimenta quasi tutto: scraping e open data, pipeline satellitari, dataset raccolti con il crowdsourcing.",
       "Il codice è ciò che rende possibili, su larga scala, i metodi satellitari e lo scraping.",
@@ -1221,10 +1243,12 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
       "Gli incroci più pericolosi di Roma, dagli open data.",
       "I giovani del Sud Europa che emigrano dopo la crisi, raccolti con il crowdsourcing.",
       "I rifiuti elettronici in Ghana, un documentario guidato dai dati.",
-      "Le missioni di MSF nel Mediterraneo, su una mappa interattiva."
+      "Le missioni di MSF nel Mediterraneo, su una mappa interattiva.",
+      "Mappe antiche stese su otto città, dal 1550 al 1966. Dal Plus AI Sprint.",
+      "Infrastrutture annunciate, approvate e in corso in Africa, da tre fonti aperte."
   ];
   // [sourceCol, sourceIdx, targetIdx, weight]
-  const raw = [[0, 0, 2, 3], [0, 0, 0, 2], [0, 0, 3, 1], [0, 0, 5, 1], [0, 1, 0, 2], [0, 1, 2, 2], [0, 1, 5, 1], [0, 2, 5, 3], [0, 2, 6, 2], [0, 3, 6, 3], [0, 3, 3, 1], [0, 4, 2, 1], [0, 4, 4, 2], [0, 4, 6, 1], [0, 5, 4, 2], [0, 5, 0, 1], [0, 6, 4, 2], [0, 6, 1, 2], [0, 7, 1, 2], [0, 7, 3, 1], [1, 0, 0, 3], [1, 0, 1, 2], [1, 0, 2, 1], [1, 1, 3, 3], [1, 2, 4, 2], [1, 2, 5, 2], [1, 2, 6, 2], [1, 2, 2, 1], [1, 3, 7, 2], [1, 3, 4, 1], [1, 3, 3, 1], [1, 4, 4, 2], [1, 4, 7, 2], [1, 4, 1, 2], [1, 4, 8, 1], [1, 4, 0, 1], [1, 4, 9, 1], [1, 5, 9, 3], [1, 5, 5, 1], [1, 5, 6, 1], [1, 5, 3, 1], [1, 5, 2, 1], [1, 6, 8, 3], [1, 6, 1, 2], [1, 6, 2, 1]];
+  const raw = [[0, 0, 2, 3], [0, 0, 0, 2], [0, 0, 3, 1], [0, 0, 5, 1], [0, 1, 0, 2], [0, 1, 2, 2], [0, 1, 5, 1], [0, 2, 5, 3], [0, 2, 6, 2], [0, 3, 6, 3], [0, 3, 3, 1], [0, 4, 2, 1], [0, 4, 4, 2], [0, 4, 6, 1], [0, 5, 4, 2], [0, 5, 0, 1], [0, 6, 4, 2], [0, 6, 1, 2], [0, 7, 1, 2], [0, 7, 3, 1], [1, 0, 0, 3], [1, 0, 1, 2], [1, 0, 2, 1], [1, 1, 3, 3], [1, 2, 4, 2], [1, 2, 5, 2], [1, 2, 6, 2], [1, 2, 2, 1], [1, 3, 7, 2], [1, 3, 4, 1], [1, 3, 3, 1], [1, 4, 4, 2], [1, 4, 7, 2], [1, 4, 1, 2], [1, 4, 8, 1], [1, 4, 0, 1], [1, 4, 9, 1], [1, 5, 9, 3], [1, 5, 5, 1], [1, 5, 6, 1], [1, 5, 3, 1], [1, 5, 2, 1], [1, 6, 8, 3], [1, 6, 1, 2], [1, 6, 2, 1], [1, 5, 10, 3], [1, 2, 10, 1], [1, 2, 11, 3], [1, 5, 11, 2]];
   const nodes = [];
   cols.forEach((c, ci) => c.forEach((name, i) => nodes.push({ name, col: ci, i, inV: 0, outV: 0, links: [] })));
   const node = (ci, i) => nodes.find(n => n.col === ci && n.i === i);
@@ -1263,7 +1287,7 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
   });
 
   const title = document.getElementById("skTitle"), text = document.getElementById("skText"), hint = document.getElementById("skHint"), panel = document.getElementById("skDetail");
-  const T = {"title": "Mestiere → metodo → storia", "text": "Ogni progetto di questo sito è una treccia di più competenze. La larghezza di ogni nastro indica quanto un mestiere ha contato in un lavoro. Il portfolio qui sotto è la colonna di destra di questo diagramma.", "hint": "→ passate su una competenza, un metodo o un progetto", "kinds": ["mestiere", "metodo", "storia"], "up": " Attinge a {n} degli otto mestieri.", "down": " Confluisce in {n} delle dieci storie.", "units": " unità di flusso"};
+  const T = {"title": "Mestiere → metodo → storia", "text": "Ogni progetto di questo sito è una treccia di più competenze. La larghezza di ogni nastro indica quanto un mestiere ha contato in un lavoro. Il portfolio qui sotto è la colonna di destra di questo diagramma.", "hint": "→ passate su una competenza, un metodo o un progetto", "kinds": ["mestiere", "metodo", "storia"], "up": " Attinge a {n} degli otto mestieri.", "down": " Confluisce in {n} delle dodici storie.", "units": " unità di flusso"};
   function reachable(n0) {
     const set = new Set([n0]), lset = new Set();
     const walk = (n, dir) => n.links.forEach(l => {
