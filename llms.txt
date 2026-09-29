@@ -3,18 +3,46 @@
 
 ## About
 Jacopo Ottaviani is an Italian data journalist and computer scientist.
-He produces investigative stories combining data analysis, code and cartography,
+He is Chief Data Officer at Code for Africa (member of the ICFJ Plus alliance),
+the continent's largest network of civic technology and data journalism labs.
+He produces investigative stories combining data analysis, code, cartography and AI,
 published internationally in The Guardian, Der Spiegel, El País, Internazionale,
 Daily Maverick, Reuters, Columbia Journalism Review, and UNDP.
+He is a former ICFJ Knight Fellow and trains and mentors journalists and
+communicators worldwide.
+
+## AI in his work
+- Uses AI and agentic workflows (Claude) at every stage of his data journalism:
+  research, scraping, analysis, prototyping and maintenance of projects,
+  while reporting, verification and editorial judgement stay human.
+- Writes a first-person essay series on AI and data journalism for the
+  Reuters Institute for the Study of Journalism, University of Oxford:
+  - "From prompts to loops: How AI entered every stage of my data journalism" (2026)
+    https://reutersinstitute.politics.ox.ac.uk/news/prompts-loops-how-ai-entered-every-stage-my-data-journalism
+  - "From weeks of work to days: How I rebuilt two data journalism projects with AI" (2026)
+    https://reutersinstitute.politics.ox.ac.uk/news/weeks-work-days-how-i-rebuilt-two-data-journalism-projects-ai
+- Runs workshops on using AI in data journalism: https://jacopoottaviani.com/workshops.html
+
+## Selected projects
+- Italia Fragile — Italy's hydrogeological fragility, built with Claude Fable 5 and agentic loops
+- Africa Mining Watch — satellite imagery and machine learning mapping illegal mining in Africa
+- JuxMaps — historical maps laid over eight cities (from the Plus AI Sprint)
+- Africa Infra Watch — Africa's infrastructure pipeline and who finances it
+- Map Makoko — community mapping of Lagos' floating settlement (Sigma Award 2021)
+- E-Waste Republic — electronic waste in Ghana (Lorenzo Natali Media Prize)
+- The Migrants' Files, PatrieGalere, StradeMortali, Lungs of the Earth, Generation E
 
 ## Expertise
 - Data journalism and investigative reporting
+- AI in journalism and agentic AI workflows for newsrooms
+- Machine learning on satellite imagery
 - Interactive data visualization
 - Digital cartography
 - Computational linguistics
 - International development
 - Data science and data-driven storytelling applied to humanitarian and development contexts
-- Open-source tools for newsrooms
+- Open data and open-source tools for newsrooms
+- Journalism training and mentoring
 - Python, JavaScript, R
 
 ## Awards
@@ -24,7 +52,9 @@ Daily Maverick, Reuters, Columbia Journalism Review, and UNDP.
 - European Press Prize
 
 ## Social
+- LinkedIn: https://www.linkedin.com/in/jacopo-ottaviani/
 - X / Twitter: https://x.com/JacopoOttaviani
+- Instagram: https://www.instagram.com/jacopoottaviani/
 
 ## Content
 This site is Jacopo Ottaviani's personal portfolio. It is not a news site.
