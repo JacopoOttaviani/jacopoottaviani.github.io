@@ -493,14 +493,15 @@ footer {
   transition: width 2.4s cubic-bezier(.1,.7,.3,1);
 }
 .load-bar.done { width: 100% !important; transition: width .4s ease-out; }
-@media (prefers-reduced-motion: reduce) { .load-bar, .load-bar.done { transition: none; } }
+.load-bar.gone { opacity: 0; transition: opacity .35s ease-out; }
+@media (prefers-reduced-motion: reduce) { .load-bar, .load-bar.done, .load-bar.gone { transition: none; } }
 </style>
 </head>
 <body>
 
 <nav>
   <span class="load-bar" id="load-bar" aria-hidden="true"></span>
-  <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
+  <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
   <a class="logo" href="#top"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 6.5 H16 M13 6.5 V19.5 A5 5 0 0 1 3 19.5" stroke="#1A1A1A" stroke-width="2.8" stroke-linecap="round" fill="none"/><circle cx="23.5" cy="19.5" r="5.5" fill="#FF7A29"/></svg><b>jacopo<span>.</span>ottaviani</b></a>
   <ul>
     <li><a href="#bio">01 About</a></li>
