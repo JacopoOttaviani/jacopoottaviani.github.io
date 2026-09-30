@@ -228,16 +228,33 @@ h2 .accent { color: var(--orange); }
 #bio p { font-size: 17.5px; margin-bottom: 16px; color: #3a3d4a; }
 #bio p a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--ink); transition: color .15s ease, border-color .15s ease; }
 #bio p a:hover { color: var(--orange); border-color: var(--orange); }
-#bio .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.stat {
-  background: #fff; border: 2px solid var(--ink); padding: 20px;
-  box-shadow: 6px 6px 0 var(--peach);
-  transition: transform .18s ease, box-shadow .18s ease;
+/* departures board (replaces the stat cards) */
+#bio .board {
+  position: relative; background: #141414; color: #F3F1EA; padding: 14px 14px 16px;
+  border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--peach);
+  font-family: var(--mono); container-type: inline-size;
 }
-.stat:hover { transform: translate(-2px,-2px); box-shadow: 9px 9px 0 var(--orange); }
-.stat .num { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--green); }
-.stat:nth-child(2n) .num { color: var(--orange); }
-.stat .label { font-size: 13.5px; color: #3a3d4a; margin-top: 4px; }
+.bd-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: clamp(9px, 2.8cqw, 12.5px); letter-spacing: .14em; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 9px; margin-bottom: 8px; white-space: nowrap; }
+.bd-head em { color: var(--orange); font-style: normal; }
+.bd-clock { color: var(--orange); font-variant-numeric: tabular-nums; }
+.bd-clock .c { animation: bdBlink 1s steps(1) infinite; }
+@keyframes bdBlink { 50% { opacity: 0; } }
+.bd-cols, .bd-row { display: flex; gap: .6em; font-size: clamp(7.5px, 2.6cqw, 13.5px); }
+.bd-cols { color: #7a7a7a; font-size: clamp(7px, 2.1cqw, 11px); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+.bd-cols span { display: block; }
+.bd-cols span:nth-child(1) { width: calc(14 * 1.05em + 13 * 1.5px); }
+.bd-cols span:nth-child(2) { width: calc(12 * 1.05em + 11 * 1.5px); }
+.bd-row { margin-top: 4px; }
+.bd-g { display: flex; gap: 1.5px; }
+.fl { position: relative; width: 1.05em; height: 1.55em; perspective: 90px; font-weight: 700; }
+.fl .t, .fl .b, .fl .f { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; display: flex; justify-content: center; line-height: 1.55em; background: #2A2A2A; }
+.fl .t, .fl .f { top: 0; align-items: flex-start; border-radius: 2px 2px 0 0; }
+.fl .b { bottom: 0; align-items: flex-end; border-radius: 0 0 2px 2px; background: #222; }
+.fl .f { display: none; transform-origin: 50% 100%; backface-visibility: hidden; z-index: 2; background: #303030; }
+.fl::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #0d0d0d; z-index: 3; }
+.g0 .fl { color: #F3F1EA; }
+.g1 .fl { color: var(--peach); }
+.g2 .fl { color: #35C98A; }
 
 /* ---------- 02 / skills ---------- */
 .skills-grid {
@@ -619,11 +636,10 @@ footer {
       <p>Faccio data journalism da quando non si chiamava ancora così. Ho una formazione da informatico, ma il mio posto naturale è sempre stato il confine tra codice e racconto: quello spazio in cui un dataset smette di essere un file e diventa una storia. Oggi l'AI lavora con me in ogni fase, dallo scraping all'analisi fino al codice dietro le mappe. La parte che nessun modello può fare al posto mio è l'umanizzazione dei dati: fare in modo che un numero non nasconda mai la vita che rappresenta.</p>
       <p>Sono Chief Data Officer di <a href="https://codeforafrica.org" target="_blank" rel="noopener">Code for Africa</a> (membro della <a href="https://www.icfj.org/plus" target="_blank" rel="noopener">Plus</a> alliance), la più grande rete africana di civic technology e laboratori di data journalism. Ho lavorato con Der Spiegel, El País, The Guardian, Daily Maverick e Internazionale. Sono stato ICFJ Knight Fellow. Formo e affianco giornalisti e comunicatori in tutto il mondo.</p>
     </div>
-    <div class="stats">
-      <div class="stat"><div class="num"><span id="years-count"></span>+</div><div class="label">anni di data journalism</div></div>
-      <div class="stat"><div class="num">4</div><div class="label">continenti in cui sono pubblicato</div></div>
-      <div class="stat"><div class="num">5+</div><div class="label">premi internazionali</div></div>
-      <div class="stat"><div class="num">∞</div><div class="label">curiosità</div></div>
+    <div class="board" id="board" role="img" aria-label="Tabellone delle partenze con le testate, le città e le lingue in cui sono state pubblicate le mie storie">
+      <div class="bd-head"><span>Partenze <em>·</em> storie che viaggiano</span><span class="bd-clock" id="bdClock">--:--</span></div>
+      <div class="bd-cols"><span>Testata</span><span>Città</span><span>Lingua</span></div>
+      <div id="bdRows"></div>
     </div>
   </div>
 </section>
@@ -943,12 +959,84 @@ footer {
 <script>
 const _now = new Date().getFullYear();
 document.getElementById('year').textContent = _now;
-document.getElementById('years-count').textContent = _now - 2011;
 
 const revealIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+/* ---- departures board (About) ---- */
+(function () {
+  const rowsEl = document.getElementById("bdRows"), board = document.getElementById("board");
+  if (!rowsEl || !board) return;
+  const DRUM = " ABCDEFGHIJKLMNOPQRSTUVWXYZÍÉ0123456789.-/'&";
+  const POOL = [
+    ["THE GUARDIAN", "LONDRA", "EN"],
+    ["DER SPIEGEL", "AMBURGO", "DE"],
+    ["EL PAÍS", "MADRID", "ES"],
+    ["INTERNAZIONALE", "ROMA", "IT"],
+    ["DAILY MAVERICK", "CAPE TOWN", "EN"],
+    ["REUTERS INST.", "OXFORD", "EN"],
+    ["CJR", "NEW YORK", "EN"],
+    ["UNDP", "NEW YORK", "EN"],
+    ["IL TASCABILE", "ROMA", "IT"],
+    ["ERASMUS", "LISBONA", "PT"]
+  ];
+  const COLS = [14, 12, 2], VIS = 7, STEP = 58, ROT = 2800;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cells = [], rows = [];
+  for (let r = 0; r < VIS; r++) {
+    const row = document.createElement("div"); row.className = "bd-row"; const rc = [];
+    COLS.forEach((w, gi) => {
+      const g = document.createElement("div"); g.className = "bd-g g" + gi;
+      for (let k = 0; k < w; k++) {
+        const fl = document.createElement("span"); fl.className = "fl";
+        const t = document.createElement("span"); t.className = "t";
+        const b = document.createElement("span"); b.className = "b";
+        const f = document.createElement("span"); f.className = "f";
+        t.textContent = b.textContent = " ";
+        fl.append(t, b, f); g.appendChild(fl);
+        const c = { t, b, f, cur: 0, target: 0, next: 0 }; cells.push(c); rc.push(c);
+      }
+      row.appendChild(g);
+    });
+    rowsEl.appendChild(row); rows.push(rc);
+  }
+  function setRow(r, entry, delayMs) {
+    const text = COLS.map((w, i) => entry[i].padEnd(w).slice(0, w)).join("");
+    const now = performance.now();
+    rows[r].forEach((c, i) => { const idx = DRUM.indexOf(text[i]); c.target = idx < 0 ? 0 : idx; c.next = now + delayMs; });
+  }
+  let running = false, started = false, cursor = 0, rot = 0, rotTimer = null;
+  function tick(now) {
+    if (!running) return;
+    for (const c of cells) {
+      if (c.cur === c.target || now < c.next) continue;
+      if (reduce) { c.cur = c.target; c.t.textContent = c.b.textContent = DRUM[c.cur]; continue; }
+      const old = c.cur; c.cur = (c.cur + 1) % DRUM.length;
+      c.t.textContent = DRUM[c.cur];
+      c.f.textContent = DRUM[old]; c.f.style.display = "flex";
+      const a = c.f.animate([{ transform: "rotateX(0deg)" }, { transform: "rotateX(-90deg)" }], { duration: STEP * .85, easing: "ease-in" });
+      a.onfinish = () => { c.b.textContent = c.t.textContent; c.f.style.display = "none"; };
+      c.next = now + STEP + Math.random() * 10;
+    }
+    requestAnimationFrame(tick);
+  }
+  function fill() { for (let r = 0; r < VIS; r++) setRow(r, POOL[(cursor + r) % POOL.length], r * 170); }
+  function rotate() { setRow(rot % VIS, POOL[(cursor + VIS) % POOL.length], 0); cursor++; rot++; }
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+      if (!started) { started = true; fill(); }
+      if (!running) {
+        running = true; requestAnimationFrame(tick);
+        if (!reduce) rotTimer = setTimeout(() => { rotate(); rotTimer = setInterval(rotate, ROT); }, ROT + 1800);
+      }
+    } else { running = false; clearTimeout(rotTimer); clearInterval(rotTimer); rotTimer = null; }
+  }), { threshold: .2 }).observe(board);
+  const clk = document.getElementById("bdClock");
+  const clock = () => { const d = new Date(), p = n => String(n).padStart(2, "0"); clk.innerHTML = p(d.getHours()) + '<span class="c">:</span>' + p(d.getMinutes()); };
+  clock(); setInterval(clock, 15000);
+})();
 
 (function () {
   const skills = [
