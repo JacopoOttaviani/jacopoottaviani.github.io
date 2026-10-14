@@ -699,11 +699,11 @@ footer {
       <div class="slide">
         <div class="skills-grid">
           <div>
-            <svg class="sk-svg" id="sankey" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sankey diagram linking eight skills, seven methods and twelve projects"></svg>
+            <svg class="sk-svg" id="sankey" viewBox="0 0 640 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sankey diagram linking eight skills, seven methods and thirteen projects"></svg>
           </div>
           <div class="skills-text">
             <p class="lede">
-              Skills are inputs. This is what they turn into: eight crafts flow through seven methods and come out as twelve stories. Hover a node to follow its thread.
+              Skills are inputs. This is what they turn into: eight crafts flow through seven methods and come out as thirteen stories. Hover a node to follow its thread.
             </p>
             <div class="skill-detail" id="skDetail">
               <h3 id="skTitle">Craft → method → story</h3>
@@ -898,6 +898,17 @@ footer {
         <span class="award">🗺️ Open datasets, one map</span>
         <div class="links">
           <a class="plink" href="https://jacopoottaviani.com/africa-infra-watch/" target="_blank" rel="noopener">Visit →</a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="banner"><img src="assets/projects/rome-over-time.svg" alt="" loading="lazy"></div>
+      <div class="body">
+        <h3>Rome, building by building</h3>
+        <p>Every building in Rome, some 250,000 with the Vatican inside, in 3D and coloured by age and historical context. Italy keeps no register of when its buildings went up, so the dates are pieced together from open data: the region's building survey, the census, Wikidata and more, with each building's card saying which source dated it. Press play and watch the city grow.</p>
+        <span class="award">🏛️ After Alex Barakov's Amsterdam map</span>
+        <div class="links">
+          <a class="plink" href="https://jacopoottaviani.com/rome-over-time/" target="_blank" rel="noopener">Visit →</a>
         </div>
       </div>
     </div>
@@ -1329,7 +1340,7 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
   if (!svg) return;
   const NS = "http://www.w3.org/2000/svg";
   const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n; };
-  const cols = [["Data", "Computer science", "Design", "Narratives", "Research", "Strategy", "Management", "Teaching"], ["Satellite & AI", "Drones & community maps", "Scraping & open data", "Crowdsourcing", "Cross-border teams", "Interactive cartography", "Longform & documentary"], ["Africa Mining Watch", "Lungs of the Earth", "Italia Fragile", "Map Makoko", "Migrants' Files", "PatrieGalere", "StradeMortali", "Generation E", "E-Waste Republic", "Search and Rescue", "JuxMaps", "Africa Project Atlas"]];
+  const cols = [["Data", "Computer science", "Design", "Narratives", "Research", "Strategy", "Management", "Teaching"], ["Satellite & AI", "Drones & community maps", "Scraping & open data", "Crowdsourcing", "Cross-border teams", "Interactive cartography", "Longform & documentary"], ["Africa Mining Watch", "Lungs of the Earth", "Italia Fragile", "Map Makoko", "Migrants' Files", "PatrieGalere", "StradeMortali", "Generation E", "E-Waste Republic", "Search and Rescue", "JuxMaps", "Africa Project Atlas", "Rome over time"]];
   const desc = [
       "The core craft feeds almost everything: scraping and open-data work, satellite pipelines, crowdsourced datasets.",
       "Code is what makes the satellite and scraping methods possible at scale.",
@@ -1357,10 +1368,11 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
       "Electronic waste in Ghana, a data-driven documentary.",
       "MSF's missions in the Mediterranean, on an interactive map.",
       "Old maps stretched over eight cities, from 1550 to 1966. From the Plus AI Sprint.",
-      "Who builds and who finances Africa's infrastructure, from open datasets. A geopolitical map."
+      "Who builds and who finances Africa's infrastructure, from open datasets. A geopolitical map.",
+      "Every building in Rome by age, in 3D, dated from open data."
   ];
   // [sourceCol, sourceIdx, targetIdx, weight]
-  const raw = [[0, 0, 2, 3], [0, 0, 0, 2], [0, 0, 3, 1], [0, 0, 5, 1], [0, 1, 0, 2], [0, 1, 2, 2], [0, 1, 5, 1], [0, 2, 5, 3], [0, 2, 6, 2], [0, 3, 6, 3], [0, 3, 3, 1], [0, 4, 2, 1], [0, 4, 4, 2], [0, 4, 6, 1], [0, 5, 4, 2], [0, 5, 0, 1], [0, 6, 4, 2], [0, 6, 1, 2], [0, 7, 1, 2], [0, 7, 3, 1], [1, 0, 0, 3], [1, 0, 1, 2], [1, 0, 2, 1], [1, 1, 3, 3], [1, 2, 4, 2], [1, 2, 5, 2], [1, 2, 6, 2], [1, 2, 2, 1], [1, 3, 7, 2], [1, 3, 4, 1], [1, 3, 3, 1], [1, 4, 4, 2], [1, 4, 7, 2], [1, 4, 1, 2], [1, 4, 8, 1], [1, 4, 0, 1], [1, 4, 9, 1], [1, 5, 9, 3], [1, 5, 5, 1], [1, 5, 6, 1], [1, 5, 3, 1], [1, 5, 2, 1], [1, 6, 8, 3], [1, 6, 1, 2], [1, 6, 2, 1], [1, 5, 10, 3], [1, 2, 10, 1], [1, 2, 11, 3], [1, 5, 11, 2]];
+  const raw = [[0, 0, 2, 3], [0, 0, 0, 2], [0, 0, 3, 1], [0, 0, 5, 1], [0, 1, 0, 2], [0, 1, 2, 2], [0, 1, 5, 1], [0, 2, 5, 3], [0, 2, 6, 2], [0, 3, 6, 3], [0, 3, 3, 1], [0, 4, 2, 1], [0, 4, 4, 2], [0, 4, 6, 1], [0, 5, 4, 2], [0, 5, 0, 1], [0, 6, 4, 2], [0, 6, 1, 2], [0, 7, 1, 2], [0, 7, 3, 1], [1, 0, 0, 3], [1, 0, 1, 2], [1, 0, 2, 1], [1, 1, 3, 3], [1, 2, 4, 2], [1, 2, 5, 2], [1, 2, 6, 2], [1, 2, 2, 1], [1, 3, 7, 2], [1, 3, 4, 1], [1, 3, 3, 1], [1, 4, 4, 2], [1, 4, 7, 2], [1, 4, 1, 2], [1, 4, 8, 1], [1, 4, 0, 1], [1, 4, 9, 1], [1, 5, 9, 3], [1, 5, 5, 1], [1, 5, 6, 1], [1, 5, 3, 1], [1, 5, 2, 1], [1, 6, 8, 3], [1, 6, 1, 2], [1, 6, 2, 1], [1, 5, 10, 3], [1, 2, 10, 1], [1, 2, 11, 3], [1, 5, 11, 2], [1, 5, 12, 3], [1, 2, 12, 2]];
   const nodes = [];
   cols.forEach((c, ci) => c.forEach((name, i) => nodes.push({ name, col: ci, i, inV: 0, outV: 0, links: [] })));
   const node = (ci, i) => nodes.find(n => n.col === ci && n.i === i);
@@ -1399,7 +1411,7 @@ document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
   });
 
   const title = document.getElementById("skTitle"), text = document.getElementById("skText"), hint = document.getElementById("skHint"), panel = document.getElementById("skDetail");
-  const T = {"title": "Craft → method → story", "text": "Every project on this site is a braid of several skills. The width of each ribbon is how much a craft mattered to a piece of work. The portfolio below is the right-hand column of this diagram.", "hint": "→ hover a skill, a method or a project", "kinds": ["craft", "method", "story"], "up": " Draws on {n} of the eight crafts.", "down": " Flows into {n} of the twelve stories.", "units": " units of flow"};
+  const T = {"title": "Craft → method → story", "text": "Every project on this site is a braid of several skills. The width of each ribbon is how much a craft mattered to a piece of work. The portfolio below is the right-hand column of this diagram.", "hint": "→ hover a skill, a method or a project", "kinds": ["craft", "method", "story"], "up": " Draws on {n} of the eight crafts.", "down": " Flows into {n} of the thirteen stories.", "units": " units of flow"};
   function reachable(n0) {
     const set = new Set([n0]), lset = new Set();
     const walk = (n, dir) => n.links.forEach(l => {
