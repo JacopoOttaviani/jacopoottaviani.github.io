@@ -347,6 +347,9 @@ h2 .accent { color: var(--orange); }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .card:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
+/* the whole card opens the project: stretch its link over it */
+.card { position: relative; }
+.card .plink::after { content: ""; position: absolute; inset: 0; }
 .cards { counter-reset: proj; }
 .card .banner {
   height: 110px; position: relative; overflow: hidden; border-bottom: 2px solid var(--ink);
