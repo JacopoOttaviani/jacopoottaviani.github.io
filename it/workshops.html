@@ -347,12 +347,10 @@ footer a:hover { color: var(--orange); }
     <li><a href="#prenota">04 Prenota</a></li>
     <li class="lang-item">
       <div class="lang-switch">
-        <a hreflang="en" href="/workshops.html">EN</a>
+        <a href="/workshops.html">EN</a>
         <span class="sep">/</span>
-        <a hreflang="it" href="/it/workshops.html" class="active">IT</a>
+        <a href="/it/workshops.html" class="active">IT</a>
       </div>
-      <script>/* remember the choice, so an Italian browser that picks EN isn't sent back to /it/ */
-      document.currentScript.previousElementSibling.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { try { localStorage.setItem("lang", a.hreflang); } catch (e) {} }));</script>
     </li>
     <li class="home-item"><a class="home-link" href="/it/">← Home</a></li>
   </ul>
