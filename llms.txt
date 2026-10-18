@@ -27,7 +27,7 @@ communicators worldwide.
 - Italia Fragile — Italy's hydrogeological fragility, built with Claude Fable 5 and agentic loops
 - Africa Mining Watch — satellite imagery and machine learning mapping illegal mining in Africa
 - JuxMaps — historical maps laid over eight cities (from the Plus AI Sprint)
-- AfricaInfraRadar — Africa's infrastructure pipeline and who finances it
+- Africa Radar — Africa's infrastructure pipeline and who finances it
 - Map Makoko — community mapping of Lagos' floating settlement (Sigma Award 2021)
 - E-Waste Republic — electronic waste in Ghana (Lorenzo Natali Media Prize)
 - The Migrants' Files, PatrieGalere, StradeMortali, Lungs of the Earth, Generation E
