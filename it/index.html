@@ -346,6 +346,13 @@ h2 .accent { color: var(--orange); }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .card:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
+/* each card rises into view a beat after the one before it (cardIO below sets --d) */
+.card { opacity: 0; }
+.card.in { opacity: 1; animation: cardIn .65s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) backwards; }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(26px); box-shadow: 0 0 0 var(--peach); }
+  to   { opacity: 1; transform: none; box-shadow: 6px 6px 0 var(--peach); }
+}
 /* the whole card opens the project: stretch its link over it */
 .card { position: relative; }
 .card .plink::after { content: ""; position: absolute; inset: 0; }
@@ -503,6 +510,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .hero h1 .line > span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
+  .card { opacity: 1; }
   .hero .mark { background-size: 100% 38%; }
   .hero-art .traveler, .hero-art .pulse { display: none; }
   .radar-shape, .radar-dot { opacity: 1; }
@@ -526,53 +534,64 @@ footer {
   <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
   <a class="logo" href="#top"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="3" width="14" height="26" rx="2.2" fill="#222"/><path d="M1 16 V5.2 Q1 3 3.2 3 H12.8 Q15 3 15 5.2 V16 Z" fill="#2E2E2E"/><rect x="17" y="3" width="14" height="26" rx="2.2" fill="#222"/><path d="M17 16 V5.2 Q17 3 19.2 3 H28.8 Q31 3 31 5.2 V16 Z" fill="#2E2E2E"/><path class="lg-g" d="M5 8.6 H11.6 M10 8.6 V19.4 A3 3 0 0 1 4 19.4" stroke="#F3F1EA" stroke-width="2.4" stroke-linecap="round" fill="none"/><ellipse class="lg-g" cx="24" cy="16" rx="4.1" ry="6.5" stroke="#FF7A29" stroke-width="2.4" fill="none"/><path d="M1 15.6 H15 V16.4 H1 Z M17 15.6 H31 V16.4 H17 Z" fill="#0D0D0D"/></svg><b>jacopo<span>.</span>ottaviani</b></a>
   <script>
-  /* ---- logo: the two tiles flip in from blank, like the departures board ---- */
+  /* ---- logo: the two tiles flip in from blank on load, like the departures board, and roll once round the drum when the logo is hovered ---- */
   (function () {
-    const svg = document.currentScript.previousElementSibling.querySelector("svg");
+    const link = document.currentScript.previousElementSibling, svg = link.querySelector("svg");
     if (!svg || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const DRUM = " ABCDEFGHIJKLMNOPQRSTUVWXYZ", STEP = 58, INK = ["#F3F1EA", "#FF7A29"];
+    const DRUM = " ABCDEFGHIJKLMNOPQRSTUVWXYZ", INK = ["#F3F1EA", "#FF7A29"];
     const finals = svg.querySelectorAll(".lg-g");
     const ends = [...finals].map(el => el.outerHTML.replace(' class="lg-g"', "").replace('cx="24"', 'cx="8"'));
     const glyph = (i, ch) => ch === "JO"[i] ? ends[i]
       : ch === " " ? "" : '<text x="8" y="22" text-anchor="middle" font-family="SF Mono, Menlo, Consolas, monospace" font-weight="700" font-size="16" fill="' + INK[i] + '">' + ch + "</text>";
-    const defs = '<defs><clipPath id="lgT"><rect width="32" height="16"/></clipPath><clipPath id="lgB"><rect y="16" width="32" height="16"/></clipPath></defs>';
-    svg.insertAdjacentHTML("afterbegin", defs);
-    const clips = svg.firstElementChild, split = svg.lastElementChild, layers = [];
-    const tiles = [0, 1].map(i => {
-      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      if (i) g.setAttribute("transform", "translate(16 0)");
-      g.innerHTML = '<g clip-path="url(#lgB)"></g><g clip-path="url(#lgT)"></g>' +
-        '<g style="display:none"><g clip-path="url(#lgT)"><path d="M1 16 V5.2 Q1 3 3.2 3 H12.8 Q15 3 15 5.2 V16 Z" fill="#303030"/><g></g></g></g>';
-      split.before(g); layers.push(g);
-      const [b, t, f] = g.children;
-      return { b, t, f, fg: f.firstChild.lastChild, cur: 0, target: DRUM.indexOf("JO"[i]), next: 0, start: 0 };
-    });
-    function tick(now) {
-      let busy = false;
-      tiles.forEach((c, i) => {
-        if (c.start) {                       // a flap is falling: scale its top half down onto the split line
-          const p = Math.min(1, (now - c.start) / (STEP * .85)), s = 1 - p * p;
-          c.f.setAttribute("transform", "matrix(1 0 0 " + s + " 0 " + 16 * (1 - s) + ")");
-          if (p === 1) { c.b.innerHTML = c.t.innerHTML; c.f.style.display = "none"; c.start = 0; }
-        }
-        if (c.cur === c.target) { busy = busy || !!c.start; return; }
-        busy = true;
-        if (now < c.next) return;
-        const old = c.cur; c.cur++;
-        c.t.innerHTML = glyph(i, DRUM[c.cur]);
-        c.fg.innerHTML = glyph(i, DRUM[old]);
-        c.f.setAttribute("transform", ""); c.f.style.display = ""; c.start = now;
-        c.next = now + STEP + Math.random() * 10;
+    svg.insertAdjacentHTML("afterbegin", '<defs><clipPath id="lgT"><rect width="32" height="16"/></clipPath><clipPath id="lgB"><rect y="16" width="32" height="16"/></clipPath></defs>');
+    const split = svg.lastElementChild;
+    let running = false;
+    // full: a whole turn of the drum, J back to J and O back to O (hover); otherwise from blank up to the letter (load)
+    function play(full) {
+      if (running) return; running = true;
+      const STEP = full ? 50 : 58, LEAD = full ? 30 : 250, GAP = full ? 100 : 140, layers = [];
+      const tiles = [0, 1].map(i => {
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        if (i) g.setAttribute("transform", "translate(16 0)");
+        g.innerHTML = '<g clip-path="url(#lgB)"></g><g clip-path="url(#lgT)"></g>' +
+          '<g style="display:none"><g clip-path="url(#lgT)"><path d="M1 16 V5.2 Q1 3 3.2 3 H12.8 Q15 3 15 5.2 V16 Z" fill="#303030"/><g></g></g></g>';
+        split.before(g); layers.push(g);
+        const [b, t, f] = g.children, target = DRUM.indexOf("JO"[i]), left = full ? DRUM.length : target;
+        const cur = (target - left + DRUM.length) % DRUM.length;
+        b.innerHTML = t.innerHTML = glyph(i, DRUM[cur]);
+        return { b, t, f, fg: f.firstChild.lastChild, cur, left, next: 0, start: 0 };
       });
-      if (busy) return requestAnimationFrame(tick);
-      layers.forEach(g => g.remove()); clips.remove();
-      finals.forEach(el => el.style.visibility = "");
+      function tick(now) {
+        let busy = false;
+        tiles.forEach((c, i) => {
+          if (c.start) {                       // a flap is falling: scale its top half down onto the split line
+            const p = Math.min(1, (now - c.start) / (STEP * .85)), s = 1 - p * p;
+            c.f.setAttribute("transform", "matrix(1 0 0 " + s + " 0 " + 16 * (1 - s) + ")");
+            if (p === 1) { c.b.innerHTML = c.t.innerHTML; c.f.style.display = "none"; c.start = 0; }
+          }
+          if (!c.left) { busy = busy || !!c.start; return; }
+          busy = true;
+          if (now < c.next) return;
+          const old = c.cur; c.cur = (c.cur + 1) % DRUM.length; c.left--;
+          c.t.innerHTML = glyph(i, DRUM[c.cur]);
+          c.fg.innerHTML = glyph(i, DRUM[old]);
+          c.f.setAttribute("transform", ""); c.f.style.display = ""; c.start = now;
+          c.next = now + STEP + Math.random() * 10;
+        });
+        if (busy) return requestAnimationFrame(tick);
+        layers.forEach(g => g.remove());
+        finals.forEach(el => el.style.visibility = "");
+        running = false;
+      }
+      requestAnimationFrame(now => {          // hide the letters only once frames are actually running
+        finals.forEach(el => el.style.visibility = "hidden");
+        tiles.forEach((c, i) => c.next = now + LEAD + i * GAP);
+        tick(now);
+      });
     }
-    requestAnimationFrame(now => {          // hide the letters only once frames are actually running
-      finals.forEach(el => el.style.visibility = "hidden");
-      tiles.forEach((c, i) => c.next = now + 250 + i * 140);
-      tick(now);
-    });
+    play(false);
+    link.addEventListener("mouseenter", () => play(true));
+    link.addEventListener("focus", () => play(true));
   })();
   </script>
   <ul>
@@ -1033,6 +1052,16 @@ const revealIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+/* ---- project cards: each one rises into view a beat after the one before it in the same batch ---- */
+const cardIO = new IntersectionObserver(entries => {
+  entries.filter(e => e.isIntersecting).forEach((e, i) => {
+    e.target.style.setProperty('--d', i * 90 + 'ms');
+    e.target.classList.add('in');
+    cardIO.unobserve(e.target);
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
 
 /* ---- departures board (About) ---- */
 (function () {
