@@ -189,8 +189,10 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
    letter-spacing tighten (down to ~1265px), then the section links shrink to their numbers, as the section tags
    read "01 / About" (down to ~850px), then they leave the bar as on phones */
 nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
+nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the social icons sit as a cluster, 12px apart, not at the bar's gap */
 @media (max-width: 1440px) {
   nav ul { gap: 14px; }
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -6px; }
   nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .05em; }
 }
 @media (max-width: 1269px) {  /* a two-character window over "01 About": the full label stays the link's name */
@@ -198,7 +200,11 @@ nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent d
 }
 @media (max-width: 860px) {
   nav ul { gap: 18px; margin-left: 0; }
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -8px; }
   nav ul li:not(.nav-icon-item):not(.lang-item) { display: none; }
+}
+@media (max-width: 720px) {  /* phones keep only Ko-fi (accent.css), at the bar's own gap from the dot */
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: 0; }
 }
 @media (max-width: 480px) {  /* logo, language switch, accent dot and Ko-fi share one row on phones */
   nav { padding: 14px 16px; }
