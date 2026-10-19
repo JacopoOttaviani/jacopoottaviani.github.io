@@ -1,0 +1,58 @@
+/* Accent colour: the visitor picks one of four dots in the menu bar (assets/accent.js); orange is the default.
+   A one-line script in <head> sets <html data-accent="…"> from localStorage before the first paint. */
+:root[data-accent="red"]    { --orange: #C8102E; --peach: #F7DBE0; }
+:root[data-accent="cobalt"] { --orange: #2F6BE0; --peach: #D8E3F9; }
+:root[data-accent="ochre"]  { --orange: #C98A00; --peach: #F1E2BF; }
+
+/* inline SVGs drawn in the accent (logo dot, Keywords mosaic, workshops compass) follow the tokens */
+[fill="#FF7A29" i]   { fill: var(--orange); }
+[stroke="#FF7A29" i] { stroke: var(--orange); }
+[fill="#FFDCC2" i]   { fill: var(--peach); }
+[stroke="#FFDCC2" i] { stroke: var(--peach); }
+
+/* the Moka drawings are <img>s: keep them hidden until accent.js has swapped in a recoloured copy
+   (their src then starts with blob:), and show them anyway after 2s if it never does */
+:root[data-accent] img[src^="/assets/mokapot/"] { visibility: hidden; animation: accent-reveal 0s 2s forwards; }
+@keyframes accent-reveal { to { visibility: visible; } }
+
+/* ---------- the dots ---------- */
+nav ul li.accent-item { display: flex !important; align-items: center; position: relative; }  /* every width, phones included */
+.accent-pick {
+  --pick-line: var(--chalk, var(--ink));   /* chalk on the workshops' dark bar, ink on the home page */
+  --pick-gap: var(--board-deep, #fff);
+  display: flex; align-items: center;
+}
+.accent-menu { display: flex; align-items: center; gap: 10px; }
+.accent-pick button {
+  width: 13px; height: 13px; border-radius: 50%; padding: 0; cursor: pointer; position: relative;
+  border: 1.5px solid var(--pick-line); background: var(--c);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.accent-pick button::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; }  /* 25px tap area */
+.accent-pick button:hover { transform: scale(1.2); }
+.accent-pick button[aria-checked="true"],
+.accent-pick .accent-toggle[aria-expanded="true"] { box-shadow: 0 0 0 2px var(--pick-gap), 0 0 0 3.5px var(--pick-line); }
+.accent-pick button:focus-visible { outline: 2px solid var(--pick-line); outline-offset: 4px; }
+.accent-toggle { display: none; }
+/* folded (accent.js decides, when the bar has no room for the row): the current dot opens a box under the bar */
+.accent-pick.folded .accent-toggle { display: block; }
+.accent-pick.folded .accent-menu {
+  display: none; position: absolute; top: 100%; right: -16px; z-index: 1;
+  padding: 12px 16px; gap: 14px; background: var(--pick-gap);
+  border: 2px solid var(--pick-line); box-shadow: 5px 5px 0 var(--pick-line);
+}
+.accent-pick.folded.open .accent-menu { display: flex; }
+@media (prefers-reduced-motion: reduce) {
+  .accent-pick button { transition: none; }
+  .accent-pick button:hover { transform: none; }
+}
+
+/* phones: the home page's bar is wider than the screen, so LinkedIn, Instagram and X leave it
+   (the first two are buttons in Say hi); Ko-fi stays, beside the dot */
+@media (max-width: 720px) {
+  nav ul li.nav-icon-item:not(:has(.kofi)) { display: none; }
+}
+/* workshops on phones: logo, EN / IT and ← Home already fill the bar, so the dot sits closer to its neighbours */
+@media (max-width: 760px) {
+  nav ul:has(.home-item) li.accent-item { margin: 0 -12px; }
+}
