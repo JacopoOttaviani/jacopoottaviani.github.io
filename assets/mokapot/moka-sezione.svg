@@ -112,8 +112,4 @@
   <path d="M412 110l-3 9h6zM412 410l-3-9h6z"/>
   <text class="ms-t" transform="rotate(-90 430 260)" x="430" y="260" text-anchor="middle" font-weight="700">160</text>
 </g>
-<g class="ms-f" style="--t:3.8s">
-  <text class="ms-t" x="60" y="464" fill="#0E8C5A" font-weight="700">SEZIONE A-A · SPACCATO</text>
-  <text class="ms-t" x="60" y="482" fill="#8a8d99" font-size="11">MOKA 3 TAZZE · SCALA 1:2 · MM</text>
-</g>
 </svg>
