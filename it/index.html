@@ -316,37 +316,46 @@ h2 .accent { color: var(--orange); }
   .skills-text { display: flex; flex-direction: column; }
   .skills-text .lede { order: 2; margin: 28px 0 0; }
 }
-.radar-wrap { position: relative; }
-.radar-svg { width: 100%; height: auto; display: block; }
-.radar-ring { fill: none; stroke: var(--ink); stroke-opacity: 0.14; stroke-width: 1; }
-.radar-spoke { stroke: var(--ink); stroke-opacity: 0.14; stroke-width: 1; }
-.radar-shape {
-  fill: var(--green); fill-opacity: 0.16; stroke: var(--green);
-  stroke-width: 2.5; stroke-linejoin: round; transition: all 0.25s ease;
+/* the sacks: eight coffee sacks in section, beans poured in to each skill's level */
+.sacks-wrap { position: relative; }
+.sacks-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.sacks-svg text { font-family: var(--mono); }
+.sk-d, .sk-df { stroke-dasharray: 1 1.2; stroke-dashoffset: 1.01; }
+.sk-df { fill-opacity: 0; }
+.sk-f { opacity: 0; }
+.sacks-wrap.in .sk-d  { animation: skDraw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) both; }
+.sacks-wrap.in .sk-df { animation: skDraw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) both, skFill .5s ease calc(var(--t, 0s) + .7s) both; }
+.sacks-wrap.in .sk-f  { animation: skFade .6s ease var(--t, 0s) both; }
+@keyframes skDraw { to { stroke-dashoffset: 0; } }
+@keyframes skFill { to { fill-opacity: 1; } }
+@keyframes skFade { to { opacity: 1; } }
+.sack-label { font-size: 12.5px; fill: var(--ink); cursor: pointer; transition: fill .2s ease; }
+.sack-label.active { fill: var(--orange); font-weight: 700; }
+.sack-value { font-size: 11.5px; font-weight: 700; fill: var(--green); letter-spacing: .04em; }
+.sack-hit { fill: transparent; cursor: pointer; }
+.sack-shadow { fill: var(--grid); }
+.sack-inner { fill: #fff; }
+.sack-band { fill: url(#sackJute); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; transition: stroke .2s ease, stroke-width .2s ease; }
+.sack-beans { fill: url(#sackBeans); }
+.sack-cover { fill: #fff; }
+.sacks-wrap.in .sack-cover { animation: skPour 1.6s cubic-bezier(.25,.6,.2,1) var(--t, 0s) both; }
+@keyframes skPour { to { transform: translateY(var(--h)); } }
+.sack-drop { opacity: 0; }
+.sacks-wrap.in .sack-drop { animation: skFall .75s ease-in var(--t, 0s) both; }
+@keyframes skFall {
+  0% { transform: translateY(0) rotate(0); opacity: 0; } 10% { opacity: 1; }
+  90% { transform: translateY(var(--fall)) rotate(160deg); opacity: 1; } 100% { transform: translateY(var(--fall)) rotate(160deg); opacity: 0; }
 }
-.radar-dot {
-  fill: var(--paper); stroke: var(--green); stroke-width: 2.5;
-  cursor: pointer; transition: all 0.2s ease;
+.sack-loop { opacity: 0; }
+.sacks-wrap.in .sack-loop { animation: skTick 9s linear var(--t, 0s) infinite both; }
+@keyframes skTick {
+  0% { transform: translateY(0) rotate(0); opacity: 0; } 1% { opacity: 1; animation-timing-function: ease-in; }
+  9% { transform: translateY(var(--fall)) rotate(160deg); opacity: 1; } 10.5%, 100% { transform: translateY(var(--fall)) rotate(160deg); opacity: 0; }
 }
-.radar-dot:hover, .radar-dot.active { fill: var(--orange); stroke: var(--orange); r: 8; }
-.radar-label {
-  font-family: var(--mono); font-size: 12.5px; fill: var(--ink);
-  cursor: pointer; transition: fill 0.2s ease;
-}
-.radar-label:hover, .radar-label.active { fill: var(--orange); font-weight: 700; }
-.radar-value {
-  font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--orange);
-  opacity: 0; transition: opacity 0.2s ease; pointer-events: none;
-}
-.radar-value.show { opacity: 1; }
-.radar-shape, .radar-dot { opacity: 0; }
-.radar-wrap.in .radar-shape {
-  opacity: 1; animation: pop 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  transform-origin: 50% 50%;
-}
-.radar-wrap.in .radar-dot { animation: dotIn 0.4s ease both; }
-@keyframes pop { from { transform: scale(0.05); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-@keyframes dotIn { from { opacity: 0; } to { opacity: 1; } }
+.sack-dim line { stroke: var(--green); stroke-width: 1.2; }
+.sack-dim .ext { stroke: var(--ink); stroke-opacity: .3; stroke-width: 1; fill: none; }
+.sack-dim .arw { fill: var(--green); }
+.sack.active .sack-band { stroke: var(--orange); stroke-width: 2.4; }
 .skills-text .lede { font-size: 19px; line-height: 1.6; margin-bottom: 28px; }
 .skill-detail {
   border: 2px solid var(--ink); background: #fff;
@@ -558,7 +567,8 @@ footer {
   .reveal, .hero h1 .line > span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
   .card { opacity: 1; }
   .hero .mark { background-size: 100% 38%; }
-  .radar-shape, .radar-dot { opacity: 1; }
+  .sk-d, .sk-df { stroke-dashoffset: 0; } .sk-df { fill-opacity: 1; } .sk-f { opacity: 1; }
+  .sack-cover { transform: translateY(var(--h)); } .sack-drop, .sack-loop { display: none; }
 }
 
 /* ---------- load bar ---------- */
@@ -652,23 +662,23 @@ footer {
     <div class="slides" id="skillsSlides">
       <div class="slide">
         <div class="skills-grid">
-          <div class="radar-wrap" id="radarWrap">
-            <svg class="radar-svg" id="radar" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grafico radar di otto aree di competenza"></svg>
+          <div class="sacks-wrap" id="sacksWrap">
+            <svg class="sacks-svg" id="sacks" viewBox="0 0 640 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Otto sacchi di caffè, ciascuno riempito di chicchi fino al livello di una competenza"></svg>
           </div>
           <div class="skills-text">
             <p class="lede">
-              Oltre quindici anni tra dataset e mondo reale, distillati in otto dimensioni.
-              Il data journalism è per definizione una disciplina ibrida — qui vedete come si distribuisce il mio.
-              Esplorate il grafico per scoprire ogni area.
+              Oltre quindici anni tra dataset e mondo reale, pesati in otto sacchi di caffè.
+              Il data journalism è per definizione una disciplina ibrida — qui vedete quanto porto di ciascuna.
+              Passate il mouse su un sacco per leggerlo.
             </p>
             <div class="skill-detail" id="skillDetail">
               <h3 id="detailTitle">Panoramica <span class="score" id="detailScore"></span></h3>
               <p id="detailText">
-                Gli assi più forti sono l'informatica e il giornalismo: il codice come strumento
+                I sacchi più pieni sono dati, informatica e design: il codice come strumento
                 di reportage, la narrazione come sua forma di consegna. Attorno a loro, le competenze
-                in dati, strategia, gestione e mentorship trasformano le idee in progetti pubblicati e premiati.
+                in narrazione, strategia, gestione e formazione trasformano le idee in progetti pubblicati e premiati.
               </p>
-              <p class="hint" id="detailHint">→ passa il mouse su un punto del radar</p>
+              <p class="hint" id="detailHint">→ passa il mouse su un sacco</p>
             </div>
           </div>
         </div>
@@ -716,7 +726,7 @@ footer {
   <button class="swipe-hint swipe-hint--prev is-hidden" id="swipeHintPrev" type="button" aria-label="Vista precedente">&lsaquo;</button>
   </div>
   <div class="slider-dots" aria-label="Viste della sezione competenze">
-    <button class="sdot active" id="sdot0" aria-label="Mostra il radar delle competenze"></button>
+    <button class="sdot active" id="sdot0" aria-label="Mostra i sacchi delle competenze"></button>
     <button class="sdot" id="sdot1" aria-label="Mostra il mosaico delle parole chiave"></button>
     <button class="sdot" id="sdot2" aria-label="Mostra il Sankey delle competenze"></button>
   </div>
@@ -1000,46 +1010,86 @@ document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
 
 (function () {
   const skills = [
-    { name: "Narrazioni", value: 80, text: "Reportage, scrittura e narrazione in formati e lingue diverse. Trovare la storia umana nei dati e farla arrivare al pubblico." },
+    { name: "Narrazioni", value: 75, text: "Reportage, scrittura e narrazione in formati e lingue diverse. Trovare la storia umana nei dati e farla arrivare al pubblico." },
     { name: "Strategia", value: 80, text: "Strategia editoriale e di prodotto: scegliere quali storie contano, dove investire le risorse e come il giornalismo resta sostenibile." },
-    { name: "Dati", value: 80, text: "Il mestiere centrale: raccogliere, pulire, analizzare e interrogare i dataset finché non cedono una storia. Statistica, analisi geospaziale e sana sfiducia nelle medie." },
-    { name: "Informatica", value: 80, text: "Il codice come strumento di reportage: Python, JavaScript, database e pipeline riproducibili. Abbastanza ingegneria per costruire, automatizzare e pubblicare." },
-    { name: "Ricerca", value: 80, text: "Metodo investigativo, ricerca delle fonti e verifica. Dalle richieste di accesso agli atti al giornalismo sul campo in Europa e Africa, ogni progetto parte da una ricerca rigorosa." },
+    { name: "Dati", value: 90, text: "Il mestiere centrale: raccogliere, pulire, analizzare e interrogare i dataset finché non cedono una storia. Statistica, analisi geospaziale e sana sfiducia nelle medie." },
+    { name: "Informatica", value: 90, text: "Il codice come strumento di reportage: Python, JavaScript, database e pipeline riproducibili. Abbastanza ingegneria per costruire, automatizzare e pubblicare." },
+    { name: "Design", value: 90, text: "Information design e visual storytelling. Sapere quando un grafico chiarisce e quando mente, e costruire interattivi che rispettano il lettore." },
     { name: "Management", value: 80, text: "Guidare team distribuiti e multidisciplinari di giornalisti, sviluppatori e designer attraverso fusi orari e scadenze." },
-    { name: "Design", value: 80, text: "Information design e visual storytelling. Sapere quando un grafico chiarisce e quando mente, e costruire interattivi che rispettano il lettore." },
-    { name: "Formazione", value: 80, text: "Formare giornalisti nelle competenze digitali in redazioni, università e fellowship. Le competenze si moltiplicano quando vengono condivise." }
+    { name: "Ricerca", value: 75, text: "Metodo investigativo, ricerca delle fonti e verifica. Dalle richieste di accesso agli atti al giornalismo sul campo in Europa e Africa, ogni progetto parte da una ricerca rigorosa." },
+    { name: "Formazione", value: 75, text: "Formare giornalisti nelle competenze digitali in redazioni, università e fellowship. Le competenze si moltiplicano quando vengono condivise." }
   ];
 
-  const svg = document.getElementById("radar");
+  /* eight coffee sacks in section; beans pour in to the level of each skill */
+  const svg = document.getElementById("sacks");
   const NS = "http://www.w3.org/2000/svg";
-  const cx = 280, cy = 280, R = 185;
-  const N = skills.length;
+  const el = (name, attrs, parent) => {
+    const n = document.createElementNS(NS, name);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    parent.appendChild(n);
+    return n;
+  };
+  const defs = el("defs", {}, svg);
+  const jute = el("pattern", { id: "sackJute", width: 5, height: 5, patternUnits: "userSpaceOnUse" }, defs);
+  el("path", { d: "M0,5 L5,0 M-1,1 L1,-1 M4,6 L6,4", fill: "none", stroke: "#1A1A1A", "stroke-width": .9, "stroke-opacity": .45 }, jute);
+  el("path", { d: "M0,0 L5,5 M-1,4 L1,6 M4,-1 L6,1", fill: "none", stroke: "#1A1A1A", "stroke-width": .9, "stroke-opacity": .25 }, jute);
+  const bean = el("g", { id: "sackBean" }, defs);
+  el("ellipse", { rx: 7, ry: 4.6, fill: "#FF7A29", stroke: "#1A1A1A", "stroke-width": .8 }, bean);
+  el("path", { d: "M-5,0 C-2,-1.8 2,1.8 5,0", fill: "none", stroke: "#1A1A1A", "stroke-width": .8, "stroke-linecap": "round" }, bean);
+  const pat = el("pattern", { id: "sackBeans", width: 24, height: 17, patternUnits: "userSpaceOnUse" }, defs);
+  [[7, 5, -18], [19, 13, 14], [-5, 13, 14], [19, -4, 14], [-5, -4, 14]].forEach(([x, y, r]) =>
+    el("use", { href: "#sackBean", transform: "translate(" + x + "," + y + ") rotate(" + r + ")" }, pat));
 
-  const angle = i => (Math.PI * 2 * i) / N - Math.PI / 2;
-  const pt = (i, r) => [cx + r * Math.cos(angle(i)), cy + r * Math.sin(angle(i))];
-
-  [0.25, 0.5, 0.75, 1].forEach(f => {
-    const ring = document.createElementNS(NS, "polygon");
-    ring.setAttribute("points", skills.map((_, i) => pt(i, R * f).join(",")).join(" "));
-    ring.setAttribute("class", "radar-ring");
-    svg.appendChild(ring);
+  const cols = [76, 232, 388, 544], rows = [168, 392], IH = 124;
+  const inner = "M-44,-6 C-54,-40 -52,-95 -44,-130 L44,-130 C52,-95 54,-40 44,-6 Z";
+  const band = "M-50,0 C-60,-40 -58,-95 -44,-130 C-52,-95 -54,-40 -44,-6 L44,-6 C54,-40 52,-95 44,-130 C58,-95 60,-40 50,0 Z";
+  const sacks = [], labels = [];
+  skills.forEach((s, i) => {
+    const cx = cols[i % 4], by = rows[Math.floor(i / 4)];
+    const h = IH * s.value / 100, top = -6 - h;
+    const t0 = 0.3 + i * 0.12, tp = 2.0 + i * 0.2;
+    const g = el("g", { class: "sack", transform: "translate(" + cx + "," + by + ")" }, svg);
+    el("ellipse", { class: "sack-shadow sk-f", cx: 0, cy: 2, rx: 60, ry: 4, style: "--t:" + t0 + "s" }, g);
+    el("path", { class: "sack-inner sk-f", d: inner, style: "--t:" + t0 + "s" }, g);
+    const clip = el("clipPath", { id: "sackClip" + i }, defs);
+    el("path", { d: inner }, clip);
+    const fill = el("g", { "clip-path": "url(#sackClip" + i + ")" }, g);
+    el("rect", { class: "sack-beans", x: -46, y: -140, width: 92, height: 140 }, fill);
+    el("rect", { class: "sack-cover", x: -47, y: -140, width: 94, height: 140, style: "--h:" + top.toFixed(1) + "px; --t:" + tp + "s" }, fill);
+    el("path", { class: "sack-band sk-df", d: band, pathLength: 1, style: "--t:" + t0 + "s" }, g);
+    el("rect", { class: "sack-band sk-df", x: -53, y: -145, width: 106, height: 17, rx: 8.5, pathLength: 1, style: "--t:" + (t0 + .5).toFixed(2) + "s" }, g);
+    /* three loose beans tumble in while it fills, then one every nine seconds */
+    [[-14, 0.1], [9, 0.45], [-3, 0.8]].forEach(([dx, f]) => {
+      const w = el("g", { transform: "translate(" + dx + ",-186)" }, g);
+      el("use", { href: "#sackBean", class: "sack-drop", style: "--fall:" + (172 - h * f).toFixed(1) + "px; --t:" + (tp + f * 1.1).toFixed(2) + "s" }, w);
+    });
+    const lw = el("g", { transform: "translate(2,-186)" }, g);
+    el("use", { href: "#sackBean", class: "sack-loop", style: "--fall:" + (172 - h).toFixed(1) + "px; --t:" + (6 + i * 1.125).toFixed(3) + "s" }, lw);
+    /* dimension: floor to level */
+    const dim = el("g", { class: "sack-dim sk-f", style: "--t:" + (tp + 1.4).toFixed(2) + "s" }, g);
+    el("path", { class: "ext", d: "M52,0 H74 M52," + top + " H74" }, dim);
+    el("line", { x1: 68, y1: -1, x2: 68, y2: top + 1 }, dim);
+    el("path", { class: "arw", d: "M68,0 l-3,-9 h6 z M68," + top + " l-3,9 h6 z" }, dim);
+    el("text", { class: "sack-value", x: 73, y: top / 2 + 4 }, dim).textContent = s.value;
+    /* name under the sack, on two lines when long */
+    const label = el("text", { class: "sack-label sk-f", x: 0, y: 28, "text-anchor": "middle", "dominant-baseline": "middle", style: "--t:" + (t0 + .4).toFixed(2) + "s" }, g);
+    const words = s.name.split(" ");
+    if (words.length > 1 && s.name.length > 12) {
+      const mid = Math.ceil(words.length / 2);
+      [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, li) => {
+        el("tspan", { x: 0, dy: li === 0 ? "-0.35em" : "1.2em" }, label).textContent = line;
+      });
+    } else label.textContent = s.name;
+    sacks.push(g); labels.push(label);
+  });
+  skills.forEach((s, i) => {
+    const cx = cols[i % 4], by = rows[Math.floor(i / 4)];
+    const hit = el("rect", { class: "sack-hit", x: cx - 76, y: by - 160, width: 152, height: 204 }, svg);
+    hit.addEventListener("mouseenter", () => setActive(i));
+    hit.addEventListener("mouseleave", () => setActive(null));
+    hit.addEventListener("click", () => setActive(i));
   });
 
-  skills.forEach((_, i) => {
-    const [x, y] = pt(i, R);
-    const line = document.createElementNS(NS, "line");
-    line.setAttribute("x1", cx); line.setAttribute("y1", cy);
-    line.setAttribute("x2", x);  line.setAttribute("y2", y);
-    line.setAttribute("class", "radar-spoke");
-    svg.appendChild(line);
-  });
-
-  const shape = document.createElementNS(NS, "polygon");
-  shape.setAttribute("points", skills.map((s, i) => pt(i, R * s.value / 100).join(",")).join(" "));
-  shape.setAttribute("class", "radar-shape");
-  svg.appendChild(shape);
-
-  const dots = [], labels = [], values = [];
   const detailTitle = document.getElementById("detailTitle");
   const detailScore = document.getElementById("detailScore");
   const detailText = document.getElementById("detailText");
@@ -1049,61 +1099,9 @@ document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
     title: detailTitle.childNodes[0].textContent,
     text: detailText.textContent
   };
-
-  skills.forEach((s, i) => {
-    const [lx, ly] = pt(i, R + 30);
-    const label = document.createElementNS(NS, "text");
-    label.setAttribute("x", lx); label.setAttribute("y", ly);
-    label.setAttribute("class", "radar-label");
-    const cos = Math.cos(angle(i));
-    label.setAttribute("text-anchor", Math.abs(cos) < 0.3 ? "middle" : cos > 0 ? "start" : "end");
-    label.setAttribute("dominant-baseline", "middle");
-    const words = s.name.split(" ");
-    if (words.length > 1 && s.name.length > 12) {
-      const mid = Math.ceil(words.length / 2);
-      [words.slice(0, mid).join(" "), words.slice(mid).join(" ")].forEach((line, li) => {
-        const tspan = document.createElementNS(NS, "tspan");
-        tspan.setAttribute("x", lx);
-        tspan.setAttribute("dy", li === 0 ? "-0.35em" : "1.2em");
-        tspan.textContent = line;
-        label.appendChild(tspan);
-      });
-    } else {
-      label.textContent = s.name;
-    }
-    svg.appendChild(label);
-    labels.push(label);
-
-    const [dx, dy] = pt(i, R * s.value / 100);
-    const val = document.createElementNS(NS, "text");
-    val.setAttribute("x", dx); val.setAttribute("y", dy - 14);
-    val.setAttribute("text-anchor", "middle");
-    val.setAttribute("class", "radar-value");
-    val.textContent = s.value;
-    svg.appendChild(val);
-    values.push(val);
-
-    const dot = document.createElementNS(NS, "circle");
-    dot.setAttribute("cx", dx); dot.setAttribute("cy", dy);
-    dot.setAttribute("r", 6);
-    dot.setAttribute("class", "radar-dot");
-    dot.style.animationDelay = (0.5 + i * 0.06) + "s";
-    svg.appendChild(dot);
-    dots.push(dot);
-
-    const select = () => setActive(i);
-    const deselect = () => setActive(null);
-    [dot, label].forEach(el => {
-      el.addEventListener("mouseenter", select);
-      el.addEventListener("mouseleave", deselect);
-      el.addEventListener("click", select);
-    });
-  });
-
   function setActive(i) {
-    dots.forEach((d, j) => d.classList.toggle("active", j === i));
+    sacks.forEach((g, j) => g.classList.toggle("active", j === i));
     labels.forEach((l, j) => l.classList.toggle("active", j === i));
-    values.forEach((v, j) => v.classList.toggle("show", j === i));
     if (i === null) {
       detailTitle.childNodes[0].textContent = defaults.title;
       detailScore.textContent = "";
@@ -1119,13 +1117,13 @@ document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
     }
   }
 
-  const wrap = document.getElementById("radarWrap");
-  const radarIO = new IntersectionObserver(entries => {
+  const wrap = document.getElementById("sacksWrap");
+  const sacksIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { wrap.classList.add("in"); radarIO.disconnect(); }
+      if (e.isIntersecting) { wrap.classList.add("in"); sacksIO.disconnect(); }
     });
   }, { threshold: 0.3 });
-  radarIO.observe(wrap);
+  sacksIO.observe(wrap);
 })();
 
 (function () {
