@@ -52,7 +52,3 @@ nav ul li.accent-item { display: flex !important; align-items: center; position:
 @media (max-width: 720px) {
   nav ul li.nav-icon-item:not(:has(.kofi)) { display: none; }
 }
-/* workshops on phones: logo, EN / IT and ← Home already fill the bar, so the dot sits closer to its neighbours */
-@media (max-width: 760px) {
-  nav ul:has(.home-item) li.accent-item { margin: 0 -12px; }
-}

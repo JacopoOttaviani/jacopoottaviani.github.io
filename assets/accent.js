@@ -139,13 +139,21 @@
     }
     return false;
   }
+  function crowded() { return nav.scrollWidth > nav.clientWidth + 1 || wraps(); }
+  var CLEAR = 7;  // px between the dot and its neighbours when the bar is tight (its ring takes 3.5 of them)
   function fit() {
     pending = 0;
     if (pick.classList.contains("open")) return;
+    li.style.margin = "";
     pick.classList.add("folded");
     var h = nav.offsetHeight;
     pick.classList.remove("folded");
-    if (nav.offsetHeight > h || nav.scrollWidth > nav.clientWidth + 1 || wraps()) pick.classList.add("folded");
+    if (nav.offsetHeight > h || crowded()) {
+      pick.classList.add("folded");
+      // still crowded with one dot (workshops on phones): close the bar's gap around it down to CLEAR, whatever that gap is
+      var gap = parseFloat(getComputedStyle(li.parentNode).columnGap) || 0;
+      if (crowded() && gap > CLEAR) li.style.margin = "0 " + (CLEAR - gap) + "px";
+    }
   }
   function refit() { if (!pending) pending = requestAnimationFrame(fit); }
   window.addEventListener("resize", refit);
