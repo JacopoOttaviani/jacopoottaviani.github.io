@@ -140,7 +140,7 @@
     return false;
   }
   function crowded() { return nav.scrollWidth > nav.clientWidth + 1 || wraps(); }
-  var CLEAR = 7;  // px between the dot and its neighbours when the bar is tight (its ring takes 3.5 of them)
+  var CLEAR = 7;  // px between the dot and its neighbours when the bar is tight (its ring takes 4.2 of them)
   function fit() {
     pending = 0;
     if (pick.classList.contains("open")) return;

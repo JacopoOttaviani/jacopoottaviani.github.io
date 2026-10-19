@@ -22,23 +22,23 @@ nav ul li.accent-item { display: flex !important; align-items: center; position:
   --pick-gap: var(--board-deep, #fff);
   display: flex; align-items: center;
 }
-.accent-menu { display: flex; align-items: center; gap: 10px; }
+.accent-menu { display: flex; align-items: center; gap: 12px; }
 .accent-pick button {
-  width: 13px; height: 13px; border-radius: 50%; padding: 0; cursor: pointer; position: relative;
-  border: 1.5px solid var(--pick-line); background: var(--c);
+  width: 15.6px; height: 15.6px; border-radius: 50%; padding: 0; cursor: pointer; position: relative;
+  border: 1.8px solid var(--pick-line); background: var(--c);
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.accent-pick button::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; }  /* 25px tap area */
+.accent-pick button::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; }  /* 27.6px tap area */
 .accent-pick button:hover { transform: scale(1.2); }
 .accent-pick button[aria-checked="true"],
-.accent-pick .accent-toggle[aria-expanded="true"] { box-shadow: 0 0 0 2px var(--pick-gap), 0 0 0 3.5px var(--pick-line); }
-.accent-pick button:focus-visible { outline: 2px solid var(--pick-line); outline-offset: 4px; }
+.accent-pick .accent-toggle[aria-expanded="true"] { box-shadow: 0 0 0 2.4px var(--pick-gap), 0 0 0 4.2px var(--pick-line); }
+.accent-pick button:focus-visible { outline: 2px solid var(--pick-line); outline-offset: 5px; }
 .accent-toggle { display: none; }
 /* folded (accent.js decides, when the bar has no room for the row): the current dot opens a box under the bar */
 .accent-pick.folded .accent-toggle { display: block; }
 .accent-pick.folded .accent-menu {
-  display: none; position: absolute; top: 100%; right: -16px; z-index: 1;
-  padding: 12px 16px; gap: 14px; background: var(--pick-gap);
+  display: none; position: absolute; top: 100%; right: -19px; z-index: 1;
+  padding: 14px 19px; gap: 17px; background: var(--pick-gap);
   border: 2px solid var(--pick-line); box-shadow: 5px 5px 0 var(--pick-line);
 }
 .accent-pick.folded.open .accent-menu { display: flex; }

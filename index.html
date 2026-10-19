@@ -113,9 +113,9 @@ nav {
   border-bottom: 2px solid var(--ink);
 }
 nav .logo {
-  font-family: var(--mono); font-weight: 700; font-size: 15px;
+  font-family: var(--mono); font-weight: 700; font-size: 18px;
   text-decoration: none; color: var(--ink); letter-spacing: .04em;
-  display: flex; align-items: center; gap: 9px;
+  display: flex; align-items: center; gap: 11px;
 }
 nav .logo span { color: var(--orange); }
 nav .logo svg { display: block; transition: transform .55s cubic-bezier(.2,.7,.2,1); transform-origin: 50% 50%; }
@@ -124,7 +124,7 @@ nav .logo:hover svg, nav .logo:focus-visible svg { transform: rotate(45deg); }  
 nav ul { display: flex; gap: 26px; list-style: none; align-items: center; }
 nav ul li { display: flex; align-items: center; }
 nav ul a {
-  font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em;
+  font-family: var(--mono); font-size: 15px; letter-spacing: .08em;
   text-transform: uppercase; color: var(--ink); text-decoration: none; position: relative;
 }
 nav ul a::after {
@@ -134,10 +134,44 @@ nav ul a::after {
 nav ul a:hover::after { width: 100%; }
 nav ul a.nav-icon { display: flex; align-items: center; }
 nav ul a.nav-icon::after { display: none; }
-nav ul a.nav-icon svg { width: 14px; height: 14px; display: block; fill: var(--ink); transition: fill .25s ease; }
+nav ul a.nav-icon svg { width: 16.8px; height: 16.8px; display: block; fill: var(--ink); transition: fill .25s ease; }
 nav ul a.nav-icon:hover svg { fill: var(--orange); }
+/* Ko-fi: an espresso cup drawn in section, steam rising; hover fills it to the brim and the steam turns into a heart */
+nav ul a.nav-icon.kofi { position: relative; }
+nav ul a.nav-icon.kofi svg { width: 26.4px; height: 26.4px; margin: -8.4px -2.4px 0; overflow: visible; fill: none; }
+nav ul a.nav-icon.kofi:hover svg { fill: none; }
+.kofi .cup, .kofi .handle, .kofi .saucer { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.kofi .cup-bg { fill: var(--paper); }
+.kofi .coffee { fill: var(--orange); transform: translateY(3.5px); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.kofi .crema { fill: var(--peach); }
+.kofi .steam { transition: opacity .25s ease; }
+.kofi .steam path { fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; opacity: 0; animation: kofi-steam 3s ease-in-out infinite; }
+.kofi .steam path:nth-child(2) { animation-delay: -2s; }
+.kofi .steam path:nth-child(3) { animation-delay: -1s; }
+.kofi .heart { fill: var(--orange); opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; }
+.kofi:hover .coffee, .kofi:focus-visible .coffee { transform: translateY(0); }
+.kofi:hover .steam, .kofi:focus-visible .steam { opacity: 0; }
+.kofi:hover .heart, .kofi:focus-visible .heart { animation: kofi-heart-in .7s cubic-bezier(.2,.7,.2,1) .15s both, kofi-beat 1.3s ease-in-out 1s infinite; }
+@keyframes kofi-steam { 0% { opacity: 0; transform: translateY(2px); } 35% { opacity: .55; } 100% { opacity: 0; transform: translateY(-3px); } }
+@keyframes kofi-heart-in { 0% { opacity: 0; transform: translateY(5px) scale(.4); } 60% { opacity: 1; transform: translateY(-1px) scale(1.45); } 100% { opacity: 1; transform: translateY(0) scale(1.3); } }
+@keyframes kofi-beat { 0%, 30%, 60%, 100% { transform: translateY(0) scale(1.3); } 15% { transform: translateY(0) scale(1.5); } 45% { transform: translateY(0) scale(1.42); } }
+.kofi-tip {
+  position: absolute; top: calc(100% + 28px); right: -12px;
+  font-family: var(--mono); font-size: 13.2px; letter-spacing: .08em; white-space: nowrap;
+  background: var(--ink); color: var(--paper); padding: 6px 10px;
+  box-shadow: 4px 4px 0 var(--orange);
+  opacity: 0; transform: translateY(-4px); pointer-events: none;
+  transition: opacity .2s ease, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.kofi-tip::before { content: ''; position: absolute; top: -4px; right: 17px; width: 9px; height: 9px; background: var(--ink); transform: rotate(45deg); }
+.kofi:hover .kofi-tip, .kofi:focus-visible .kofi-tip { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .kofi .steam path { animation: none; opacity: .45; }
+  .kofi .coffee, .kofi-tip { transition: none; }
+  .kofi:hover .heart, .kofi:focus-visible .heart { animation: none; opacity: 1; transform: scale(1.3); }
+}
 .lang-switch {
-  font-family: var(--mono); font-size: 12px; letter-spacing: .08em;
+  font-family: var(--mono); font-size: 14.4px; letter-spacing: .08em;
   display: flex; align-items: center; gap: 4px;
 }
 .lang-switch a {
@@ -151,9 +185,34 @@ nav ul a.nav-icon:hover svg { fill: var(--orange); }
 }
 .lang-switch a::after { display: none !important; }
 .lang-switch .sep { color: #ccc; }
-@media (max-width: 720px) {
-  nav ul { gap: 18px; }
+/* the bar stays one row at every width: the full row needs ~1440px (accent dot folded), so below that the gaps and
+   letter-spacing tighten (down to ~1265px), then the section links shrink to their numbers, as the section tags
+   read "01 / About" (down to ~850px), then they leave the bar as on phones */
+nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
+@media (max-width: 1440px) {
+  nav ul { gap: 14px; }
+  nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .05em; }
+}
+@media (max-width: 1269px) {  /* a two-character window over "01 About": the full label stays the link's name */
+  nav ul li:nth-child(-n+6) a { width: calc(2ch + .1em); white-space: nowrap; clip-path: inset(-10px -4px); }
+}
+@media (max-width: 860px) {
+  nav ul { gap: 18px; margin-left: 0; }
   nav ul li:not(.nav-icon-item):not(.lang-item) { display: none; }
+}
+@media (max-width: 480px) {  /* logo, language switch, accent dot and Ko-fi share one row on phones */
+  nav { padding: 14px 16px; }
+  nav ul { gap: 12px; }
+  nav .logo { font-size: 15.6px; gap: 8px; }
+}
+@media (max-width: 380px) {
+  nav ul { gap: 9px; }
+  nav .logo { font-size: 14.4px; gap: 7px; }
+  .lang-switch a { padding: 2px 3px; }
+}
+@media (max-width: 340px) {  /* the narrowest phones: the wordmark steps down so Ko-fi stays on screen */
+  nav ul { gap: 7px; }
+  nav .logo { font-size: 12.5px; gap: 6px; }
 }
 
 /* ---------- hero ---------- */
@@ -514,7 +573,7 @@ footer {
 <nav>
   <span class="load-bar" id="load-bar" aria-hidden="true"></span>
   <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
-  <a class="logo" href="#top"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M25.24 19.83 L19.83 25.24 L12.17 25.24 L6.76 19.83 L6.76 12.17 L12.17 6.76 L19.83 6.76 L25.24 12.17 Z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 16 L25.24 19.83 M16 16 L19.83 25.24 M16 16 L12.17 25.24 M16 16 L6.76 19.83 M16 16 L6.76 12.17 M16 16 L12.17 6.76 M16 16 L19.83 6.76 M16 16 L25.24 12.17" stroke="#1A1A1A" stroke-width=".9" opacity=".5" fill="none"/><path d="M6.76 13.6 L1.4 16 L6.76 18.4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/><rect x="25.2" y="13.3" width="5.8" height="5.4" rx="1.6" fill="#1A1A1A"/><circle cx="16" cy="16" r="3.6" fill="#FF7A29"/></svg><b>jacopo<span>.</span>ottaviani</b></a>
+  <a class="logo" href="#top"><svg width="26.4" height="26.4" viewBox="0 0 32 32" aria-hidden="true"><path d="M25.24 19.83 L19.83 25.24 L12.17 25.24 L6.76 19.83 L6.76 12.17 L12.17 6.76 L19.83 6.76 L25.24 12.17 Z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 16 L25.24 19.83 M16 16 L19.83 25.24 M16 16 L12.17 25.24 M16 16 L6.76 19.83 M16 16 L6.76 12.17 M16 16 L12.17 6.76 M16 16 L19.83 6.76 M16 16 L25.24 12.17" stroke="#1A1A1A" stroke-width=".9" opacity=".5" fill="none"/><path d="M6.76 13.6 L1.4 16 L6.76 18.4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/><rect x="25.2" y="13.3" width="5.8" height="5.4" rx="1.6" fill="#1A1A1A"/><circle cx="16" cy="16" r="3.6" fill="#FF7A29"/></svg><b>jacopo<span>.</span>ottaviani</b></a>
   <ul>
     <li><a href="#bio">01 About</a></li>
     <li><a href="#skills">02 Skills</a></li>
@@ -538,6 +597,10 @@ footer {
     </a></li>
     <li class="nav-icon-item"><a class="nav-icon" href="https://x.com/JacopoOttaviani" target="_blank" rel="noopener" aria-label="X">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.9.79h3.68l-8.04 9.19L24 22.5h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 .79h7.59l5.24 6.93L18.9.79zm-1.29 19.5h2.04L6.49 2.88H4.3l13.31 17.41z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon kofi" href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener" aria-label="Buy me a coffee on Ko-fi">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="kofi-cup"><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/></clipPath></defs><g class="steam"><path d="M7.5 8q-1.3-1.5 0-3t0-3"/><path d="M10.5 8q-1.3-1.5 0-3t0-3"/><path d="M13.5 8q-1.3-1.5 0-3t0-3"/></g><path class="heart" d="M10.5 7.6c-2.3-1.5-2.9-2.5-2.9-3.4a1.45 1.45 0 0 1 2.9-.4 1.45 1.45 0 0 1 2.9.4c0 .9-.6 1.9-2.9 3.4z"/><path class="cup-bg" d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><g clip-path="url(#kofi-cup)"><g class="coffee"><rect x="3" y="11" width="15" height="10"/><rect class="crema" x="3" y="11" width="15" height="1.1"/></g></g><path class="handle" d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9"/><path class="cup" d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path class="saucer" d="M2 21.8h17"/></svg>
+      <span class="kofi-tip" aria-hidden="true">Buy me a coffee</span>
     </a></li>
   </ul>
 </nav>
