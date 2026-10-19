@@ -4,7 +4,7 @@
 :root[data-accent="cobalt"] { --orange: #2F6BE0; --peach: #D8E3F9; }
 :root[data-accent="ochre"]  { --orange: #C98A00; --peach: #F1E2BF; }
 
-/* inline SVGs drawn in the accent (logo dot, Keywords mosaic, workshops compass) follow the tokens */
+/* inline SVGs drawn in the accent (logo dot, Keywords mosaic, workshops lid) follow the tokens */
 [fill="#FF7A29" i]   { fill: var(--orange); }
 [stroke="#FF7A29" i] { stroke: var(--orange); }
 [fill="#FFDCC2" i]   { fill: var(--peach); }

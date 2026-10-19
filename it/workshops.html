@@ -186,6 +186,25 @@ nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent d
   opacity: 0; animation: fadeUp .9s ease .7s forwards;
 }
 .hero-art svg { width: 100%; height: auto; display: block; }
+/* the lid: chalk lines plot in as the art fades up, the servings pour from the knob, a light passes over the facets */
+.lid text { font-family: var(--mono); }
+.lid-d, .lid-df { stroke-dasharray: 1 1.2; stroke-dashoffset: 1.01; animation: lidDraw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) both; }
+.lid-df { fill-opacity: 0; animation: lidDraw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) both, lidFill .5s ease calc(var(--t, 0s) + .7s) both; }
+.lid-f { opacity: 0; animation: lidFade .6s ease var(--t, 0s) both; }
+@keyframes lidDraw { to { stroke-dashoffset: 0; } }
+@keyframes lidFill { to { fill-opacity: 1; } }
+@keyframes lidFade { to { opacity: 1; } }
+.lid-facet { fill: var(--peach); fill-opacity: 0; stroke: var(--chalk); stroke-width: 1.2; stroke-opacity: .45; stroke-linejoin: round; cursor: pointer; transition: fill-opacity .2s ease; }
+.lid-facet.on { fill-opacity: .85; }
+.lid-wash { fill: var(--peach); opacity: 0; pointer-events: none; animation: lidWash 7s linear infinite; animation-delay: calc(4.2s + var(--k) * .5s); }
+@keyframes lidWash { 0% { opacity: 0; } 4% { opacity: .45; } 11%, 100% { opacity: 0; } }
+.lid-serving { fill: var(--orange); stroke: var(--board); stroke-width: 3; stroke-linejoin: round; cursor: pointer; transform-box: view-box; transform-origin: 240px 240px; transform: scale(0); animation: lidPour .9s cubic-bezier(.16,1,.3,1) var(--t, 0s) both; transition: fill .2s ease; }
+@keyframes lidPour { to { transform: scale(1); } }
+.lid-serving.on { fill: var(--peach); }
+.lid-label { font-size: 22px; font-weight: 700; fill: var(--chalk); cursor: pointer; transition: fill .2s ease; }
+.lid-label.on { fill: var(--orange); }
+.lid-cap { font-size: 13px; letter-spacing: .04em; fill: var(--chalk-dim); transition: fill .2s ease; }
+.lid-cap.on { fill: var(--chalk); }
 @media (max-width: 960px) { .hero-art { display: none; } }
 .hero .section-tag { margin-bottom: 20px; }
 .hero h1 {
@@ -356,6 +375,8 @@ footer a:hover { color: var(--orange); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .hero h1 .line > span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
   .hero .mark { background-size: 100% 100%; color: var(--ink); }
+  .lid-d, .lid-df { stroke-dashoffset: 0; } .lid-df { fill-opacity: 1; } .lid-f { opacity: 1; }
+  .lid-serving { transform: none; } .lid-wash, .lid-trav { display: none; }
 }
 
 /* ---------- load bar ---------- */
@@ -406,67 +427,9 @@ footer a:hover { color: var(--orange); }
         <a class="btn" href="#prenota">Prenota un workshop</a>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <!-- chalk compass: swinging needle, patrolling dot, pulsing north -->
-      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="rim" d="M 240 78 A 162 162 0 1 1 239.9 78"/>
-        </defs>
-        <!-- outer dashed ring -->
-        <circle cx="240" cy="240" r="162" fill="none" stroke="#F7F4EA" stroke-width="3" stroke-dasharray="6 8" stroke-linecap="round" opacity=".9"/>
-        <!-- inner ring -->
-        <circle cx="240" cy="240" r="126" fill="none" stroke="#F7F4EA" stroke-width="1.5" opacity=".4"/>
-        <!-- degree ticks every 30° -->
-        <g stroke="#FFDCC2" stroke-width="2.5" stroke-linecap="round" opacity=".8">
-          <line x1="240" y1="96" x2="240" y2="114"/>
-          <line x1="312" y1="115.3" x2="303" y2="130.9"/>
-          <line x1="364.7" y1="168" x2="349.1" y2="177"/>
-          <line x1="384" y1="240" x2="366" y2="240"/>
-          <line x1="364.7" y1="312" x2="349.1" y2="303"/>
-          <line x1="312" y1="364.7" x2="303" y2="349.1"/>
-          <line x1="240" y1="384" x2="240" y2="366"/>
-          <line x1="168" y1="364.7" x2="177" y2="349.1"/>
-          <line x1="115.3" y1="312" x2="130.9" y2="303"/>
-          <line x1="96" y1="240" x2="114" y2="240"/>
-          <line x1="115.3" y1="168" x2="130.9" y2="177"/>
-          <line x1="168" y1="115.3" x2="177" y2="130.9"/>
-        </g>
-        <!-- cardinal letters -->
-        <g font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="24" font-weight="700" text-anchor="middle">
-          <text x="240" y="66" fill="#FF7A29">N</text>
-          <text x="424" y="249" fill="#F7F4EA">E</text>
-          <text x="240" y="440" fill="#F7F4EA">S</text>
-          <text x="56" y="249" fill="#F7F4EA">O</text>
-        </g>
-        <!-- needle: orange north, chalk outline south, swinging as it settles -->
-        <g stroke-linejoin="round">
-          <animateTransform attributeName="transform" type="rotate"
-            values="-24 240 240; 58 240 240; 22 240 240; 46 240 240; 32 240 240; 38 240 240; -24 240 240"
-            keyTimes="0; .22; .42; .6; .76; .88; 1"
-            calcMode="spline"
-            keySplines=".4 0 .2 1; .4 0 .2 1; .4 0 .2 1; .4 0 .2 1; .4 0 .2 1; .4 0 .2 1"
-            dur="9s" repeatCount="indefinite"/>
-          <polygon points="240,122 226,240 254,240" fill="#FF7A29"/>
-          <polygon points="240,358 226,240 254,240" fill="none" stroke="#F7F4EA" stroke-width="3"/>
-        </g>
-        <!-- center cap -->
-        <circle cx="240" cy="240" r="11" fill="#092E21" stroke="#F7F4EA" stroke-width="3"/>
-        <!-- dot traveling around the rim -->
-        <circle r="5.5" fill="#FF7A29">
-          <animateMotion dur="10s" repeatCount="indefinite"><mpath href="#rim"/></animateMotion>
-        </circle>
-        <!-- pulsing ring at north -->
-        <circle cx="240" cy="98" r="7" fill="none" stroke="#FFDCC2" stroke-width="2">
-          <animate attributeName="r" values="7;22" dur="2.6s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
-        </circle>
-        <!-- sparkles -->
-        <g stroke="#F7F4EA" stroke-width="2" opacity=".5">
-          <path d="M52 84 h14 M59 77 v14"/>
-          <path d="M420 402 h14 M427 395 v14"/>
-          <path d="M430 60 h14 M437 53 v14"/>
-        </g>
-      </svg>
+    <div class="hero-art">
+      <!-- chalk Moka lid, seen from above: one facet per topic of the curriculum below, one serving of coffee per workshop. Drawn by the script at the end of the page. -->
+      <svg class="lid" id="lid" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Il coperchio di una moka visto dall'alto, disegnato col gesso: dieci facce, una per argomento del programma, in tre porzioni di caffè, una per workshop" data-caption="{m} workshop · {t} argomenti"></svg>
     </div>
   </div>
   <div class="scroll-hint">↓ la lezione è iniziata</div>
@@ -478,7 +441,7 @@ footer a:hover { color: var(--orange); }
 
   <div class="modules">
 
-    <details class="module">
+    <details class="module" data-lid="MAPPE">
       <summary>
         <span class="num" aria-hidden="true"></span>
         <span class="head">
@@ -496,7 +459,7 @@ footer a:hover { color: var(--orange); }
       </div>
     </details>
 
-    <details class="module">
+    <details class="module" data-lid="IA">
       <summary>
         <span class="num" aria-hidden="true"></span>
         <span class="head">
@@ -515,7 +478,7 @@ footer a:hover { color: var(--orange); }
       </div>
     </details>
 
-    <details class="module">
+    <details class="module" data-lid="GRANT">
       <summary>
         <span class="num" aria-hidden="true"></span>
         <span class="head">
@@ -630,6 +593,102 @@ const mods = document.querySelectorAll('.module');
 mods.forEach(m => m.addEventListener('toggle', () => {
   if (m.open) mods.forEach(o => { if (o !== m) o.open = false; });
 }));
+
+// the hero lid: a Moka pot lid seen from above, one facet per topic of the curriculum, one serving of coffee per workshop
+(function () {
+  const svg = document.getElementById('lid');
+  if (!svg) return;
+  const modules = [...mods].map(d => ({ el: d, short: d.dataset.lid || '', topics: [...d.querySelectorAll('li strong')].map(s => s.textContent.trim()) }));
+  const topics = [];
+  modules.forEach((m, mi) => m.topics.forEach(t => topics.push({ m: mi, t })));
+  const N = topics.length;
+  if (!N) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (name, attrs, parent) => {
+    const n = document.createElementNS(NS, name);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    parent.appendChild(n);
+    return n;
+  };
+  const cx = 240, cy = 240, R = 150, step = Math.PI * 2 / N, K = Math.cos(step / 2);
+  const bound = j => -Math.PI / 2 + j * step;                       // facet j starts here; the first starts at the top
+  const P = (a, r) => (cx + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1);
+  const ring = r => topics.map((_, j) => P(bound(j), r / K));
+  const t = v => '--t:' + v.toFixed(2) + 's';
+  const chalk = '#F7F4EA';
+
+  const g = el('g', { fill: 'none', stroke: chalk, 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+  // spout left and handle right, under the lip
+  el('path', { class: 'lid-df', pathLength: 1, fill: '#0C3B2A', d: 'M' + (cx - R) + ',' + (cy - 26) + ' L' + (cx - R - 46) + ',' + cy + ' L' + (cx - R) + ',' + (cy + 26) + ' Z', style: t(1.6) }, g);
+  el('path', { class: 'lid-df', pathLength: 1, fill: chalk, d: 'M' + (cx + R - 4) + ',' + (cy - 12) + ' h54 a6,6 0 0 1 6,6 v12 a6,6 0 0 1 -6,6 h-54 Z', style: t(1.6) }, g);
+  // lip, foot of the facets, flat top
+  el('path', { id: 'lid-rim', class: 'lid-d', pathLength: 1, 'stroke-width': 3, d: 'M' + ring(R).join(' L') + ' Z', style: t(0.7) }, g);
+  el('polygon', { class: 'lid-d', pathLength: 1, 'stroke-width': 1.5, 'stroke-opacity': .5, points: ring(R - 6).join(' '), style: t(0.9) }, g);
+  el('polygon', { class: 'lid-d', pathLength: 1, 'stroke-width': 1.5, 'stroke-opacity': .6, points: ring(R * .75).join(' '), style: t(1.1) }, g);
+
+  // the facets: one per topic, chalk outlines on the sloping band
+  const facets = [], rp = R * .75 / K, ri = (R - 6) / K;
+  topics.forEach((tp, j) => {
+    const s = bound(j), e = bound(j + 1);
+    const pts = [P(s, rp), P(e, rp), P(e, ri), P(s, ri)].join(' ');
+    el('polygon', { class: 'lid-wash', points: pts, style: '--k:' + j }, svg);
+    facets.push(el('polygon', { class: 'lid-facet lid-d', pathLength: 1, points: pts, style: t(1.3 + j * .06) }, svg));
+  });
+  // the servings: one per workshop, poured onto the flat top; a chalk divider across the band at each boundary
+  const servings = [], labels = [];
+  let j0 = 0;
+  modules.forEach((m, mi) => {
+    const n = m.topics.length, s = bound(j0), e = bound(j0 + n);
+    const pts = [cx + ',' + cy];
+    for (let j = j0; j <= j0 + n; j++) pts.push(P(bound(j), rp));
+    servings.push(el('polygon', { class: 'lid-serving', points: pts.join(' '), style: t(2.7 + mi * .25) }, svg));
+    el('path', { class: 'lid-d', pathLength: 1, fill: 'none', stroke: chalk, 'stroke-width': 2.5, 'stroke-linecap': 'round', d: 'M' + P(s, rp) + ' L' + P(s, ri), style: t(1.9) }, svg);
+    const a = (s + e) / 2, c = Math.cos(a);
+    const lab = el('text', { class: 'lid-label lid-f', x: (cx + 190 * c).toFixed(1), y: (cy + 190 * Math.sin(a)).toFixed(1), 'text-anchor': Math.abs(c) < .3 ? 'middle' : c > 0 ? 'start' : 'end', 'dominant-baseline': 'middle', style: t(2.3 + mi * .1) }, svg);
+    lab.textContent = m.short;
+    labels.push(lab);
+    j0 += n;
+  });
+  // knob, sparkles, caption, the dot riding the rim
+  el('circle', { class: 'lid-df', pathLength: 1, cx: cx, cy: cy, r: 14, fill: '#092E21', stroke: chalk, 'stroke-width': 3, style: t(2.0) }, svg);
+  const sp = el('g', { class: 'lid-f', fill: 'none', stroke: chalk, 'stroke-width': 2, opacity: .5, style: t(2.4) }, svg);
+  el('path', { d: 'M52 84 h14 M59 77 v14 M420 402 h14 M427 395 v14 M430 60 h14 M437 53 v14' }, sp);
+  const cap = el('text', { class: 'lid-cap lid-f', x: cx, y: 40, 'text-anchor': 'middle', style: t(2.6) }, svg);
+  const fmt = svg.dataset.caption || '{m} · {t}';
+  const base = fmt.replace('{m}', modules.length).replace('{t}', N);
+  const topicsWord = (fmt.split('{t}')[1] || '').trim();
+  cap.textContent = base;
+  const dot = el('circle', { class: 'lid-trav', r: 5.5, fill: '#FF7A29' }, svg);
+  const mo = el('animateMotion', { dur: '16s', begin: '4.6s', repeatCount: 'indefinite' }, dot);
+  const mp = el('mpath', { href: '#lid-rim' }, mo);
+  mp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#lid-rim');
+
+  // hover names the topic (or the workshop), click opens that module
+  const setOn = (mi, ti) => {
+    servings.forEach((p, i) => p.classList.toggle('on', i === mi));
+    labels.forEach((l, i) => l.classList.toggle('on', i === mi));
+    facets.forEach((f, j) => f.classList.toggle('on', ti === null ? topics[j].m === mi : j === ti));
+    cap.textContent = mi === null ? base : modules[mi].short + ' · ' + (ti === null ? modules[mi].topics.length + ' ' + topicsWord : topics[ti].t);
+    cap.classList.toggle('on', mi !== null);
+  };
+  const open = mi => {
+    const d = modules[mi].el;
+    d.open = true;
+    d.style.scrollMarginTop = '100px';
+    d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  facets.forEach((f, j) => {
+    f.addEventListener('mouseenter', () => setOn(topics[j].m, j));
+    f.addEventListener('mouseleave', () => setOn(null, null));
+    f.addEventListener('click', () => open(topics[j].m));
+  });
+  servings.concat(labels).forEach((p, i) => {
+    const mi = i % servings.length;
+    p.addEventListener('mouseenter', () => setOn(mi, null));
+    p.addEventListener('mouseleave', () => setOn(null, null));
+    p.addEventListener('click', () => open(mi));
+  });
+})();
 </script>
 </body>
 </html>
