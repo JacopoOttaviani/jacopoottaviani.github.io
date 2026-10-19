@@ -1,0 +1,29 @@
+<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <circle cx="262" cy="110" r="86" fill="#FFDCC2" opacity=".45"/>
+  <g stroke="#1A1A1A" stroke-width="1.5" opacity=".35">
+    <path d="M60 94 h12 M66 88 v12"/>
+    <path d="M446 56 h12 M452 50 v12"/>
+  </g>
+  <!-- dotted baseline under the bars -->
+  <path d="M110 182 H 430" fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10"/>
+  <!-- the sound block is a bar chart: reported crimes, year by year -->
+  <g fill="#1A1A1A">
+    <rect x="152" y="160" width="24" height="16"/>
+    <rect x="184" y="150" width="24" height="26"/>
+    <rect x="216" y="156" width="24" height="20"/>
+    <rect x="280" y="148" width="24" height="28"/>
+    <rect x="312" y="158" width="24" height="18"/>
+  </g>
+  <!-- the spike, where the gavel lands -->
+  <rect x="248" y="140" width="24" height="36" fill="#FF7A29"/>
+  <!-- detection ring at the point of impact -->
+  <circle cx="260" cy="140" r="24" fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10"/>
+  <!-- the gavel, mid-strike: barrel across, handle up to the right -->
+  <g transform="translate(247 110) rotate(45)">
+    <path d="M0 -12 V -96" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/>
+    <rect x="-30" y="-12" width="60" height="24" rx="7" fill="#1A1A1A"/>
+    <path d="M-19 -12 v24 M19 -12 v24" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cy="-96" r="6" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5"/>
+  </g>
+  <text x="352" y="172" font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="11" fill="#8a8d99">108 CITTÀ · 2006→2024</text>
+</svg>

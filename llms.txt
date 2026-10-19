@@ -24,6 +24,7 @@ communicators worldwide.
 - Runs workshops on using AI in data journalism: https://jacopoottaviani.com/workshops.html
 
 ## Selected projects
+- Atlante della sicurezza — reported crime in Italy's 108 provincial capitals, 2006–2024, from official ISTAT and Eurostat data: https://atlantedellasicurezza.it/
 - Italia Fragile — Italy's hydrogeological fragility, built with Claude Fable 5 and agentic loops
 - Africa Mining Watch — satellite imagery and machine learning mapping illegal mining in Africa
 - JuxMaps — historical maps laid over eight cities (from the Plus AI Sprint)
