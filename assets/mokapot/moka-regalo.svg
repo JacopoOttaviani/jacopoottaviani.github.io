@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="mk mk-regalo" viewBox="0 0 260 300" width="260" height="300" role="img" aria-labelledby="mr-title mr-desc">
+<title id="mr-title">A Moka pot, gift-wrapped</title>
+<desc id="mr-desc">A bright blue octagonal Moka pot with a black bakelite handle and knob, an orange ribbon tied in a bow around its boiler. A gift tag swings from the handle and flips through the cities it is headed to: Nairobi, Oxford, Berlin, Madrid, Rome.</desc>
+<style>
+  /* Recolour: change these three (front face, left face, right face). Handle, knob and valve stay black and metal. */
+  svg.mk-regalo { --body: #2F6BE0; --side: #265BC0; --shade: #1D479A; }
+  .mr-body { fill: var(--body); } .mr-side { fill: var(--side); } .mr-shade { fill: var(--shade); }
+
+  .mr-swing { transform-origin: 189px 163px; animation: mr-swing 4s ease-in-out infinite alternate; }
+  @keyframes mr-swing { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+  .mr-bow { transform-origin: 120px 218px; animation: mr-sway 3s ease-in-out infinite alternate; }
+  @keyframes mr-sway { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+  /* departures-board flap: the tag squashes for a blink as the city changes */
+  .mr-flap { transform-origin: 198px 198px; animation: mr-flap 8s linear infinite; }
+  @keyframes mr-flap {
+    0%, 19.2%, 21%, 39.2%, 41%, 59.2%, 61%, 79.2%, 81%, 99.2% { transform: scaleY(1); }
+    20%, 40%, 60%, 80%, 100% { transform: scaleY(.08); }
+  }
+  .mr-c { opacity: 0; animation: mr-city 8s steps(1) infinite; }
+  .mr-c2 { animation-delay: 1.6s; } .mr-c3 { animation-delay: 3.2s; } .mr-c4 { animation-delay: 4.8s; } .mr-c5 { animation-delay: 6.4s; }
+  @keyframes mr-city { 0% { opacity: 1; } 20%, 100% { opacity: 0; } }
+  .mr-t { font-family: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace; font-size: 9px; font-weight: 700; letter-spacing: .06em; fill: #1A1A1A; text-anchor: middle; }
+  @media (prefers-reduced-motion: reduce) {
+    .mr-swing, .mr-bow, .mr-flap, .mr-c { animation: none; }
+    .mr-c1 { opacity: 1; }
+  }
+</style>
+
+<g stroke="#1A1A1A" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+  <ellipse cx="120" cy="254" rx="62" ry="4.5" fill="#ECECE8" stroke="none"/>
+  <!-- bakelite handle, behind the body -->
+  <path fill-rule="evenodd" fill="#1A1A1A" d="M160,99 L195,99 Q201,100 200,107 L187,161 Q185,168 178,168 L158,168 Z M167,111 L185,112 Q189,113 188,118 L179,150 Q178,153 174,153 L164,153 Z"/>
+  <!-- boiler -->
+  <!-- safety valve: neck and round cap, drawn behind the boiler so it emerges from the left edge -->
+  <rect x="62" y="189.5" width="16" height="5" rx="1" fill="#FFFFFF" stroke-width="1.5"/>
+  <ellipse cx="62" cy="192" rx="3" ry="4.8" fill="#FFFFFF" stroke-width="1.5"/>
+  <polygon class="mr-side" points="66,252 97.6,252 102.6,171 78,171" stroke="none"/>
+  <polygon class="mr-body" points="97.6,252 142.4,252 137.4,171 102.6,171" stroke="none"/>
+  <polygon class="mr-shade" points="142.4,252 174,252 162,171 137.4,171" stroke="none"/>
+  <path d="M97.6,252 L102.6,171 M142.4,252 L137.4,171" fill="none" stroke-width="1.5" opacity=".45"/>
+  <polygon points="66,252 174,252 162,171 78,171" fill="none"/>
+  <path d="M69,246 H171" fill="none" stroke-width="1.5" opacity=".3"/>
+  <!-- ribbon around the boiler, following the facets -->
+  <polygon points="72,212 168,212 170,224 70,224" fill="#FF7A29" stroke-width="1.5"/>
+  <path d="M100.1,212 L99.3,224 M139.9,212 L140.7,224" fill="none" stroke-width="1.2" opacity=".45"/>
+  <g class="mr-bow" stroke-width="1.5">
+    <polygon points="116,221 111,240 118,237" fill="#FF7A29"/>
+    <polygon points="124,221 129,240 122,237" fill="#FF7A29"/>
+    <ellipse cx="107" cy="217" rx="11.5" ry="6.5" transform="rotate(-18 107 217)" fill="#FFDCC2"/>
+    <ellipse cx="133" cy="217" rx="11.5" ry="6.5" transform="rotate(18 133 217)" fill="#FFDCC2"/>
+    <rect x="115" y="213.5" width="10" height="9" rx="2" fill="#FF7A29"/>
+  </g>
+  <!-- collar -->
+  <rect class="mr-body" x="76" y="152" width="88" height="19" stroke="none"/>
+  <rect class="mr-side" x="76" y="152" width="16" height="19" stroke="none"/>
+  <rect class="mr-shade" x="148" y="152" width="16" height="19" stroke="none"/>
+  <rect x="76" y="152" width="88" height="19" fill="none"/>
+  <path d="M76,156 H164" fill="none" stroke-width="1.2" opacity=".35"/>
+  <!-- collector -->
+  <polygon class="mr-side" points="80,152 103.4,152 99.3,95 70,95" stroke="none"/>
+  <polygon class="mr-body" points="103.4,152 136.6,152 140.7,95 99.3,95" stroke="none"/>
+  <polygon class="mr-shade" points="136.6,152 160,152 170,95 140.7,95" stroke="none"/>
+  <path d="M103.4,152 L99.3,95 M136.6,152 L140.7,95" fill="none" stroke-width="1.5" opacity=".45"/>
+  <polygon points="80,152 160,152 170,95 70,95" fill="none"/>
+  <!-- spout -->
+  <polygon class="mr-body" points="70,94 44,94 76,120"/>
+  <polygon class="mr-side" points="44,94 76,120 72,112" stroke="none"/>
+  <path d="M44,94 L72,112" fill="none" stroke-width="1.5" opacity=".45"/>
+  <!-- lid: lip, low faceted cap, bell knob -->
+  <rect class="mr-body" x="68" y="91" width="104" height="5"/>
+  <polygon class="mr-side" points="72,91 100,91 105.5,76 85,76" stroke="none"/>
+  <polygon class="mr-body" points="100,91 140,91 134.5,76 105.5,76" stroke="none"/>
+  <polygon class="mr-shade" points="140,91 168,91 155,76 134.5,76" stroke="none"/>
+  <path d="M100,91 L105.5,76 M140,91 L134.5,76" fill="none" stroke-width="1.5" opacity=".45"/>
+  <polygon points="72,91 168,91 155,76 85,76" fill="none"/>
+  <path d="M114,76 L109,56 Q109,52 113,52 L127,52 Q131,52 131,56 L126,76 Z" fill="#1A1A1A"/>
+
+  <!-- gift tag on a string from the handle -->
+  <g class="mr-swing">
+    <path d="M189,163 L197,186" fill="none" stroke-width="1.5"/>
+    <g class="mr-flap">
+      <rect x="165" y="181" width="66" height="34" rx="2" fill="#FFDCC2"/>
+      <circle cx="197" cy="186" r="2.5" fill="#FFFFFF" stroke-width="1.5"/>
+      <g stroke="none">
+        <text class="mr-t mr-c mr-c1" x="198" y="205">→ NAIROBI</text>
+        <text class="mr-t mr-c mr-c2" x="198" y="205">→ OXFORD</text>
+        <text class="mr-t mr-c mr-c3" x="198" y="205">→ BERLIN</text>
+        <text class="mr-t mr-c mr-c4" x="198" y="205">→ MADRID</text>
+        <text class="mr-t mr-c mr-c5" x="198" y="205">→ ROMA</text>
+      </g>
+    </g>
+  </g>
+</g>
+</svg>

@@ -65,6 +65,9 @@
   <!-- bakelite handle, behind the body: upper root under the lid lip, lower root at the collar -->
   <path fill-rule="evenodd" fill="#1A1A1A" d="M160,99 L195,99 Q201,100 200,107 L187,161 Q185,168 178,168 L158,168 Z M167,111 L185,112 Q189,113 188,118 L179,150 Q178,153 174,153 L164,153 Z"/>
   <!-- boiler (caldaia): octagonal, three faces visible -->
+  <!-- safety valve: neck and round cap, drawn behind the boiler so it emerges from the left edge -->
+  <rect x="62" y="189.5" width="16" height="5" rx="1" fill="#FFFFFF" stroke-width="1.5"/>
+  <ellipse cx="62" cy="192" rx="3" ry="4.8" fill="#FFFFFF" stroke-width="1.5"/>
   <polygon class="mf-side" points="66,252 97.6,252 102.6,171 78,171" stroke="none"/>
   <polygon class="mf-body" points="97.6,252 142.4,252 137.4,171 102.6,171" stroke="none"/>
   <polygon class="mf-shade" points="142.4,252 174,252 162,171 137.4,171" stroke="none"/>
@@ -72,8 +75,6 @@
   <polygon points="66,252 174,252 162,171 78,171" fill="none"/>
   <path d="M69,246 H171" fill="none" stroke-width="1.5" opacity=".3"/>
   <!-- safety valve -->
-  <circle cx="86" cy="192" r="4.5" fill="#FFFFFF" stroke-width="1.5"/>
-  <circle cx="86" cy="192" r="1.6" fill="#1A1A1A" stroke="none"/>
   <!-- collar: the screw band -->
   <rect class="mf-body" x="76" y="152" width="88" height="19" stroke="none"/>
   <rect class="mf-side" x="76" y="152" width="16" height="19" stroke="none"/>
@@ -87,9 +88,9 @@
   <path d="M103.4,152 L99.3,95 M136.6,152 L140.7,95" fill="none" stroke-width="1.5" opacity=".45"/>
   <polygon points="80,152 160,152 170,95 70,95" fill="none"/>
   <!-- spout -->
-  <polygon class="mf-body" points="70,95 44,88 77,132"/>
-  <polygon class="mf-side" points="44,88 77,132 74,118" stroke="none"/>
-  <path d="M44,88 L74,118" fill="none" stroke-width="1.5" opacity=".45"/>
+  <polygon class="mf-body" points="70,94 44,94 76,120"/>
+  <polygon class="mf-side" points="44,94 76,120 72,112" stroke="none"/>
+  <path d="M44,94 L72,112" fill="none" stroke-width="1.5" opacity=".45"/>
   <!-- lid: lip, low faceted cap, bell knob; hinged at the handle side -->
   <g class="mf-lid">
     <rect class="mf-body" x="68" y="91" width="104" height="5"/>
@@ -102,9 +103,9 @@
   </g>
   <!-- steam out of the spout -->
   <g fill="none" stroke-width="2">
-    <g transform="translate(46,84)"><path class="mf-w mf-w1" d="M0,0 C-7,-7 7,-13 0,-20 C-7,-27 7,-33 0,-40"/></g>
-    <g transform="translate(37,81)"><path class="mf-w mf-w2" d="M0,0 C-6,-6 6,-12 0,-18 C-6,-24 6,-30 0,-36"/></g>
-    <g transform="translate(55,78)"><path class="mf-w mf-w3" d="M0,0 C-6,-6 6,-12 0,-18 C-6,-24 6,-30 0,-36"/></g>
+    <g transform="translate(46,90)"><path class="mf-w mf-w1" d="M0,0 C-7,-7 7,-13 0,-20 C-7,-27 7,-33 0,-40"/></g>
+    <g transform="translate(37,87)"><path class="mf-w mf-w2" d="M0,0 C-6,-6 6,-12 0,-18 C-6,-24 6,-30 0,-36"/></g>
+    <g transform="translate(55,84)"><path class="mf-w mf-w3" d="M0,0 C-6,-6 6,-12 0,-18 C-6,-24 6,-30 0,-36"/></g>
   </g>
 </g>
 </svg>

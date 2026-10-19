@@ -39,22 +39,23 @@
 
   <!-- funnel with the coffee, hidden inside the pot when assembled -->
   <g class="me-funl">
-    <path d="M99,160 Q120,150 141,160 Z" fill="#1A1A1A" stroke-width="1.5"/>
-    <polygon points="98,160 142,160 137,174 103,174" fill="#FFFFFF"/>
-    <path d="M105,167 H135" fill="none" stroke-width="1" stroke-dasharray="1.5 2.5" opacity=".6"/>
+    <path d="M93,160 Q120,148 147,160 Z" fill="#1A1A1A" stroke-width="1.5"/>
+    <polygon points="92,160 148,160 143,174 97,174" fill="#FFFFFF"/>
+    <path d="M99,167 H141" fill="none" stroke-width="1" stroke-dasharray="1.5 2.5" opacity=".6"/>
     <rect x="115" y="174" width="10" height="66" fill="#FFFFFF"/>
   </g>
 
   <!-- boiler (caldaia) -->
   <g>
+    <!-- safety valve: neck and round cap, drawn behind the boiler so it emerges from the left edge -->
+    <rect x="62" y="189.5" width="16" height="5" rx="1" fill="#FFFFFF" stroke-width="1.5"/>
+    <ellipse cx="62" cy="192" rx="3" ry="4.8" fill="#FFFFFF" stroke-width="1.5"/>
     <polygon class="me-side" points="66,252 97.6,252 102.6,171 78,171" stroke="none"/>
     <polygon class="me-body" points="97.6,252 142.4,252 137.4,171 102.6,171" stroke="none"/>
     <polygon class="me-shade" points="142.4,252 174,252 162,171 137.4,171" stroke="none"/>
     <path d="M97.6,252 L102.6,171 M142.4,252 L137.4,171" fill="none" stroke-width="1.5" opacity=".45"/>
     <polygon points="66,252 174,252 162,171 78,171" fill="none"/>
     <path d="M69,246 H171" fill="none" stroke-width="1.5" opacity=".3"/>
-    <circle cx="86" cy="192" r="4.5" fill="#FFFFFF" stroke-width="1.5"/>
-    <circle cx="86" cy="192" r="1.6" fill="#1A1A1A" stroke="none"/>
   </g>
 
   <!-- collector, collar, spout, handle and lid move as one -->
@@ -70,9 +71,9 @@
     <polygon class="me-shade" points="136.6,152 160,152 170,95 140.7,95" stroke="none"/>
     <path d="M103.4,152 L99.3,95 M136.6,152 L140.7,95" fill="none" stroke-width="1.5" opacity=".45"/>
     <polygon points="80,152 160,152 170,95 70,95" fill="none"/>
-    <polygon class="me-body" points="70,95 44,88 77,132"/>
-    <polygon class="me-side" points="44,88 77,132 74,118" stroke="none"/>
-    <path d="M44,88 L74,118" fill="none" stroke-width="1.5" opacity=".45"/>
+    <polygon class="me-body" points="70,94 44,94 76,120"/>
+    <polygon class="me-side" points="44,94 76,120 72,112" stroke="none"/>
+    <path d="M44,94 L72,112" fill="none" stroke-width="1.5" opacity=".45"/>
     <rect class="me-body" x="68" y="91" width="104" height="5"/>
     <polygon class="me-side" points="72,91 100,91 105.5,76 85,76" stroke="none"/>
     <polygon class="me-body" points="100,91 140,91 134.5,76 105.5,76" stroke="none"/>
@@ -85,7 +86,7 @@
   <!-- labels and leaders, drawn at the exploded positions -->
   <g class="me-lab" stroke-width="1.2" stroke-dasharray="2 3">
     <path d="M176,21 H212" fill="none"/>
-    <path d="M145,133 H212" fill="none"/>
+    <path d="M151,133 H212" fill="none"/>
     <path d="M76,200 H212" fill="none" stroke-dasharray="3 3"/>
     <path d="M176,236 H212" fill="none"/>
     <g stroke="none">

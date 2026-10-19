@@ -166,7 +166,7 @@ nav ul a.nav-icon:hover svg { fill: var(--orange); }
   flex: 1; max-width: 460px;
   opacity: 0; animation: fadeUp .9s ease .7s forwards;
 }
-.hero-art svg { width: 100%; height: auto; display: block; }
+.hero-art svg, .hero-art img { width: 100%; height: auto; display: block; }
 @media (max-width: 960px) { .hero-art { display: none; } }
 .hero h1 {
   font-size: clamp(42px, 7vw, 84px);
@@ -492,7 +492,6 @@ footer {
   .reveal, .hero h1 .line > span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
   .card { opacity: 1; }
   .hero .mark { background-size: 100% 38%; }
-  .hero-art .traveler, .hero-art .pulse { display: none; }
   .radar-shape, .radar-dot { opacity: 1; }
 }
 
@@ -556,68 +555,7 @@ footer {
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
-        <!-- backdrop -->
-        <circle cx="290" cy="240" r="165" fill="#FFDCC2" opacity=".45"/>
-        <g stroke="#1A1A1A" stroke-width="1.5" opacity=".35">
-          <path d="M60 70 h14 M67 63 v14"/>
-          <path d="M460 430 h14 M467 423 v14"/>
-          <path d="M480 200 h14 M487 193 v14"/>
-        </g>
-        <!-- dotted flight arcs -->
-        <g fill="none" stroke="#0E8C5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 10">
-          <path id="arcAB" d="M70 410 Q 90 220 230 140"/>
-          <path id="arcBD" d="M230 140 Q 320 55 420 90"/>
-          <path id="arcBC" d="M230 140 Q 410 160 450 340"/>
-          <path id="arcAC" d="M70 410 Q 260 485 450 340"/>
-          <path id="arcCE" d="M450 340 Q 400 460 250 470"/>
-        </g>
-        <!-- pulsing rings -->
-        <g class="pulse" fill="none" stroke="#0E8C5A" stroke-width="2">
-          <circle cx="230" cy="140" r="8">
-            <animate attributeName="r" values="8;24" dur="2.6s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0" dur="2.6s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="450" cy="340" r="8">
-            <animate attributeName="r" values="8;24" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
-          </circle>
-        </g>
-        <!-- nodes -->
-        <g fill="#1A1A1A" stroke="#FFFFFF" stroke-width="2.5">
-          <circle cx="70" cy="410" r="7"/>
-          <circle cx="230" cy="140" r="7"/>
-          <circle cx="450" cy="340" r="7"/>
-          <circle cx="420" cy="90" r="7"/>
-          <circle cx="250" cy="470" r="7"/>
-        </g>
-        <!-- node labels -->
-        <g font-family="SF Mono, IBM Plex Mono, Menlo, Consolas, monospace" font-size="12" fill="#8a8d99">
-          <text x="88" y="416">LOS</text>
-          <text x="196" y="124">FCO</text>
-          <text x="436" y="368">NBO</text>
-          <text x="438" y="84">BER</text>
-          <text x="216" y="494">CPT</text>
-        </g>
-        <!-- traveling dots -->
-        <g class="traveler" fill="#FF7A29">
-          <circle r="5.5">
-            <animateMotion dur="5s" repeatCount="indefinite"><mpath href="#arcAB"/></animateMotion>
-          </circle>
-          <circle r="5.5">
-            <animateMotion dur="4s" begin="1.2s" repeatCount="indefinite"><mpath href="#arcBD"/></animateMotion>
-          </circle>
-          <circle r="5.5">
-            <animateMotion dur="6s" begin="0.6s" repeatCount="indefinite"><mpath href="#arcBC"/></animateMotion>
-          </circle>
-          <circle r="5.5">
-            <animateMotion dur="7s" begin="2s" repeatCount="indefinite"><mpath href="#arcAC"/></animateMotion>
-          </circle>
-          <circle r="5.5">
-            <animateMotion dur="4.5s" begin="3s" repeatCount="indefinite"><mpath href="#arcCE"/></animateMotion>
-          </circle>
-        </g>
-      </svg>
+      <img src="/assets/mokapot/moka-sezione-en.svg" alt="" width="520" height="520">
     </div>
   </div>
   <div class="scroll-hint">↓ scroll</div>
@@ -631,7 +569,7 @@ footer {
       <p>I'm an Italian data journalist with a computer science soul. For over a decade I've been mixing algorithms with shoe-leather reporting to tell stories about migration, the environment and the people behind the numbers. Today AI works alongside me at every stage, from scraping and analysis to the code behind the maps. The part no model can do for me is data humanisation: making sure a number never hides the life it stands for.</p>
       <p>I'm Chief Data Officer at <a href="https://codeforafrica.org" target="_blank" rel="noopener">Code for Africa</a> (member of the <a href="https://www.icfj.org/plus" target="_blank" rel="noopener">Plus</a> alliance), the continent's largest network of civic technology and data journalism labs. My projects have been published by Der Spiegel, El País, The Guardian, Daily Maverick and Internazionale. I've been an ICFJ Knight Fellow, and I train and mentor journalists and communicators across the globe.</p>
     </div>
-    <img class="moka" src="/assets/mokapot/moka-esploso.svg" alt="Exploded view of a Moka pot: collector, funnel with the coffee, boiler with its water line, labelled in Italian" width="320" height="300">
+    <img class="moka" src="/assets/mokapot/moka-esploso-en.svg" alt="Exploded view of a Moka pot: collector, funnel with the coffee, boiler with its water line" width="320" height="300">
   </div>
 </section>
 
