@@ -10,9 +10,10 @@
 [fill="#FFDCC2" i]   { fill: var(--peach); }
 [stroke="#FFDCC2" i] { stroke: var(--peach); }
 
-/* the Moka drawings are <img>s: keep them hidden until accent.js has swapped in a recoloured copy
-   (their src then starts with blob:), and show them anyway after 2s if it never does */
-:root[data-accent] img[src^="/assets/mokapot/"] { visibility: hidden; animation: accent-reveal 0s 2s forwards; }
+/* the Moka drawings and project banners are <img>s: keep them hidden until accent.js has swapped in a
+   recoloured copy (their src then starts with blob:), and show them anyway after 2s if it never does */
+:root[data-accent] img[src*="assets/mokapot/"],
+:root[data-accent] img[src*="assets/projects/"] { visibility: hidden; animation: accent-reveal 0s 2s forwards; }
 @keyframes accent-reveal { to { visibility: visible; } }
 
 /* ---------- the dots ---------- */

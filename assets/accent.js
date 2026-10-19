@@ -1,12 +1,13 @@
 /* Accent colour picker in the menu bar: four dots, orange the default, the choice remembered in localStorage.
    The <head> one-liner has already set <html data-accent> before the first paint; this builds the dots,
-   recolours the Moka drawings (they are <img>s) and folds the row into one dot when the bar has no room. */
+   recolours the Moka drawings and the project banners (they are <img>s) and folds the row into one dot when the bar has no room. */
 (function () {
   var ACCENTS = [
-    { id: "orange", c: "#FF7A29", t: "#FFDCC2", s1: "#E66A1F", s2: "#C45816", en: "Orange", it: "Arancione" },
-    { id: "red",    c: "#C8102E", t: "#F7DBE0", s1: "#B00E28", s2: "#980C23", en: "Red",    it: "Rosso" },
-    { id: "cobalt", c: "#2F6BE0", t: "#D8E3F9", s1: "#295EC5", s2: "#2451AA", en: "Cobalt", it: "Cobalto" },
-    { id: "ochre",  c: "#C98A00", t: "#F1E2BF", s1: "#B17900", s2: "#996900", en: "Ochre",  it: "Ocra" }
+    // c accent, t tint (peach); s1, s2 the exploded Moka's shades; x1, x2 the Rome banner's shade and mid-tint
+    { id: "orange", c: "#FF7A29", t: "#FFDCC2", s1: "#E66A1F", s2: "#C45816", x1: "#D9621F", x2: "#F2C3A0", en: "Orange", it: "Arancione" },
+    { id: "red",    c: "#C8102E", t: "#F7DBE0", s1: "#B00E28", s2: "#980C23", x1: "#A60D26", x2: "#DB8C99", en: "Red",    it: "Rosso" },
+    { id: "cobalt", c: "#2F6BE0", t: "#D8E3F9", s1: "#295EC5", s2: "#2451AA", x1: "#2759BA", x2: "#99B3E5", en: "Cobalt", it: "Cobalto" },
+    { id: "ochre",  c: "#C98A00", t: "#F1E2BF", s1: "#B17900", s2: "#996900", x1: "#A77300", x2: "#DBC085", en: "Ochre",  it: "Ocra" }
   ];
   var root = document.documentElement;
   var lang = root.lang === "it" ? "it" : "en";
@@ -21,13 +22,13 @@
   }
   var current = find(root.getAttribute("data-accent"));
 
-  /* ---------- the Moka drawings: fetch each SVG once, swap its orange family, show it as a blob ---------- */
+  /* ---------- Moka drawings and project banners: fetch each SVG once, swap its orange family, show it as a blob ---------- */
   var svgs = {};
-  function paintMokas() {
+  function paintImages() {
     var a = current;
-    document.querySelectorAll('img[data-moka], img[src^="/assets/mokapot/"]').forEach(function (img) {
-      var src = img.getAttribute("data-moka") || img.getAttribute("src");
-      img.setAttribute("data-moka", src);
+    document.querySelectorAll('img[data-accent-src], img[src*="assets/mokapot/"], img[src*="assets/projects/"]').forEach(function (img) {
+      var src = img.getAttribute("data-accent-src") || img.getAttribute("src");
+      img.setAttribute("data-accent-src", src);
       if (a.id === "orange") {
         if (img.getAttribute("src") !== src) img.src = src;
         return;
@@ -35,7 +36,8 @@
       svgs[src] = svgs[src] || fetch(src).then(function (r) { if (!r.ok) throw r.status; return r.text(); });
       svgs[src].then(function (txt) {
         if (current !== a) return;  // a newer pick got there first
-        txt = txt.replace(/#FF7A29/gi, a.c).replace(/#FFDCC2/gi, a.t).replace(/#E66A1F/gi, a.s1).replace(/#C45816/gi, a.s2);
+        txt = txt.replace(/#FF7A29/gi, a.c).replace(/#FFDCC2/gi, a.t).replace(/#E66A1F/gi, a.s1).replace(/#C45816/gi, a.s2)
+                 .replace(/#D9621F/gi, a.x1).replace(/#F2C3A0/gi, a.x2);
         var url = URL.createObjectURL(new Blob([txt], { type: "image/svg+xml" }));
         var old = img.getAttribute("src");
         img.src = url;
@@ -51,7 +53,7 @@
     if (remember) {
       try { a.id === "orange" ? localStorage.removeItem("accent") : localStorage.setItem("accent", a.id); } catch (e) {}
     }
-    paintMokas();
+    paintImages();
   }
 
   /* ---------- the dots ---------- */
