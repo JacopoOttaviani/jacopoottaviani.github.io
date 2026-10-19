@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="mk mk-sezione" viewBox="0 0 520 520" width="520" height="520" role="img" aria-labelledby="ms-title ms-desc">
+<title id="ms-title">Moka pot, section</title>
+<desc id="ms-desc">A technical drawing of a Moka pot cut down the middle: hatched walls, the water in the boiler, the funnel with the ground coffee, the column rising into the collector, three labels in Italian and one dimension. The outline draws itself in; then the pot brews: the water sinks, the coffee climbs the column, spills from its cap and fills the collector, a curl of steam leaves the spout, and it starts over.</desc>
+<style>
+  /* Recolour: the paper inside the cut. Hatching, handle and knob stay black; the coffee is orange. */
+  svg.mk-sezione { --body: #FFFFFF; --water: #DCEFE6; --coffee: #FF7A29; }
+  .ms-d, .ms-df { stroke-dasharray: 1 1.2; stroke-dashoffset: 1.01; animation: ms-draw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) forwards; }
+  .ms-df { fill-opacity: 0; animation: ms-draw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) forwards, ms-fill .5s ease calc(var(--t, 0s) + .7s) forwards; }
+  .ms-f { opacity: 0; animation: ms-fade .6s ease var(--t, 0s) forwards; }
+  @keyframes ms-draw { to { stroke-dashoffset: 0; } }
+  @keyframes ms-fill { to { fill-opacity: 1; } }
+  @keyframes ms-fade { to { opacity: 1; } }
+  /* the brew: one eleven-second timeline, starting once the drawing is complete. All delays carry +0.6 s so the plotting starts as the hero art fades in. */
+  .ms-brew { animation-duration: 11s; animation-timing-function: linear; animation-delay: 4.2s; animation-iteration-count: infinite; animation-fill-mode: backwards; }
+  .ms-water { animation-name: ms-water; } .ms-col { animation-name: ms-col; } .ms-cof { animation-name: ms-cof; }
+  .ms-drip { animation-name: ms-drip; } .ms-bub { animation-name: ms-bub; } .ms-bub2 { animation-delay: 4.9s; }
+  .ms-steam { animation-name: ms-steam; transform-box: fill-box; transform-origin: 50% 100%; }
+  @keyframes ms-water { 0%, 12% { transform: translateY(0); } 64%, 88% { transform: translateY(46px); } 97%, 100% { transform: translateY(0); } }
+  @keyframes ms-col {
+    0%, 12% { transform: translateY(134px); opacity: 1; animation-timing-function: ease-in; } 30%, 80% { transform: translateY(0); opacity: 1; }
+    88% { transform: translateY(0); opacity: 0; } 88.5% { transform: translateY(134px); opacity: 0; } 92%, 100% { transform: translateY(134px); opacity: 1; }
+  }
+  @keyframes ms-cof {
+    0%, 30% { transform: translateY(52px); opacity: 1; } 64%, 80% { transform: translateY(0); opacity: 1; }
+    88% { transform: translateY(0); opacity: 0; } 88.5% { transform: translateY(52px); opacity: 0; } 92%, 100% { transform: translateY(52px); opacity: 1; }
+  }
+  @keyframes ms-drip { 0%, 30% { stroke-dashoffset: 1; opacity: 1; } 34%, 64% { stroke-dashoffset: 0; opacity: 1; } 67%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+  @keyframes ms-bub { 0%, 10% { opacity: 0; transform: translateY(0); } 13% { opacity: .9; } 22%, 100% { opacity: 0; transform: translateY(-22px); } }
+  @keyframes ms-steam { 0%, 66% { opacity: 0; transform: translateY(0) scale(.85); } 70% { opacity: .7; } 84%, 100% { opacity: 0; transform: translateY(-30px) scale(1.05); } }
+  .ms-t { font-family: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace; font-size: 12px; letter-spacing: .06em; }
+  @media (prefers-reduced-motion: reduce) {
+    /* still pose: brewed */
+    .ms-d, .ms-df, .ms-f, .ms-brew { animation: none; }
+    .ms-d, .ms-df { stroke-dashoffset: 0; } .ms-df { fill-opacity: 1; } .ms-f { opacity: 1; }
+    .ms-water { transform: translateY(46px); } .ms-col, .ms-cof { transform: none; } .ms-drip, .ms-bub, .ms-steam { opacity: 0; }
+  }
+</style>
+<defs>
+  <pattern id="ms-h" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V5" stroke="#1A1A1A" stroke-width=".8" stroke-opacity=".5"/></pattern>
+  <pattern id="ms-g" width="3.2" height="3.2" patternUnits="userSpaceOnUse"><circle cx="1.6" cy="1.6" r=".75" fill="#1A1A1A" fill-opacity=".75"/></pattern>
+  <clipPath id="ms-cw"><path d="M81.5 174.5H158.5L170.5 248.5H69.5Z"/></clipPath>
+  <clipPath id="ms-cc"><path d="M74.5 95H165.5L155.5 152V171H84.5V152Z"/></clipPath>
+  <clipPath id="ms-ct"><path d="M116.5 108H123.5V241H116.5Z"/></clipPath>
+</defs>
+
+<circle cx="276" cy="246" r="160" fill="#FFDCC2" opacity=".45"/>
+<g fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity=".35"><path d="M60 70h14M67 63v14"/><path d="M460 430h14M467 423v14"/><path d="M480 200h14M487 193v14"/></g>
+
+<g transform="translate(78,32) scale(1.5)" fill="none" stroke="#1A1A1A" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round">
+  <!-- bakelite handle, behind -->
+  <path class="ms-df" style="--t:2.3s" pathLength="1" fill="#1A1A1A" fill-rule="evenodd" d="M160 99L195 99Q201 100 200 107L187 161Q185 168 178 168L158 168ZM167 111L185 112Q189 113 188 118L179 150Q178 153 174 153L164 153Z"/>
+  <!-- paper inside the cut -->
+  <path class="ms-f" style="--t:2s" fill="var(--body)" stroke="none" d="M66 252H174L162 171H78ZM76 152H164V171H76ZM80 152H160L170 95H70ZM70 94H44L76 120ZM68 91H172V96H68ZM72 91H168L155 76H85Z"/>
+  <!-- water in the boiler, with two bubbles -->
+  <g class="ms-f" style="--t:3.2s" clip-path="url(#ms-cw)">
+    <rect class="ms-brew ms-water" x="60" y="196" width="120" height="60" fill="var(--water)" stroke="none"/>
+    <circle class="ms-brew ms-bub" cx="102" cy="236" r="1.6" fill="#FFFFFF" stroke-width=".8"/>
+    <circle class="ms-brew ms-bub ms-bub2" cx="140" cy="232" r="1.3" fill="#FFFFFF" stroke-width=".8"/>
+  </g>
+  <!-- funnel tube (paper), drips from the cap, coffee filling the collector -->
+  <path class="ms-f" style="--t:2.4s" fill="var(--body)" stroke="none" d="M114 174H126V241H114Z"/>
+  <path class="ms-brew ms-drip" pathLength="1" stroke="var(--coffee)" stroke-width="1.6" stroke-dasharray="1 1.2" stroke-dashoffset="1" d="M111.5 109V170"/>
+  <path class="ms-brew ms-drip" pathLength="1" stroke="var(--coffee)" stroke-width="1.6" stroke-dasharray="1 1.2" stroke-dashoffset="1" d="M128.5 109V170"/>
+  <g clip-path="url(#ms-cc)"><rect class="ms-brew ms-cof" x="70" y="121" width="100" height="52" fill="var(--coffee)" stroke="none"/></g>
+  <!-- the column (paper), then the coffee climbing inside it -->
+  <path class="ms-f" style="--t:2.4s" fill="var(--body)" stroke="none" d="M114 108H126V174H114Z"/>
+  <g clip-path="url(#ms-ct)"><rect class="ms-brew ms-col" x="116" y="108" width="8" height="134" fill="var(--coffee)" stroke="none"/></g>
+  <!-- ground coffee in the basket -->
+  <path class="ms-f" style="--t:3s" fill="url(#ms-g)" stroke="none" d="M92.5 160.5H147.5L142.5 173.5H97.5Z"/>
+  <!-- hatched walls: boiler, collector with its collar, lid -->
+  <g class="ms-f" style="--t:3s" fill="url(#ms-h)" stroke="none">
+    <path d="M78 171L66 252H174L162 171H158.5L170.5 248.5H69.5L81.5 171Z"/>
+    <path d="M70 95H74.5L84.5 152V171H76V152H80ZM170 95H165.5L155.5 152V171H164V152H160Z"/>
+    <path fill-rule="evenodd" d="M68 91H172V96H68ZM72 91H168L155 76H85ZM78 91H162L151.5 79.5H88.5Z"/>
+  </g>
+  <!-- outlines, bottom up -->
+  <path class="ms-d" style="--t:1.2s" pathLength="1" d="M78 171L66 252H174L162 171"/>
+  <path class="ms-d" style="--t:1.4s" pathLength="1" stroke-width="1" d="M81.5 171L69.5 248.5H170.5L158.5 171"/>
+  <path class="ms-d" style="--t:1.6s" pathLength="1" d="M76 171V152H80L70 95M164 171V152H160L170 95M76 171H164"/>
+  <path class="ms-d" style="--t:1.7s" pathLength="1" stroke-width="1" d="M84.5 171V152L74.5 95M155.5 171V152L165.5 95"/>
+  <path class="ms-df" style="--t:1.9s" pathLength="1" stroke-width="1" fill="#1A1A1A" d="M84.5 170H155.5V173H84.5Z"/>
+  <path class="ms-d" style="--t:1.95s" pathLength="1" d="M70 94H44L76 120"/>
+  <path class="ms-d" style="--t:2.1s" pathLength="1" d="M68 91H172V96H68ZM72 91H168L155 76H85Z"/>
+  <path class="ms-d" style="--t:2.2s" pathLength="1" stroke-width="1" d="M78 91H162L151.5 79.5H88.5Z"/>
+  <path class="ms-df" style="--t:2.5s" pathLength="1" fill="#1A1A1A" d="M114 76L109 56Q109 52 113 52H127Q131 52 131 56L126 76Z"/>
+  <!-- funnel: basket, perforated bottom, tube with its foot; column and cap; valve -->
+  <path class="ms-d" style="--t:2.6s" pathLength="1" stroke-width="1" d="M92 160L97 174H143L148 160M115 174V241M125 174V241M112 241H128"/>
+  <path class="ms-f" style="--t:3.2s" stroke-width="1" stroke-dasharray="1 2" d="M97 174H143"/>
+  <path class="ms-d" style="--t:2.7s" pathLength="1" stroke-width="1" d="M115 171V110M125 171V110"/>
+  <path class="ms-df" style="--t:2.8s" pathLength="1" stroke-width="1" fill="var(--body)" d="M108 109Q108 101 120 101Q132 101 132 109Z"/>
+  <path class="ms-df" style="--t:2.8s" pathLength="1" stroke-width="1" fill="#1A1A1A" d="M68 189H75.5V195H68Z"/>
+</g>
+
+<!-- steam at the spout -->
+<g transform="translate(144,170)"><path class="ms-brew ms-steam" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" d="M0 0C-7-7 7-13 0-20C-7-27 7-33 0-40"/></g>
+
+<!-- centre line -->
+<g class="ms-f" style="--t:1s" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity=".45" stroke-dasharray="12 4 2 4"><path d="M258 96V430"/></g>
+
+<!-- labels with dotted leaders -->
+<g class="ms-f" style="--t:3.6s">
+  <path fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-dasharray="2 3" d="M134 236H200M134 283H212M134 330H192"/>
+  <text class="ms-t" x="128" y="240" text-anchor="end" fill="#0E8C5A" font-weight="700">CAFFÈ</text>
+  <text class="ms-t" x="128" y="287" text-anchor="end" fill="#0E8C5A" font-weight="700">IMBUTO</text>
+  <text class="ms-t" x="128" y="334" text-anchor="end" fill="#0E8C5A" font-weight="700">ACQUA</text>
+</g>
+
+<!-- dimension: overall height -->
+<g class="ms-f" style="--t:3s" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity=".3"><path d="M282 110H420M347 410H420"/></g>
+<path class="ms-d" style="--t:3.1s" pathLength="1" fill="none" stroke="#0E8C5A" stroke-width="1.2" d="M412 110V410"/>
+<g class="ms-f" style="--t:3.6s" fill="#0E8C5A">
+  <path d="M412 110l-3 9h6zM412 410l-3-9h6z"/>
+  <text class="ms-t" transform="rotate(-90 430 260)" x="430" y="260" text-anchor="middle" font-weight="700">160</text>
+</g>
+<g class="ms-f" style="--t:3.8s">
+  <text class="ms-t" x="60" y="464" fill="#0E8C5A" font-weight="700">SEZIONE A-A · SPACCATO</text>
+  <text class="ms-t" x="60" y="482" fill="#8a8d99" font-size="11">MOKA 3 TAZZE · SCALA 1:2 · MM</text>
+</g>
+</svg>
