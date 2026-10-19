@@ -113,6 +113,7 @@ nav .logo .sub {
   margin-left: 2px; letter-spacing: .08em;
 }
 nav ul { display: flex; gap: 26px; list-style: none; align-items: center; }
+nav ul li { display: flex; align-items: center; }
 nav ul a {
   font-family: var(--mono); font-size: 15px; letter-spacing: .08em;
   text-transform: uppercase; color: var(--chalk); text-decoration: none; position: relative;
@@ -122,7 +123,45 @@ nav ul a::after {
   background: var(--orange); transition: width .25s ease;
 }
 nav ul a:hover::after { width: 100%; }
-nav ul a.home-link { color: var(--peach); }
+nav ul a.home-link { color: var(--peach); white-space: nowrap; }
+nav ul a.nav-icon { display: flex; align-items: center; }
+nav ul a.nav-icon::after { display: none; }
+nav ul a.nav-icon svg { width: 16.8px; height: 16.8px; display: block; fill: var(--chalk); transition: fill .25s ease; }
+nav ul a.nav-icon:hover svg { fill: var(--orange); }
+/* Ko-fi: the espresso cup from the home page, drawn in chalk; hover fills it to the brim and the steam turns into a heart */
+nav ul a.nav-icon.kofi { position: relative; }
+nav ul a.nav-icon.kofi svg { width: 26.4px; height: 26.4px; margin: -8.4px -2.4px 0; overflow: visible; fill: none; }
+nav ul a.nav-icon.kofi:hover svg { fill: none; }
+.kofi .cup, .kofi .handle, .kofi .saucer { fill: none; stroke: var(--chalk); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.kofi .cup-bg { fill: var(--board-deep); }
+.kofi .coffee { fill: var(--orange); transform: translateY(3.5px); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.kofi .crema { fill: var(--peach); }
+.kofi .steam { transition: opacity .25s ease; }
+.kofi .steam path { fill: none; stroke: var(--chalk); stroke-width: 1.3; stroke-linecap: round; opacity: 0; animation: kofi-steam 3s ease-in-out infinite; }
+.kofi .steam path:nth-child(2) { animation-delay: -2s; }
+.kofi .steam path:nth-child(3) { animation-delay: -1s; }
+.kofi .heart { fill: var(--orange); opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; }
+.kofi:hover .coffee, .kofi:focus-visible .coffee { transform: translateY(0); }
+.kofi:hover .steam, .kofi:focus-visible .steam { opacity: 0; }
+.kofi:hover .heart, .kofi:focus-visible .heart { animation: kofi-heart-in .7s cubic-bezier(.2,.7,.2,1) .15s both, kofi-beat 1.3s ease-in-out 1s infinite; }
+@keyframes kofi-steam { 0% { opacity: 0; transform: translateY(2px); } 35% { opacity: .55; } 100% { opacity: 0; transform: translateY(-3px); } }
+@keyframes kofi-heart-in { 0% { opacity: 0; transform: translateY(5px) scale(.4); } 60% { opacity: 1; transform: translateY(-1px) scale(1.45); } 100% { opacity: 1; transform: translateY(0) scale(1.3); } }
+@keyframes kofi-beat { 0%, 30%, 60%, 100% { transform: translateY(0) scale(1.3); } 15% { transform: translateY(0) scale(1.5); } 45% { transform: translateY(0) scale(1.42); } }
+.kofi-tip {
+  position: absolute; top: calc(100% + 28px); right: -12px;
+  font-family: var(--mono); font-size: 13.2px; letter-spacing: .08em; white-space: nowrap;
+  background: var(--chalk); color: var(--board-deep); padding: 6px 10px;
+  box-shadow: 4px 4px 0 var(--orange);
+  opacity: 0; transform: translateY(-4px); pointer-events: none;
+  transition: opacity .2s ease, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.kofi-tip::before { content: ''; position: absolute; top: -4px; right: 17px; width: 9px; height: 9px; background: var(--chalk); transform: rotate(45deg); }
+.kofi:hover .kofi-tip, .kofi:focus-visible .kofi-tip { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .kofi .steam path { animation: none; opacity: .45; }
+  .kofi .coffee, .kofi-tip { transition: none; }
+  .kofi:hover .heart, .kofi:focus-visible .heart { animation: none; opacity: 1; transform: scale(1.3); }
+}
 .lang-switch {
   font-family: var(--mono); font-size: 14.4px; letter-spacing: .08em;
   display: flex; align-items: center; gap: 4px;
@@ -138,24 +177,35 @@ nav ul a.home-link { color: var(--peach); }
   border-bottom: 2px solid var(--orange);
 }
 .lang-switch .sep { color: rgba(247,244,234,.35); }
-@media (max-width: 1240px) {  /* the full row needs ~1240px with the accent dots open; tighter gaps keep it on one line */
+/* the bar stays one row at every width: the full row needs ~1400px (accent dots open), so below 1440px, as on the home page, the gaps and
+   letter-spacing tighten as on the home page, then the "/ workshops" tag goes, then the section links shrink to
+   their numbers, then they leave the bar as on phones */
+nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
+nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the social icons sit as a cluster, 12px apart, not at the bar's gap */
+@media (max-width: 1440px) {
   nav ul { gap: 14px; }
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -6px; }
+  nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .05em; }
 }
-@media (max-width: 1120px) {  /* below this the "/ workshops" tag makes way for the links */
+@media (max-width: 1230px) {  /* below this the "/ workshops" tag makes way for the links */
   nav .logo .sub { display: none; }
 }
-nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
-@media (max-width: 999px) {  /* the section links shrink to their numbers, as on the home page: a two-character window over "01 Moduli" */
+@media (max-width: 1120px) {  /* the section links shrink to their numbers, as on the home page: a two-character window over "01 Moduli" */
   nav ul li:nth-child(-n+4) a { display: inline-block; width: calc(2ch + .16em); white-space: nowrap; vertical-align: bottom; clip-path: inset(-10px -4px); }
 }
 @media (max-width: 760px) {
-  nav ul { margin-left: 0; }
-  nav ul li:not(.home-item):not(.lang-item) { display: none; }
+  nav ul { gap: 18px; margin-left: 0; }
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -8px; }
+  nav ul li:not(.home-item):not(.lang-item):not(.nav-icon-item) { display: none; }
   nav .logo .sub { display: none; }
 }
-@media (max-width: 480px) {  /* logo, language switch, accent dot and ← Home share one row on phones */
+@media (max-width: 720px) {  /* phones keep only Ko-fi (accent.css), at the bar's own gap from the dot */
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: 0; }
+}
+@media (max-width: 480px) {  /* logo, ←, language switch, accent dot and Ko-fi share one row on phones: the Home link keeps only its arrow (the logo goes home too) */
   nav { padding: 14px 16px; }
   nav ul { gap: 12px; }
+  nav ul a.home-link span { display: none; }
   nav .logo { font-size: 15.6px; gap: 8px; }
 }
 @media (max-width: 400px) {  /* the wordmark steps down so ← Home stays on one line beside the accent dot */
@@ -401,6 +451,7 @@ footer a:hover { color: var(--orange); }
     <li><a href="#eventi">02 Eventi</a></li>
     <li><a href="#universita">03 Università</a></li>
     <li><a href="#prenota">04 Prenota</a></li>
+    <li class="home-item"><a class="home-link" href="/it/" aria-label="Home">← <span>Home</span></a></li>
     <li class="lang-item">
       <div class="lang-switch">
         <a href="/workshops.html">EN</a>
@@ -408,7 +459,19 @@ footer a:hover { color: var(--orange); }
         <a href="/it/workshops.html" class="active">IT</a>
       </div>
     </li>
-    <li class="home-item"><a class="home-link" href="/it/">← Home</a></li>
+    <li class="nav-icon-item"><a class="nav-icon" href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon" href="https://www.instagram.com/jacopoottaviani/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9c-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13a5.88 5.88 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.88 5.88 0 0 0 2.13-1.38 5.88 5.88 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon" href="https://x.com/JacopoOttaviani" target="_blank" rel="noopener" aria-label="X">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.9.79h3.68l-8.04 9.19L24 22.5h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 .79h7.59l5.24 6.93L18.9.79zm-1.29 19.5h2.04L6.49 2.88H4.3l13.31 17.41z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon kofi" href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener" aria-label="Offrimi un caffè su Ko-fi">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="kofi-cup"><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/></clipPath></defs><g class="steam"><path d="M7.5 8q-1.3-1.5 0-3t0-3"/><path d="M10.5 8q-1.3-1.5 0-3t0-3"/><path d="M13.5 8q-1.3-1.5 0-3t0-3"/></g><path class="heart" d="M10.5 7.6c-2.3-1.5-2.9-2.5-2.9-3.4a1.45 1.45 0 0 1 2.9-.4 1.45 1.45 0 0 1 2.9.4c0 .9-.6 1.9-2.9 3.4z"/><path class="cup-bg" d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><g clip-path="url(#kofi-cup)"><g class="coffee"><rect x="3" y="11" width="15" height="10"/><rect class="crema" x="3" y="11" width="15" height="1.1"/></g></g><path class="handle" d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9"/><path class="cup" d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path class="saucer" d="M2 21.8h17"/></svg>
+      <span class="kofi-tip" aria-hidden="true">Offrimi un caffè</span>
+    </a></li>
   </ul>
 </nav>
 
