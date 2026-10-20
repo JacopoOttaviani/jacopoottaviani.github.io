@@ -182,20 +182,17 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
 }
 .lang-switch a::after { display: none !important; }
 .lang-switch .sep { color: #ccc; }
-/* the bar stays one row at every width: the Italian labels are longer, so the full row needs ~1480px (accent dot
-   folded); below that the gaps and letter-spacing tighten (down to ~1345px), then the section links shrink to their
-   numbers, as the section tags read "01 / Chi sono" (down to ~850px), then they leave the bar as on phones */
+/* the bar stays one row at every width: the Italian labels are longer, so the full row needs ~1300px (accent dot
+   folded); below that the gaps and letter-spacing tighten (down to ~1155px), then the section links leave the bar
+   as on phones */
 nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
 nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the social icons sit as a cluster, 12px apart, not at the bar's gap */
-@media (max-width: 1520px) {
+@media (max-width: 1320px) {
   nav ul { gap: 14px; }
   nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -6px; }
   nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .05em; }
 }
-@media (max-width: 1349px) {  /* a two-character window over "01 Chi sono": the full label stays the link's name */
-  nav ul li:nth-child(-n+6) a { width: calc(2ch + .1em); white-space: nowrap; clip-path: inset(-10px -4px); }
-}
-@media (max-width: 860px) {
+@media (max-width: 1180px) {
   nav ul { gap: 18px; margin-left: 0; }
   nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -8px; }
   nav ul li:not(.nav-icon-item):not(.lang-item) { display: none; }
@@ -590,12 +587,12 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
   <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
   <a class="logo" href="#top"><svg width="26.4" height="26.4" viewBox="0 0 32 32" aria-hidden="true"><path d="M25.24 19.83 L19.83 25.24 L12.17 25.24 L6.76 19.83 L6.76 12.17 L12.17 6.76 L19.83 6.76 L25.24 12.17 Z" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 16 L25.24 19.83 M16 16 L19.83 25.24 M16 16 L12.17 25.24 M16 16 L6.76 19.83 M16 16 L6.76 12.17 M16 16 L12.17 6.76 M16 16 L19.83 6.76 M16 16 L25.24 12.17" stroke="#1A1A1A" stroke-width=".9" opacity=".5" fill="none"/><path d="M6.76 13.6 L1.4 16 L6.76 18.4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/><rect x="25.2" y="13.3" width="5.8" height="5.4" rx="1.6" fill="#1A1A1A"/><circle cx="16" cy="16" r="3.6" fill="#FF7A29"/></svg><b>jacopo<span>.</span>ottaviani</b></a>
   <ul>
-    <li><a href="#bio">01 Chi sono</a></li>
-    <li><a href="#skills">02 Competenze</a></li>
-    <li><a href="#partners">03 Partner</a></li>
-    <li><a href="#work">04 Lavori</a></li>
-    <li><a href="#publications">05 Saggi</a></li>
-    <li><a href="#contact">06 Contatti</a></li>
+    <li><a href="#bio">Chi sono</a></li>
+    <li><a href="#skills">Competenze</a></li>
+    <li><a href="#partners">Partner</a></li>
+    <li><a href="#work">Lavori</a></li>
+    <li><a href="#publications">Saggi</a></li>
+    <li><a href="#contact">Contatti</a></li>
     <li><a href="/it/workshops.html" style="color: var(--orange);">Workshop ↗</a></li>
     <li class="lang-item">
       <div class="lang-switch">

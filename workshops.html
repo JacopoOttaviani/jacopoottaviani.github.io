@@ -178,23 +178,20 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
   border-bottom: 2px solid var(--orange);
 }
 .lang-switch .sep { color: rgba(247,244,234,.35); }
-/* the bar stays one row at every width: the full row needs ~1400px (accent dots open), so below 1440px, as on the home page, the gaps and
-   letter-spacing tighten as on the home page, then the "/ workshops" tag goes, then the section links shrink to
-   their numbers, then they leave the bar as on phones */
+/* the bar stays one row at every width: the full row needs ~1205px (accent dot folded), so below that, as on the
+   home page, the gaps and letter-spacing tighten, then the "/ workshops" tag goes (~1090px), then the section links
+   leave the bar as on phones (~970px) */
 nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
 nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the social icons sit as a cluster, 12px apart, not at the bar's gap */
-@media (max-width: 1440px) {
+@media (max-width: 1230px) {
   nav ul { gap: 14px; }
   nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -6px; }
   nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .05em; }
 }
-@media (max-width: 1230px) {  /* below this the "/ workshops" tag makes way for the links */
+@media (max-width: 1115px) {  /* below this the "/ workshops" tag makes way for the links */
   nav .logo .sub { display: none; }
 }
-@media (max-width: 1120px) {  /* the section links shrink to their numbers, as on the home page: a two-character window over "01 Modules" */
-  nav ul li:nth-child(-n+4) a { display: inline-block; width: calc(2ch + .16em); white-space: nowrap; vertical-align: bottom; clip-path: inset(-10px -4px); }
-}
-@media (max-width: 760px) {
+@media (max-width: 990px) {
   nav ul { gap: 18px; margin-left: 0; }
   nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -8px; }
   nav ul li:not(.home-item):not(.lang-item):not(.nav-icon-item) { display: none; }
@@ -449,10 +446,10 @@ footer a:hover { color: var(--orange); }
   <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
   <a class="logo" href="/"><svg width="26.4" height="26.4" viewBox="0 0 32 32" aria-hidden="true"><path d="M25.24 19.83 L19.83 25.24 L12.17 25.24 L6.76 19.83 L6.76 12.17 L12.17 6.76 L19.83 6.76 L25.24 12.17 Z" fill="#092E21" stroke="#F7F4EA" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 16 L25.24 19.83 M16 16 L19.83 25.24 M16 16 L12.17 25.24 M16 16 L6.76 19.83 M16 16 L6.76 12.17 M16 16 L12.17 6.76 M16 16 L19.83 6.76 M16 16 L25.24 12.17" stroke="#F7F4EA" stroke-width=".9" opacity=".5" fill="none"/><path d="M6.76 13.6 L1.4 16 L6.76 18.4" fill="#092E21" stroke="#F7F4EA" stroke-width="1.6" stroke-linejoin="round"/><rect x="25.2" y="13.3" width="5.8" height="5.4" rx="1.6" fill="#F7F4EA"/><circle cx="16" cy="16" r="3.6" fill="#FF7A29"/></svg><b>jacopo<span>.</span>ottaviani</b><span class="sub">/ workshops</span></a>
   <ul>
-    <li><a href="#modules">01 Modules</a></li>
-    <li><a href="#events">02 Events</a></li>
-    <li><a href="#universities">03 Universities</a></li>
-    <li><a href="#book">04 Book me</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#universities">Universities</a></li>
+    <li><a href="#book">Book me</a></li>
     <li class="home-item"><a class="home-link" href="/" aria-label="Home">← <span>Home</span></a></li>
     <li class="lang-item">
       <div class="lang-switch">
