@@ -74,6 +74,7 @@
 <!-- ═══ AI SEO ═══ -->
 <meta name="description:extended" content="Jacopo Ottaviani is a senior Italian data journalist and computer scientist. He produces investigative data-driven stories published internationally in The Guardian, Der Spiegel, El País, Internazionale, Daily Maverick, Reuters, Columbia Journalism Review, and UNDP. He has won the Lorenzo Natali Media Prize, Sigma Awards, Data Journalism Awards, and European Press Prize. He has deep expertise in international development, applying data science, digital cartography, and computational linguistics to humanitarian and development storytelling. He is Chief Data Officer at Code for Africa, uses AI and agentic workflows at every stage of his data journalism, writes a first-person essay series on AI in journalism for the Reuters Institute for the Study of Journalism (University of Oxford), and trains journalists and organisations worldwide on using AI in data journalism.">
 <link rel="llms.txt" href="/llms.txt">
+<link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/accent.css">
 <script>try{var a=localStorage.getItem("accent");if(a&&a!=="orange")document.documentElement.setAttribute("data-accent",a)}catch(e){}</script>
 <script src="/assets/accent.js" defer></script>
@@ -87,6 +88,13 @@
   --peach: #FFDCC2;
   --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bar: "Jost", "Futura", "Helvetica Neue", Arial, sans-serif;  /* the menu bar: logo, links, EN / IT, Ko-fi tip (self-hosted, below) */
+}
+@font-face {  /* Jost, the Bauhaus geometric, for the menu bar: variable 400-700, the latin subset as Google Fonts cuts it
+                 (self-hosted: the site makes no third-party requests); Jost has no arrows, so ↗ and ← fall back to the system font */
+  font-family: "Jost"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("/assets/fonts/jost-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -113,8 +121,8 @@ nav {
   border-bottom: 2px solid var(--ink);
 }
 nav .logo {
-  font-family: var(--mono); font-weight: 700; font-size: 18px;
-  text-decoration: none; color: var(--ink); letter-spacing: .04em;
+  font-family: var(--bar); font-weight: 600; font-size: 19px;
+  text-decoration: none; color: var(--ink); letter-spacing: .02em;
   display: flex; align-items: center; gap: 11px;
 }
 nav .logo span { color: var(--orange); }
@@ -124,7 +132,7 @@ nav .logo:hover svg, nav .logo:focus-visible svg { transform: rotate(45deg); }  
 nav ul { display: flex; gap: 26px; list-style: none; align-items: center; }
 nav ul li { display: flex; align-items: center; }
 nav ul a {
-  font-family: var(--mono); font-size: 15px; letter-spacing: .08em;
+  font-family: var(--bar); font-weight: 500; font-size: 14.5px; letter-spacing: .14em;
   text-transform: uppercase; color: var(--ink); text-decoration: none; position: relative;
 }
 nav ul a::after {
@@ -157,7 +165,7 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
 @keyframes kofi-beat { 0%, 30%, 60%, 100% { transform: translateY(0) scale(1.3); } 15% { transform: translateY(0) scale(1.5); } 45% { transform: translateY(0) scale(1.42); } }
 .kofi-tip {
   position: absolute; top: calc(100% + 28px); right: -12px;
-  font-family: var(--mono); font-size: 13.2px; letter-spacing: .08em; white-space: nowrap;
+  font-family: var(--bar); font-size: 13px; letter-spacing: .08em; white-space: nowrap;
   background: var(--ink); color: var(--paper); padding: 6px 10px;
   box-shadow: 4px 4px 0 var(--orange);
   opacity: 0; transform: translateY(-4px); pointer-events: none;
@@ -171,7 +179,7 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
   .kofi:hover .heart, .kofi:focus-visible .heart { animation: none; opacity: 1; transform: scale(1.3); }
 }
 .lang-switch {
-  font-family: var(--mono); font-size: 14.4px; letter-spacing: .08em;
+  font-family: var(--bar); font-weight: 500; font-size: 14px; letter-spacing: .14em;
   display: flex; align-items: center; gap: 4px;
 }
 .lang-switch a {
@@ -185,16 +193,16 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
 }
 .lang-switch a::after { display: none !important; }
 .lang-switch .sep { color: #ccc; }
-/* the bar stays one row at every width: the full row needs ~1215px (accent dot folded), so below that the gaps and
-   letter-spacing tighten (down to ~1075px), then the section links leave the bar as on phones */
+/* the bar stays one row at every width: in Jost the full row needs ~1207px (accent dot folded), so below that the gaps
+   and letter-spacing tighten (down to ~1047px), then the section links leave the bar as on phones */
 nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
 nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the social icons sit as a cluster, 12px apart, not at the bar's gap */
-@media (max-width: 1240px) {
+@media (max-width: 1235px) {
   nav ul { gap: 14px; }
   nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -6px; }
-  nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .05em; }
+  nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .08em; }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1075px) {
   nav ul { gap: 18px; margin-left: 0; }
   nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -8px; }
   nav ul li:not(.nav-icon-item):not(.lang-item) { display: none; }
@@ -205,16 +213,16 @@ nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the socia
 @media (max-width: 480px) {  /* logo, language switch, accent dot and Ko-fi share one row on phones */
   nav { padding: 14px 16px; }
   nav ul { gap: 12px; }
-  nav .logo { font-size: 15.6px; gap: 8px; }
+  nav .logo { font-size: 16.5px; gap: 8px; }
 }
 @media (max-width: 380px) {
   nav ul { gap: 9px; }
-  nav .logo { font-size: 14.4px; gap: 7px; }
+  nav .logo { font-size: 15.2px; gap: 7px; }
   .lang-switch a { padding: 2px 3px; }
 }
 @media (max-width: 340px) {  /* the narrowest phones: the wordmark steps down so Ko-fi stays on screen */
   nav ul { gap: 7px; }
-  nav .logo { font-size: 12.5px; gap: 6px; }
+  nav .logo { font-size: 13.2px; gap: 6px; }
 }
 
 /* ---------- hero ---------- */
