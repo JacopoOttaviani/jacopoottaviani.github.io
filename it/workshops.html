@@ -126,14 +126,13 @@ nav ul a {
   font-family: var(--bar); font-weight: 500; font-size: 14.5px; letter-spacing: .14em;
   text-transform: uppercase; color: var(--chalk); text-decoration: none; position: relative;
 }
-nav ul a::after {
-  content: ''; position: absolute; left: 0; bottom: -5px; height: 3px; width: 0;
-  background: var(--orange); transition: width .25s ease;
-}
-nav ul a:hover::after { width: 100%; }
+/* hover: the stamp. The word snaps into a chalk tile with the accent's hard shadow, no easing, as the buttons do;
+   padding and negative margin cancel out, so the tile grows around the word without moving its neighbours */
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a { padding: 4px 8px; margin: -4px -8px; }
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a:hover,
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a:focus-visible { background: var(--chalk); color: var(--board); box-shadow: 3px 3px 0 var(--orange); }
 nav ul a.home-link { color: var(--peach); white-space: nowrap; }
 nav ul a.nav-icon { display: flex; align-items: center; }
-nav ul a.nav-icon::after { display: none; }
 nav ul a.nav-icon svg { width: 16.8px; height: 16.8px; display: block; fill: var(--chalk); transition: fill .25s ease; }
 nav ul a.nav-icon:hover svg { fill: var(--orange); }
 /* Ko-fi: the espresso cup from the home page, drawn in chalk; hover fills it to the brim and the steam turns into a heart */
@@ -178,7 +177,6 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
   color: var(--chalk); text-decoration: none; padding: 2px 5px;
   transition: color .2s ease;
 }
-.lang-switch a::after { display: none !important; }
 .lang-switch a:hover { color: var(--orange); }
 .lang-switch a.active {
   color: var(--orange); font-weight: 700;

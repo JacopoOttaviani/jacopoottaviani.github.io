@@ -135,13 +135,12 @@ nav ul a {
   font-family: var(--bar); font-weight: 500; font-size: 14.5px; letter-spacing: .14em;
   text-transform: uppercase; color: var(--ink); text-decoration: none; position: relative;
 }
-nav ul a::after {
-  content: ''; position: absolute; left: 0; bottom: -5px; height: 3px; width: 0;
-  background: var(--orange); transition: width .25s ease;
-}
-nav ul a:hover::after { width: 100%; }
+/* hover: the stamp. The word snaps into an ink tile with the accent's hard shadow, no easing, as the buttons do;
+   padding and negative margin cancel out, so the tile grows around the word without moving its neighbours */
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a { padding: 4px 8px; margin: -4px -8px; }
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a:hover,
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a:focus-visible { background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--orange); }
 nav ul a.nav-icon { display: flex; align-items: center; }
-nav ul a.nav-icon::after { display: none; }
 nav ul a.nav-icon svg { width: 16.8px; height: 16.8px; display: block; fill: var(--ink); transition: fill .25s ease; }
 nav ul a.nav-icon:hover svg { fill: var(--orange); }
 /* Ko-fi: an espresso cup drawn in section, steam rising; hover fills it to the brim and the steam turns into a heart */
@@ -191,7 +190,6 @@ nav ul a.nav-icon.kofi:hover svg { fill: none; }
   color: var(--orange); font-weight: 700;
   border-bottom: 2px solid var(--orange);
 }
-.lang-switch a::after { display: none !important; }
 .lang-switch .sep { color: #ccc; }
 /* the bar stays one row at every width: in Jost the full row needs ~1207px (accent dot folded), so below that the gaps
    and letter-spacing tighten (down to ~1047px), then the section links leave the bar as on phones */
