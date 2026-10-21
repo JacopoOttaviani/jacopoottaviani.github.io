@@ -466,11 +466,13 @@ h2 .accent { color: var(--orange); }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .pub:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
-.pub-outlet {
-  font-family: var(--mono); font-size: 15px; font-weight: 700;
-  letter-spacing: .06em; text-transform: uppercase; line-height: 1.5;
-  color: var(--green);
-}
+/* the outlet column is the card's masthead: the outlet's own logo, monochrome ink (assets/publications/), its name in the alt text */
+.pub-outlet { display: flex; align-items: center; gap: 14px; }
+.pub-outlet img { display: block; width: auto; opacity: .85; transition: opacity .2s ease; }
+.pub:hover .pub-outlet img { opacity: 1; }
+.pub-outlet .lg-risj { height: 58px; }     /* Reuters Institute + University of Oxford, two squares, 253 × 123 */
+.pub-outlet .lg-urbanet { height: 30px; }  /* Urbanet wordmark, 578 × 222 */
+.pub-outlet .lg-giz { height: 26px; }      /* giz, 98 × 80 */
 .pub-main h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.3; }
 .pub-main p { font-size: 14.5px; color: #3a3d4a; margin-top: 6px; }
 .pub-arrow {
@@ -945,7 +947,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
   <div class="pubs">
 
     <a class="pub" href="https://reutersinstitute.politics.ox.ac.uk/news/prompts-loops-how-ai-entered-every-stage-my-data-journalism" target="_blank" rel="noopener">
-      <div class="pub-outlet">Reuters Institute,<br>University of Oxford</div>
+      <div class="pub-outlet"><img class="lg-risj" src="/assets/publications/reuters-institute-oxford.svg" alt="Reuters Institute, University of Oxford" width="253" height="123" loading="lazy"></div>
       <div class="pub-main">
         <h3>From prompts to loops: How AI entered every stage of my data journalism</h3>
         <p>AI now sits inside every stage of the pipeline, from single prompts to agentic loops. Building Italia Fragile, the journalist becomes less a hands-on builder and more an orchestra conductor.</p>
@@ -954,7 +956,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
     </a>
 
     <a class="pub" href="https://reutersinstitute.politics.ox.ac.uk/news/weeks-work-days-how-i-rebuilt-two-data-journalism-projects-ai" target="_blank" rel="noopener">
-      <div class="pub-outlet">Reuters Institute,<br>University of Oxford</div>
+      <div class="pub-outlet"><img class="lg-risj" src="/assets/publications/reuters-institute-oxford.svg" alt="Reuters Institute, University of Oxford" width="253" height="123" loading="lazy"></div>
       <div class="pub-main">
         <h3>From weeks of work to days: How I rebuilt two data journalism projects with AI</h3>
         <p>How generative AI turned two multi-week data visualisation builds into a matter of days, and what that means for the craft.</p>
@@ -963,7 +965,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
     </a>
 
     <a class="pub" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">
-      <div class="pub-outlet">Urbanet, GIZ</div>
+      <div class="pub-outlet"><img class="lg-urbanet" src="/assets/publications/urbanet.svg" alt="Urbanet" width="578" height="222" loading="lazy"><img class="lg-giz" src="/assets/publications/giz.svg" alt="GIZ" width="98" height="80" loading="lazy"></div>
       <div class="pub-main">
         <h3>Mapping Makoko: A community stating its right to exist</h3>
         <p>How a community-led mapping project put one of Lagos' largest informal settlements on the map, with drones, canoes and open data.</p>
