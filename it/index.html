@@ -537,6 +537,7 @@ h2 .accent { color: var(--orange); }
   .swipe-hint--next { right: 4px; }
   .swipe-hint--prev { left: 4px; }
 }
+.slides .slide:only-child { padding-left: 4px; padding-right: 4px; }
 .slider-dots { display: flex; gap: 12px; justify-content: center; margin-top: 30px; }
 .sdot {
   width: 13px; height: 13px; border-radius: 50%; padding: 0;
@@ -700,6 +701,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
           </div>
         </div>
       </div>
+      <!-- Keywords mosaic and Sankey, off for now (their dots are off below and the next arrow is hidden)
       <div class="slide">
         <div class="skills-grid">
           <div>
@@ -737,16 +739,19 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
           </div>
         </div>
       </div>
+      -->
     </div>
   </div>
-  <button class="swipe-hint swipe-hint--next" id="swipeHintNext" type="button" aria-label="Vista successiva">&rsaquo;</button>
+  <button class="swipe-hint swipe-hint--next is-hidden" id="swipeHintNext" type="button" aria-label="Vista successiva">&rsaquo;</button>
   <button class="swipe-hint swipe-hint--prev is-hidden" id="swipeHintPrev" type="button" aria-label="Vista precedente">&lsaquo;</button>
   </div>
+  <!-- One view for now, so no dots
   <div class="slider-dots" aria-label="Viste della sezione competenze">
     <button class="sdot active" id="sdot0" aria-label="Mostra i sacchi delle competenze"></button>
     <button class="sdot" id="sdot1" aria-label="Mostra il mosaico delle parole chiave"></button>
     <button class="sdot" id="sdot2" aria-label="Mostra il Sankey delle competenze"></button>
   </div>
+  -->
 </section>
 
 <section id="partners" class="reveal">
@@ -1408,7 +1413,8 @@ document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
   const slides = document.getElementById("skillsSlides");
   const slider = document.getElementById("skillsSlider");
   if (!slides || !slider) return;
-  const dots = [document.getElementById("sdot0"), document.getElementById("sdot1"), document.getElementById("sdot2")];
+  const dots = [document.getElementById("sdot0"), document.getElementById("sdot1"), document.getElementById("sdot2")].filter(Boolean);
+  if (dots.length < 2) return;
   const swipeNext = document.getElementById("swipeHintNext");
   const swipePrev = document.getElementById("swipeHintPrev");
   let cur = 0;
