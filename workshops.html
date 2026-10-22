@@ -114,9 +114,20 @@ nav .logo {
   display: flex; align-items: center; gap: 11px;
 }
 nav .logo span { color: var(--orange); }
-nav .logo svg { display: block; transition: transform .55s cubic-bezier(.2,.7,.2,1); transform-origin: 50% 50%; }
-nav .logo:hover svg, nav .logo:focus-visible svg { transform: rotate(45deg); }  /* the pot turns by one facet */
-@media (prefers-reduced-motion: reduce) { nav .logo:hover svg, nav .logo:focus-visible svg { transform: none; } }
+nav .logo svg { display: block; flex-shrink: 0; overflow: visible; }  /* the footer's Moka, built from Bauhaus shapes, in the accent colour */
+/* hover: the Moka brews. The lid and its knob tip open on the hinge by the handle, as a Moka lid does,
+   and steam puffs out of the opening in three dots, up and away from the lid, for as long as the pointer stays */
+nav .logo .cap { transform-box: fill-box; transform-origin: 100% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+nav .logo:hover .cap, nav .logo:focus-visible .cap { transform: rotate(24deg); }
+nav .logo .steam circle { fill: currentColor; opacity: 0; transform-box: fill-box; transform-origin: 50% 50%; }
+nav .logo:hover .steam circle, nav .logo:focus-visible .steam circle { animation: moka-steam 1.8s ease-out .3s infinite; }
+nav .logo:hover .steam circle:nth-child(2), nav .logo:focus-visible .steam circle:nth-child(2) { animation-delay: .9s; }
+nav .logo:hover .steam circle:nth-child(3), nav .logo:focus-visible .steam circle:nth-child(3) { animation-delay: 1.5s; }
+@keyframes moka-steam { 0% { opacity: 0; transform: translate(0, 0) scale(.5); } 30% { opacity: .55; } 100% { opacity: 0; transform: translate(-12px, -9px) scale(1.15); } }
+@media (prefers-reduced-motion: reduce) {
+  nav .logo .cap { transition: none; }
+  nav .logo:hover .steam circle, nav .logo:focus-visible .steam circle { animation: none; opacity: .4; transform: translateY(-7px); }
+}
 nav .logo .sub {
   color: var(--chalk-dim); font-weight: 400; font-size: 14px;
   margin-left: 2px; letter-spacing: .12em;
@@ -224,7 +235,7 @@ nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the socia
 @media (max-width: 340px) {
   nav ul { gap: 7px; }
   nav .logo { font-size: 12.7px; }
-  nav .logo svg { width: 22px; height: 22px; }
+  nav .logo svg { width: 17.8px; height: 22px; }  /* the Moka keeps its 47:58 proportions */
 }
 
 /* ---------- hero ---------- */
@@ -450,7 +461,7 @@ footer a:hover { color: var(--orange); }
 <nav>
   <span class="load-bar" id="load-bar" aria-hidden="true"></span>
   <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
-  <a class="logo" href="/"><svg width="26.4" height="26.4" viewBox="0 0 32 32" aria-hidden="true"><path d="M25.24 19.83 L19.83 25.24 L12.17 25.24 L6.76 19.83 L6.76 12.17 L12.17 6.76 L19.83 6.76 L25.24 12.17 Z" fill="#092E21" stroke="#F7F4EA" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 16 L25.24 19.83 M16 16 L19.83 25.24 M16 16 L12.17 25.24 M16 16 L6.76 19.83 M16 16 L6.76 12.17 M16 16 L12.17 6.76 M16 16 L19.83 6.76 M16 16 L25.24 12.17" stroke="#F7F4EA" stroke-width=".9" opacity=".5" fill="none"/><path d="M6.76 13.6 L1.4 16 L6.76 18.4" fill="#092E21" stroke="#F7F4EA" stroke-width="1.6" stroke-linejoin="round"/><rect x="25.2" y="13.3" width="5.8" height="5.4" rx="1.6" fill="#F7F4EA"/><circle cx="16" cy="16" r="3.6" fill="#FF7A29"/></svg><b>jacopo<span>.</span>ottaviani</b><span class="sub">/ workshops</span></a>
+  <a class="logo" href="/"><svg class="moka" width="21.4" height="26.4" viewBox="8.5 2.5 47 58" aria-hidden="true"><g class="steam"><circle cx="23" cy="16.2" r="2.2"/><circle cx="27" cy="16.2" r="1.8"/><circle cx="31" cy="16.2" r="1.4"/></g><path class="cap" fill="#FF7A29" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15Z"/><path fill="#FF7A29" d="M18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg><b>jacopo<span>.</span>ottaviani</b><span class="sub">/ workshops</span></a>
   <ul>
     <li><a href="#modules">Modules</a></li>
     <li><a href="#events">Events</a></li>
