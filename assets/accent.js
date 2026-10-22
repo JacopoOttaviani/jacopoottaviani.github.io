@@ -1,4 +1,6 @@
-/* Accent colour picker in the menu bar: four dots, orange the default, the choice remembered in localStorage.
+/* Accent colour picker in the menu bar: four dots, cobalt the default, the choice remembered in localStorage.
+   The drawings and the CSS tokens are authored in orange, so orange is the one accent that needs no data-accent;
+   cobalt, the default, is applied like any other pick.
    The <head> one-liner has already set <html data-accent> before the first paint; this builds the dots,
    recolours the Moka drawings and the project banners (they are <img>s) and folds the row into one dot when the bar has no room. */
 (function () {
@@ -18,7 +20,7 @@
 
   function find(id) {
     for (var i = 0; i < ACCENTS.length; i++) if (ACCENTS[i].id === id) return ACCENTS[i];
-    return ACCENTS[0];
+    return ACCENTS[0];  // no data-accent: orange, the colours the files are drawn in
   }
   var current = find(root.getAttribute("data-accent"));
 
@@ -51,7 +53,7 @@
     if (a.id === "orange") root.removeAttribute("data-accent");
     else root.setAttribute("data-accent", a.id);
     if (remember) {
-      try { a.id === "orange" ? localStorage.removeItem("accent") : localStorage.setItem("accent", a.id); } catch (e) {}
+      try { localStorage.setItem("accent", a.id); } catch (e) {}  // orange is stored too: nothing stored now means cobalt
     }
     paintImages();
   }
