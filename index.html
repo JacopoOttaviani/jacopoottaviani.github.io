@@ -386,6 +386,12 @@ h2 .accent { color: var(--orange); }
 .skill-detail h3 .score { color: var(--orange); font-size: 16px; }
 .skill-detail p { font-size: 15.5px; line-height: 1.65; color: #3a3d4a; }
 .skill-detail .hint { margin-top: 14px; font-family: var(--mono); font-size: 11.5px; color: #8a8d99; }
+/* the sacks' box fills the column beside them, the hint at its foot */
+.sacks-wrap + .skills-text { align-self: stretch; display: flex; flex-direction: column; }
+#skillDetail { flex: 1; display: flex; flex-direction: column; padding: 32px 36px; }
+#skillDetail h3 { font-size: 15px; margin-bottom: 12px; }
+#skillDetail p { font-size: 17.5px; }
+#skillDetail .hint { margin-top: auto; padding-top: 20px; font-size: 12px; }
 
 /* ---------- 03 / partners ---------- */
 #partners { padding-bottom: 0; }
@@ -684,11 +690,6 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
             <svg class="sacks-svg" id="sacks" viewBox="0 0 640 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Eight coffee sacks, each filled with beans to the level of one skill"></svg>
           </div>
           <div class="skills-text">
-            <p class="lede">
-              Over a decade of digital and field experience, weighed out into eight sacks of beans.
-              Data journalism lives at the intersection of disciplines: this is how much
-              of each I carry. Hover a sack to read it.
-            </p>
             <div class="skill-detail" id="skillDetail">
               <h3 id="detailTitle">Overview <span class="score" id="detailScore"></span></h3>
               <p id="detailText">
