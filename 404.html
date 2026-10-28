@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page not found · Jacopo Ottaviani</title>
+<script>
+// BuildMap (formerly Africa Infra Watch) moved from /africa-infra-watch/ to its own domain
+(function () {
+  var pre = "/africa-infra-watch", p = location.pathname;
+  if (p === pre || p.indexOf(pre + "/") === 0)
+    location.replace("https://africa.buildmap.org" + (p.slice(pre.length) || "/") + location.search + location.hash);
+})();
+</script>
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body style="font:16px/1.5 system-ui,sans-serif;margin:3rem 16px;color:#1A1A1A;background:#fff">
+<h1 style="font-size:1.5rem">Page not found</h1>
+<p><a href="/">Go to jacopoottaviani.com</a></p>
+<p>Looking for BuildMap, the map of who builds and finances infrastructure in Africa?
+It now lives at <a href="https://africa.buildmap.org/">africa.buildmap.org</a>.</p>
+</body>
+</html>
