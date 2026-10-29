@@ -21,7 +21,7 @@ communicators worldwide.
     https://reutersinstitute.politics.ox.ac.uk/news/prompts-loops-how-ai-entered-every-stage-my-data-journalism
   - "From weeks of work to days: How I rebuilt two data journalism projects with AI" (2026)
     https://reutersinstitute.politics.ox.ac.uk/news/weeks-work-days-how-i-rebuilt-two-data-journalism-projects-ai
-- Runs workshops on using AI in data journalism: https://jacopoottaviani.com/workshops.html
+- Runs workshops on using AI in data journalism: https://jacopoottaviani.com/teaching.html
 
 ## Selected projects
 - Atlante della Sicurezza — reported crime in Italy's 108 provincial capitals, 2006–2024, from official ISTAT and Eurostat data: https://atlantedellasicurezza.it/

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NHK2YNN9T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8NHK2YNN9T');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop e Formazione — Jacopo Ottaviani</title>
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<!-- ═══ PRIMARY META ═══ -->
+<meta name="description" content="Workshop, masterclass e formazione per team di Jacopo Ottaviani: mappe e data visualisation, IA per il data journalism, e come vincere i grant giornalistici. Tenuti a Internazionale, Festival Gabo, Splice Media e in università di tutta Europa.">
+<meta name="author" content="Jacopo Ottaviani">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jacopoottaviani.com/it/teaching.html">
+<link rel="alternate" hreflang="en" href="https://jacopoottaviani.com/teaching.html">
+<link rel="alternate" hreflang="it" href="https://jacopoottaviani.com/it/teaching.html">
+
+<!-- ═══ OPEN GRAPH ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jacopo Ottaviani">
+<meta property="og:title" content="Workshop e Formazione — Jacopo Ottaviani">
+<meta property="og:description" content="Mappe e data visualisation, IA per il data journalism, e come vincere i grant giornalistici. Formazione pratica per aziende, organizzazioni e università.">
+<meta property="og:url" content="https://jacopoottaviani.com/it/teaching.html">
+<meta property="og:image" content="https://jacopoottaviani.com/assets/og-image-it.jpg?v=2026-10-22">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Jacopo Ottaviani, data journalist e informatico, accanto al disegno tecnico di una moka in sezione, con il caffè che sale lungo la colonna nel raccoglitore.">
+<meta property="og:locale" content="it_IT">
+
+<!-- ═══ TWITTER / X ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@JacopoOttaviani">
+<meta name="twitter:creator" content="@JacopoOttaviani">
+<meta name="twitter:title" content="Workshop e Formazione — Jacopo Ottaviani">
+<meta name="twitter:description" content="Mappe e data visualisation, IA per il data journalism, e come vincere i grant giornalistici. Formazione pratica per aziende, organizzazioni e università.">
+<meta name="twitter:image" content="https://jacopoottaviani.com/assets/og-image-it.jpg?v=2026-10-22">
+<meta name="twitter:image:alt" content="Jacopo Ottaviani, data journalist e informatico, accanto al disegno tecnico di una moka in sezione, con il caffè che sale lungo la colonna nel raccoglitore.">
+
+<!-- ═══ STRUCTURED DATA ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Workshop e Formazione di Jacopo Ottaviani",
+  "description": "Workshop pratici per giornalisti e organizzazioni: fondamenti di mappe e data visualisation, come usare l'IA nel data journalism, e come vincere i grant giornalistici.",
+  "provider": { "@type": "Person", "name": "Jacopo Ottaviani", "url": "https://jacopoottaviani.com" }
+}
+</script>
+
+<link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/accent.css">
+<script>try{var a=localStorage.getItem("accent")||"cobalt";if(a!=="orange")document.documentElement.setAttribute("data-accent",a)}catch(e){document.documentElement.setAttribute("data-accent","cobalt")}</script>
+<script src="/assets/accent.js?v=2026-10-22" defer></script>
+<style>
+:root {
+  --board: #0C3B2A;          /* chalkboard green — the dark cousin of the homepage's #0E8C5A */
+  --board-deep: #092E21;
+  --chalk: #F7F4EA;
+  --chalk-dim: #BFD0C4;
+  --ink: #1A1A1A;
+  --grid: rgba(247,244,234,0.07);
+  --green: #0E8C5A;
+  --orange: #FF7A29;
+  --peach: #FFDCC2;
+  --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bar: "Jost", "Futura", "Helvetica Neue", Arial, sans-serif;  /* the menu bar: logo, links, EN / IT, Ko-fi tip (self-hosted, below) */
+}
+@font-face {  /* Jost, the Bauhaus geometric, for the menu bar: variable 400-700, the latin subset as Google Fonts cuts it
+                 (self-hosted: the site makes no third-party requests); Jost has no arrows, so ↗ and ← fall back to the system font */
+  font-family: "Jost"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("/assets/fonts/jost-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--board);
+  color: var(--chalk);
+  font-family: var(--sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+::selection { background: var(--peach); color: var(--ink); }
+
+/* ---------- nav ---------- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 32px;
+  background: rgba(9,46,33,.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--chalk);
+}
+nav .logo {
+  font-family: var(--bar); font-weight: 600; font-size: 19px;
+  text-decoration: none; color: var(--chalk); letter-spacing: .02em;
+  display: flex; align-items: center; gap: 11px;
+}
+nav .logo span { color: var(--orange); }
+nav .logo svg { display: block; flex-shrink: 0; overflow: visible; }  /* the footer's Moka, built from Bauhaus shapes, in the accent colour */
+/* hover: the Moka brews. The lid and its knob tip open on the hinge by the handle, as a Moka lid does,
+   and steam puffs out of the opening in three dots, up and away from the lid, for as long as the pointer stays */
+nav .logo .cap { transform-box: fill-box; transform-origin: 100% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+nav .logo:hover .cap, nav .logo:focus-visible .cap { transform: rotate(24deg); }
+nav .logo .steam circle { fill: currentColor; opacity: 0; transform-box: fill-box; transform-origin: 50% 50%; }
+nav .logo:hover .steam circle, nav .logo:focus-visible .steam circle { animation: moka-steam 1.8s ease-out .3s infinite; }
+nav .logo:hover .steam circle:nth-child(2), nav .logo:focus-visible .steam circle:nth-child(2) { animation-delay: .9s; }
+nav .logo:hover .steam circle:nth-child(3), nav .logo:focus-visible .steam circle:nth-child(3) { animation-delay: 1.5s; }
+@keyframes moka-steam { 0% { opacity: 0; transform: translate(0, 0) scale(.5); } 30% { opacity: .55; } 100% { opacity: 0; transform: translate(-12px, -9px) scale(1.15); } }
+@media (prefers-reduced-motion: reduce) {
+  nav .logo .cap { transition: none; }
+  nav .logo:hover .steam circle, nav .logo:focus-visible .steam circle { animation: none; opacity: .4; transform: translateY(-7px); }
+}
+nav .logo .sub {
+  color: var(--chalk-dim); font-weight: 400; font-size: 14px;
+  margin-left: 2px; letter-spacing: .12em;
+}
+nav ul { display: flex; gap: 26px; list-style: none; align-items: center; }
+nav ul li { display: flex; align-items: center; }
+nav ul a {
+  font-family: var(--bar); font-weight: 500; font-size: 14.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--chalk); text-decoration: none; position: relative;
+}
+/* hover: the stamp. The word snaps into a chalk tile with the accent's hard shadow, no easing, as the buttons do;
+   padding and negative margin cancel out, so the tile grows around the word without moving its neighbours */
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a { padding: 4px 8px; margin: -4px -8px; }
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a:hover,
+nav ul li:not(.nav-icon-item):not(.lang-item):not(.accent-item) a:focus-visible { background: var(--chalk); color: var(--board); box-shadow: 3px 3px 0 var(--orange); }
+nav ul a.home-link { color: var(--peach); white-space: nowrap; }
+nav ul a.nav-icon { display: flex; align-items: center; }
+nav ul a.nav-icon svg { width: 16.8px; height: 16.8px; display: block; fill: var(--chalk); transition: fill .25s ease; }
+nav ul a.nav-icon:hover svg { fill: var(--orange); }
+/* Ko-fi: the espresso cup from the home page, drawn in chalk; hover fills it to the brim and the steam turns into a heart */
+nav ul a.nav-icon.kofi { position: relative; }
+nav ul a.nav-icon.kofi svg { width: 26.4px; height: 26.4px; margin: -8.4px -2.4px 0; overflow: visible; fill: none; }
+nav ul a.nav-icon.kofi:hover svg { fill: none; }
+.kofi .cup, .kofi .handle, .kofi .saucer { fill: none; stroke: var(--chalk); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.kofi .cup-bg { fill: var(--board-deep); }
+.kofi .coffee { fill: var(--orange); transform: translateY(3.5px); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.kofi .crema { fill: var(--peach); }
+.kofi .steam { transition: opacity .25s ease; }
+.kofi .steam path { fill: none; stroke: var(--chalk); stroke-width: 1.3; stroke-linecap: round; opacity: 0; animation: kofi-steam 3s ease-in-out infinite; }
+.kofi .steam path:nth-child(2) { animation-delay: -2s; }
+.kofi .steam path:nth-child(3) { animation-delay: -1s; }
+.kofi .heart { fill: var(--orange); opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; }
+.kofi:hover .coffee, .kofi:focus-visible .coffee { transform: translateY(0); }
+.kofi:hover .steam, .kofi:focus-visible .steam { opacity: 0; }
+.kofi:hover .heart, .kofi:focus-visible .heart { animation: kofi-heart-in .7s cubic-bezier(.2,.7,.2,1) .15s both, kofi-beat 1.3s ease-in-out 1s infinite; }
+@keyframes kofi-steam { 0% { opacity: 0; transform: translateY(2px); } 35% { opacity: .55; } 100% { opacity: 0; transform: translateY(-3px); } }
+@keyframes kofi-heart-in { 0% { opacity: 0; transform: translateY(5px) scale(.4); } 60% { opacity: 1; transform: translateY(-1px) scale(1.45); } 100% { opacity: 1; transform: translateY(0) scale(1.3); } }
+@keyframes kofi-beat { 0%, 30%, 60%, 100% { transform: translateY(0) scale(1.3); } 15% { transform: translateY(0) scale(1.5); } 45% { transform: translateY(0) scale(1.42); } }
+.kofi-tip {
+  position: absolute; top: calc(100% + 28px); right: -12px;
+  font-family: var(--bar); font-size: 13px; letter-spacing: .08em; white-space: nowrap;
+  background: var(--chalk); color: var(--board-deep); padding: 6px 10px;
+  box-shadow: 4px 4px 0 var(--orange);
+  opacity: 0; transform: translateY(-4px); pointer-events: none;
+  transition: opacity .2s ease, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.kofi-tip::before { content: ''; position: absolute; top: -4px; right: 17px; width: 9px; height: 9px; background: var(--chalk); transform: rotate(45deg); }
+.kofi:hover .kofi-tip, .kofi:focus-visible .kofi-tip { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .kofi .steam path { animation: none; opacity: .45; }
+  .kofi .coffee, .kofi-tip { transition: none; }
+  .kofi:hover .heart, .kofi:focus-visible .heart { animation: none; opacity: 1; transform: scale(1.3); }
+}
+.lang-switch {
+  font-family: var(--bar); font-weight: 500; font-size: 14px; letter-spacing: .14em;
+  display: flex; align-items: center; gap: 4px;
+}
+.lang-switch a {
+  color: var(--chalk); text-decoration: none; padding: 2px 5px;
+  transition: color .2s ease;
+}
+.lang-switch a:hover { color: var(--orange); }
+.lang-switch a.active {
+  color: var(--orange); font-weight: 700;
+  border-bottom: 2px solid var(--orange);
+}
+.lang-switch .sep { color: rgba(247,244,234,.35); }
+/* the bar stays one row at every width: in Jost the full row needs ~1142px (accent dot folded), so below that, as on
+   the home page, the gaps and letter-spacing tighten, then the "/ formazione" tag goes (~1016px), then the section links
+   leave the bar as on phones (~905px) */
+nav ul { margin-left: 20px; }  /* the links keep clear of the logo; the accent dots fold rather than close this up */
+nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -14px; }  /* the social icons sit as a cluster, 12px apart, not at the bar's gap */
+@media (max-width: 1155px) {
+  nav ul { gap: 14px; }
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -6px; }
+  nav ul li:not(.nav-icon-item):not(.lang-item) a { letter-spacing: .08em; }
+}
+@media (max-width: 1030px) {  /* below this the "/ formazione" tag makes way for the links */
+  nav .logo .sub { display: none; }
+}
+@media (max-width: 935px) {
+  nav ul { gap: 18px; margin-left: 0; }
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: -8px; }
+  nav ul li:not(.home-item):not(.lang-item):not(.nav-icon-item) { display: none; }
+  nav .logo .sub { display: none; }
+}
+@media (max-width: 720px) {  /* phones keep only Ko-fi (accent.css), at the bar's own gap from the dot */
+  nav ul li.nav-icon-item + li.nav-icon-item { margin-left: 0; }
+}
+@media (max-width: 480px) {  /* logo, ←, language switch, accent dot and Ko-fi share one row on phones: the Home link keeps only its arrow (the logo goes home too) */
+  nav { padding: 14px 16px; }
+  nav ul { gap: 12px; }
+  nav ul a.home-link span { display: none; }
+  nav .logo { font-size: 16.5px; gap: 8px; }
+}
+@media (max-width: 400px) {  /* the wordmark steps down so ← Home stays on one line beside the accent dot */
+  nav .logo { font-size: 15.2px; gap: 7px; }
+  .lang-switch a { padding: 2px 4px; }
+}
+@media (max-width: 380px) {
+  nav ul { gap: 9px; }
+  nav .logo { font-size: 12.5px; gap: 6px; }
+  .lang-switch a { padding: 2px; }
+}
+@media (max-width: 340px) {
+  nav ul { gap: 7px; }
+  nav .logo { font-size: 12.7px; }
+  nav .logo svg { width: 17.8px; height: 22px; }  /* the Moka keeps its 47:58 proportions */
+}
+
+/* ---------- hero ---------- */
+.hero {
+  min-height: 92vh;
+  display: flex; flex-direction: column; justify-content: center;
+  max-width: 1200px; margin: 0 auto; padding: 130px 32px 64px; position: relative;
+}
+.hero-grid { display: flex; align-items: center; gap: 48px; }
+.hero-text { flex: 1.15; min-width: 0; }
+.hero-art {
+  flex: 1; max-width: 440px;
+  opacity: 0; animation: fadeUp .9s ease .7s forwards;
+}
+.hero-art svg { width: 100%; height: auto; display: block; }
+/* the lid: chalk lines plot in as the art fades up, the servings pour from the knob, a light passes over the facets */
+.lid text { font-family: var(--mono); }
+.lid-d, .lid-df { stroke-dasharray: 1 1.2; stroke-dashoffset: 1.01; animation: lidDraw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) both; }
+.lid-df { fill-opacity: 0; animation: lidDraw 1s cubic-bezier(.4,0,.2,1) var(--t, 0s) both, lidFill .5s ease calc(var(--t, 0s) + .7s) both; }
+.lid-f { opacity: 0; animation: lidFade .6s ease var(--t, 0s) both; }
+@keyframes lidDraw { to { stroke-dashoffset: 0; } }
+@keyframes lidFill { to { fill-opacity: 1; } }
+@keyframes lidFade { to { opacity: 1; } }
+.lid-facet { fill: var(--peach); fill-opacity: 0; stroke: var(--chalk); stroke-width: 1.2; stroke-opacity: .45; stroke-linejoin: round; cursor: pointer; transition: fill-opacity .2s ease; }
+.lid-facet.on { fill-opacity: .85; }
+.lid-wash { fill: var(--peach); opacity: 0; pointer-events: none; animation: lidWash 7s linear infinite; animation-delay: calc(4.2s + var(--k) * .5s); }
+@keyframes lidWash { 0% { opacity: 0; } 4% { opacity: .45; } 11%, 100% { opacity: 0; } }
+.lid-serving { fill: var(--orange); stroke: var(--board); stroke-width: 3; stroke-linejoin: round; cursor: pointer; transform-box: view-box; transform-origin: 240px 240px; transform: scale(0); animation: lidPour .9s cubic-bezier(.16,1,.3,1) var(--t, 0s) both; transition: fill .2s ease; }
+@keyframes lidPour { to { transform: scale(1); } }
+.lid-serving.on { fill: var(--peach); }
+.lid-label { font-size: 22px; font-weight: 700; fill: var(--chalk); cursor: pointer; transition: fill .2s ease; }
+.lid-label.on { fill: var(--orange); }
+.lid-cap { font-size: 13px; letter-spacing: .04em; fill: var(--chalk-dim); transition: fill .2s ease; }
+.lid-cap.on { fill: var(--chalk); }
+@media (max-width: 960px) { .hero-art { display: none; } }
+.hero .section-tag { margin-bottom: 20px; }
+.hero h1 {
+  font-size: clamp(42px, 7vw, 84px);
+  font-weight: 800; line-height: 1.02; letter-spacing: -0.025em;
+  color: var(--chalk);
+}
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span { display: inline-block; transform: translateY(110%); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .15s; }
+.hero h1 .line:nth-child(3) > span { animation-delay: .3s; }
+@keyframes rise { to { transform: translateY(0); } }
+.hero .mark {
+  white-space: nowrap;
+  padding: 0 .06em; margin: 0 -.06em;
+  background-image: linear-gradient(var(--peach), var(--peach));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 50%;
+  animation: paint .5s ease 1s forwards, inkin .5s ease 1s forwards;
+}
+@keyframes paint { to { background-size: 100% 100%; } }
+@keyframes inkin { to { color: var(--ink); } }
+.hero p.tag {
+  margin-top: 28px; font-size: clamp(17px, 2.2vw, 21px); max-width: 46ch; color: var(--chalk-dim);
+  opacity: 0; animation: fadeUp .8s ease .6s forwards;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.hero .cta-row { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp .8s ease .85s forwards; }
+.hero .scroll-hint {
+  position: absolute; bottom: 28px; left: 32px;
+  font-family: var(--mono); font-size: 12px; color: var(--chalk-dim);
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+/* ---------- shared ---------- */
+.section-tag {
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--peach);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+.section-tag::before { content: ""; width: 28px; height: 3px; background: var(--orange); }
+section { max-width: 1200px; margin: 0 auto; padding: 80px 32px; }
+h2 {
+  font-size: clamp(34px, 5vw, 56px); font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: 20px; color: var(--chalk);
+}
+h2 .accent { color: var(--orange); }
+.section-lede { max-width: 62ch; color: var(--chalk-dim); font-size: 17.5px; margin-bottom: 44px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-weight: 700; font-size: 14px; letter-spacing: .03em;
+  padding: 14px 28px; border: 2px solid var(--chalk);
+  background: var(--board-deep); color: var(--chalk); text-decoration: none;
+  box-shadow: 5px 5px 0 var(--green);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+.btn:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--orange); }
+.btn.solid { background: var(--peach); color: var(--ink); border-color: var(--chalk); }
+.btn.solid:hover { box-shadow: 8px 8px 0 var(--orange); }
+.btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---------- 01 / modules ---------- */
+.modules { display: flex; flex-direction: column; gap: 26px; counter-reset: mod; margin-top: 44px; }
+.module {
+  background: var(--board-deep);
+  border: 2px solid var(--chalk);
+  box-shadow: 6px 6px 0 rgba(255,220,194,.45);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.module:hover, .module[open] { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
+.module summary {
+  list-style: none; cursor: pointer;
+  display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center;
+  padding: 26px 28px;
+}
+.module summary::-webkit-details-marker { display: none; }
+.module summary:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.module .num {
+  counter-increment: mod;
+  font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .08em;
+  color: var(--orange); align-self: start; padding-top: 6px;
+}
+.module .num::before { content: "0" counter(mod); }
+.module .head h3 {
+  font-size: clamp(21px, 3vw, 30px); font-weight: 800; letter-spacing: -0.015em;
+  color: var(--chalk); line-height: 1.2;
+}
+.module .head .sub { margin-top: 6px; font-size: 15px; color: var(--chalk-dim); }
+.module .meta {
+  margin-top: 12px; font-family: var(--mono); font-size: 11.5px; font-weight: 700;
+  color: var(--ink); background: var(--peach); border: 1.5px solid var(--chalk);
+  display: inline-block; padding: 4px 10px;
+}
+.module .toggle {
+  font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--peach);
+  transition: transform .3s ease; line-height: 1; align-self: start; padding-top: 2px;
+}
+.module[open] .toggle { transform: rotate(45deg); color: var(--orange); }
+.module .body {
+  padding: 0 28px 28px 28px;
+  border-top: 2px dashed rgba(247,244,234,.25);
+  margin: 0 28px; padding: 22px 0 28px;
+}
+.module ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.module li { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+.module li .tick {
+  font-family: var(--mono); font-weight: 700; color: var(--orange); padding-top: 1px;
+}
+.module li strong { color: var(--chalk); display: block; font-size: 16.5px; }
+.module li p { color: var(--chalk-dim); font-size: 15px; margin-top: 2px; }
+@media (max-width: 640px) {
+  .module summary { grid-template-columns: 1fr auto; }
+  .module .num { display: none; }
+}
+
+/* ---------- logo grids ---------- */
+.logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.logo-grid.uni { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) { .logo-grid, .logo-grid.uni { grid-template-columns: repeat(2, 1fr); } }
+.logo-tile {
+  background: #fff; border: 2px solid var(--chalk);
+  box-shadow: 6px 6px 0 rgba(255,220,194,.45);
+  padding: 22px 18px 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  gap: 14px; min-height: 150px; text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.logo-tile:hover { transform: translate(-3px,-3px); box-shadow: 10px 10px 0 var(--orange); }
+.logo-tile img {
+  flex: 1; min-height: 0; max-height: 59px; max-width: 96%; width: auto; object-fit: contain;
+  filter: grayscale(1); opacity: .85; transition: filter .25s ease, opacity .25s ease;
+}
+.logo-tile img.wordmark { max-width: 65%; }
+.logo-tile:hover img { filter: none; opacity: 1; }
+.logo-tile .fallback {
+  display: none; align-items: center; justify-content: center; flex: 1;
+  font-family: var(--mono); font-weight: 700; font-size: 16px; color: var(--ink);
+  line-height: 1.3;
+}
+.logo-tile.no-img img { display: none; }
+.logo-tile.no-img .fallback { display: flex; }
+.logo-tile .place {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em;
+  text-transform: uppercase; color: #8a8d99;
+}
+
+/* ---------- CTA ---------- */
+#prenota { text-align: center; padding-bottom: 120px; }
+#prenota .section-tag { justify-content: center; }
+#prenota h2 { margin-bottom: 16px; }
+#prenota p { max-width: 52ch; margin: 0 auto 40px; font-size: 17.5px; color: var(--chalk-dim); }
+#prenota .cta-row { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+footer {
+  border-top: 2px solid var(--chalk); padding: 20px 32px; text-align: center;
+  font-family: var(--mono); font-size: 12px; background: var(--board-deep); color: var(--chalk-dim);
+}
+footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align: -6px; margin-right: 6px; }  /* the Moka built from Bauhaus shapes, in the accent colour (red #C8102E in other projects: assets/brand/) */
+footer a { color: var(--peach); text-decoration: none; }
+footer a:hover { color: var(--orange); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal, .hero h1 .line > span, .hero p.tag, .hero .cta-row, .hero-art { opacity: 1; transform: none; }
+  .hero .mark { background-size: 100% 100%; color: var(--ink); }
+  .lid-d, .lid-df { stroke-dashoffset: 0; } .lid-df { fill-opacity: 1; } .lid-f { opacity: 1; }
+  .lid-serving { transform: none; } .lid-wash, .lid-trav { display: none; }
+}
+
+/* ---------- load bar ---------- */
+.load-bar {
+  position: absolute; left: 0; top: 100%; height: 3px; width: 0;
+  background: var(--orange); pointer-events: none;
+  transition: width 2.4s cubic-bezier(.1,.7,.3,1);
+}
+.load-bar.done { width: 100% !important; transition: width .4s ease-out; }
+.load-bar.gone { opacity: 0; transition: opacity .35s ease-out; }
+@media (prefers-reduced-motion: reduce) { .load-bar, .load-bar.done, .load-bar.gone { transition: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="load-bar" id="load-bar" aria-hidden="true"></span>
+  <script>(function(){var b=document.getElementById('load-bar');function done(){b.classList.add('done');setTimeout(function(){b.classList.add('gone');},450);}requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.width='75%';});});if(document.readyState==='complete')done();else window.addEventListener('load',done);})();</script>
+  <a class="logo" href="/it/"><svg class="moka" width="21.4" height="26.4" viewBox="8.5 2.5 47 58" aria-hidden="true"><g class="steam"><circle cx="23" cy="16.2" r="2.2"/><circle cx="27" cy="16.2" r="1.8"/><circle cx="31" cy="16.2" r="1.4"/></g><path class="cap" fill="#FF7A29" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15Z"/><path fill="#FF7A29" d="M18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg><b>jacopo<span>.</span>ottaviani</b><span class="sub">/ formazione</span></a>
+  <ul>
+    <li><a href="#moduli">Moduli</a></li>
+    <li><a href="#eventi">Eventi</a></li>
+    <li><a href="#universita">Università</a></li>
+    <li><a href="#prenota">Prenota</a></li>
+    <li class="home-item"><a class="home-link" href="/it/" aria-label="Home">← <span>Home</span></a></li>
+    <li class="lang-item">
+      <div class="lang-switch">
+        <a href="/teaching.html">EN</a>
+        <span class="sep">/</span>
+        <a href="/it/teaching.html" class="active">IT</a>
+      </div>
+    </li>
+    <li class="nav-icon-item"><a class="nav-icon" href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon" href="https://www.instagram.com/jacopoottaviani/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9c-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13a5.88 5.88 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.88 5.88 0 0 0 2.13-1.38 5.88 5.88 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon" href="https://x.com/JacopoOttaviani" target="_blank" rel="noopener" aria-label="X">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.9.79h3.68l-8.04 9.19L24 22.5h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 .79h7.59l5.24 6.93L18.9.79zm-1.29 19.5h2.04L6.49 2.88H4.3l13.31 17.41z"/></svg>
+    </a></li>
+    <li class="nav-icon-item"><a class="nav-icon kofi" href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener" aria-label="Offrimi un caffè su Ko-fi">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="kofi-cup"><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/></clipPath></defs><g class="steam"><path d="M7.5 8q-1.3-1.5 0-3t0-3"/><path d="M10.5 8q-1.3-1.5 0-3t0-3"/><path d="M13.5 8q-1.3-1.5 0-3t0-3"/></g><path class="heart" d="M10.5 7.6c-2.3-1.5-2.9-2.5-2.9-3.4a1.45 1.45 0 0 1 2.9-.4 1.45 1.45 0 0 1 2.9.4c0 .9-.6 1.9-2.9 3.4z"/><path class="cup-bg" d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><g clip-path="url(#kofi-cup)"><g class="coffee"><rect x="3" y="11" width="15" height="10"/><rect class="crema" x="3" y="11" width="15" height="1.1"/></g></g><path class="handle" d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9"/><path class="cup" d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path class="saucer" d="M2 21.8h17"/></svg>
+      <span class="kofi-tip" aria-hidden="true">Offrimi un caffè</span>
+    </a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="section-tag">Workshop · Masterclass · Formazione per team</div>
+      <h1>
+        <span class="line"><span>Il sapere cresce</span></span>
+        <span class="line"><span>quando viene</span></span>
+        <span class="line"><span><span class="mark">condiviso.</span></span></span>
+      </h1>
+      <p class="tag">Da oltre dieci anni trasformo i dati in storie pubblicate in quattro continenti. Nei miei workshop insegno al tuo team a fare lo stesso — con le mappe, con l'IA e con i fondi per finanziare tutto.</p>
+      <div class="cta-row">
+        <a class="btn solid" href="#moduli">Scopri i moduli</a>
+        <a class="btn" href="#prenota">Prenota un workshop</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <!-- chalk Moka lid, seen from above: one facet per topic of the curriculum below, one serving of coffee per workshop. Drawn by the script at the end of the page. -->
+      <svg class="lid" id="lid" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Il coperchio di una moka visto dall'alto, disegnato col gesso: dieci facce, una per argomento del programma, in tre porzioni di caffè, una per workshop" data-caption="{m} workshop · {t} argomenti"></svg>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ la lezione è iniziata</div>
+</header>
+
+<section id="moduli" class="reveal">
+  <div class="section-tag">01 / Programma</div>
+  <h2>Insegnerò al tuo team a<span class="accent">…</span></h2>
+
+  <div class="modules">
+
+    <details class="module" data-lid="MAPPE">
+      <summary>
+        <span class="num" aria-hidden="true"></span>
+        <span class="head">
+          <h3>Creare mappe e visualizzazioni di dati</h3>
+          <span class="sub">Da un foglio di calcolo disordinato a una mappa o un grafico pronti da pubblicare — l'intero flusso di lavoro, dal vivo.</span>
+        </span>
+        <span class="toggle" aria-hidden="true">+</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><span class="tick">→</span><span><strong>La grammatica dei grafici</strong><p>Come scegliere la forma visiva giusta per i tuoi dati — e come riconoscere (ed evitare) i grafici e le mappe che mentono. Esempi reali di progetti premiati.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Mappe che dicono qualcosa</strong><p>Geocoding, mappe coropletiche e mappe di punti. Prendiamo un dataset grezzo e lo trasformiamo in una mappa pronta per la pubblicazione durante la sessione.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Trovare, pulire, interrogare</strong><p>Dove trovare i dati, come pulirli in fretta e quali domande farsi prima di visualizzare qualsiasi cosa. Ogni partecipante esce con un template riutilizzabile e un kit di strumenti per il proprio team.</p></span></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="module" data-lid="IA">
+      <summary>
+        <span class="num" aria-hidden="true"></span>
+        <span class="head">
+          <h3>Usare l'IA per il data storytelling</h3>
+          <span class="sub">Una pipeline assistita dall'IA, dall'inizio alla fine: ricerca → pulizia → visualizzazione → storytelling.</span>
+        </span>
+        <span class="toggle" aria-hidden="true">+</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><span class="tick">→</span><span><strong>Ricerca</strong><p>Inizia l'inchiesta con l'IA: analizza documenti, archivi e dataset, riassumi rapporti e richieste di accesso agli atti, mappa fonti e piste — con ogni affermazione riconducibile alla sua origine.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Pulizia</strong><p>Trasforma materiali disordinati in dati analizzabili: PDF scansionati, fogli di calcolo incoerenti e testi non strutturati diventano tabelle ordinate con gli LLM — in modo riproducibile, con ogni passaggio registrato e verificabile.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Visualizzazione</strong><p>Dai dati puliti a grafici, mappe e interattivi con gli assistenti di programmazione basati sull'IA — lo stesso flusso di lavoro con cui ho ricostruito due progetti in giorni invece che in settimane, come ho raccontato al Reuters Institute di Oxford.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Storytelling</strong><p>Dai forma al pezzo finale con l'IA come sparring partner per tagli, struttura e titoli — più le regole di verifica e la checklist etica che tengono le allucinazioni fuori dalla pagina.</p></span></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="module" data-lid="GRANT">
+      <summary>
+        <span class="num" aria-hidden="true"></span>
+        <span class="head">
+          <h3>Vincere i grant giornalistici e finanziare i tuoi progetti</h3>
+          <span class="sub">Dalla mappa dei finanziamenti alla proposta vincente — sulla base di grant che ho vinto e giudicato.</span>
+        </span>
+        <span class="toggle" aria-hidden="true">+</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><span class="tick">→</span><span><strong>La mappa dei finanziamenti</strong><p>Chi finanzia davvero il giornalismo — Pulitzer Center, European Journalism Centre, IJ4EU, fondazioni e fondi per l'innovazione — cosa cerca ciascuno e come abbinare la tua idea al bando giusto.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Anatomia di una proposta vincente</strong><p>Impostazione, impatto, budget e tempistiche, analizzati riga per riga su candidature reali che hanno vinto — inclusi progetti finanziati dal Pulitzer Center e dalla Commissione Europea.</p></span></li>
+          <li><span class="tick">→</span><span><strong>Dal pitch al progetto</strong><p>Durante la sessione scrivi il pitch di una pagina per la tua storia e ricevi feedback dal vivo, più una checklist per budget, partner e requisiti di rendicontazione.</p></span></li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section id="eventi" class="reveal">
+  <div class="section-tag">02 / Sul campo</div>
+  <h2>Festival ed eventi dove ho insegnato<span class="accent">.</span></h2>
+  <p class="section-lede">Workshop e masterclass tenuti sul palco e in aula, dall'Europa all'America Latina fino al Sud-est asiatico.</p>
+  <div class="logo-grid">
+    <div class="logo-tile">
+      <img class="wordmark" src="../assets/partners/internazionale-mono.png" alt="Internazionale" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Internazionale</span>
+      <span class="place">Ferrara · Italia</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/gabo.png" alt="Festival Gabo" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Festival Gabo</span>
+      <span class="place">Bogotá · Colombia</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/splice.png" alt="Splice Media" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Splice Media</span>
+      <span class="place">Chiang Mai · Thailandia</span>
+    </div>
+  </div>
+</section>
+
+<section id="universita" class="reveal">
+  <div class="section-tag">03 / Accademia</div>
+  <h2>Università partner<span class="accent">.</span></h2>
+  <p class="section-lede">Lezioni, seminari e corsi completi di data journalism, data visualisation e narrazione computazionale.</p>
+  <div class="logo-grid uni">
+    <div class="logo-tile">
+      <img class="wordmark" src="../assets/partners/cambridge.png" alt="Università di Cambridge" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Cambridge University</span>
+      <span class="place">Cambridge · Regno Unito</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/sissa.png" alt="SISSA" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">SISSA</span>
+      <span class="place">Trieste · Italia</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/unisr.png" alt="Università Vita-Salute San Raffaele" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">San Raffaele</span>
+      <span class="place">Milano · Italia</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/aarhus.png" alt="Università di Aarhus" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Aarhus University</span>
+      <span class="place">Aarhus · Danimarca</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/reyjuancarlos.svg" alt="Universidad Rey Juan Carlos" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Rey Juan Carlos</span>
+      <span class="place">Madrid · Spagna</span>
+    </div>
+    <div class="logo-tile">
+      <img src="../assets/partners/bicocca.png" alt="Università di Milano-Bicocca" onerror="this.parentElement.classList.add('no-img')">
+      <span class="fallback">Università Bicocca</span>
+      <span class="place">Milano · Italia</span>
+    </div>
+  </div>
+</section>
+
+<section id="prenota" class="reveal">
+  <div class="section-tag">04 / Prenota un workshop</div>
+  <h2>Vuoi formare il tuo team<span class="accent">?</span></h2>
+  <p>Tengo workshop e formazioni per aziende, ONG, festival e università — in italiano o in inglese, in presenza o da remoto. I tre moduli qui sopra sono pratici e affinati in oltre dieci anni di formazioni, fellowship e corsi universitari: scegline uno come masterclass di mezza giornata, oppure combinali in un bootcamp di più giorni. Formo anche singoli individui, non solo team.</p>
+  <div class="cta-row">
+    <a class="btn solid" href="mailto:j.ottaviani@gmail.com?subject=Richiesta%20workshop">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Scrivimi una email
+    </a>
+    <a class="btn" href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z"/></svg>
+      Contattami su LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <svg class="mark" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path fill="#FF7A29" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>© <span id="year"></span> Jacopo Ottaviani · Fatto con dati, codice &amp; espresso · <a href="/it/">jacopoottaviani.com</a>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const revealIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+// one module open at a time
+const mods = document.querySelectorAll('.module');
+mods.forEach(m => m.addEventListener('toggle', () => {
+  if (m.open) mods.forEach(o => { if (o !== m) o.open = false; });
+}));
+
+// the hero lid: a Moka pot lid seen from above, one facet per topic of the curriculum, one serving of coffee per workshop
+(function () {
+  const svg = document.getElementById('lid');
+  if (!svg) return;
+  const modules = [...mods].map(d => ({ el: d, short: d.dataset.lid || '', topics: [...d.querySelectorAll('li strong')].map(s => s.textContent.trim()) }));
+  const topics = [];
+  modules.forEach((m, mi) => m.topics.forEach(t => topics.push({ m: mi, t })));
+  const N = topics.length;
+  if (!N) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (name, attrs, parent) => {
+    const n = document.createElementNS(NS, name);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    parent.appendChild(n);
+    return n;
+  };
+  const cx = 240, cy = 240, R = 150, step = Math.PI * 2 / N, K = Math.cos(step / 2);
+  const bound = j => -Math.PI / 2 + j * step;                       // facet j starts here; the first starts at the top
+  const P = (a, r) => (cx + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1);
+  const ring = r => topics.map((_, j) => P(bound(j), r / K));
+  const t = v => '--t:' + v.toFixed(2) + 's';
+  const chalk = '#F7F4EA';
+
+  const g = el('g', { fill: 'none', stroke: chalk, 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+  // spout left and handle right, under the lip
+  el('path', { class: 'lid-df', pathLength: 1, fill: '#0C3B2A', d: 'M' + (cx - R) + ',' + (cy - 26) + ' L' + (cx - R - 46) + ',' + cy + ' L' + (cx - R) + ',' + (cy + 26) + ' Z', style: t(1.6) }, g);
+  el('path', { class: 'lid-df', pathLength: 1, fill: chalk, d: 'M' + (cx + R - 4) + ',' + (cy - 12) + ' h54 a6,6 0 0 1 6,6 v12 a6,6 0 0 1 -6,6 h-54 Z', style: t(1.6) }, g);
+  // lip, foot of the facets, flat top
+  el('path', { id: 'lid-rim', class: 'lid-d', pathLength: 1, 'stroke-width': 3, d: 'M' + ring(R).join(' L') + ' Z', style: t(0.7) }, g);
+  el('polygon', { class: 'lid-d', pathLength: 1, 'stroke-width': 1.5, 'stroke-opacity': .5, points: ring(R - 6).join(' '), style: t(0.9) }, g);
+  el('polygon', { class: 'lid-d', pathLength: 1, 'stroke-width': 1.5, 'stroke-opacity': .6, points: ring(R * .75).join(' '), style: t(1.1) }, g);
+
+  // the facets: one per topic, chalk outlines on the sloping band
+  const facets = [], rp = R * .75 / K, ri = (R - 6) / K;
+  topics.forEach((tp, j) => {
+    const s = bound(j), e = bound(j + 1);
+    const pts = [P(s, rp), P(e, rp), P(e, ri), P(s, ri)].join(' ');
+    el('polygon', { class: 'lid-wash', points: pts, style: '--k:' + j }, svg);
+    facets.push(el('polygon', { class: 'lid-facet lid-d', pathLength: 1, points: pts, style: t(1.3 + j * .06) }, svg));
+  });
+  // the servings: one per workshop, poured onto the flat top; a chalk divider across the band at each boundary
+  const servings = [], labels = [];
+  let j0 = 0;
+  modules.forEach((m, mi) => {
+    const n = m.topics.length, s = bound(j0), e = bound(j0 + n);
+    const pts = [cx + ',' + cy];
+    for (let j = j0; j <= j0 + n; j++) pts.push(P(bound(j), rp));
+    servings.push(el('polygon', { class: 'lid-serving', points: pts.join(' '), style: t(2.7 + mi * .25) }, svg));
+    el('path', { class: 'lid-d', pathLength: 1, fill: 'none', stroke: chalk, 'stroke-width': 2.5, 'stroke-linecap': 'round', d: 'M' + P(s, rp) + ' L' + P(s, ri), style: t(1.9) }, svg);
+    const a = (s + e) / 2, c = Math.cos(a);
+    const lab = el('text', { class: 'lid-label lid-f', x: (cx + 190 * c).toFixed(1), y: (cy + 190 * Math.sin(a)).toFixed(1), 'text-anchor': Math.abs(c) < .3 ? 'middle' : c > 0 ? 'start' : 'end', 'dominant-baseline': 'middle', style: t(2.3 + mi * .1) }, svg);
+    lab.textContent = m.short;
+    labels.push(lab);
+    j0 += n;
+  });
+  // knob, sparkles, caption, the dot riding the rim
+  el('circle', { class: 'lid-df', pathLength: 1, cx: cx, cy: cy, r: 14, fill: '#092E21', stroke: chalk, 'stroke-width': 3, style: t(2.0) }, svg);
+  const sp = el('g', { class: 'lid-f', fill: 'none', stroke: chalk, 'stroke-width': 2, opacity: .5, style: t(2.4) }, svg);
+  el('path', { d: 'M52 84 h14 M59 77 v14 M420 402 h14 M427 395 v14 M430 60 h14 M437 53 v14' }, sp);
+  const cap = el('text', { class: 'lid-cap lid-f', x: cx, y: 40, 'text-anchor': 'middle', style: t(2.6) }, svg);
+  const fmt = svg.dataset.caption || '{m} · {t}';
+  const base = fmt.replace('{m}', modules.length).replace('{t}', N);
+  const topicsWord = (fmt.split('{t}')[1] || '').trim();
+  cap.textContent = base;
+  const dot = el('circle', { class: 'lid-trav', r: 5.5, fill: '#FF7A29' }, svg);
+  const mo = el('animateMotion', { dur: '16s', begin: '4.6s', repeatCount: 'indefinite' }, dot);
+  const mp = el('mpath', { href: '#lid-rim' }, mo);
+  mp.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#lid-rim');
+
+  // hover names the topic (or the workshop), click opens that module
+  const setOn = (mi, ti) => {
+    servings.forEach((p, i) => p.classList.toggle('on', i === mi));
+    labels.forEach((l, i) => l.classList.toggle('on', i === mi));
+    facets.forEach((f, j) => f.classList.toggle('on', ti === null ? topics[j].m === mi : j === ti));
+    cap.textContent = mi === null ? base : modules[mi].short + ' · ' + (ti === null ? modules[mi].topics.length + ' ' + topicsWord : topics[ti].t);
+    cap.classList.toggle('on', mi !== null);
+  };
+  const open = mi => {
+    const d = modules[mi].el;
+    d.open = true;
+    d.style.scrollMarginTop = '100px';
+    d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  facets.forEach((f, j) => {
+    f.addEventListener('mouseenter', () => setOn(topics[j].m, j));
+    f.addEventListener('mouseleave', () => setOn(null, null));
+    f.addEventListener('click', () => open(topics[j].m));
+  });
+  servings.concat(labels).forEach((p, i) => {
+    const mi = i % servings.length;
+    p.addEventListener('mouseenter', () => setOn(mi, null));
+    p.addEventListener('mouseleave', () => setOn(null, null));
+    p.addEventListener('click', () => open(mi));
+  });
+})();
+</script>
+</body>
+</html>
