@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="mk mk-fuoco" viewBox="0 0 240 310" width="240" height="310" role="img" aria-labelledby="mf-title mf-desc">
+<title id="mf-title">Moka pot on the stove</title>
+<desc id="mf-desc">A classic octagonal Moka pot, aluminium with a black bakelite handle and knob, sits on a gas ring, drawn in chalk. The flame flickers; then steam curls out of the spout and the lid trembles as the coffee comes up.</desc>
+<style>
+  /* The chalk twin of moka-fuoco.svg, for the Teaching page's chalkboard (#0C3B2A): the ink lines are chalk (#F7F4EA),
+     the faces are the board lit with a little chalk, the bakelite is the deep board (#092E21). Flames and animation as in the original.
+     Recolour: change these three (front face, left face, right face). */
+  svg.mk-fuoco { --body: #32594A; --side: #214C3B; --shade: #154232; }
+  .mf-body { fill: var(--body); } .mf-side { fill: var(--side); } .mf-shade { fill: var(--shade); }
+
+  .mf-fl { transform-box: fill-box; transform-origin: 50% 100%; animation: mf-flick .6s ease-in-out infinite alternate; }
+  .mf-f1 { animation-duration: .52s; }
+  .mf-f2 { animation-duration: .66s; animation-delay: -.2s; }
+  .mf-f3 { animation-duration: .58s; animation-delay: -.4s; }
+  .mf-f4 { animation-duration: .71s; animation-delay: -.1s; }
+  .mf-f5 { animation-duration: .55s; animation-delay: -.3s; }
+  @keyframes mf-flick {
+    from { transform: scaleY(.82) scaleX(1.08); }
+    to   { transform: scaleY(1.14) scaleX(.94); }
+  }
+  /* six-second brew: flame only, then steam from 2.7 s */
+  .mf-w { opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; animation: mf-steam 6s linear infinite; }
+  .mf-w1 { animation-delay: 2.7s; }
+  .mf-w2 { animation-delay: 3.3s; }
+  .mf-w3 { animation-delay: 3.9s; }
+  @keyframes mf-steam {
+    0%   { transform: translateY(0) scale(.8); opacity: 0; }
+    5%   { opacity: .75; }
+    25%  { transform: translateY(-38px) scale(1.06); opacity: 0; }
+    100% { transform: translateY(-38px) scale(1.06); opacity: 0; }
+  }
+  .mf-lid { transform-box: fill-box; transform-origin: 100% 100%; animation: mf-gurgle 6s linear infinite; }
+  @keyframes mf-gurgle {
+    0%, 43% { transform: rotate(0); }
+    44% { transform: rotate(-3deg); } 45% { transform: rotate(0); }
+    46% { transform: rotate(-2.5deg); } 47% { transform: rotate(0); }
+    48% { transform: rotate(-3deg); } 49% { transform: rotate(0); }
+    50% { transform: rotate(-2deg); } 51% { transform: rotate(0); }
+    52% { transform: rotate(-3deg); } 53% { transform: rotate(0); }
+    54% { transform: rotate(-1.5deg); } 55%, 100% { transform: rotate(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mf-fl, .mf-lid { animation: none; }
+    .mf-w { animation: none; }
+    .mf-w1 { opacity: .6; transform: translateY(-14px); }
+    .mf-w2, .mf-w3 { display: none; }
+  }
+</style>
+
+<!-- stove -->
+<g stroke="#F7F4EA" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+  <rect x="46" y="262" width="148" height="9" rx="3" fill="#154232"/>
+  <rect x="60" y="243" width="5" height="19" fill="#F7F4EA" stroke="none"/>
+  <rect x="175" y="243" width="5" height="19" fill="#F7F4EA" stroke="none"/>
+  <g stroke-width="1.5">
+    <g transform="translate(80,262)"><g class="mf-fl mf-f1"><path d="M0,0 C-6,-3 -6,-11 0,-17 C6,-11 6,-3 0,0 Z" fill="#FF7A29"/><path d="M0,0 C-2.6,-1.5 -2.6,-5.5 0,-8.5 C2.6,-5.5 2.6,-1.5 0,0 Z" fill="#FFDCC2" stroke="none"/></g></g>
+    <g transform="translate(100,262)"><g class="mf-fl mf-f2"><path d="M0,0 C-6,-3 -6,-13 0,-19 C6,-13 6,-3 0,0 Z" fill="#FF7A29"/><path d="M0,0 C-2.6,-1.5 -2.6,-6 0,-9.5 C2.6,-6 2.6,-1.5 0,0 Z" fill="#FFDCC2" stroke="none"/></g></g>
+    <g transform="translate(120,262)"><g class="mf-fl mf-f3"><path d="M0,0 C-6.5,-3 -6.5,-14 0,-21 C6.5,-14 6.5,-3 0,0 Z" fill="#FF7A29"/><path d="M0,0 C-2.8,-1.5 -2.8,-6.5 0,-10.5 C2.8,-6.5 2.8,-1.5 0,0 Z" fill="#FFDCC2" stroke="none"/></g></g>
+    <g transform="translate(140,262)"><g class="mf-fl mf-f4"><path d="M0,0 C-6,-3 -6,-13 0,-19 C6,-13 6,-3 0,0 Z" fill="#FF7A29"/><path d="M0,0 C-2.6,-1.5 -2.6,-6 0,-9.5 C2.6,-6 2.6,-1.5 0,0 Z" fill="#FFDCC2" stroke="none"/></g></g>
+    <g transform="translate(160,262)"><g class="mf-fl mf-f5"><path d="M0,0 C-6,-3 -6,-11 0,-17 C6,-11 6,-3 0,0 Z" fill="#FF7A29"/><path d="M0,0 C-2.6,-1.5 -2.6,-5.5 0,-8.5 C2.6,-5.5 2.6,-1.5 0,0 Z" fill="#FFDCC2" stroke="none"/></g></g>
+  </g>
+  <rect x="56" y="238" width="128" height="5" fill="#F7F4EA" stroke="none"/>
+</g>
+
+<!-- the pot, base on the trivet -->
+<g transform="translate(0,-14)" stroke="#F7F4EA" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+  <!-- bakelite handle, behind the body: upper root under the lid lip, lower root at the collar -->
+  <path fill-rule="evenodd" fill="#092E21" d="M160,99 L195,99 Q201,100 200,107 L187,161 Q185,168 178,168 L158,168 Z M167,111 L185,112 Q189,113 188,118 L179,150 Q178,153 174,153 L164,153 Z"/>
+  <!-- boiler (caldaia): octagonal, three faces visible -->
+  <!-- safety valve: neck and round cap, drawn behind the boiler so it emerges from the left edge -->
+  <rect x="62" y="189.5" width="16" height="5" rx="1" fill="#32594A" stroke-width="1.5"/>
+  <ellipse cx="62" cy="192" rx="3" ry="4.8" fill="#32594A" stroke-width="1.5"/>
+  <polygon class="mf-side" points="66,252 97.6,252 102.6,171 78,171" stroke="none"/>
+  <polygon class="mf-body" points="97.6,252 142.4,252 137.4,171 102.6,171" stroke="none"/>
+  <polygon class="mf-shade" points="142.4,252 174,252 162,171 137.4,171" stroke="none"/>
+  <path d="M97.6,252 L102.6,171 M142.4,252 L137.4,171" fill="none" stroke-width="1.5" opacity=".45"/>
+  <polygon points="66,252 174,252 162,171 78,171" fill="none"/>
+  <path d="M69,246 H171" fill="none" stroke-width="1.5" opacity=".3"/>
+  <!-- safety valve -->
+  <!-- collar: the screw band -->
+  <rect class="mf-body" x="76" y="152" width="88" height="19" stroke="none"/>
+  <rect class="mf-side" x="76" y="152" width="16" height="19" stroke="none"/>
+  <rect class="mf-shade" x="148" y="152" width="16" height="19" stroke="none"/>
+  <rect x="76" y="152" width="88" height="19" fill="none"/>
+  <path d="M76,156 H164" fill="none" stroke-width="1.2" opacity=".35"/>
+  <!-- collector (raccoglitore) -->
+  <polygon class="mf-side" points="80,152 103.4,152 99.3,95 70,95" stroke="none"/>
+  <polygon class="mf-body" points="103.4,152 136.6,152 140.7,95 99.3,95" stroke="none"/>
+  <polygon class="mf-shade" points="136.6,152 160,152 170,95 140.7,95" stroke="none"/>
+  <path d="M103.4,152 L99.3,95 M136.6,152 L140.7,95" fill="none" stroke-width="1.5" opacity=".45"/>
+  <polygon points="80,152 160,152 170,95 70,95" fill="none"/>
+  <!-- spout -->
+  <polygon class="mf-body" points="70,94 44,94 76,120"/>
+  <polygon class="mf-side" points="44,94 76,120 72,112" stroke="none"/>
+  <path d="M44,94 L72,112" fill="none" stroke-width="1.5" opacity=".45"/>
+  <!-- lid: lip, low faceted cap, bell knob; hinged at the handle side -->
+  <g class="mf-lid">
+    <rect class="mf-body" x="68" y="91" width="104" height="5"/>
+    <polygon class="mf-side" points="72,91 100,91 105.5,76 85,76" stroke="none"/>
+    <polygon class="mf-body" points="100,91 140,91 134.5,76 105.5,76" stroke="none"/>
+    <polygon class="mf-shade" points="140,91 168,91 155,76 134.5,76" stroke="none"/>
+    <path d="M100,91 L105.5,76 M140,91 L134.5,76" fill="none" stroke-width="1.5" opacity=".45"/>
+    <polygon points="72,91 168,91 155,76 85,76" fill="none"/>
+    <path d="M114,76 L109,56 Q109,52 113,52 L127,52 Q131,52 131,56 L126,76 Z" fill="#092E21"/>
+  </g>
+  <!-- steam out of the spout -->
+  <g fill="none" stroke-width="2">
+    <g transform="translate(46,90)"><path class="mf-w mf-w1" d="M0,0 C-7,-7 7,-13 0,-20 C-7,-27 7,-33 0,-40"/></g>
+    <g transform="translate(37,87)"><path class="mf-w mf-w2" d="M0,0 C-6,-6 6,-12 0,-18 C-6,-24 6,-30 0,-36"/></g>
+    <g transform="translate(55,84)"><path class="mf-w mf-w3" d="M0,0 C-6,-6 6,-12 0,-18 C-6,-24 6,-30 0,-36"/></g>
+  </g>
+</g>
+</svg>
