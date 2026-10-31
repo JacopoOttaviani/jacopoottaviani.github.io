@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="1.9 1.5 60 60">
-  <!-- The favicon: the Moka pot built from Bauhaus primitives, the footer's mark (assets/brand/moka-costruzione.svg), in the site's default accent, cobalt.
+  <!-- The favicon: the Moka pot built from Bauhaus primitives, the footer's mark (assets/brand/moka-costruzione.svg), in the site's default accent, coral (PANTONE 16-1546).
        A circle for the knob, a bar for the lid, an inverted trapezoid for the upper chamber, a triangle spout, a half-disc handle, a trapezoid boiler. -->
-  <path fill="#2F6BE0" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/>
+  <path fill="#FF6F61" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/>
 </svg>
