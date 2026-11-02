@@ -410,6 +410,16 @@ h2 .accent { color: var(--orange); }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+/* the keyword filter (assets/project-filter.js, Isotope): once it starts, .cards drops the CSS grid for Isotope's masonry.
+   Each .card sits in a bare .cell, because Isotope writes transform on what it moves and the card's hover lift uses the same property. */
+.cell { display: flex; }
+.cell > .card { flex: 1; }
+.cards .sizer { display: none; }
+.cards.iso { display: block; margin: 0 -14px; }
+.cards.iso .cell { display: block; width: 33.3333%; padding: 14px; }
+.cards.iso .sizer { display: block; width: 33.3333%; height: 0; }
+@media (max-width: 900px) { .cards.iso .cell, .cards.iso .sizer { width: 50%; } }
+@media (max-width: 560px) { .cards.iso .cell, .cards.iso .sizer { width: 100%; } }
 .card {
   background: #fff; border: 2px solid var(--ink); overflow: hidden;
   text-decoration: none; color: var(--ink); display: flex; flex-direction: column;
@@ -467,6 +477,40 @@ h2 .accent { color: var(--orange); }
   transition: background .18s ease, color .18s ease;
 }
 .plink:hover { background: var(--ink); color: var(--paper); }
+
+/* keyword tabs (one at a time), Shuffle, and each card's own keywords */
+.card.in.seen { animation: none; }   /* once the filter is used, the scroll-in entrance must not replay on cards Isotope shows again */
+.ktags { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #8a8d99; }
+.ktags li { padding-bottom: 1px; border-bottom: 2px solid transparent; transition: color .25s ease, border-color .25s ease; }
+.ktags li.on { color: var(--ink); border-bottom-color: var(--orange); }
+.pf { margin-top: -20px; }   /* sits up in the heading's gap; hidden until the script runs */
+.pf-tabs { display: flex; align-items: flex-end; gap: 6px; overflow-x: auto; padding: 8px 4px 0 0; scrollbar-width: none; }
+.pf-tabs::-webkit-scrollbar { display: none; }
+.pf-tab {
+  flex: none; cursor: pointer; background: #fff; border: 2px solid var(--ink); border-bottom: 0; color: var(--ink); font: inherit;
+  padding: 9px 18px 8px; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; position: relative; top: 2px;
+  display: inline-flex; align-items: baseline; gap: 9px; transition: padding .18s ease, background .18s ease;
+}
+.pf-tab sup { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--green); position: static; vertical-align: baseline; }
+.pf-tab:hover { background: var(--peach); }
+.pf-tab[aria-pressed="true"] { background: var(--ink); color: var(--paper); padding-top: 14px; box-shadow: 4px -4px 0 var(--orange); }
+.pf-tab[aria-pressed="true"] sup { color: var(--orange); }
+.pf-tab:focus-visible, .pf-shuffle:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pf-rule { height: 2px; background: var(--ink); margin-bottom: 14px; }
+.pf-sub { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 22px; }
+.pf-status { font-family: var(--mono); font-size: 12.5px; color: #3a3d4a; min-height: 22px; margin-top: 4px; }
+.pf-n { font-weight: 700; }
+.pf-n em { font-style: normal; display: inline-block; font-size: 30px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); vertical-align: -3px; margin-right: 6px; }
+.pf-n em.roll { animation: pf-roll .5s cubic-bezier(.2,.7,.2,1); }
+@keyframes pf-roll { from { transform: translateY(-16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.pf-shuffle { flex: none; cursor: pointer; color: var(--ink); font: inherit; font-family: var(--mono); font-size: 12px; font-weight: 700; background: #fff; border: 1.5px solid var(--ink); padding: 6px 14px; margin-top: 2px; }
+.pf-shuffle:hover { background: var(--ink); color: var(--paper); }
+.pf-shuffle span { display: inline-block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.pf-shuffle.spin span { transform: rotate(360deg); }
+@media (max-width: 700px) {   /* the tab row scrolls sideways: its right edge fades so it shows there is more */
+  .pf-tab { font-size: 14px; padding: 8px 12px 7px; }
+  .pf-tabs { padding-right: 28px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+}
 
 /* ---------- 05 / publications ---------- */
 .pubs { display: flex; flex-direction: column; gap: 20px; }
@@ -658,147 +702,202 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
 <section id="work" class="reveal">
   <div class="section-tag">04 / Portfolio</div>
   <h2>Progetti selezionati<span class="accent">.</span></h2>
+  <div class="pf" hidden data-of="di">
+    <div class="pf-tabs" role="group" aria-label="Filtra i progetti per parola chiave">
+      <button type="button" class="pf-tab" data-k="*" aria-pressed="true"><span>Tutti</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="maps" aria-pressed="false"><span>Mappe</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="inv" aria-pressed="false"><span>Inchieste</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="dataviz" aria-pressed="false"><span>Dataviz</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="ai" aria-pressed="false"><span>IA</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="civic" aria-pressed="false"><span>Civic tech</span><sup></sup></button>
+    </div>
+    <div class="pf-rule"></div>
+    <div class="pf-sub">
+      <div class="pf-status" aria-live="polite"></div>
+      <button type="button" class="pf-shuffle"><span>↻</span> Mescola</button>
+    </div>
+  </div>
   <div class="cards">
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/migrants-files.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>The Migrants' Files</h3>
-        <p>Un'inchiesta transfrontaliera che conta il costo umano della Fortezza Europa, con dati su migliaia di migranti morti nel tentativo di raggiungere il continente.</p>
-        <span class="award">🏆 Data Journalism Award 2014</span>
-        <div class="links">
-          <a class="plink" href="https://www.themigrantsfiles.com" target="_blank" rel="noopener">Visita →</a>
+    <div class="sizer"></div>
+    <div class="cell" data-tags="inv">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/migrants-files.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>The Migrants' Files</h3>
+          <p>Un'inchiesta transfrontaliera che conta il costo umano della Fortezza Europa, con dati su migliaia di migranti morti nel tentativo di raggiungere il continente.</p>
+          <span class="award">🏆 Data Journalism Award 2014</span>
+          <ul class="ktags"><li data-k="inv">Inchieste</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.themigrantsfiles.com" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/map-makoko.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Map Makoko</h3>
-        <p>Mettere sulla mappa la comunità galleggiante di Lagos — 250.000 persone — con droni, canoe e donne locali formate come mappatrici. Con Code for Africa e il Pulitzer Center.</p>
-        <span class="award">🏆 Sigma Award 2021</span>
-        <div class="links">
-          <a class="plink" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/map-makoko.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Map Makoko</h3>
+          <p>Mettere sulla mappa la comunità galleggiante di Lagos — 250.000 persone — con droni, canoe e donne locali formate come mappatrici. Con Code for Africa e il Pulitzer Center.</p>
+          <span class="award">🏆 Sigma Award 2021</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/ewaste-burn.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>E-Waste Republic</h3>
-        <p>Un documentario data-driven sui rifiuti elettronici in Ghana, con visualizzazioni, fonti scientifiche e reportage sul campo.</p>
-        <span class="award">🏆 Lorenzo Natali Media Prize</span>
-        <div class="links">
-          <a class="plink" href="https://www.internazionale.it/webdoc/ewaste-republic/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="inv dataviz">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/ewaste-burn.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>E-Waste Republic</h3>
+          <p>Un documentario data-driven sui rifiuti elettronici in Ghana, con visualizzazioni, fonti scientifiche e reportage sul campo.</p>
+          <span class="award">🏆 Lorenzo Natali Media Prize</span>
+          <ul class="ktags"><li data-k="inv">Inchieste</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.internazionale.it/webdoc/ewaste-republic/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/africa-mining-watch.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Africa Mining Watch</h3>
-        <p>Una piattaforma aperta che usa immagini satellitari e IA per mappare la diffusione dell'estrazione mineraria illegale in Africa. Con Code for Africa, Earth Genome e il Pulitzer Center.</p>
-        <span class="award">🛰️ Satellite + IA</span>
-        <div class="links">
-          <a class="plink" href="https://africaminingwatch.org" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps ai">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/africa-mining-watch.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Africa Mining Watch</h3>
+          <p>Una piattaforma aperta che usa immagini satellitari e IA per mappare la diffusione dell'estrazione mineraria illegale in Africa. Con Code for Africa, Earth Genome e il Pulitzer Center.</p>
+          <span class="award">🛰️ Satellite + IA</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li><li data-k="ai">IA</li></ul>
+          <div class="links">
+            <a class="plink" href="https://africaminingwatch.org" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/msf-rescue.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Search and Rescue</h3>
-        <p>Una mappa interattiva delle operazioni di ricerca e salvataggio di Médecins Sans Frontières nel Mediterraneo, che visualizza le missioni che hanno salvato migliaia di vite in mare.</p>
-        <span class="award">🌊 Mappa interattiva</span>
-        <div class="links">
-          <a class="plink" href="https://searchandrescue.msf.org/map.html" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps dataviz">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/msf-rescue.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Search and Rescue</h3>
+          <p>Una mappa interattiva delle operazioni di ricerca e salvataggio di Médecins Sans Frontières nel Mediterraneo, che visualizza le missioni che hanno salvato migliaia di vite in mare.</p>
+          <span class="award">🌊 Mappa interattiva</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://searchandrescue.msf.org/map.html" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/generation-e.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Generation E</h3>
-        <p>Un'inchiesta crowdsourced e transfrontaliera sulla nuova ondata di giovani europei del Sud emigrati dopo la crisi finanziaria.</p>
-        <span class="award">📰 Featured on Columbia Journalism Review</span>
-        <div class="links">
-          <a class="plink" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="inv">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/generation-e.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Generation E</h3>
+          <p>Un'inchiesta crowdsourced e transfrontaliera sulla nuova ondata di giovani europei del Sud emigrati dopo la crisi finanziaria.</p>
+          <span class="award">📰 Featured on Columbia Journalism Review</span>
+          <ul class="ktags"><li data-k="inv">Inchieste</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/patriegalere.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>PatrieGalere</h3>
-        <p>Una mappa interattiva dei decessi nelle carceri italiane dal 2002. Pubblicata da The Guardian, è riconosciuta come il primo progetto di data journalism in Italia.</p>
-        <span class="award">🇮🇹 Primo progetto di data journalism italiano</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/PatrieGalere.eu/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps inv">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/patriegalere.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>PatrieGalere</h3>
+          <p>Una mappa interattiva dei decessi nelle carceri italiane dal 2002. Pubblicata da The Guardian, è riconosciuta come il primo progetto di data journalism in Italia.</p>
+          <span class="award">🇮🇹 Primo progetto di data journalism italiano</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li><li data-k="inv">Inchieste</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/PatrieGalere.eu/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/strademortali.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>StradeMortali</h3>
-        <p>Una mappa civic tech degli incidenti stradali a Roma, che svela gli incroci più pericolosi della città per spingere verso strade più sicure, costruita su dati aperti.</p>
-        <span class="award">🛣️ Civic tech &amp; open data</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/strademortali/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps civic">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/strademortali.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>StradeMortali</h3>
+          <p>Una mappa civic tech degli incidenti stradali a Roma, che svela gli incroci più pericolosi della città per spingere verso strade più sicure, costruita su dati aperti.</p>
+          <span class="award">🛣️ Civic tech &amp; open data</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li><li data-k="civic">Civic tech</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/strademortali/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/lungs-earth.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Polmoni della Terra</h3>
-        <p>Un viaggio data-driven attraverso le grandi foreste pluviali del mondo, dall'Amazzonia al Bacino del Congo all'Indonesia.</p>
-        <span class="award">🌍 Pubblicato in sei paesi</span>
-        <div class="links">
-          <a class="plink" href="https://pulitzercenter.org/projects/lungs-earth-central-africa" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="inv dataviz">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/lungs-earth.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Polmoni della Terra</h3>
+          <p>Un viaggio data-driven attraverso le grandi foreste pluviali del mondo, dall'Amazzonia al Bacino del Congo all'Indonesia.</p>
+          <span class="award">🌍 Pubblicato in sei paesi</span>
+          <ul class="ktags"><li data-k="inv">Inchieste</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://pulitzercenter.org/projects/lungs-earth-central-africa" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/sicurezza-idrogeologica-b.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Italia Fragile</h3>
-        <p>Un viaggio nei dati sulla fragilità idrogeologica dell'Italia, dove frane, alluvioni ed erosione costiera minacciano il 94% dei comuni del Paese.</p>
-        <span class="award">✦ Made with Fable 5</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/italia-fragile/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="ai dataviz">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/sicurezza-idrogeologica-b.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Italia Fragile</h3>
+          <p>Un viaggio nei dati sulla fragilità idrogeologica dell'Italia, dove frane, alluvioni ed erosione costiera minacciano il 94% dei comuni del Paese.</p>
+          <span class="award">✦ Made with Fable 5</span>
+          <ul class="ktags"><li data-k="ai">IA</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/italia-fragile/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/juxmaps-a.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>JuxMaps</h3>
-        <p>Mappe antiche sovrapposte alle città che sono diventate. Uno strumento che stende 41 carte storiche georeferenziate, dal 1550 al 1966, sulle mappe di otto città, da Londra a Città del Messico, per dissolvere o scorrere tra passato e presente.</p>
-        <span class="award">✦ Dal Plus AI Sprint</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/juxmaps/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps ai">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/juxmaps-a.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>JuxMaps</h3>
+          <p>Mappe antiche sovrapposte alle città che sono diventate. Uno strumento che stende 41 carte storiche georeferenziate, dal 1550 al 1966, sulle mappe di otto città, da Londra a Città del Messico, per dissolvere o scorrere tra passato e presente.</p>
+          <span class="award">✦ Dal Plus AI Sprint</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li><li data-k="ai">IA</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/juxmaps/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/rome-over-time.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Roma, edificio per edificio</h3>
-        <p>Ogni edificio di Roma, circa 250.000 con il Vaticano dentro, in 3D e colorato per epoca e contesto storico. In Italia non esiste un registro di quando sono stati costruiti gli edifici, così le date sono ricostruite da dati aperti: il rilievo degli edifici della Regione, il censimento, Wikidata e altro ancora, e la scheda di ogni edificio dice quale fonte lo ha datato. Premete play e guardate la città crescere.</p>
-        <span class="award">🏛️ Sulle orme dell'Amsterdam di Alex Barakov</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/rome/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="maps civic dataviz">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/rome-over-time.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Roma, edificio per edificio</h3>
+          <p>Ogni edificio di Roma, circa 250.000 con il Vaticano dentro, in 3D e colorato per epoca e contesto storico. In Italia non esiste un registro di quando sono stati costruiti gli edifici, così le date sono ricostruite da dati aperti: il rilievo degli edifici della Regione, il censimento, Wikidata e altro ancora, e la scheda di ogni edificio dice quale fonte lo ha datato. Premete play e guardate la città crescere.</p>
+          <span class="award">🏛️ Sulle orme dell'Amsterdam di Alex Barakov</span>
+          <ul class="ktags"><li data-k="maps">Mappe</li><li data-k="civic">Civic tech</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/rome/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="../assets/projects/atlante-sicurezza.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Atlante della Sicurezza</h3>
-        <p>Uno strumento civico sui reati denunciati nei 108 comuni capoluogo italiani, dal 2006 al 2024, costruito con dati ufficiali ISTAT ed Eurostat: dove si denuncia di più e di meno, cosa sale e cosa scende, dove ci sono state impennate improvvise, accanto a quanto le persone si sentono a rischio. Una ricerca apre la scheda di qualsiasi comune italiano, e sei approfondimenti vanno oltre le denunce: carceri, rimpatri, percezione, autori ignoti, minori e custodia cautelare.</p>
-        <span class="award">⚖️ Dati ufficiali, città per città</span>
-        <div class="links">
-          <a class="plink" href="https://atlantedellasicurezza.it/" target="_blank" rel="noopener">Visita →</a>
+    <div class="cell" data-tags="civic dataviz">
+      <div class="card">
+        <div class="banner"><img src="../assets/projects/atlante-sicurezza.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Atlante della Sicurezza</h3>
+          <p>Uno strumento civico sui reati denunciati nei 108 comuni capoluogo italiani, dal 2006 al 2024, costruito con dati ufficiali ISTAT ed Eurostat: dove si denuncia di più e di meno, cosa sale e cosa scende, dove ci sono state impennate improvvise, accanto a quanto le persone si sentono a rischio. Una ricerca apre la scheda di qualsiasi comune italiano, e sei approfondimenti vanno oltre le denunce: carceri, rimpatri, percezione, autori ignoti, minori e custodia cautelare.</p>
+          <span class="award">⚖️ Dati ufficiali, città per città</span>
+          <ul class="ktags"><li data-k="civic">Civic tech</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://atlantedellasicurezza.it/" target="_blank" rel="noopener">Visita →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -861,6 +960,8 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
   <svg class="mark" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path fill="#FF7A29" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>© <span id="year"></span> Jacopo Ottaviani · Fatto con dati, codice &amp; espresso
 </footer>
 
+<script src="/assets/vendor/isotope.pkgd.min.js?v=3.0.6" defer></script>
+<script src="/assets/project-filter.js?v=2026-11-02" defer></script>
 <script>
 const _now = new Date().getFullYear();
 document.getElementById('year').textContent = _now;

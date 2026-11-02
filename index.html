@@ -411,6 +411,16 @@ h2 .accent { color: var(--orange); }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+/* the keyword filter (assets/project-filter.js, Isotope): once it starts, .cards drops the CSS grid for Isotope's masonry.
+   Each .card sits in a bare .cell, because Isotope writes transform on what it moves and the card's hover lift uses the same property. */
+.cell { display: flex; }
+.cell > .card { flex: 1; }
+.cards .sizer { display: none; }
+.cards.iso { display: block; margin: 0 -14px; }
+.cards.iso .cell { display: block; width: 33.3333%; padding: 14px; }
+.cards.iso .sizer { display: block; width: 33.3333%; height: 0; }
+@media (max-width: 900px) { .cards.iso .cell, .cards.iso .sizer { width: 50%; } }
+@media (max-width: 560px) { .cards.iso .cell, .cards.iso .sizer { width: 100%; } }
 .card {
   background: #fff; border: 2px solid var(--ink); overflow: hidden;
   text-decoration: none; color: var(--ink); display: flex; flex-direction: column;
@@ -468,6 +478,40 @@ h2 .accent { color: var(--orange); }
   transition: background .18s ease, color .18s ease;
 }
 .plink:hover { background: var(--ink); color: var(--paper); }
+
+/* keyword tabs (one at a time), Shuffle, and each card's own keywords */
+.card.in.seen { animation: none; }   /* once the filter is used, the scroll-in entrance must not replay on cards Isotope shows again */
+.ktags { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #8a8d99; }
+.ktags li { padding-bottom: 1px; border-bottom: 2px solid transparent; transition: color .25s ease, border-color .25s ease; }
+.ktags li.on { color: var(--ink); border-bottom-color: var(--orange); }
+.pf { margin-top: -20px; }   /* sits up in the heading's gap; hidden until the script runs */
+.pf-tabs { display: flex; align-items: flex-end; gap: 6px; overflow-x: auto; padding: 8px 4px 0 0; scrollbar-width: none; }
+.pf-tabs::-webkit-scrollbar { display: none; }
+.pf-tab {
+  flex: none; cursor: pointer; background: #fff; border: 2px solid var(--ink); border-bottom: 0; color: var(--ink); font: inherit;
+  padding: 9px 18px 8px; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; position: relative; top: 2px;
+  display: inline-flex; align-items: baseline; gap: 9px; transition: padding .18s ease, background .18s ease;
+}
+.pf-tab sup { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--green); position: static; vertical-align: baseline; }
+.pf-tab:hover { background: var(--peach); }
+.pf-tab[aria-pressed="true"] { background: var(--ink); color: var(--paper); padding-top: 14px; box-shadow: 4px -4px 0 var(--orange); }
+.pf-tab[aria-pressed="true"] sup { color: var(--orange); }
+.pf-tab:focus-visible, .pf-shuffle:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pf-rule { height: 2px; background: var(--ink); margin-bottom: 14px; }
+.pf-sub { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 22px; }
+.pf-status { font-family: var(--mono); font-size: 12.5px; color: #3a3d4a; min-height: 22px; margin-top: 4px; }
+.pf-n { font-weight: 700; }
+.pf-n em { font-style: normal; display: inline-block; font-size: 30px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); vertical-align: -3px; margin-right: 6px; }
+.pf-n em.roll { animation: pf-roll .5s cubic-bezier(.2,.7,.2,1); }
+@keyframes pf-roll { from { transform: translateY(-16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.pf-shuffle { flex: none; cursor: pointer; color: var(--ink); font: inherit; font-family: var(--mono); font-size: 12px; font-weight: 700; background: #fff; border: 1.5px solid var(--ink); padding: 6px 14px; margin-top: 2px; }
+.pf-shuffle:hover { background: var(--ink); color: var(--paper); }
+.pf-shuffle span { display: inline-block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.pf-shuffle.spin span { transform: rotate(360deg); }
+@media (max-width: 700px) {   /* the tab row scrolls sideways: its right edge fades so it shows there is more */
+  .pf-tab { font-size: 14px; padding: 8px 12px 7px; }
+  .pf-tabs { padding-right: 28px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+}
 
 /* ---------- 05 / publications ---------- */
 .pubs { display: flex; flex-direction: column; gap: 20px; }
@@ -658,147 +702,202 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
 <section id="work" class="reveal">
   <div class="section-tag">04 / Portfolio</div>
   <h2>Selected projects<span class="accent">.</span></h2>
+  <div class="pf" hidden data-of="of">
+    <div class="pf-tabs" role="group" aria-label="Filter projects by keyword">
+      <button type="button" class="pf-tab" data-k="*" aria-pressed="true"><span>All</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="maps" aria-pressed="false"><span>Maps</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="inv" aria-pressed="false"><span>Investigations</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="dataviz" aria-pressed="false"><span>Dataviz</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="ai" aria-pressed="false"><span>AI</span><sup></sup></button>
+      <button type="button" class="pf-tab" data-k="civic" aria-pressed="false"><span>Civic tech</span><sup></sup></button>
+    </div>
+    <div class="pf-rule"></div>
+    <div class="pf-sub">
+      <div class="pf-status" aria-live="polite"></div>
+      <button type="button" class="pf-shuffle"><span>↻</span> Shuffle</button>
+    </div>
+  </div>
   <div class="cards">
-    <div class="card">
-      <div class="banner"><img src="assets/projects/migrants-files.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>The Migrants' Files</h3>
-        <p>A cross-border investigation counting the human cost of Fortress Europe, with data on thousands of migrants who died trying to reach the continent.</p>
-        <span class="award">🏆 Data Journalism Award 2014</span>
-        <div class="links">
-          <a class="plink" href="https://www.themigrantsfiles.com" target="_blank" rel="noopener">Visit →</a>
+    <div class="sizer"></div>
+    <div class="cell" data-tags="inv">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/migrants-files.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>The Migrants' Files</h3>
+          <p>A cross-border investigation counting the human cost of Fortress Europe, with data on thousands of migrants who died trying to reach the continent.</p>
+          <span class="award">🏆 Data Journalism Award 2014</span>
+          <ul class="ktags"><li data-k="inv">Investigations</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.themigrantsfiles.com" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/map-makoko.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Map Makoko</h3>
-        <p>Putting Lagos' floating community of 250,000 people on the map, with drones, canoes and local women trained as mappers. With Code for Africa and the Pulitzer Center.</p>
-        <span class="award">🏆 Sigma Award 2021</span>
-        <div class="links">
-          <a class="plink" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/map-makoko.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Map Makoko</h3>
+          <p>Putting Lagos' floating community of 250,000 people on the map, with drones, canoes and local women trained as mappers. With Code for Africa and the Pulitzer Center.</p>
+          <span class="award">🏆 Sigma Award 2021</span>
+          <ul class="ktags"><li data-k="maps">Maps</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.urbanet.info/mapping-makoko-a-community-stating-its-right-to-exist/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/ewaste-burn.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>E-Waste Republic</h3>
-        <p>A data-driven documentary on electronic waste in Ghana, with visualisations, scientific sources and on-the-ground reportage.</p>
-        <span class="award">🏆 Lorenzo Natali Media Prize</span>
-        <div class="links">
-          <a class="plink" href="https://elpais.com/especiales/2015/basura-electronica/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="inv dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/ewaste-burn.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>E-Waste Republic</h3>
+          <p>A data-driven documentary on electronic waste in Ghana, with visualisations, scientific sources and on-the-ground reportage.</p>
+          <span class="award">🏆 Lorenzo Natali Media Prize</span>
+          <ul class="ktags"><li data-k="inv">Investigations</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://elpais.com/especiales/2015/basura-electronica/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/africa-mining-watch.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Africa Mining Watch</h3>
-        <p>An open platform using satellite imagery and AI to map the spread of illegal mining across Africa. With Code for Africa, Earth Genome and the Pulitzer Center.</p>
-        <span class="award">🛰️ Satellite + AI</span>
-        <div class="links">
-          <a class="plink" href="https://africaminingwatch.org" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps ai">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/africa-mining-watch.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Africa Mining Watch</h3>
+          <p>An open platform using satellite imagery and AI to map the spread of illegal mining across Africa. With Code for Africa, Earth Genome and the Pulitzer Center.</p>
+          <span class="award">🛰️ Satellite + AI</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="ai">AI</li></ul>
+          <div class="links">
+            <a class="plink" href="https://africaminingwatch.org" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/msf-rescue.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Search and Rescue</h3>
-        <p>An interactive map of Médecins Sans Frontières' search and rescue operations in the Mediterranean, visualising missions that saved thousands of lives at sea.</p>
-        <span class="award">🌊 Interactive map</span>
-        <div class="links">
-          <a class="plink" href="https://searchandrescue.msf.org/map.html" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/msf-rescue.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Search and Rescue</h3>
+          <p>An interactive map of Médecins Sans Frontières' search and rescue operations in the Mediterranean, visualising missions that saved thousands of lives at sea.</p>
+          <span class="award">🌊 Interactive map</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://searchandrescue.msf.org/map.html" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/generation-e.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Generation E</h3>
-        <p>A crowdsourced, cross-border investigation into the new wave of young Southern Europeans emigrating after the financial crisis.</p>
-        <span class="award">📰 Featured on Columbia Journalism Review</span>
-        <div class="links">
-          <a class="plink" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="inv">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/generation-e.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Generation E</h3>
+          <p>A crowdsourced, cross-border investigation into the new wave of young Southern Europeans emigrating after the financial crisis.</p>
+          <span class="award">📰 Featured on Columbia Journalism Review</span>
+          <ul class="ktags"><li data-k="inv">Investigations</li></ul>
+          <div class="links">
+            <a class="plink" href="https://www.cjr.org/behind_the_news/european_reporter_collaboratio.php" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/patriegalere.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>PatrieGalere</h3>
-        <p>An interactive map of deaths in Italian prisons since 2002. Published by The Guardian, it is recognised as Italy's first data journalism project.</p>
-        <span class="award">🇮🇹 Italy's first data journalism project</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/PatrieGalere.eu/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps inv">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/patriegalere.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>PatrieGalere</h3>
+          <p>An interactive map of deaths in Italian prisons since 2002. Published by The Guardian, it is recognised as Italy's first data journalism project.</p>
+          <span class="award">🇮🇹 Italy's first data journalism project</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="inv">Investigations</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/PatrieGalere.eu/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/strademortali.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>StradeMortali</h3>
-        <p>A civic tech map of road crashes in Rome, surfacing the city's most dangerous intersections to push for safer streets, built on open data.</p>
-        <span class="award">🛣️ Civic tech &amp; open data</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/strademortali/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps civic">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/strademortali.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>StradeMortali</h3>
+          <p>A civic tech map of road crashes in Rome, surfacing the city's most dangerous intersections to push for safer streets, built on open data.</p>
+          <span class="award">🛣️ Civic tech &amp; open data</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="civic">Civic tech</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/strademortali/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/lungs-earth.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Lungs of the Earth</h3>
-        <p>A data-driven journey across the world's great rainforests, from the Amazon to the Congo Basin to Indonesia.</p>
-        <span class="award">🌍 Published in six countries</span>
-        <div class="links">
-          <a class="plink" href="https://pulitzercenter.org/projects/lungs-earth-central-africa" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="inv dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/lungs-earth.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Lungs of the Earth</h3>
+          <p>A data-driven journey across the world's great rainforests, from the Amazon to the Congo Basin to Indonesia.</p>
+          <span class="award">🌍 Published in six countries</span>
+          <ul class="ktags"><li data-k="inv">Investigations</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://pulitzercenter.org/projects/lungs-earth-central-africa" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/sicurezza-idrogeologica-b.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Italia Fragile</h3>
-        <p>A data-driven journey through Italy's hydrogeological fragility, where landslides, floods and coastal erosion threaten 94% of the country's municipalities.</p>
-        <span class="award">✦ Made with Fable 5</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/italia-fragile/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="ai dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/sicurezza-idrogeologica-b.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Italia Fragile</h3>
+          <p>A data-driven journey through Italy's hydrogeological fragility, where landslides, floods and coastal erosion threaten 94% of the country's municipalities.</p>
+          <span class="award">✦ Made with Fable 5</span>
+          <ul class="ktags"><li data-k="ai">AI</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/italia-fragile/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/juxmaps-a.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>JuxMaps</h3>
-        <p>Old maps, laid over the cities they became. A tool that stretches 41 georeferenced historical sheets, from 1550 to 1966, onto the live maps of eight cities, from London to Mexico City, so you can fade or swipe between past and present.</p>
-        <span class="award">✦ From the Plus AI Sprint</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/juxmaps/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps ai">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/juxmaps-a.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>JuxMaps</h3>
+          <p>Old maps, laid over the cities they became. A tool that stretches 41 georeferenced historical sheets, from 1550 to 1966, onto the live maps of eight cities, from London to Mexico City, so you can fade or swipe between past and present.</p>
+          <span class="award">✦ From the Plus AI Sprint</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="ai">AI</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/juxmaps/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/rome-over-time.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Rome, building by building</h3>
-        <p>Every building in Rome, some 250,000 with the Vatican inside, in 3D and coloured by age and historical context. Italy keeps no register of when its buildings went up, so the dates are pieced together from open data: the region's building survey, the census, Wikidata and more, with each building's card saying which source dated it. Press play and watch the city grow.</p>
-        <span class="award">🏛️ After Alex Barakov's Amsterdam map</span>
-        <div class="links">
-          <a class="plink" href="https://jacopoottaviani.com/rome/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="maps civic dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/rome-over-time.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Rome, building by building</h3>
+          <p>Every building in Rome, some 250,000 with the Vatican inside, in 3D and coloured by age and historical context. Italy keeps no register of when its buildings went up, so the dates are pieced together from open data: the region's building survey, the census, Wikidata and more, with each building's card saying which source dated it. Press play and watch the city grow.</p>
+          <span class="award">🏛️ After Alex Barakov's Amsterdam map</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="civic">Civic tech</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/rome/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="banner"><img src="assets/projects/atlante-sicurezza.svg" alt="" loading="lazy"></div>
-      <div class="body">
-        <h3>Atlante della Sicurezza</h3>
-        <p>A civic tool on reported crime in Italy's 108 provincial capitals, from 2006 to 2024, built on official ISTAT and Eurostat data: where the most and the fewest crimes are reported, what is rising and what is falling, where sudden spikes hit, alongside how safe people feel. A search opens the profile of any Italian municipality, and six deep dives go further: prisons, deportations, perception, unsolved crimes, minors and pre-trial detention.</p>
-        <span class="award">⚖️ Official data, city by city</span>
-        <div class="links">
-          <a class="plink" href="https://atlantedellasicurezza.it/en/" target="_blank" rel="noopener">Visit →</a>
+    <div class="cell" data-tags="civic dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/atlante-sicurezza.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Atlante della Sicurezza</h3>
+          <p>A civic tool on reported crime in Italy's 108 provincial capitals, from 2006 to 2024, built on official ISTAT and Eurostat data: where the most and the fewest crimes are reported, what is rising and what is falling, where sudden spikes hit, alongside how safe people feel. A search opens the profile of any Italian municipality, and six deep dives go further: prisons, deportations, perception, unsolved crimes, minors and pre-trial detention.</p>
+          <span class="award">⚖️ Official data, city by city</span>
+          <ul class="ktags"><li data-k="civic">Civic tech</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://atlantedellasicurezza.it/en/" target="_blank" rel="noopener">Visit →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -861,6 +960,8 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
   <svg class="mark" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path fill="#FF7A29" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>© <span id="year"></span> Jacopo Ottaviani · Made with data, code &amp; espresso
 </footer>
 
+<script src="/assets/vendor/isotope.pkgd.min.js?v=3.0.6" defer></script>
+<script src="/assets/project-filter.js?v=2026-11-02" defer></script>
 <script>
 const _now = new Date().getFullYear();
 document.getElementById('year').textContent = _now;
