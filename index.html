@@ -389,6 +389,28 @@ h2 .accent { color: var(--orange); }
   .vb { grid-template-columns: 1fr; gap: 36px; }
   .vb-order b { font-size: 19px; }
 }
+@media (min-width: 821px) {   /* two columns: the receipt fills its column and is set in ems, so one number (--tk, from the script) can shrink all of it until it is no longer than the button list */
+  .vb-printer { position: relative; max-width: none; }
+  .vb-list { justify-content: space-between; }
+  .ticket { font-size: calc(12px * var(--tk, 1)); line-height: 1.45; padding: 1.35em 1.5em 1em; }
+  .tk-top { padding-bottom: .65em; }
+  .tk-top b { font-size: 1.17em; }
+  .tk-top span { font-size: .92em; }
+  .tk-row { font-size: .96em; padding-top: .65em; }
+  .tk-q { font-size: 1.5em; margin: .45em 0 .55em; }
+  .ticket h4 { font-size: .92em; padding-top: .73em; margin-bottom: .36em; }
+  .tk-bring { margin-bottom: .65em; }
+  .tk-bring li { grid-template-columns: 1.8em 1fr; padding: .17em 0; }
+  .tk-done { margin-bottom: .65em; }
+  .tk-done li { padding: .25em 0; }
+  .tk-done small { font-size: .92em; line-height: 1.35; }
+  .tk-msg { padding: .5em 0 1.15em; }
+  .tk-msg b { font-size: 1em; }
+  .tk-foot { padding-top: .65em; }
+  .tk-foot p { font-size: .96em; }
+  .tk-cta { font-size: 1.04em; margin: .5em 0 .65em; padding: .5em 1.15em; }
+  .tk-foot p.tk-nf { font-size: .875em; }
+}
 
 /* ---------- 03 / partners ---------- */
 #partners { padding-bottom: 0; }
@@ -1134,8 +1156,8 @@ document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
     return pad(d.getDate()) + "." + pad(d.getMonth() + 1) + "." + d.getFullYear() + " \u00B7 " + pad(d.getHours()) + ":" + pad(d.getMinutes());
   }
   /* each print gets the next receipt number and today's date and time */
-  function body(i) {
-    no += 1;
+  function body(i, peek) {
+    if (!peek) no += 1;
     const head = '<div class="tk-top"><b>JACOPO OTTAVIANI</b><span>' + L.tag + '</span></div>' +
       '<div class="tk-row"><span>' + L.no + ' ' + String(no).padStart(4, "0") + '</span><span>' + stamp() + '</span></div>';
     if (i === null) {
@@ -1165,6 +1187,36 @@ document.querySelectorAll('.card').forEach(el => cardIO.observe(el));
       if (r.top > innerHeight * .5 || r.top < 0) printer.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     }
   }
+
+  /* two columns: the receipt must be no longer than the button list beside it. Every order gets the same type scale (--tk), the largest
+     that lets the longest receipt fit; if even the smallest does not, the list takes the difference as space between its buttons */
+  const wide = matchMedia("(min-width: 821px)");
+  const probe = document.createElement("div");   /* an unseen ticket, to measure each order at the real width */
+  probe.className = "pr-out"; probe.setAttribute("aria-hidden", "true");
+  probe.style.cssText = "position:absolute;left:0;right:0;top:0;visibility:hidden;pointer-events:none";
+  probe.innerHTML = '<div class="ticket"></div>';
+  const HEAD = 44, TEAR = 11;   /* the printer head less its overlap with the paper, and the torn edge below it */
+  function tallest() {
+    let h = 0;
+    ORDERS.forEach((o, i) => { probe.firstChild.innerHTML = body(i, true); h = Math.max(h, probe.firstChild.offsetHeight); });
+    return h;
+  }
+  function fit() {
+    list.style.minHeight = ""; printer.style.removeProperty("--tk");
+    if (!wide.matches) return;
+    printer.appendChild(probe);
+    const room = list.offsetHeight - HEAD - TEAR;
+    let k = 1;
+    while (tallest() > room && k > .9) { k = Math.round((k - .02) * 100) / 100; printer.style.setProperty("--tk", k); }
+    const over = tallest() - room;
+    if (over > 0) list.style.minHeight = (list.offsetHeight + over) + "px";
+    probe.remove();
+  }
+  let fitT;
+  addEventListener("resize", () => { clearTimeout(fitT); fitT = setTimeout(fit, 120); });
+  wide.addEventListener("change", fit);
+  fit();
+  if (document.fonts) document.fonts.ready.then(fit);
 
   /* a welcome receipt is there from the start, and prints again when the section scrolls in */
   ticket.innerHTML = body(null); no = 0;
