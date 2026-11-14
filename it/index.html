@@ -339,16 +339,21 @@ h2 .accent { color: var(--orange); }
 /* the printer: an ink head with a slot and a light, the receipt feeding out of it */
 .vb-printer { width: 100%; max-width: 420px; margin: 0 auto; scroll-margin-top: 84px; }
 .pr-head { position: relative; z-index: 2; height: 50px; background: var(--ink); box-shadow: 6px 6px 0 var(--peach); }
-/* on the head, a row of espresso cups on their saucers, as on a bar machine's cup warmer (crema in the accent, saucer and steam in its tint, porcelain in paper);
-   while a receipt prints the cups slide along one cup, 32px, in the ticket's sixteen jerks and the steam wavers between two wisps */
-.pr-pat { position: absolute; left: 0; top: 0; width: 100%; height: 40px; }
-.pr-steam2 { opacity: 0; }
-.vb-printer.printing .pr-strip { animation: prSlide 1.15s steps(16, end); }
-.vb-printer.printing .pr-steam1 { animation: prSlide 1.15s steps(16, end), prFlick .3s steps(1, end) infinite; }
-.vb-printer.printing .pr-steam2 { animation: prSlide 1.15s steps(16, end), prFlock .3s steps(1, end) infinite; }
-@keyframes prSlide { from { transform: translateX(-32px); } }
-@keyframes prFlick { 50% { opacity: 0; } }
-@keyframes prFlock { 0% { opacity: 0; } 50% { opacity: 1; } }
+/* the head is perforated like the cup grille on top of an espresso machine: three rows of small holes in the grey of the unlit light, starting with the slot
+   and stopping short of the light on a whole column of holes (round(); the width before it is for browsers without round()), so at rest the head has no colour.
+   a second copy of the holes, in the accent, lies on top, hidden: while a receipt prints a soft window (a CSS mask) crosses it and comes back,
+   eight of the ticket's sixteen jerks out and eight home, like a print head travelling */
+.pr-pat { position: absolute; left: 16px; top: 0; width: calc(100% - 54px); width: round(down, calc(100% - 54px), 8px); height: 40px; }
+.pr-lit {
+  opacity: 0;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 38%, #000 62%, transparent) no-repeat -44px 0 / 88px 100%;
+          mask: linear-gradient(90deg, transparent, #000 38%, #000 62%, transparent) no-repeat -44px 0 / 88px 100%;
+}
+.vb-printer.printing .pr-lit { opacity: 1; animation: prSweep 1.15s steps(8, end); }
+@keyframes prSweep {
+  0%, 100% { -webkit-mask-position: -44px 0; mask-position: -44px 0; }
+  50% { -webkit-mask-position: calc(100% + 44px) 0; mask-position: calc(100% + 44px) 0; }
+}
 .pr-head::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 6px; height: 4px; background: #000; border-radius: 2px; }
 .pr-led { position: absolute; right: 16px; top: 15.5px; width: 9px; height: 9px; border-radius: 50%; background: #4a4a4a; box-shadow: 0 0 0 7px var(--ink); }
 .vb-printer.printing .pr-led { background: var(--orange); animation: prBlink .3s steps(2, jump-none) infinite; }
@@ -683,7 +688,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
       <ol class="vb-list" id="vbList" aria-label="Cosa hai sul tavolo"></ol>
     </div>
     <div class="vb-printer" id="vbPrinter">
-      <div class="pr-head" aria-hidden="true"><svg class="pr-pat" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="prCup" x="2" width="32" height="40" patternUnits="userSpaceOnUse"><path d="M5.5 27.9 H22.5 Q21.6 30.7 14 30.7 Q6.4 30.7 5.5 27.9 Z" fill="#FFDCC2"/><path d="M19 19.7 C23.2 19.3 23.2 24.6 18.4 24.6" fill="none" stroke="#FFFFFF" stroke-width="1.7"/><path d="M8.4 18.6 H19.6 L18.9 23.4 Q18.1 27.5 14 27.5 Q9.9 27.5 9.1 23.4 Z" fill="#FFFFFF"/><ellipse cx="14" cy="18.6" rx="5.6" ry="1.55" fill="#FF7A29" stroke="#FFFFFF" stroke-width="1"/></pattern><pattern id="prSteam1" x="2" width="32" height="40" patternUnits="userSpaceOnUse"><path d="M12.3 15.4 c-1.5 -1.3 1.5 -2.5 0 -3.8 s1.5 -2.5 0 -3.8" fill="none" stroke="#FFDCC2" stroke-width="1.3" stroke-linecap="round"/><path d="M15.9 15.4 c-1.3 -1.1 1.3 -2.1 0 -3.2" fill="none" stroke="#FFDCC2" stroke-width="1.3" stroke-linecap="round"/></pattern><pattern id="prSteam2" x="2" width="32" height="40" patternUnits="userSpaceOnUse"><path d="M12.3 15.4 c1.5 -1.3 -1.5 -2.5 0 -3.8 s-1.5 -2.5 0 -3.8" fill="none" stroke="#FFDCC2" stroke-width="1.3" stroke-linecap="round"/><path d="M15.9 15.4 c1.3 -1.1 -1.3 -2.1 0 -3.2" fill="none" stroke="#FFDCC2" stroke-width="1.3" stroke-linecap="round"/></pattern></defs><rect class="pr-steam1" width="2000" height="40" fill="url(#prSteam1)"/><rect class="pr-steam2" width="2000" height="40" fill="url(#prSteam2)"/><rect class="pr-strip" width="2000" height="40" fill="url(#prCup)"/></svg><span class="pr-led"></span></div>
+      <div class="pr-head" aria-hidden="true"><svg class="pr-pat" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="prHole" width="8" height="40" patternUnits="userSpaceOnUse"><circle cx="2" cy="13" r="1.5" fill="#4A4A4A"/><circle cx="6" cy="20" r="1.5" fill="#4A4A4A"/><circle cx="2" cy="27" r="1.5" fill="#4A4A4A"/></pattern></defs><rect width="2000" height="40" fill="url(#prHole)"/></svg><svg class="pr-pat pr-lit" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="prLit" width="8" height="40" patternUnits="userSpaceOnUse"><circle cx="2" cy="13" r="1.5" fill="#FF7A29"/><circle cx="6" cy="20" r="1.5" fill="#FF7A29"/><circle cx="2" cy="27" r="1.5" fill="#FF7A29"/></pattern></defs><rect width="2000" height="40" fill="url(#prLit)"/></svg><span class="pr-led"></span></div>
       <div class="pr-out"><div class="ticket" id="vbTicket" aria-live="polite"></div></div>
     </div>
   </div>
