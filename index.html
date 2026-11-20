@@ -144,6 +144,7 @@ nav .logo:hover .steam circle:nth-child(3), nav .logo:focus-visible .steam circl
 }
 nav ul { display: flex; gap: 26px; list-style: none; align-items: center; }
 nav ul li { display: flex; align-items: center; }
+nav ul li[hidden] { display: none; }
 nav ul a {
   font-family: var(--bar); font-weight: 500; font-size: 14.5px; letter-spacing: .14em;
   text-transform: uppercase; color: var(--ink); text-decoration: none; position: relative;
@@ -617,7 +618,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
   <a class="logo" href="#top"><svg class="moka" width="21.4" height="26.4" viewBox="8.5 2.5 47 58" aria-hidden="true"><g class="steam"><circle cx="23" cy="16.2" r="2.2"/><circle cx="27" cy="16.2" r="1.8"/><circle cx="31" cy="16.2" r="1.4"/></g><path class="cap" fill="#FF7A29" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15Z"/><path fill="#FF7A29" d="M18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg><b>jacopo<span>.</span>ottaviani</b></a>
   <ul>
     <li><a href="#bio">About</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li hidden><a href="#skills">Skills</a></li>
     <li><a href="#partners">Partners</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#publications">Essays</a></li>
@@ -680,7 +681,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
   </div>
 </section>
 
-<section id="skills">
+<section id="skills" hidden><!-- hidden 2026-11-20: a new section will take this slot -->
   <div class="section-tag">02 / Skills</div>
   <h2>What I bring<span class="accent">.</span></h2>
   <div class="vb" id="vb">
@@ -695,7 +696,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
 </section>
 
 <section id="partners" class="reveal">
-  <div class="section-tag">03 / Partners</div>
+  <div class="section-tag">02 / Partners</div>
   <h2>Organisations I've worked with<span class="accent">.</span></h2>
 </section>
 <div class="marquee" aria-label="Partner organisations">
@@ -735,7 +736,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
 </div>
 
 <section id="work" class="reveal">
-  <div class="section-tag">04 / Portfolio</div>
+  <div class="section-tag">03 / Portfolio</div>
   <h2>Selected projects<span class="accent">.</span></h2>
   <div class="pf" hidden data-of="of">
     <div class="pf-tabs" role="group" aria-label="Filter projects by keyword">
@@ -954,7 +955,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
 </section>
 
 <section id="publications" class="reveal">
-  <div class="section-tag">05 / Essays</div>
+  <div class="section-tag">04 / Essays</div>
   <h2>Selected publications<span class="accent">.</span></h2>
   <div class="pubs">
 
@@ -989,7 +990,7 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
 </section>
 
 <section id="contact" class="reveal">
-  <div class="section-tag">06 / Say hi</div>
+  <div class="section-tag">05 / Say hi</div>
   <img class="moka" src="/assets/mokapot/moka-fuoco.svg" alt="A Moka pot brewing on the stove, steam rising from the spout" width="240" height="310" loading="lazy">
   <h2>Got a story hiding in your data<span class="accent">?</span></h2>
   <p>I'm always up for collaborations, talks, trainings and ambitious cross-border projects. Let's talk.</p>
