@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="UTF-8">
+<title>og-image source</title>
+<!-- Source of ../og-image.jpg (1200x630), the preview shown when the page is shared on Slack, WhatsApp, etc.
+     Render: Chrome --headless --window-size=1200,630 --screenshot over http://localhost/bombe-a-roma/pipeline/og-source.html,
+     then sips -s format jpeg -s formatOptions 80. The yearly counts are read from ../data/episodi.json. -->
+<style>
+@font-face { font-family: "Jost"; font-weight: 400 700; src: url("/assets/fonts/jost-latin.woff2") format("woff2"); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 630px; overflow: hidden; background: #FFFFFF; color: #1A1A1A; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.frame { position: absolute; inset: 0; border: 10px solid #1A1A1A; display: grid; grid-template-columns: 430px 1fr; }
+.art { background: #F6F5F2; border-right: 4px solid #1A1A1A; display: grid; place-items: center; }
+.art img { width: 360px; height: 360px; }
+.txt { padding: 46px 54px 40px 52px; display: flex; flex-direction: column; }
+.kick { font: 600 20px/1 "Jost", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #55534F; }
+h1 { font: 600 88px/0.98 "Jost", sans-serif; letter-spacing: -.01em; margin-top: 18px; }
+.dek { font-size: 25px; line-height: 1.32; color: #3A3936; margin-top: 18px; max-width: 640px; }
+.chart { margin-top: auto; display: flex; align-items: flex-end; gap: 18px; height: 120px; }
+.chart .col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 92px; }
+.chart .bar { width: 100%; background: var(--c); }
+.chart .n { font: 600 24px/1 "Jost", sans-serif; margin-bottom: 6px; }
+.chart .y { font: 15px/1 "SF Mono", Menlo, monospace; color: #55534F; margin-top: 7px; }
+.chart .lab { align-self: center; font: 600 17px/1.25 "Jost", sans-serif; color: #55534F; margin-left: 10px; max-width: 150px; }
+.url { position: absolute; right: 54px; top: 42px; display: flex; align-items: center; gap: 10px; font: 600 21px/1 "Jost", sans-serif; }
+.url svg { width: 26px; height: 26px; }
+</style></head>
+<body>
+<div class="frame">
+  <div class="art"><img src="../icon.svg" alt=""></div>
+  <div class="txt">
+    <p class="kick">Mappa · Roma, 2023–2026</p>
+    <h1>Le bombe<br>di Roma</h1>
+    <p class="dek">Bombe carta e ordigni esplosi in città, luogo per luogo, con le fonti di ogni episodio.</p>
+    <div class="chart" id="chart"></div>
+  </div>
+</div>
+<div class="url"><svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#C8102E" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>jacopoottaviani.com</div>
+<script>
+(async () => {
+  const COLORS = { 2023: "#F08A7D", 2024: "#E2604F", 2025: "#C23E31", 2026: "#8C241B" };  // the page's year ramp
+  const data = await (await fetch("../data/episodi.json")).json();
+  const n = y => data.filter(d => d.data.startsWith(String(y))).length;
+  const max = Math.max(...[2023, 2024, 2025, 2026].map(n));
+  document.getElementById("chart").innerHTML = [2023, 2024, 2025, 2026].map(y =>
+    `<div class="col"><span class="n">${n(y)}</span><span class="bar" style="--c:${COLORS[y]};height:${Math.round(n(y) / max * 78)}px"></span><span class="y">${y}</span></div>`).join("")
+    + `<p class="lab">episodi per anno<br><span style="font-weight:400">2026 fino al 24 novembre</span></p>`;
+})();
+</script>
+</body></html>

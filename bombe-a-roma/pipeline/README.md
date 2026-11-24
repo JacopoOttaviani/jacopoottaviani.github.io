@@ -1,0 +1,12 @@
+# Pipeline: Le bombe di Roma
+
+Scripts and inputs that produce `../data/episodi.json` and `../data/episodi.csv`. Article texts are not stored here: `articoli_indice.json` keeps only the link, headline and date of the 296 RomaToday articles read.
+
+1. `scrape_tags.py` collects the cards from the RomaToday topic pages (bomba, bombe, bomba-carta, esplosioni, intimidazioni, attentati, ...); `fetch_articles.py` and `follow_links.py` download the articles and the ones they link to.
+2. `episodes_src.py` is the hand-checked list: one record per attack, written from the articles. Edit this file to add an episode.
+3. `build_episodes.py articoli_indice.json fonti_esterne.json episodes.json` fills in the headline and date of each source (`check_ext.py` verifies links from other outlets).
+4. `geocode.py episodes.json cache.json` (Nominatim, 1 request/s); `overrides.json` holds the coordinates fixed by hand, with the reason in `fonte_geo`; `ovb.py` runs the Overpass lookups (intersections, civic numbers).
+5. `finalize.py episodes.json overrides.json cache.json ../data` assigns the municipio (`municipi.json`, OSM boundaries), sets the precision, checks bounds and sources, and writes JSON + CSV.
+
+Shortcut without re-geocoding: `python3 finalize.py episodes_geocoded.json overrides.json cache.json ../data` (needs `municipi.json` in the same folder as the episodes file).
+6. `make_icon.py` draws the project icon: `logo-inline.svg` for the header (animated by the page CSS) and the static `icon.svg`; the PNGs come from `sips -s format png -Z 32 icon.svg --out icon-32.png` (and `-Z 150` + `--padToHeightWidth 180 180 --padColor FFFFFF` for apple-touch-icon.png).

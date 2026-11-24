@@ -1,0 +1,76 @@
+{
+ "R001": {
+  "lat": 41.911622,
+  "lon": 12.516897,
+  "precisione": "incrocio",
+  "fonte_geo": "Overpass: nodo comune a via Catanzaro e via Belluno"
+ },
+ "R012": {
+  "lat": 41.89495,
+  "lon": 12.5746,
+  "precisione": "incrocio",
+  "indirizzo": "viale Palmiro Togliatti all'altezza di via Prenestina, sede del V gruppo Casilino della Polizia locale",
+  "fonte_geo": "Overpass: incrocio Togliatti/Prenestina; la sede affaccia su Togliatti e confina con la Prenestina (RomaToday)"
+ },
+ "R015": {
+  "lat": 41.859459,
+  "lon": 12.602784,
+  "precisione": "via",
+  "indirizzo": "via di Giardinetti, all'altezza di via Raimondi",
+  "fonte_geo": "Nominatim: Via di Giardinetti (l'articolo scrive via dei Giardinetti)"
+ },
+ "R026": {
+  "lat": 41.727257,
+  "lon": 12.293505,
+  "precisione": "via",
+  "indirizzo": "viale Vega 5",
+  "fonte_geo": "Nominatim: Viale Vega, Lido di Ostia Levante (la prima ricerca aveva trovato un'omonima a Colle Laghetto)"
+ },
+ "R035": {
+  "lat": 41.949999,
+  "lon": 12.533363,
+  "precisione": "via",
+  "indirizzo": "via Monte Sirino (nell'articolo «via Monte Serino»)",
+  "fonte_geo": "Nominatim: Via Monte Sirino, Tufello; nessuna via Monte Serino in OpenStreetMap"
+ },
+ "R040": {
+  "lat": 41.844168,
+  "lon": 12.567371,
+  "precisione": "luogo",
+  "indirizzo": "Casale del Sellaretto, Parco degli Acquedotti (via delle Capannelle)",
+  "fonte_geo": "Nominatim: Casa Cantoniera del Sellaretto"
+ },
+ "R051": {
+  "lat": 41.87197,
+  "lon": 12.57721,
+  "precisione": "stimato",
+  "fonte_geo": "interpolato tra via Casilina 769 e 1011 (civici OSM)",
+  "municipio": "Municipio V"
+ },
+ "R052": {
+  "lat": 41.87197,
+  "lon": 12.57721,
+  "precisione": "stimato",
+  "fonte_geo": "interpolato tra via Casilina 769 e 1011 (civici OSM)",
+  "municipio": "Municipio V"
+ },
+ "R055": {
+  "lat": 41.863538,
+  "lon": 12.668195,
+  "precisione": "incrocio",
+  "fonte_geo": "Nominatim: via Burgio presso la Casilina; coerente con l'interpolazione tra i civici 1604 e 1797"
+ },
+ "R062": {
+  "lat": 41.734613,
+  "lon": 12.274569,
+  "precisione": "incrocio",
+  "fonte_geo": "Overpass: nodo comune a via dei Velieri e viale Vasco de Gama"
+ },
+ "R068": {
+  "lat": 41.945961,
+  "lon": 12.600895,
+  "precisione": "via",
+  "indirizzo": "viale Ratto delle Sabine",
+  "fonte_geo": "Nominatim: Viale Ratto delle Sabine"
+ }
+}

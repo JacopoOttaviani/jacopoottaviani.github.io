@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<!-- Analytics counts only the live site, as on the other pages -->
+<script>if (location.hostname !== "jacopoottaviani.com") window["ga-disable-G-8NHK2YNN9T"] = true;</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NHK2YNN9T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8NHK2YNN9T');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le bombe di Roma</title>
+<meta name="description" content="Mappa delle bombe carta e degli ordigni esplosi a Roma dal 2023 a oggi, geolocalizzati dagli articoli di cronaca, con le fonti di ogni episodio.">
+<meta name="author" content="Jacopo Ottaviani">
+<link rel="canonical" href="https://jacopoottaviani.com/bombe-a-roma/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Le bombe di Roma, 2023–2026">
+<meta property="og:description" content="Bombe carta e ordigni esplosi in città, luogo per luogo, con le fonti di ogni episodio.">
+<meta property="og:url" content="https://jacopoottaviani.com/bombe-a-roma/">
+<meta property="og:site_name" content="Jacopo Ottaviani">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=2026-11-24">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Una bomba carta disegnata con il Colosseo sopra, il titolo «Le bombe di Roma» e un grafico degli episodi per anno: 8 nel 2023, 8 nel 2024, 19 nel 2025, 33 nel 2026.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=2026-11-24">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
+<style>
+@font-face {
+  font-family: "Jost"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("/assets/fonts/jost-latin.woff2") format("woff2");
+}
+/* Palette "Corallo" (chosen 2026-11-24 over Cobalto and Inchiostro). The year ramp is an ordinal ramp validated
+   on the map surface in light and dark (single hue, monotone lightness, light end >= 2:1). */
+:root {
+  color-scheme: light;
+  --ink: #1A1A1A; --ink-2: #55534F; --ink-3: #807D77;
+  --paper: #FFFFFF; --paper-2: #F6F5F2; --rule: #E3E1DC; --bar-off: #D9D7D1;
+  --y2023: #F08A7D; --y2024: #E2604F; --y2025: #C23E31; --y2026: #8C241B;
+  --t2023: #1A1A1A; --t2024: #1A1A1A; --t2025: #FFFFFF; --t2026: #FFFFFF;  /* count label on each step */
+  --accent: #C23E31;
+  --kraft: #E4CCA4; --kraft-2: #D3B588; --tape: #B9B5AD;
+  --brand: #C8102E;
+  --focus: #2F6BE0;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --head: "Jost", "Futura", "Helvetica Neue", Arial, sans-serif;
+  --mono: "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ink: #EDEBE6; --ink-2: #BDBAB2; --ink-3: #8F8C85;
+    --paper: #161616; --paper-2: #1F1F1E; --rule: #33322F; --bar-off: #3A3936;
+    --y2023: #9A3A30; --y2024: #C9483B; --y2025: #F0705F; --y2026: #FFA79C;  /* dark steps: recent = brightest */
+    --t2023: #FFFFFF; --t2024: #FFFFFF; --t2025: #161616; --t2026: #161616;
+    --accent: #F0705F;
+    --kraft: #8C7352; --kraft-2: #7A6346; --tape: #5A5752;
+    --brand: #E0394F; --focus: #7FA6F0;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #EDEBE6; --ink-2: #BDBAB2; --ink-3: #8F8C85;
+  --paper: #161616; --paper-2: #1F1F1E; --rule: #33322F; --bar-off: #3A3936;
+  --y2023: #9A3A30; --y2024: #C9483B; --y2025: #F0705F; --y2026: #FFA79C;
+  --t2023: #FFFFFF; --t2024: #FFFFFF; --t2025: #161616; --t2026: #161616;
+  --accent: #F0705F;
+  --kraft: #8C7352; --kraft-2: #7A6346; --tape: #5A5752;
+  --brand: #E0394F; --focus: #7FA6F0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.5 var(--sans); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ── menu bar ── */
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 24px; border-bottom: 2px solid var(--ink); background: var(--paper); font: 500 14px/1 var(--head); }
+.bar a { display: inline-flex; align-items: center; gap: 8px; padding: 7px 9px; text-decoration: none; color: var(--ink); }
+.bar a:hover, .bar a:focus-visible { background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--accent); }
+.bar-home { margin-left: -9px; font-weight: 600; font-size: 16px; letter-spacing: .01em; }
+.bar-mark { width: 22px; height: 22px; flex: none; }
+.bar-right { display: flex; gap: 6px; }
+.bar-nav { display: flex; gap: 4px; margin-right: auto; margin-left: 10px; padding-left: 14px; border-left: 1.5px solid var(--rule); }
+.bar .dl-ico { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html { scroll-behavior: smooth; }
+#fonti, #dati { scroll-margin-top: 24px; }
+#dati:target a { box-shadow: 3px 3px 0 var(--accent); }
+.bar .ico { width: 17px; height: 17px; flex: none; }
+.bar .cup, .site-foot .cup { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── header ── */
+.top { padding: 22px 24px 18px; border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 1fr auto; gap: 8px 32px; align-items: end; }
+.kicker { font: 600 12px/1 var(--head); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); grid-column: 1 / -1; }
+h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em; }
+.dek { max-width: 62ch; color: var(--ink-2); margin-top: 8px; font-size: 16px; }
+.totals { display: flex; gap: 22px; text-align: right; }
+.totals div { min-width: 64px; }
+.totals b { display: block; font: 600 34px/1 var(--head); font-variant-numeric: tabular-nums; }
+.totals span { font-size: 12px; color: var(--ink-2); }
+
+/* project icon: the bomba carta (fuse and spark are SMIL, paused by the script under reduced motion) */
+.head-main { display: flex; gap: 20px; align-items: center; }
+.logo { width: 88px; height: 88px; flex: none; overflow: visible; }
+.logo .bc-body { fill: var(--kraft); }
+.logo .bc-tape { fill: none; stroke: var(--tape); stroke-width: 7; opacity: .8; }
+.logo .bc-band { fill: none; stroke: var(--tape); stroke-width: 6; opacity: .8; }
+.logo .bc-outline { fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linejoin: round; }
+.logo .bc-tuft { fill: var(--kraft-2); stroke: var(--ink); stroke-width: 2.2; stroke-linejoin: round; }
+.logo .bc-colo { fill: var(--kraft-2); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+.logo .bc-colo-line { fill: none; stroke: var(--ink); stroke-width: 1.1; }
+.logo .bc-colo-arch { fill: none; stroke: var(--ink); stroke-width: .95; opacity: .9; }
+.logo .bc-colo-win { fill: var(--ink); opacity: .8; }
+.logo .bc-fuse { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; }
+.logo .bc-spark path { fill: var(--y2024); }
+.logo .bc-glow { fill: #FFD25A; opacity: .45; }
+.logo .bc-core { fill: #FFF3C4; }
+.logo .bc-flash path { fill: #FFD25A; stroke: var(--y2025); stroke-width: 1.5; }
+
+/* ── layout: map + panel ── */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 400px; height: calc(100vh - 262px); min-height: 520px; border-bottom: 2px solid var(--ink); }
+#map { height: 100%; background: var(--paper-2); }
+.panel { border-left: 2px solid var(--ink); display: flex; flex-direction: column; min-height: 0; background: var(--paper); }
+.controls { padding: 16px 18px 12px; border-bottom: 1px solid var(--rule); }
+.ctl-label { font: 600 11px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.chip { font: 500 13px/1 var(--sans); color: var(--ink); background: var(--paper); border: 1.5px solid var(--ink); padding: 7px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; min-height: 32px; }
+.chip .sw { width: 11px; height: 11px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1.5px var(--paper); }
+.chip .n { font: 12px/1 var(--mono); color: var(--ink-2); }
+.chip[aria-pressed="false"] { border-color: var(--rule); color: var(--ink-3); }
+.chip[aria-pressed="false"] .sw { background: var(--bar-off); }
+.chip:hover { box-shadow: 3px 3px 0 var(--accent); }
+
+/* legend */
+.legend { font-size: 12px; color: var(--ink-2); display: flex; flex-direction: column; gap: 7px; margin-top: 2px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin: 0 4px 0 8px; vertical-align: -1px; }
+.legend i:first-child { margin-left: 0; }
+.lg-cl { display: flex; align-items: center; gap: 8px; }
+.cl-demo { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; flex: none;
+  background: conic-gradient(var(--y2023) 0 20%, var(--y2024) 0 40%, var(--y2025) 0 60%, var(--y2026) 0 100%); }
+.cl-demo b, .cl b { width: calc(100% - 8px); height: calc(100% - 8px); border-radius: 50%; background: var(--paper); display: grid; place-items: center; font: 600 10px/1 var(--mono); color: var(--ink); }
+
+/* time filter above the map: monthly histogram, two range handles, quick periods */
+.tf { border-bottom: 2px solid var(--ink); padding: 12px 24px 8px; display: grid; grid-template-columns: 370px minmax(0, 1fr); gap: 8px 28px; align-items: center; }
+.tf-head .ctl-label { margin-bottom: 6px; }
+.tf-range { font: 600 19px/1.15 var(--head); }
+.tf-now { display: flex; align-items: center; gap: 12px; }
+.tf-play { width: 42px; height: 42px; flex: none; display: grid; place-items: center; background: var(--ink); color: var(--paper); border: 0; cursor: pointer; }
+.tf-play svg { width: 18px; height: 18px; fill: currentColor; }
+.tf-play:hover, .tf-play:focus-visible { box-shadow: 3px 3px 0 var(--accent); }
+.tf-play[aria-pressed="true"] { background: var(--accent); }
+/* the month being played, over the map, and the explosions of that month */
+.play-month { position: absolute; left: 14px; bottom: 30px; z-index: 5; pointer-events: none; background: var(--paper); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--accent); padding: 8px 12px; font: 600 22px/1.1 var(--head); display: none; }
+.play-month small { display: block; font: 400 12px/1.3 var(--sans); color: var(--ink-2); }
+.play-month.on { display: block; }
+.boom { position: absolute; top: 0; left: 0; width: 0; height: 0; z-index: 15; pointer-events: none; }
+.boom span, .boom svg { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); }
+.boom .ring { width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--c); animation: boom-ring 1.4s ease-out forwards; }
+.boom svg { width: 34px; height: 34px; fill: var(--c); stroke: var(--paper); stroke-width: 1.2; animation: boom-star 1.4s ease-out forwards; }
+@keyframes boom-ring { 0% { transform: translate(-50%, -50%) scale(.3); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; } }
+@keyframes boom-star { 0% { transform: translate(-50%, -50%) scale(0) rotate(0); opacity: 1; } 18% { transform: translate(-50%, -50%) scale(1.25) rotate(20deg); opacity: 1; } 60% { opacity: 1; } 100% { transform: translate(-50%, -50%) scale(.7) rotate(40deg); opacity: 0; } }
+/* clustering on/off, as a map control */
+.cl-toggle button { width: auto !important; height: 32px !important; padding: 0 10px !important; display: inline-flex !important; align-items: center; gap: 7px; font: 600 12px/1 var(--head); color: var(--ink); background: var(--paper); }
+.cl-toggle button[aria-pressed="false"] { color: var(--ink-3); }
+.cl-toggle button[aria-pressed="false"] .cl-demo { filter: grayscale(1); opacity: .5; }
+.cl-toggle .cl-demo { width: 18px; height: 18px; }
+.cl-toggle .cl-demo b { font-size: 0; }
+.zoom-reset button { display: grid !important; place-items: center; }
+.zoom-reset svg { width: 17px; height: 17px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.zoom-reset circle { fill: var(--ink); stroke: none; }
+.tf-range small { display: block; font: 400 13px/1.3 var(--sans); color: var(--ink-2); margin-top: 2px; }
+.tf-presets { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.tf-presets button { font: 500 12px/1 var(--sans); color: var(--ink); background: var(--paper); border: 1.5px solid var(--ink); padding: 6px 8px; cursor: pointer; min-height: 28px; }
+.tf-presets button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.tf-presets button:hover { box-shadow: 3px 3px 0 var(--accent); }
+.tf-track { position: relative; height: 92px; }
+#tf-hist { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+#tf-hist .bar { shape-rendering: crispEdges; }
+#tf-hist .axis { font: 10px var(--mono); fill: var(--ink-2); }
+#tf-hist .tick { stroke: var(--rule); }
+#tf-hist .base { stroke: var(--ink); stroke-width: 1; }
+#tf-hist .sel { fill: var(--accent); opacity: .07; }
+#tf-hist .hit { fill: transparent; cursor: pointer; }
+#tf-hist .handle line { stroke: var(--ink); stroke-width: 2; }
+#tf-hist .handle rect { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
+#tf-hist .handle.focus rect { stroke: var(--focus); stroke-width: 2.5; }
+.tf-track input[type="range"] { -webkit-appearance: none; appearance: none; position: absolute; left: 0; top: 0; width: 100%; height: 74px; margin: 0; background: none; pointer-events: none; outline: none; }
+.tf-track input[type="range"]::-webkit-slider-runnable-track { height: 74px; background: none; border: 0; }
+.tf-track input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; pointer-events: auto; width: 16px; height: 74px; background: transparent; border: 0; cursor: ew-resize; }
+.tf-track input[type="range"]::-moz-range-track { height: 74px; background: none; border: 0; }
+.tf-track input[type="range"]::-moz-range-thumb { pointer-events: auto; width: 16px; height: 74px; background: transparent; border: 0; border-radius: 0; cursor: ew-resize; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px/1.3 var(--sans); padding: 5px 8px; white-space: nowrap; transform: translate(-50%, -100%); top: 0; display: none; z-index: 5; }
+.tip b { font-family: var(--mono); font-weight: 600; }
+
+/* list (also the accessible text view of the map) */
+.list-head { padding: 10px 18px; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--ink-2); }
+.list { list-style: none; overflow-y: auto; flex: 1; min-height: 0; }
+.item { border-bottom: 1px solid var(--rule); }
+.item button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 12px 1fr; gap: 3px 10px; width: 100%; padding: 11px 18px; cursor: pointer; }
+.item button:hover, .item button:focus-visible, .item.on button { background: var(--paper-2); }
+.item button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.item .sw { width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-top: 5px; }
+.item .d { font: 12px/1.4 var(--mono); color: var(--ink-2); }
+.item .t { grid-column: 2; font-weight: 600; font-size: 14px; line-height: 1.3; }
+.item .s { grid-column: 2; font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+
+/* markers: one HTML button per place (24px hit target around a 16px dot) */
+.mk-btn { position: absolute; top: 0; left: 0; width: 24px; height: 24px; padding: 0; margin: 0; border: 0; background: none; display: grid; place-items: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.mk-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; border-radius: 50%; }
+.mk { width: 16px; height: 16px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px var(--paper), 0 1px 3px rgba(0,0,0,.35); display: grid; place-items: center; font: 600 10px/1 var(--mono); color: var(--tc, #fff); transition: transform .12s; }
+.mk.multi { width: 21px; height: 21px; }
+.mk.zone { outline: 1.5px dashed var(--ink); outline-offset: 3px; }
+.mk-btn:hover .mk, .mk-btn:focus-visible .mk, .mk-btn.hot .mk { transform: scale(1.35); }
+/* clusters: a donut of the years inside, the count in the middle */
+.cl-btn { position: absolute; top: 0; left: 0; padding: 0; margin: 0; border: 0; background: none; cursor: zoom-in; display: grid; place-items: center; z-index: 10; -webkit-tap-highlight-color: transparent; }
+.cl-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 50%; }
+.cl { width: var(--s); height: var(--s); border-radius: 50%; display: grid; place-items: center; box-shadow: 0 0 0 2px var(--paper), 0 1px 4px rgba(0,0,0,.35); transition: transform .12s; }
+.cl b { font-size: 11px; }
+.cl-btn:hover .cl, .cl-btn:focus-visible .cl { transform: scale(1.12); }
+.maplibregl-map { font: 13px/1.45 var(--sans); }
+.maplibregl-ctrl-attrib { font-size: 10px; background: color-mix(in srgb, var(--paper) 85%, transparent) !important; color: var(--ink-2); }
+.maplibregl-ctrl-attrib a { color: var(--ink-2) !important; }
+.maplibregl-ctrl-group { border-radius: 0 !important; box-shadow: none !important; border: 1.5px solid var(--ink); background: var(--paper) !important; }
+.maplibregl-ctrl-group button + button { border-top: 1px solid var(--rule) !important; }
+:root[data-theme="dark"] .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1); } }
+.mapbox-tip .maplibregl-popup-content, .tt .maplibregl-popup-content { background: var(--ink); color: var(--paper); border-radius: 0; box-shadow: none; font: 12px/1.35 var(--sans); padding: 5px 8px; }
+.tt .maplibregl-popup-tip { border-top-color: var(--ink) !important; border-bottom-color: var(--ink) !important; }
+.card .maplibregl-popup-content { border-radius: 0; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--accent); padding: 14px 16px; max-height: 56vh; overflow-y: auto; }
+.card .maplibregl-popup-tip { border-top-color: var(--ink) !important; border-bottom-color: var(--ink) !important; }
+.card .maplibregl-popup-close-button { color: var(--ink-2); font-size: 20px; width: 28px; height: 28px; }
+.card { max-width: 320px !important; }
+.maplibregl-popup { z-index: 20; }
+.pop + .pop { border-top: 1px solid var(--rule); margin-top: 14px; padding-top: 14px; }
+.pop .pd { font: 12px/1.3 var(--mono); color: var(--ink-2); }
+.pop h3 { font: 600 17px/1.2 var(--head); margin: 4px 0 2px; }
+.pop .pl { font-size: 13px; color: var(--ink-2); }
+.pop .pm { font-size: 13px; margin-top: 6px; }
+.pop .pm span + span::before { content: " · "; color: var(--ink-3); }
+.pop .px { margin-top: 8px; font-size: 13.5px; line-height: 1.45; }
+.pop .pp { margin-top: 8px; font-size: 11.5px; color: var(--ink-3); }
+.pop .src { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule); list-style: none; }
+.pop .src li { font-size: 12.5px; line-height: 1.35; margin-top: 6px; }
+.pop .src a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 2px; }
+.pop .src b { font-weight: 600; }
+.pop .src time { color: var(--ink-3); font: 11px var(--mono); }
+
+/* method */
+.method { padding: 34px 24px 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px 40px; max-width: 1400px; }
+.method h2 { font: 600 13px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+.method p, .method li { font-size: 14px; color: var(--ink-2); }
+.method p + p { margin-top: 8px; }
+.method ul { padding-left: 18px; }
+.method li + li { margin-top: 4px; }
+.method strong { color: var(--ink); font-weight: 600; }
+.author { background: var(--paper-2); border-left: 4px solid var(--accent); padding: 16px 18px; align-self: start; }
+.author h2 { display: flex; align-items: center; gap: 8px; }
+.author-mark { width: 18px; height: 18px; flex: none; }
+.author p { color: var(--ink-2); }
+.author-link a { font: 600 13px/1.3 var(--head); color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.dl { display: inline-flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.dl a { font: 600 13px/1 var(--head); letter-spacing: .04em; border: 1.5px solid var(--ink); padding: 8px 12px; text-decoration: none; }
+.dl a:hover { box-shadow: 3px 3px 0 var(--accent); }
+
+/* footer */
+.site-foot { border-top: 2px solid var(--ink); padding: 18px 24px 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; font: 500 14px/1 var(--head); }
+.site-foot a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 4px 0; }
+.site-foot a:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.site-foot .home { font-weight: 600; font-size: 16px; letter-spacing: .01em; }
+.site-foot .mark { width: 24px; height: 24px; flex: none; }
+.site-foot .ico { width: 18px; height: 18px; flex: none; }
+.site-foot .note { margin-left: auto; font: 400 12px/1.4 var(--sans); color: var(--ink-3); }
+
+@media (max-width: 900px) {
+  .top { grid-template-columns: 1fr; padding: 18px 16px 14px; }
+  .logo { width: 62px; height: 62px; }
+  .head-main { gap: 14px; align-items: flex-start; }
+  .totals { text-align: left; }
+  .tf { grid-template-columns: 1fr; padding: 12px 16px 6px; gap: 6px; }
+  .tf-head { display: grid; grid-template-columns: 1fr; }
+  .tf-track { height: 84px; }
+  .layout { grid-template-columns: 1fr; height: auto; min-height: 0; }
+  #map { height: 62vh; min-height: 360px; }
+  .panel { border-left: 0; border-top: 2px solid var(--ink); }
+  .controls { padding: 14px 16px 10px; }
+  .list { max-height: 70vh; }
+  .item button, .list-head { padding-left: 16px; padding-right: 16px; }
+  .method { padding: 26px 16px 20px; }
+  .site-foot { padding: 16px 16px 22px; }
+  .bar { padding: 6px 12px; flex-wrap: wrap; row-gap: 2px; }
+  .bar-nav { order: 3; width: 100%; margin: 0 0 0 -9px; padding: 2px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
+  .bar-home { margin-left: -6px; font-size: 15px; }
+  .site-foot .note { margin-left: 0; width: 100%; }
+  .card { max-width: 270px !important; }
+  .card .maplibregl-popup-content { max-height: 38vh; }
+}
+@media (max-width: 560px) { .bar-link span { display: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .mk, .cl { transition: none; } .boom .ring { animation: none; opacity: 0; } .boom svg { animation: none; } }
+@media (forced-colors: active) { .mk, .cl, .cl-demo, .legend i, .chip .sw, .item .sw { forced-color-adjust: none; } }
+</style>
+</head>
+<body>
+
+<nav class="bar" aria-label="Jacopo Ottaviani">
+  <a class="bar-home" href="https://jacopoottaviani.com/"><svg class="bar-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="var(--brand)" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg><span>JacopoOttaviani.com</span></a>
+  <div class="bar-nav">
+    <a href="#fonti">Fonti</a>
+    <a href="#dati"><svg class="ico dl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>Scarica i dati</a>
+  </div>
+  <div class="bar-right">
+    <a class="bar-link" href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>LinkedIn</span></a>
+    <a class="bar-link" href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener" aria-label="Offrimi un caffè su Ko-fi"><svg class="ico cup" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 8q-1.3-1.5 0-3t0-3M10.5 8q-1.3-1.5 0-3t0-3M13.5 8q-1.3-1.5 0-3t0-3"/><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9M2 21.8h17"/></svg><span>Offrimi un caffè</span></a>
+  </div>
+</nav>
+
+<header class="top">
+  <p class="kicker">Mappa · Roma, gennaio 2023 – novembre 2026</p>
+  <div class="head-main">
+    <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Icona del progetto: una bomba carta di carta da pacchi fasciata col nastro, con un piccolo Colosseo disegnato sopra e la miccia accesa">
+    <defs><clipPath id="bc-clip"><path d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z" transform="rotate(-16 48 62)"/></clipPath></defs>
+    <g transform="rotate(-16 48 62)">
+      <path class="bc-body" d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z"/>
+    </g>
+    <g clip-path="url(#bc-clip)"><g transform="rotate(-16 48 62)"><path class="bc-tape" d="M22 50 L 76 72"/><path class="bc-tape" d="M22 74 L 76 50"/><path class="bc-band" d="M27 80 Q 48 84 70 79"/></g></g>
+    <g transform="rotate(-16 48 62)">
+      <path class="bc-colo" d="M34 76 L34 53 Q 44 50.5 54 51.5 L54 56 L58 56 L58 60 L62 60 L62 76 Z"/>
+      <path class="bc-colo-line" d="M34 70 H62 M34 64 H62 M34 58 H58"/>
+      <path class="bc-colo-arch" d="M36.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M41 76 V73 a1.5 1.5 0 0 1 3 0 V76 M45.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M50 76 V73 a1.5 1.5 0 0 1 3 0 V76 M54.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M58.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M36.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M41 70 V67 a1.5 1.5 0 0 1 3 0 V70 M45.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M50 70 V67 a1.5 1.5 0 0 1 3 0 V70 M54.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M58.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M36.5 64 V61 a1.5 1.5 0 0 1 3 0 V64 M41 64 V61 a1.5 1.5 0 0 1 3 0 V64 M45.5 64 V61 a1.5 1.5 0 0 1 3 0 V64 M50 64 V61 a1.5 1.5 0 0 1 3 0 V64 M54.5 64 V61 a1.5 1.5 0 0 1 3 0 V64"/>
+      <path class="bc-colo-win" d="M37.5 54.5 h1.6 v1.6 h-1.6 Z M43.5 54 h1.6 v1.6 h-1.6 Z M49.5 54 h1.6 v1.6 h-1.6 Z"/>
+      <path class="bc-outline" d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z"/>
+      <path class="bc-tuft" d="M31 40 L 35 30 L 40 35 L 44 26 L 48 33 L 53 25 L 56 34 L 61 29 L 65 39 Q 48 36 31 40 Z"/>
+      <path class="bc-fuse" d="M48 31 C 47 21 58 22 58 14 C 58 7 65 3 72 6" pathLength="100" stroke-dasharray="100 100">
+        <animate attributeName="stroke-dashoffset" dur="5s" repeatCount="indefinite" values="0;76;76;0" keyTimes="0;0.84;0.93;1"/>
+      </path>
+      <g transform="translate(48 31)"><g class="bc-flash"><path d="M0.0,-11.8 L1.5,-4.0 L8.0,-9.6 L3.8,-2.2 L10.8,-1.9 L4.7,0.8 L13.0,7.5 L3.6,4.2 L4.9,13.4 L0.0,4.5 L-4.5,12.4 L-3.0,3.5 L-9.9,5.7 L-4.2,0.7 L-11.5,-2.0 L-5.0,-2.9 L-9.3,-11.1 L-1.9,-5.2Z"/>
+        <animateTransform attributeName="transform" type="scale" dur="5s" repeatCount="indefinite" values="0;0;1.2;0.6;0" keyTimes="0;0.83;0.87;0.92;1"/>
+        <animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.83;0.86;0.93;1"/></g></g>
+      <g class="bc-spark">
+        <circle class="bc-glow" r="5.5"/><g><path d="M0.0,-7.0 L1.0,-2.4 L4.9,-4.9 L2.4,-1.0 L7.0,0.0 L2.4,1.0 L4.9,4.9 L1.0,2.4 L0.0,7.0 L-1.0,2.4 L-4.9,4.9 L-2.4,1.0 L-7.0,0.0 L-2.4,-1.0 L-4.9,-4.9 L-1.0,-2.4Z"/>
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.7s" repeatCount="indefinite"/></g>
+        <circle class="bc-core" r="1.9"/>
+        <animateMotion dur="5s" repeatCount="indefinite" path="M72 6 C 65 3 58 7 58 14 C 58 22 47 21 48 31" keyPoints="0;0.76;0.76;0" keyTimes="0;0.84;0.93;1" calcMode="linear"/>
+        <animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="1;1;0;0;1" keyTimes="0;0.84;0.85;0.98;1"/>
+      </g>
+    </g>
+    </svg>
+    <div>
+    <h1>Le bombe di Roma</h1>
+    <p class="dek">Bombe carta e ordigni artigianali esplosi in città negli ultimi quattro anni, ricostruiti e messi sulla mappa a partire dagli articoli di cronaca. Ogni punto rimanda alle sue fonti.</p>
+    </div>
+  </div>
+  <div class="totals" aria-live="polite">
+    <div><b id="t-n">–</b><span>episodi</span></div>
+    <div><b id="t-f">–</b><span>feriti</span></div>
+    <div><b id="t-m">–</b><span>morti</span></div>
+  </div>
+</header>
+
+<section class="tf" aria-labelledby="lab-t">
+  <div class="tf-head">
+    <p class="ctl-label" id="lab-t">Periodo</p>
+    <div class="tf-now">
+      <button type="button" class="tf-play" id="tf-play" aria-pressed="false" aria-label="Riproduci gli episodi mese per mese"></button>
+      <p class="tf-range" id="tf-range" aria-live="polite"></p>
+    </div>
+    <div class="tf-presets" id="tf-presets" role="group" aria-label="Periodi rapidi"></div>
+  </div>
+  <div class="tf-track" id="tf-track">
+    <svg id="tf-hist" aria-hidden="true"></svg>
+    <input type="range" id="tf-lo" min="0" step="1" aria-label="Inizio del periodo">
+    <input type="range" id="tf-hi" min="0" step="1" aria-label="Fine del periodo">
+    <div class="tip" id="tip"></div>
+  </div>
+</section>
+
+<main class="layout">
+  <div id="map" role="region" aria-label="Mappa degli episodi. L'elenco a fianco riporta gli stessi episodi in forma di testo."></div>
+  <aside class="panel" aria-label="Filtri ed elenco degli episodi">
+    <div class="controls">
+      <p class="ctl-label" id="lab-c">Bersaglio</p>
+      <div class="chips" id="cats" role="group" aria-labelledby="lab-c"></div>
+      <p class="legend"><span class="lg-years"><i style="--c:var(--y2023)"></i>2023 <i style="--c:var(--y2024)"></i>2024 <i style="--c:var(--y2025)"></i>2025 <i style="--c:var(--y2026)"></i>2026</span>
+        <span class="lg-cl"><span class="cl-demo" aria-hidden="true"><b>5</b></span>episodi vicini raggruppati: clic per ingrandire; il pulsante «Raggruppa» sulla mappa li separa</span></p>
+    </div>
+    <div class="list-head"><span id="list-n"></span><span>dal più recente</span></div>
+    <ol class="list" id="list"></ol>
+  </aside>
+</main>
+
+<section class="method" id="metodo">
+  <div>
+    <h2>Cosa c'è sulla mappa</h2>
+    <p>Bombe carta, grossi petardi e ordigni artigianali fatti esplodere contro un bersaglio a Roma, Ostia e Acilia comprese, dal 1° gennaio 2023 al <span id="upd">24 novembre 2026</span>.</p>
+    <p>Ogni punto è un attacco; lo stesso negozio colpito due volte fa due punti, e quando gli ordigni sono più d'uno il numero è nella scheda.</p>
+    <p>I due morti indicati in alto sono gli anarchici del Parco degli Acquedotti (marzo 2026), uccisi secondo gli inquirenti dall'ordigno che stavano preparando. A La Rustica (luglio 2023) il bersaglio non è noto.</p>
+    <p>La mappa raccoglie solo gli episodi raccontati dalla stampa. Quelli mai finiti in un articolo mancano.</p>
+  </div>
+  <aside class="author" aria-labelledby="lab-author">
+    <h2 id="lab-author"><svg class="author-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="var(--brand)" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>L'autore</h2>
+    <p><strong>Jacopo Ottaviani</strong> è un data journalist e informatico italiano. I suoi lavori sono usciti, tra gli altri, su The Guardian, Der Spiegel ed El País. Scrive di AI e giornalismo per il Reuters Institute.</p>
+    <p>Questa mappa è un suo lavoro di data journalism: episodi presi dalla cronaca, verificati sugli articoli, messi sulla mappa e pubblicati come dati aperti.</p>
+    <p class="author-link"><a href="https://jacopoottaviani.com/">Altri progetti su jacopoottaviani.com →</a></p>
+  </aside>
+  <div>
+    <h2>Come sono stati localizzati</h2>
+    <p>Ogni indirizzo viene dall'articolo ed è stato geocodificato con OpenStreetMap (Nominatim e Overpass), poi controllato contro il quartiere citato. Il municipio viene dai confini di OpenStreetMap.</p>
+    <p>La scheda dice quanto è preciso il punto: al <strong>civico</strong>, all'<strong>incrocio</strong>, sul <strong>luogo</strong> indicato, <strong>sulla via</strong> quando il numero manca nell'articolo o in OpenStreetMap (a Roma succede spesso), <strong>stimato</strong> tra i civici vicini sulla Casilina, o nella <strong>zona</strong> quando la via non c'è. Per le <strong>abitazioni private</strong> il punto resta sulla via, senza civico.</p>
+    <p>Moventi e piste sono quelli riportati dalle fonti, attribuiti come ipotesi degli investigatori.</p>
+  </div>
+  <div id="fonti">
+    <h2>Fonti e dati</h2>
+    <p>Testate citate nelle schede: AGI, Agenzia Nova, Dissapore, Domani, Il Fatto Quotidiano, Il Post, Internazionale, LaPresse, Open, QN Quotidiano.net, RomaToday. Ogni scheda riporta titolo, data e link di ciascun articolo usato.</p>
+    <p>Gli episodi sono stati cercati nelle pagine per argomento di RomaToday («bombe», «esplosioni», «intimidazioni», «attentati») e negli articoli collegati, poi confrontati con le altre testate e con ricerche web per periodo e quartiere.</p>
+    <div class="dl" id="dati"><a href="data/episodi.json" download>Dati JSON</a><a href="data/episodi.csv" download>Dati CSV</a></div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <a class="home" href="https://jacopoottaviani.com/">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="var(--brand)" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>
+    <span>JacopoOttaviani.com</span>
+  </a>
+  <a href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    <span>LinkedIn</span>
+  </a>
+  <a href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener">
+    <svg class="ico cup" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 8q-1.3-1.5 0-3t0-3M10.5 8q-1.3-1.5 0-3t0-3M13.5 8q-1.3-1.5 0-3t0-3"/><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9M2 21.8h17"/></svg>
+    <span>Offrimi un caffè</span>
+  </a>
+  <p class="note">Base cartografica OpenFreeMap, © OpenMapTiles, dati © OpenStreetMap contributors · Episodi dagli articoli citati · Aggiornata al 24 novembre 2026</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<script>
+(async function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelector(".logo")?.pauseAnimations?.();
+  const YEARS = [2023, 2024, 2025, 2026];
+  const CATS = ["Negozio o locale", "Palazzo o androne", "Abitazione privata", "Auto", "Sede politica, sociale o religiosa", "Istituzioni", "Altro"];
+  const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+  const MES = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
+  const GIORNI = ["dom","lun","mar","mer","gio","ven","sab"];
+  const PREC = {
+    civico: "Punto al numero civico indicato.",
+    incrocio: "Punto all'incrocio indicato dalle fonti.",
+    luogo: "Punto sul luogo indicato dalle fonti.",
+    via: "Punto indicativo sulla via: il civico non è riportato, non è nella mappa, o si tratta di un'abitazione privata.",
+    stimato: "Punto stimato tra i numeri civici vicini presenti in OpenStreetMap: può spostarsi di qualche centinaio di metri.",
+    zona: "Zona approssimativa: le fonti non indicano la via."
+  };
+  const css = getComputedStyle(document.documentElement);
+  const col = y => `var(--y${y})`;
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const fmtDate = (iso, long) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    const dt = new Date(Date.UTC(y, m - 1, d));
+    return long ? `${GIORNI[dt.getUTCDay()]} ${d} ${MESI[m - 1]} ${y}` : `${d} ${MES[m - 1]} ${y}`;
+  };
+
+  let data;
+  try {
+    data = await (await fetch("data/episodi.json", { cache: "no-cache" })).json();
+  } catch (e) {
+    document.getElementById("list").innerHTML = '<li style="padding:18px">Non è stato possibile caricare i dati.</li>';
+    return;
+  }
+  data.forEach(d => { d.anno = +d.data.slice(0, 4); });
+
+  /* months from January 2023 to November 2026: the time filter works on their index */
+  const months = [];
+  for (let y = 2023; y <= 2026; y++) for (let m = 1; m <= 12; m++) { if (y === 2026 && m > 11) break; months.push(`${y}-${String(m).padStart(2, "0")}`); }
+  const LAST = months.length - 1;
+  data.forEach(d => { d.mi = months.indexOf(d.data.slice(0, 7)); });
+
+  const state = { lo: 0, hi: LAST, cats: new Set(CATS), cluster: true };
+  const inTime = d => d.mi >= state.lo && d.mi <= state.hi;
+  const visible = d => inTime(d) && state.cats.has(d.categoria);
+
+  /* ── map: MapLibre + OpenFreeMap (no key), positron in light mode, dark in dark mode ── */
+  const dark = matchMedia("(prefers-color-scheme: dark)");
+  const isDark = () => document.documentElement.dataset.theme === "dark" || (document.documentElement.dataset.theme !== "light" && dark.matches);
+  const styleURL = () => `https://tiles.openfreemap.org/styles/${isDark() ? "dark" : "positron"}`;
+  const lons = data.map(d => d.lon), lats = data.map(d => d.lat);
+  const map = new maplibregl.Map({
+    container: "map", style: styleURL(),
+    bounds: [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]],
+    fitBoundsOptions: { padding: 40 }, minZoom: 8, maxZoom: 18, dragRotate: false, pitchWithRotate: false, scrollZoom: false,
+    attributionControl: { compact: true }
+  });
+  map.touchZoomRotate.disableRotation();
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-left");
+  // back to the starting view: the whole city with every episode
+  const homeBounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
+  map.addControl({
+    onAdd() {
+      const c = document.createElement("div");
+      c.className = "maplibregl-ctrl maplibregl-ctrl-group zoom-reset";
+      c.innerHTML = '<button type="button" title="Torna alla vista iniziale" aria-label="Torna alla vista iniziale: tutta Roma"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.4"/></svg></button>';
+      c.querySelector("button").addEventListener("click", () => {
+        card.remove(); tt.remove();
+        map.fitBounds(homeBounds, { padding: 40, duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700 });
+      });
+      return c;
+    },
+    onRemove() {}
+  }, "top-left");
+  dark.addEventListener("change", () => map.setStyle(styleURL()));
+  // place names in Italian where OpenStreetMap has them (the style defaults to Latin/English names)
+  map.on("styledata", () => {
+    for (const l of map.getStyle().layers) {
+      if (l.type !== "symbol") continue;
+      if (/^label_country/.test(l.id) && map.getLayoutProperty(l.id, "visibility") !== "none") { map.setLayoutProperty(l.id, "visibility", "none"); continue; }  // "Città del Vaticano" would cover "Roma"
+      const tf = map.getLayoutProperty(l.id, "text-field");
+      if (tf && JSON.stringify(tf).includes("name") && !JSON.stringify(tf).includes("name:it")) {
+        map.setLayoutProperty(l.id, "text-field", ["coalesce", ["get", "name:it"], ["get", "name"]]);
+      }
+    }
+  });
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const narrow = () => innerWidth <= 900;
+  const plural = n => `${n} ${n === 1 ? "episodio" : "episodi"}`;
+
+  // one marker per place: episodes at the same point share it
+  const places = new Map();
+  data.forEach(d => {
+    const k = d.lat.toFixed(5) + "," + d.lon.toFixed(5);
+    if (!places.has(k)) places.set(k, []);
+    places.get(k).push(d);
+  });
+
+  const popupHTML = eps => eps.slice().sort((a, b) => b.data.localeCompare(a.data)).map(d => {
+    const meta = [d.ordigni > 1 ? `${d.ordigni} ordigni (${esc(d.ordigno)})` : esc(d.ordigno)];
+    meta.push(d.feriti ? `${d.feriti} ${d.feriti === 1 ? "ferito" : "feriti"}` : "nessun ferito");
+    if (d.morti) meta.push(`${d.morti} morti`);
+    const src = d.fonti.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener"><b>${esc(f.testata)}</b> · ${esc(f.titolo)}</a> <time datetime="${esc(f.data)}">${fmtDate(f.data)}</time></li>`).join("");
+    return `<article class="pop">
+      <p class="pd">${fmtDate(d.data, true)}${d.ora ? " · " + esc(d.ora) : ""}${d.nota_data ? ` <span title="${esc(d.nota_data)}">*</span>` : ""}</p>
+      <h3>${esc(d.bersaglio)}</h3>
+      <p class="pl">${esc(d.indirizzo)} — ${esc(d.quartiere)}${d.municipio ? " · " + esc(d.municipio) : ""}</p>
+      <p class="pm"><span>${meta.join("</span><span>")}</span></p>
+      <p class="px">${esc(d.sintesi)}</p>
+      <p class="pp">${PREC[d.precisione] || ""}${d.nota_data ? " Data: " + esc(d.nota_data) + "." : ""}</p>
+      <ul class="src">${src}</ul>
+    </article>`;
+  }).join("");
+
+  const card = new maplibregl.Popup({ className: "card", offset: 14, maxWidth: "320px", focusAfterOpen: false });
+  const tt = new maplibregl.Popup({ className: "tt", offset: 14, closeButton: false, closeOnClick: false });
+  const showTip = (lngLat, html) => { if (!card.isOpen() || !card.getLngLat().equals(lngLat)) tt.setLngLat(lngLat).setHTML(html).addTo(map); };
+
+  /* place markers: built once, put on the map by the clustering below when their place is not inside a cluster */
+  const markers = [], byKey = new Map();
+  places.forEach((eps, key) => {
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "mk-btn";
+    const m = new maplibregl.Marker({ element: btn }).setLngLat([eps[0].lon, eps[0].lat]);
+    const shownEps = () => eps.filter(visible).sort((a, b) => b.data.localeCompare(a.data));
+    const label = () => shownEps().map(d => `${fmtDate(d.data)} · ${d.quartiere} · ${d.bersaglio}`);
+    m.eps = eps; m.key = key;
+    m.open = moved => {
+      tt.remove();
+      if (narrow() && !moved) {  // phones: bring the point to the upper part of the map so the card fits below it
+        map.once("moveend", () => m.open(true));
+        map.easeTo({ center: m.getLngLat(), offset: [0, -map.getContainer().clientHeight * 0.32], duration: reduced.matches ? 0 : 400 });
+        return;
+      }
+      card.setLngLat(m.getLngLat()).setHTML(popupHTML(shownEps())).addTo(map);
+    };
+    m.refresh = () => {
+      const shown = shownEps(), n = shown.length;
+      const top = shown[0] || eps[0];
+      const cls = ["mk", n > 1 ? "multi" : "", eps[0].precisione === "zona" ? "zone" : ""].join(" ");
+      btn.innerHTML = `<span class="${cls}" style="--c:${col(top.anno)};--tc:var(--t${top.anno})">${n > 1 ? n : ""}</span>`;
+      btn.dataset.label = label().join("; ") + ". Apri la scheda";
+      btn.setAttribute("aria-label", btn.dataset.label);
+      btn.style.zIndex = top.anno - 2020;  // newer years drawn above older ones; clusters at 10, cards at 20
+    };
+    btn.addEventListener("click", e => { e.stopPropagation(); m.open(); });
+    btn.addEventListener("mouseenter", () => showTip(m.getLngLat(), label().map(esc).join("<br>")));
+    btn.addEventListener("mouseleave", () => tt.remove());
+    markers.push(m); byKey.set(key, m);
+  });
+
+  /* ── clustering: MapLibre clusters the visible places; clusters and places are drawn as HTML markers ── */
+  const CLUSTER_MAX = 14;  // from zoom 15 every place is shown on its own
+  const geojson = () => ({
+    type: "FeatureCollection",
+    features: [...places].map(([key, eps]) => {
+      const shown = eps.filter(visible), props = { key, n: shown.length };
+      YEARS.forEach(y => { props["y" + y] = shown.filter(d => d.anno === y).length; });
+      return { type: "Feature", geometry: { type: "Point", coordinates: [eps[0].lon, eps[0].lat] }, properties: props };
+    }).filter(f => f.properties.n)
+  });
+  const clusterProps = { n: ["+", ["get", "n"]] };
+  YEARS.forEach(y => { clusterProps["y" + y] = ["+", ["get", "y" + y]]; });
+  map.on("style.load", () => {
+    if (map.getSource("ep")) return;
+    map.addSource("ep", { type: "geojson", data: geojson(), cluster: true, clusterRadius: 42, clusterMaxZoom: CLUSTER_MAX, clusterProperties: clusterProps });
+    map.addLayer({ id: "ep-anchor", type: "circle", source: "ep", paint: { "circle-radius": 0, "circle-opacity": 0, "circle-stroke-opacity": 0 } });  // keeps the source loaded
+  });
+
+  let clusterCache = new Map(), onMap = new Map();
+  function clusterMarker(p, coords) {
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "cl-btn";
+    const n = p.n, size = Math.round(Math.min(58, 24 + 7 * Math.sqrt(n)));
+    let acc = 0;
+    const stops = YEARS.filter(y => p["y" + y]).map(y => { const a = acc; acc += p["y" + y] / n * 100; return `var(--y${y}) ${a.toFixed(1)}% ${acc.toFixed(1)}%`; });
+    btn.innerHTML = `<span class="cl" style="--s:${size}px;background:conic-gradient(${stops.join(",")})"><b>${n}</b></span>`;
+    const byYear = YEARS.slice().reverse().filter(y => p["y" + y]).map(y => `${y}: ${p["y" + y]}`).join(" · ");
+    const m = new maplibregl.Marker({ element: btn }).setLngLat(coords);
+    btn.dataset.label = `Gruppo di ${plural(n)} vicini (${byYear}). Ingrandisci`;
+    btn.addEventListener("click", async e => {
+      e.stopPropagation(); tt.remove();
+      let z = map.getZoom() + 2;
+      try { z = await map.getSource("ep").getClusterExpansionZoom(p.cluster_id); } catch (err) {}
+      map.easeTo({ center: coords, zoom: Math.min(z + 0.3, 17), duration: reduced.matches ? 0 : 500 });
+    });
+    btn.addEventListener("mouseenter", () => showTip(m.getLngLat(), `<b>${plural(n)}</b> vicini<br>${byYear}<br>clic per ingrandire`));
+    btn.addEventListener("mouseleave", () => tt.remove());
+    return m;
+  }
+  function drawMarkers() {
+    const next = new Map();
+    if (!state.cluster) {
+      markers.forEach(m => { if (m.eps.some(visible)) next.set("p" + m.key, m); });
+    } else {
+    if (!map.getSource("ep") || !map.isSourceLoaded("ep")) return;
+    for (const f of map.querySourceFeatures("ep")) {
+      const p = f.properties;
+      if (p.cluster) {
+        const id = "c" + p.cluster_id;
+        if (next.has(id)) continue;
+        if (!clusterCache.has(id)) clusterCache.set(id, clusterMarker(p, f.geometry.coordinates));
+        next.set(id, clusterCache.get(id));
+      } else if (byKey.has(p.key) && !next.has("p" + p.key)) {
+        next.set("p" + p.key, byKey.get(p.key));
+      }
+    }
+    }
+    for (const [id, m] of onMap) if (!next.has(id)) m.remove();
+    for (const [id, m] of next) if (!onMap.has(id)) {
+      m.addTo(map);
+      m.getElement().setAttribute("aria-label", m.getElement().dataset.label);  // addTo resets it to "Map marker"
+    }
+    onMap = next;
+  }
+  map.on("render", drawMarkers);
+  // a map control to turn the grouping on and off
+  map.addControl({
+    onAdd() {
+      const c = document.createElement("div");
+      c.className = "maplibregl-ctrl maplibregl-ctrl-group cl-toggle";
+      c.innerHTML = '<button type="button" aria-pressed="true" title="Raggruppa gli episodi vicini"><span class="cl-demo" aria-hidden="true"><b></b></span>Raggruppa</button>';
+      const b = c.querySelector("button");
+      b.addEventListener("click", () => {
+        state.cluster = !state.cluster;
+        b.setAttribute("aria-pressed", state.cluster);
+        tt.remove(); drawMarkers();
+      });
+      return c;
+    },
+    onRemove() {}
+  }, "top-right");
+  function refreshClusters() {
+    const src = map.getSource("ep");
+    if (!src) return;
+    onMap.forEach((m, id) => { if (id[0] === "c") { m.remove(); onMap.delete(id); } });
+    clusterCache = new Map();
+    src.setData(geojson());
+  }
+
+  /* ── bersaglio chips ── */
+  const catsEl = document.getElementById("cats");
+  const chip = (label, n, on, onclick) => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.type = "button"; b.setAttribute("aria-pressed", on);
+    b.innerHTML = `<span>${esc(label)}</span><span class="n">${n}</span>`;
+    b.addEventListener("click", onclick);
+    return b;
+  };
+  const toggle = (set, v, all) => {
+    // first click isolates one value; then clicks add/remove; emptying resets to all
+    if (set.size === all.length) { set.clear(); set.add(v); }
+    else if (set.has(v)) { set.delete(v); if (!set.size) all.forEach(x => set.add(x)); }
+    else set.add(v);
+  };
+  function renderChips() {
+    catsEl.innerHTML = "";
+    CATS.filter(c => data.some(d => d.categoria === c)).forEach(c => catsEl.append(chip(c, data.filter(d => d.categoria === c && inTime(d)).length, state.cats.has(c), () => { toggle(state.cats, c, CATS); update(); })));
+  }
+
+  /* ── time filter: monthly histogram with two range handles ── */
+  const track = document.getElementById("tf-track"), hist = document.getElementById("tf-hist"), tip = document.getElementById("tip");
+  const loIn = document.getElementById("tf-lo"), hiIn = document.getElementById("tf-hi");
+  [loIn, hiIn].forEach(i => { i.max = LAST; });
+  const TW = 16, HB = 62;  // range thumb width (its centre travels TW/2 .. width-TW/2), bar area height
+  const monthName = i => { const [y, m] = months[i].split("-").map(Number); return `${MESI[m - 1]} ${y}`; };
+  const PRESETS = [["Tutto", 0, LAST], ...YEARS.map(y => [String(y), months.indexOf(`${y}-01`), y === 2026 ? LAST : months.indexOf(`${y}-12`)]), ["Ultimi 6 mesi", LAST - 5, LAST]];
+  const presetsEl = document.getElementById("tf-presets");
+  PRESETS.forEach(([label, lo, hi]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = label; b.dataset.lo = lo; b.dataset.hi = hi;
+    b.addEventListener("click", () => { stopPlay(); setRange(lo, hi); });
+    presetsEl.append(b);
+  });
+  function setRange(lo, hi) {
+    state.lo = Math.max(0, Math.min(lo, hi)); state.hi = Math.min(LAST, Math.max(lo, hi));
+    update();
+  }
+  loIn.addEventListener("input", () => { stopPlay(); if (+loIn.value > state.hi) loIn.value = state.hi; setRange(+loIn.value, state.hi); });
+  hiIn.addEventListener("input", () => { stopPlay(); if (+hiIn.value < state.lo) hiIn.value = state.lo; setRange(state.lo, +hiIn.value); });
+  [loIn, hiIn].forEach(i => {
+    i.addEventListener("focus", () => hist.querySelector(i === loIn ? ".h-lo" : ".h-hi")?.classList.add("focus"));
+    i.addEventListener("blur", () => hist.querySelectorAll(".handle").forEach(h => h.classList.remove("focus")));
+  });
+  function renderTime() {
+    const W = track.clientWidth, step = (W - TW) / LAST, bw = Math.max(2, step - 2);
+    const x = i => TW / 2 + i * step;
+    const counts = months.map((k, i) => data.filter(d => d.mi === i && state.cats.has(d.categoria)).length);
+    const max = Math.max(1, ...counts);
+    let s = `<rect class="sel" x="${x(state.lo) - step / 2}" y="0" width="${(state.hi - state.lo + 1) * step}" height="${HB}"/>`;
+    YEARS.forEach(y => { const i = months.indexOf(`${y}-01`); s += `<line class="tick" x1="${x(i) - step / 2}" x2="${x(i) - step / 2}" y1="0" y2="${HB + 4}"/><text class="axis" x="${x(i) - step / 2 + 3}" y="${HB + 15}">${y}</text>`; });
+    months.forEach((k, i) => {
+      const h = counts[i] ? Math.max(3, counts[i] / max * (HB - 6)) : 0, y = +k.slice(0, 4);
+      const fill = i >= state.lo && i <= state.hi ? col(y) : "var(--bar-off)";
+      if (h) s += `<rect class="bar" x="${(x(i) - bw / 2).toFixed(1)}" y="${(HB - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" fill="${fill}"/>`;
+    });
+    s += `<line class="base" x1="0" x2="${W}" y1="${HB + .5}" y2="${HB + .5}"/>`;
+    [["h-lo", state.lo, -1], ["h-hi", state.hi, 1]].forEach(([c, i, side]) => {
+      const hx = x(i) + side * step / 2;
+      const focused = document.activeElement === (c === "h-lo" ? loIn : hiIn) ? " focus" : "";
+      s += `<g class="handle ${c}${focused}"><line x1="${hx}" x2="${hx}" y1="0" y2="${HB}"/><rect x="${hx - 4}" y="${HB / 2 - 9}" width="8" height="18" rx="1"/></g>`;
+    });
+    months.forEach((k, i) => { s += `<rect class="hit" data-i="${i}" x="${x(i) - step / 2}" y="0" width="${step}" height="${HB}"/>`; });
+    hist.setAttribute("viewBox", `0 0 ${W} ${track.clientHeight}`);
+    hist.innerHTML = s;
+    loIn.value = state.lo; hiIn.value = state.hi;
+    loIn.style.zIndex = state.lo >= LAST - 1 ? 3 : 2; hiIn.style.zIndex = state.lo >= LAST - 1 ? 2 : 3;  // keep both handles grabbable at the ends
+    loIn.setAttribute("aria-valuetext", monthName(state.lo)); hiIn.setAttribute("aria-valuetext", monthName(state.hi));
+    hist.querySelectorAll(".hit").forEach(r => {
+      const i = +r.dataset.i;
+      r.addEventListener("mouseenter", () => {
+        tip.innerHTML = `${monthName(i)} · <b>${counts[i]}</b> ${counts[i] === 1 ? "episodio" : "episodi"}`;
+        tip.style.left = Math.min(W - 80, Math.max(80, x(i))) + "px"; tip.style.top = "-6px"; tip.style.display = "block";
+      });
+      r.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+      r.addEventListener("click", () => { stopPlay(); setRange(i, i); });  // a click on a month selects that month
+    });
+    const n = data.filter(visible).length;
+    document.getElementById("tf-range").innerHTML = (state.lo === state.hi ? monthName(state.lo) : `${monthName(state.lo)} – ${monthName(state.hi)}`) + `<small>${plural(n)}</small>`;
+    presetsEl.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.lo === state.lo && +b.dataset.hi === state.hi));
+  }
+  addEventListener("resize", renderTime);
+
+  /* ── play: the period grows month by month from its start; each month's episodes explode on the map ── */
+  const playBtn = document.getElementById("tf-play");
+  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>';
+  const PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h5v17H5zM14 3.5h5v17h-5z"/></svg>';
+  const STAR = "M0,-12 L2.6,-4.2 L10.4,-6 L5,0 L10.4,6 L2.6,4.2 L0,12 L-2.6,4.2 L-10.4,6 L-5,0 L-10.4,-6 L-2.6,-4.2Z";
+  const playMonth = document.createElement("div");
+  playMonth.className = "play-month"; playMonth.setAttribute("aria-hidden", "true");
+  map.getContainer().append(playMonth);
+  let timer = null, playEnd = LAST;
+  playBtn.innerHTML = PLAY;
+  function boom(d) {
+    const el = document.createElement("div");
+    el.className = "boom"; el.style.setProperty("--c", col(d.anno));
+    el.innerHTML = `<span class="ring"></span><svg viewBox="-13 -13 26 26"><path d="${STAR}"/></svg>`;
+    const m = new maplibregl.Marker({ element: el }).setLngLat([d.lon, d.lat]).addTo(map);
+    el.removeAttribute("aria-label"); el.setAttribute("aria-hidden", "true");
+    setTimeout(() => m.remove(), reduced.matches ? 700 : 1500);
+  }
+  function showMonth(i) {
+    const eps = data.filter(d => d.mi === i && state.cats.has(d.categoria));
+    playMonth.innerHTML = `${monthName(i)}<small>${eps.length ? plural(eps.length) : "nessun episodio"}</small>`;
+    playMonth.classList.add("on");
+    eps.forEach(boom);
+  }
+  function stopPlay() {
+    if (!timer) return;
+    clearInterval(timer); timer = null;
+    playBtn.innerHTML = PLAY; playBtn.setAttribute("aria-pressed", "false"); playBtn.setAttribute("aria-label", "Riproduci gli episodi mese per mese");
+    setTimeout(() => { if (!timer) playMonth.classList.remove("on"); }, 1200);
+  }
+  function startPlay() {
+    // plays the selected period from its first month (the whole period if a single month is selected)
+    const start = state.lo === state.hi ? 0 : state.lo;
+    playEnd = state.lo === state.hi ? LAST : state.hi;
+    playBtn.innerHTML = PAUSE; playBtn.setAttribute("aria-pressed", "true"); playBtn.setAttribute("aria-label", "Metti in pausa");
+    setRange(start, start); showMonth(start);
+    timer = setInterval(() => {
+      if (state.hi >= playEnd) { stopPlay(); return; }
+      setRange(state.lo, state.hi + 1); showMonth(state.hi);
+    }, 650);
+  }
+  playBtn.addEventListener("click", () => (timer ? stopPlay() : startPlay()));
+
+  /* ── list ── */
+  const listEl = document.getElementById("list");
+  function renderList(shown) {
+    document.getElementById("list-n").textContent = plural(shown.length);
+    listEl.innerHTML = shown.slice().sort((a, b) => (b.data + (b.ora || "")).localeCompare(a.data + (a.ora || ""))).map(d =>
+      `<li class="item" data-id="${d.id}"><button type="button" aria-label="${esc(fmtDate(d.data, true) + ", " + d.quartiere + ": " + d.bersaglio + ". Apri sulla mappa")}">
+        <span class="sw" style="--c:${col(d.anno)}"></span><span class="d">${fmtDate(d.data)} · ${esc(d.quartiere)}</span>
+        <span class="t">${esc(d.bersaglio)}</span><span class="s">${esc(d.indirizzo)} · ${esc(d.ordigni > 1 ? d.ordigni + " ordigni" : d.ordigno)}</span>
+      </button></li>`).join("");
+  }
+  listEl.addEventListener("click", e => {
+    const li = e.target.closest(".item"); if (!li) return;
+    const m = markers.find(m => m.eps.some(d => d.id === li.dataset.id)); if (!m) return;
+    listEl.querySelectorAll(".item.on").forEach(x => x.classList.remove("on")); li.classList.add("on");
+    if (narrow()) document.getElementById("map").scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "start" });
+    map.once("moveend", () => m.open(true));
+    map.flyTo({ center: m.getLngLat(), zoom: Math.max(map.getZoom(), CLUSTER_MAX + 1.2), offset: [0, narrow() ? -map.getContainer().clientHeight * 0.32 : 0], duration: reduced.matches ? 0 : 900, essential: false });
+  });
+
+  /* ── update ── */
+  function update() {
+    const shown = data.filter(visible);
+    card.remove(); tt.remove();
+    markers.forEach(m => m.refresh());
+    refreshClusters();
+    document.getElementById("t-n").textContent = shown.length;
+    document.getElementById("t-f").textContent = shown.reduce((s, d) => s + (d.feriti || 0), 0);
+    document.getElementById("t-m").textContent = shown.reduce((s, d) => s + (d.morti || 0), 0);
+    renderChips(); renderTime(); renderList(shown);
+  }
+  update();
+})();
+</script>
+</body>
+</html>
