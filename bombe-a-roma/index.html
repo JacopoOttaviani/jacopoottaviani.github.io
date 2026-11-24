@@ -103,6 +103,9 @@ html { scroll-behavior: smooth; }
 .top { padding: 22px 24px 18px; border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 1fr auto; gap: 8px 32px; align-items: end; }
 h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em; }
 .h1-sub { font-weight: 500; color: var(--ink-2); }
+.share-x { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 7px 12px; border: 1.5px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; font: 600 13px/1 var(--head); }
+.share-x svg { width: 14px; height: 14px; }
+.share-x:hover, .share-x:focus-visible { background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--accent); }
 .dek { max-width: 62ch; color: var(--ink-2); margin-top: 8px; font-size: 16px; }
 .totals { display: flex; gap: 22px; text-align: right; }
 .totals div { min-width: 64px; }
@@ -368,6 +371,7 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
     <div>
     <h1>Dove esplodono le bombe a Roma, <span class="h1-sub">quartiere per quartiere</span></h1>
     <p class="dek">Bombe carta e ordigni esplosi da gennaio 2023, ricostruiti dagli articoli di cronaca. Ogni punto rimanda alle sue fonti.</p>
+    <a class="share-x" href="https://x.com/intent/post?text=Dove%20esplodono%20le%20bombe%20a%20Roma%2C%20quartiere%20per%20quartiere&amp;url=https%3A%2F%2Fjacopoottaviani.com%2Fbombe-a-roma%2F&amp;via=JacopoOttaviani" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9.79h3.68l-8.04 9.19L24 22.5h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 .79h7.59l5.24 6.93L18.9.79zm-1.29 19.5h2.04L6.49 2.88H4.3l13.31 17.41z"/></svg>Condividi su X</a>
     </div>
   </div>
   <div class="totals" aria-live="polite">
