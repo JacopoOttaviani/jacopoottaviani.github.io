@@ -101,13 +101,13 @@ html { scroll-behavior: smooth; }
 
 /* ── header ── */
 .top { padding: 22px 24px 18px; border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 1fr auto; gap: 8px 32px; align-items: end; }
-h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em; }
-.h1-sub { font-weight: 500; color: var(--ink-2); }
+h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em; }
+.h1-sub { display: block; font-weight: 500; color: var(--ink-2); }
 .dek { max-width: 62ch; color: var(--ink-2); margin-top: 8px; font-size: 16px; }
-.totals { display: flex; gap: 22px; text-align: right; }
-.totals div { min-width: 64px; }
-.totals b { display: block; font: 600 34px/1 var(--head); font-variant-numeric: tabular-nums; }
-.totals span { font-size: 12px; color: var(--ink-2); }
+.totals { display: flex; gap: 32px; text-align: right; }
+.totals div { min-width: 84px; }
+.totals b { display: block; font: 600 clamp(46px, 5.4vw, 76px)/.92 var(--head); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.totals span { display: block; margin-top: 6px; font: 500 13px/1 var(--head); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 
 /* project icon: the bomba carta (fuse and spark are SMIL, paused by the script under reduced motion) */
 .head-main { display: flex; gap: 20px; align-items: center; }
@@ -371,7 +371,7 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
     <p class="dek">Bombe carta e ordigni esplosi da gennaio 2023, ricostruiti dagli articoli di cronaca. Ogni punto rimanda alle sue fonti.</p>
     </div>
   </div>
-  <div class="totals" aria-live="polite">
+  <div class="totals">
     <div><b id="t-n">–</b><span>episodi</span></div>
     <div><b id="t-f">–</b><span>feriti</span></div>
     <div><b id="t-m">–</b><span>morti</span></div>
@@ -845,15 +845,30 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
     map.flyTo({ center: m.getLngLat(), zoom: Math.max(map.getZoom(), CLUSTER_MAX + 1.2), offset: [0, narrow() ? -map.getContainer().clientHeight * 0.32 : 0], duration: reduced.matches ? 0 : 900, essential: false });
   });
 
+  /* ── header counters: count up from zero on load, then slide to each new value ── */
+  function countTo(el, to) {
+    const from = el.dataset.v === undefined ? 0 : +el.dataset.v, first = el.dataset.v === undefined;
+    el.dataset.v = to;
+    cancelAnimationFrame(el._raf);
+    if (reduced.matches || from === to) { el.textContent = to; return; }
+    const dur = first ? 1600 : 450, t0 = performance.now();
+    const step = t => {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);  // ease-out
+      el.textContent = Math.round(from + (to - from) * e);
+      if (k < 1) el._raf = requestAnimationFrame(step);
+    };
+    el._raf = requestAnimationFrame(step);
+  }
+
   /* ── update ── */
   function update() {
     const shown = data.filter(visible);
     card.remove(); tt.remove();
     markers.forEach(m => m.refresh());
     refreshClusters();
-    document.getElementById("t-n").textContent = shown.length;
-    document.getElementById("t-f").textContent = shown.reduce((s, d) => s + (d.feriti || 0), 0);
-    document.getElementById("t-m").textContent = shown.reduce((s, d) => s + (d.morti || 0), 0);
+    countTo(document.getElementById("t-n"), shown.length);
+    countTo(document.getElementById("t-f"), shown.reduce((s, d) => s + (d.feriti || 0), 0));
+    countTo(document.getElementById("t-m"), shown.reduce((s, d) => s + (d.morti || 0), 0));
     renderChips(); renderTime(); renderList(shown);
   }
   update();
