@@ -1,4 +1,4 @@
-# Pipeline: Le bombe di Roma
+# Pipeline: Dove esplodono le bombe a Roma, quartiere per quartiere
 
 Scripts and inputs that produce `../data/episodi.json` and `../data/episodi.csv`. Article texts are not stored here: `articoli_indice.json` keeps only the link, headline and date of the 296 RomaToday articles read.
 

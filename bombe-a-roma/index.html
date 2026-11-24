@@ -12,23 +12,23 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le bombe di Roma</title>
+<title>Dove esplodono le bombe a Roma, quartiere per quartiere</title>
 <meta name="description" content="Mappa delle bombe carta e degli ordigni esplosi a Roma dal 2023 a oggi, geolocalizzati dagli articoli di cronaca, con le fonti di ogni episodio.">
 <meta name="author" content="Jacopo Ottaviani">
 <link rel="canonical" href="https://jacopoottaviani.com/bombe-a-roma/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Le bombe di Roma, 2023–2026">
+<meta property="og:title" content="Dove esplodono le bombe a Roma, quartiere per quartiere">
 <meta property="og:description" content="Bombe carta e ordigni esplosi in città, luogo per luogo, con le fonti di ogni episodio.">
 <meta property="og:url" content="https://jacopoottaviani.com/bombe-a-roma/">
 <meta property="og:site_name" content="Jacopo Ottaviani">
 <meta property="og:locale" content="it_IT">
-<meta property="og:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=2026-11-24">
+<meta property="og:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=2026-11-24b">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:alt" content="Una bomba carta disegnata con il Colosseo sopra, il titolo «Le bombe di Roma» e un grafico degli episodi per anno: 8 nel 2023, 8 nel 2024, 19 nel 2025, 33 nel 2026.">
+<meta property="og:image:alt" content="Una bomba carta disegnata con il Colosseo sopra, il titolo «Dove esplodono le bombe a Roma, quartiere per quartiere» e un grafico degli episodi per anno: 8 nel 2023, 8 nel 2024, 19 nel 2025, 33 nel 2026.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=2026-11-24">
+<meta name="twitter:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=2026-11-24b">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -99,8 +99,8 @@ html { scroll-behavior: smooth; }
 
 /* ── header ── */
 .top { padding: 22px 24px 18px; border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 1fr auto; gap: 8px 32px; align-items: end; }
-.kicker { font: 600 12px/1 var(--head); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); grid-column: 1 / -1; }
 h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em; }
+.h1-sub { font-weight: 500; color: var(--ink-2); }
 .dek { max-width: 62ch; color: var(--ink-2); margin-top: 8px; font-size: 16px; }
 .totals { display: flex; gap: 22px; text-align: right; }
 .totals div { min-width: 64px; }
@@ -204,11 +204,13 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
 .list-head { padding: 10px 18px; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--ink-2); }
 .list { list-style: none; overflow-y: auto; flex: 1; min-height: 0; }
 .item { border-bottom: 1px solid var(--rule); }
-.item button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 12px 1fr; gap: 3px 10px; width: 100%; padding: 11px 18px; cursor: pointer; }
+.item button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 3px 10px; width: 100%; padding: 11px 18px; cursor: pointer; }
 .item button:hover, .item button:focus-visible, .item.on button { background: var(--paper-2); }
 .item button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .item .sw { width: 10px; height: 10px; border-radius: 50%; background: var(--c); margin-top: 5px; }
 .item .d { font: 12px/1.4 var(--mono); color: var(--ink-2); }
+.item .q { grid-column: 3; grid-row: 1 / span 3; align-self: center; justify-self: end; max-width: 150px; text-align: right; font: 600 18px/1.1 var(--head); color: var(--ink); padding-left: 8px; }
+.item .q small { display: block; font: 500 12px/1.2 var(--head); color: var(--ink-2); margin-top: 3px; }
 .item .t { grid-column: 2; font-weight: 600; font-size: 14px; line-height: 1.3; }
 .item .s { grid-column: 2; font-size: 13px; color: var(--ink-2); line-height: 1.35; }
 
@@ -323,7 +325,6 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
 </nav>
 
 <header class="top">
-  <p class="kicker">Mappa · Roma, gennaio 2023 – novembre 2026</p>
   <div class="head-main">
     <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Icona del progetto: una bomba carta di carta da pacchi fasciata col nastro, con un piccolo Colosseo disegnato sopra e la miccia accesa">
     <defs><clipPath id="bc-clip"><path d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z" transform="rotate(-16 48 62)"/></clipPath></defs>
@@ -354,8 +355,8 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
     </g>
     </svg>
     <div>
-    <h1>Le bombe di Roma</h1>
-    <p class="dek">Bombe carta e ordigni artigianali esplosi in città negli ultimi quattro anni, ricostruiti e messi sulla mappa a partire dagli articoli di cronaca. Ogni punto rimanda alle sue fonti.</p>
+    <h1>Dove esplodono le bombe a Roma, <span class="h1-sub">quartiere per quartiere</span></h1>
+    <p class="dek">Bombe carta e ordigni esplosi da gennaio 2023, ricostruiti dagli articoli di cronaca. Ogni punto rimanda alle sue fonti.</p>
     </div>
   </div>
   <div class="totals" aria-live="polite">
@@ -807,11 +808,14 @@ h1 { font: 600 clamp(30px, 4.4vw, 52px)/1.02 var(--head); letter-spacing: -.01em
 
   /* ── list ── */
   const listEl = document.getElementById("list");
+  // "Tor Bella Monaca (Torre Gaia)": the main name large, the detail in brackets on a smaller line
+  const quartiereHTML = q => { const m = q.match(/^(.*?)\s*\((.+)\)$/); return m ? `${esc(m[1])}<small>${esc(m[2])}</small>` : esc(q); };
   function renderList(shown) {
     document.getElementById("list-n").textContent = plural(shown.length);
     listEl.innerHTML = shown.slice().sort((a, b) => (b.data + (b.ora || "")).localeCompare(a.data + (a.ora || ""))).map(d =>
       `<li class="item" data-id="${d.id}"><button type="button" aria-label="${esc(fmtDate(d.data, true) + ", " + d.quartiere + ": " + d.bersaglio + ". Apri sulla mappa")}">
-        <span class="sw" style="--c:${col(d.anno)}"></span><span class="d">${fmtDate(d.data)} · ${esc(d.quartiere)}</span>
+        <span class="sw" style="--c:${col(d.anno)}"></span><span class="d">${fmtDate(d.data)}</span>
+        <span class="q">${quartiereHTML(d.quartiere)}</span>
         <span class="t">${esc(d.bersaglio)}</span><span class="s">${esc(d.indirizzo)} · ${esc(d.ordigni > 1 ? d.ordigni + " ordigni" : d.ordigno)}</span>
       </button></li>`).join("");
   }

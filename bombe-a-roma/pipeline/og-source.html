@@ -12,24 +12,23 @@ html, body { width: 1200px; height: 630px; overflow: hidden; background: #FFFFFF
 .art { background: #F6F5F2; border-right: 4px solid #1A1A1A; display: grid; place-items: center; }
 .art img { width: 360px; height: 360px; }
 .txt { padding: 46px 54px 40px 52px; display: flex; flex-direction: column; }
-.kick { font: 600 20px/1 "Jost", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #55534F; }
-h1 { font: 600 88px/0.98 "Jost", sans-serif; letter-spacing: -.01em; margin-top: 18px; }
-.dek { font-size: 25px; line-height: 1.32; color: #3A3936; margin-top: 18px; max-width: 640px; }
+h1 { font: 600 62px/1.02 "Jost", sans-serif; letter-spacing: -.01em; margin-top: 4px; }
+h1 span { font-weight: 500; color: #55534F; }
+.dek { font-size: 22px; line-height: 1.3; color: #3A3936; margin-top: 14px; max-width: 640px; }
 .chart { margin-top: auto; display: flex; align-items: flex-end; gap: 18px; height: 120px; }
 .chart .col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 92px; }
 .chart .bar { width: 100%; background: var(--c); }
 .chart .n { font: 600 24px/1 "Jost", sans-serif; margin-bottom: 6px; }
 .chart .y { font: 15px/1 "SF Mono", Menlo, monospace; color: #55534F; margin-top: 7px; }
 .chart .lab { align-self: center; font: 600 17px/1.25 "Jost", sans-serif; color: #55534F; margin-left: 10px; max-width: 150px; }
-.url { position: absolute; right: 54px; top: 42px; display: flex; align-items: center; gap: 10px; font: 600 21px/1 "Jost", sans-serif; }
+.url { position: absolute; left: 10px; width: 430px; justify-content: center; bottom: 44px; display: flex; align-items: center; gap: 10px; font: 600 21px/1 "Jost", sans-serif; }
 .url svg { width: 26px; height: 26px; }
 </style></head>
 <body>
 <div class="frame">
   <div class="art"><img src="../icon.svg" alt=""></div>
   <div class="txt">
-    <p class="kick">Mappa · Roma, 2023–2026</p>
-    <h1>Le bombe<br>di Roma</h1>
+    <h1>Dove esplodono<br>le bombe a Roma,<br><span>quartiere per quartiere</span></h1>
     <p class="dek">Bombe carta e ordigni esplosi in città, luogo per luogo, con le fonti di ogni episodio.</p>
     <div class="chart" id="chart"></div>
   </div>
