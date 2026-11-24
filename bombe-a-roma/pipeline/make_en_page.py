@@ -77,8 +77,6 @@ R = [
     ('<a href="data/episodi.json" download>Dati JSON</a><a href="data/episodi.csv" download>Dati CSV</a>',
      '<a href="../data/episodes-en.json" download>JSON data</a><a href="../data/episodes-en.csv" download>CSV data</a>'),
     # footer
-    ('<a href="#fonti"><span>Fonti</span></a>', '<a href="#fonti"><span>Sources</span></a>'),
-    ('<span>Scarica i dati</span>', '<span>Download the data</span>'),
     ('<p class="note">Base cartografica OpenFreeMap, © OpenMapTiles, dati © OpenStreetMap contributors · Episodi dagli articoli citati · Aggiornata al 24 novembre 2026</p>',
      '<p class="note">Base map OpenFreeMap, © OpenMapTiles, data © OpenStreetMap contributors · Episodes from the articles cited · Updated 24 November 2026</p>'),
 ]

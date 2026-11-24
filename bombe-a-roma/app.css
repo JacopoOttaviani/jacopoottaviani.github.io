@@ -53,7 +53,6 @@ a { color: inherit; }
 .bar-home { margin-left: -9px; font-weight: 600; font-size: 16px; letter-spacing: .01em; }
 .bar-mark { width: 22px; height: 22px; flex: none; }
 .bar-right { display: flex; gap: 6px; }
-.site-foot .dl-ico { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 html { scroll-behavior: smooth; }
 #fonti, #dati { scroll-margin-top: 76px; }  /* below the sticky bar */
 #map { scroll-margin-top: 54px; }
