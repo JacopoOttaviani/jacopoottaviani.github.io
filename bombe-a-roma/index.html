@@ -161,7 +161,10 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .tf-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 4px; }
 .tf-head .ctl-label { margin: 0; }
 .tf-range { font: 600 19px/1.15 var(--head); }
-.tf-now { display: flex; align-items: center; gap: 12px; }
+/* play sits left of the histogram, centred on the bars (62px tall) */
+.tf-row { display: flex; align-items: flex-start; gap: 14px; }
+.tf-row .tf-play { margin-top: 10px; }
+.tf-row .tf-track { flex: 1; min-width: 0; }
 .tf-play { width: 42px; height: 42px; flex: none; display: grid; place-items: center; background: var(--ink); color: var(--paper); border: 0; cursor: pointer; }
 .tf-play svg { width: 18px; height: 18px; fill: currentColor; }
 .tf-play:hover, .tf-play:focus-visible { box-shadow: 3px 3px 0 var(--accent); }
@@ -385,18 +388,17 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
     </div>
     <section class="filters" aria-label="Filtri">
       <div class="tf-head">
-        <p class="ctl-label" id="lab-t">Periodo</p>
-        <div class="tf-now">
-          <button type="button" class="tf-play" id="tf-play" aria-pressed="false" aria-label="Riproduci gli episodi mese per mese"></button>
-          <p class="tf-range" id="tf-range" aria-live="polite"></p>
-        </div>
+        <p class="tf-range" id="tf-range" aria-live="polite"></p>
         <div class="tf-presets" id="tf-presets" role="group" aria-label="Periodi rapidi"></div>
       </div>
-      <div class="tf-track" id="tf-track">
-        <svg id="tf-hist" aria-hidden="true"></svg>
-        <input type="range" id="tf-lo" min="0" step="1" aria-label="Inizio del periodo">
-        <input type="range" id="tf-hi" min="0" step="1" aria-label="Fine del periodo">
-        <div class="tip" id="tip"></div>
+      <div class="tf-row">
+        <button type="button" class="tf-play" id="tf-play" aria-pressed="false" aria-label="Riproduci gli episodi mese per mese"></button>
+        <div class="tf-track" id="tf-track">
+          <svg id="tf-hist" aria-hidden="true"></svg>
+          <input type="range" id="tf-lo" min="0" step="1" aria-label="Inizio del periodo">
+          <input type="range" id="tf-hi" min="0" step="1" aria-label="Fine del periodo">
+          <div class="tip" id="tip"></div>
+        </div>
       </div>
       <div class="f-cat">
         <p class="ctl-label" id="lab-c">Cosa è stato colpito</p>
