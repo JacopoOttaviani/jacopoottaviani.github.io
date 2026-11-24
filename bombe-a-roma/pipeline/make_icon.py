@@ -64,7 +64,7 @@ def inline():
 
 def static():
     """Favicon: no animation, the fuse half-burnt with the spark at its end."""
-    c = dict(ink="#1A1A1A", kraft="#E4CCA4", kraft2="#D3B588", tape="#B9B5AD", dot="#8C241B", spark="#E2604F")
+    c = dict(ink="#1A1A1A", kraft="#E4CCA4", kraft2="#D3B588", tape="#B9B5AD", dot="#6E3B09", spark="#C97621")
     tapes = "".join(f'<path d="{d}" stroke="{c["tape"]}" stroke-width="7" opacity=".8" fill="none"/>' for d in TAPES)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 <defs><clipPath id="c"><path d="{BODY}" transform="rotate(-16 48 62)"/></clipPath></defs>
