@@ -347,4 +347,9 @@ E = [
       cat="Negozio o locale", bersaglio="Frutteria", ordigno="bomba carta",
       sintesi="Danneggiate le serrande di una frutteria e del bar accanto. Terza bomba in 24 ore tra Roma e provincia.",
       fonti=[RT+"cronaca/bomba-carta-casal-monastero-frutteria-23-novembre-2026.html"]),
+ dict(data="2026-11-24", ora="01:00", quartiere="Tufello", indirizzo="via Monte Ruggero",
+      q=[{"street": "via Monte Ruggero"}], precisione="via",
+      cat="Palazzo o androne", bersaglio="Portone di un palazzo popolare", ordigno="bomba carta",
+      sintesi="Due notti dopo via Monte Resegone, danneggiati citofoni, luci e vetri del portone. Secondo RomaToday nessun residente ha chiamato le forze dell'ordine: la polizia è arrivata nel pomeriggio.",
+      fonti=[RT+"cronaca/esplosione-tufello-bomba-via-monte-ruggero-24-novembre-2026.html"]),
 ]

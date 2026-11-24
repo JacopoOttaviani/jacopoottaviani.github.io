@@ -1,6 +1,6 @@
 # Pipeline: Dove esplodono le bombe a Roma, quartiere per quartiere
 
-Scripts and inputs that produce `../data/episodi.json` and `../data/episodi.csv`. Article texts are not stored here: `articoli_indice.json` keeps only the link, headline and date of the 296 RomaToday articles read.
+Scripts and inputs that produce `../data/episodi.json` and `../data/episodi.csv`. Article texts are not stored here: `articoli_indice.json` keeps only the link, headline and date of the 297 RomaToday articles read.
 
 1. `scrape_tags.py` collects the cards from the RomaToday topic pages (bomba, bombe, bomba-carta, esplosioni, intimidazioni, attentati, ...); `fetch_articles.py` and `follow_links.py` download the articles and the ones they link to.
 2. `episodes_src.py` is the hand-checked list: one record per attack, written from the articles. Edit this file to add an episode.

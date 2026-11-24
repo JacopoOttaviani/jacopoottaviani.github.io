@@ -2176,5 +2176,32 @@
     "url": "https://www.romatoday.it/cronaca/bomba-carta-casal-monastero-frutteria-23-novembre-2026.html"
    }
   ]
+ },
+ {
+  "id": "R069",
+  "data": "2026-11-24",
+  "ora": "01:00",
+  "quartiere": "Tufello",
+  "indirizzo": "via Monte Ruggero",
+  "nota_data": "",
+  "municipio": "Municipio III",
+  "lat": 41.947777,
+  "lon": 12.531019,
+  "precisione": "via",
+  "categoria": "Palazzo o androne",
+  "bersaglio": "Portone di un palazzo popolare",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Due notti dopo via Monte Resegone, danneggiati citofoni, luci e vetri del portone. Secondo RomaToday nessun residente ha chiamato le forze dell'ordine: la polizia è arrivata nel pomeriggio.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Nuova bomba carta al Tufello, danneggiato altro palazzo popolare. Ma nessuno chiama le forze dell'ordine",
+    "data": "2026-11-24",
+    "url": "https://www.romatoday.it/cronaca/esplosione-tufello-bomba-via-monte-ruggero-24-novembre-2026.html"
+   }
+  ]
  }
 ]
