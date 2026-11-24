@@ -87,3 +87,8 @@ from collections import Counter
 print(len(out), "records;", "precision", Counter(r["precisione"] for r in out), "years", Counter(r["data"][:4] for r in out))
 print("no municipio:", [r["id"] for r in out if not r["municipio"]])
 print("problems:", problems)
+
+# the English edition (../en/ reads it): stops here if an episode has no translation or its summary changed
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from english import write_english
+write_english(out, out_dir, os.path.join(os.path.dirname(os.path.abspath(__file__)), "translations_en.json"))

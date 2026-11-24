@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Analytics counts only the live site, as on the other pages -->
+<script>if (location.hostname !== "jacopoottaviani.com") window["ga-disable-G-8NHK2YNN9T"] = true;</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NHK2YNN9T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8NHK2YNN9T');
+</script>
+<meta charset="UTF-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where bombs go off in Rome, neighbourhood by neighbourhood</title>
+<meta name="description" content="Map of the paper bombs and homemade explosive devices set off in Rome since 2023, geolocated from news reports, with the sources for every episode.">
+<meta name="author" content="Jacopo Ottaviani">
+<link rel="canonical" href="https://jacopoottaviani.com/bombe-a-roma/en/">
+<link rel="alternate" hreflang="it" href="https://jacopoottaviani.com/bombe-a-roma/">
+<link rel="alternate" hreflang="en" href="https://jacopoottaviani.com/bombe-a-roma/en/">
+<link rel="alternate" hreflang="x-default" href="https://jacopoottaviani.com/bombe-a-roma/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Where bombs go off in Rome, neighbourhood by neighbourhood">
+<meta property="og:description" content="Paper bombs and explosive devices set off in the city, place by place, with the sources for every episode.">
+<meta property="og:url" content="https://jacopoottaviani.com/bombe-a-roma/en/">
+<meta property="og:site_name" content="Jacopo Ottaviani">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image-en.jpg?v=2026-11-24a">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="A paper bomb drawn with the Colosseum on it, the title “Where bombs go off in Rome, neighbourhood by neighbourhood” and a chart of episodes per year: 8 in 2023, 8 in 2024, 19 in 2025, 34 in 2026.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jacopoottaviani.com/bombe-a-roma/og-image-en.jpg?v=2026-11-24a">
+<link rel="icon" type="image/svg+xml" href="../icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../icon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../app.css?v=2026-11-24a">
+</head>
+<body>
+
+<nav class="bar" aria-label="Jacopo Ottaviani">
+  <a class="bar-home" href="https://jacopoottaviani.com/" aria-label="JacopoOttaviani.com"><svg class="bar-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="var(--brand)" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg><span>JacopoOttaviani.com</span></a>
+  <div class="bar-right">
+    <a class="bar-link" href="https://x.com/intent/post?text=Where%20bombs%20go%20off%20in%20Rome%2C%20neighbourhood%20by%20neighbourhood&amp;url=https%3A%2F%2Fjacopoottaviani.com%2Fbombe-a-roma%2Fen%2F&amp;via=JacopoOttaviani" target="_blank" rel="noopener" aria-label="Share on X"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9.79h3.68l-8.04 9.19L24 22.5h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 .79h7.59l5.24 6.93L18.9.79zm-1.29 19.5h2.04L6.49 2.88H4.3l13.31 17.41z"/></svg><span>Share on X</span></a>
+    <a class="bar-link" href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>LinkedIn</span></a>
+    <a class="bar-link" href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener" aria-label="Buy me a coffee on Ko-fi"><svg class="ico cup" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 8q-1.3-1.5 0-3t0-3M10.5 8q-1.3-1.5 0-3t0-3M13.5 8q-1.3-1.5 0-3t0-3"/><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9M2 21.8h17"/></svg><span>Buy me a coffee</span></a>
+    <div class="bar-lang" role="group" aria-label="Language">
+      <a href="../" hreflang="it" lang="it" aria-label="Italiano"><span class="full">Italiano</span><span class="short">IT</span></a><span class="sep" aria-hidden="true">/</span><a href="./" hreflang="en" lang="en" aria-current="page" aria-label="English"><span class="full">English</span><span class="short">EN</span></a>
+    </div>
+    <button type="button" class="bar-theme" id="theme-btn" aria-pressed="false" aria-label="Dark theme" title="Dark theme"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 1 1 9.4 4a6.6 6.6 0 0 0 10.6 10.6z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
+  </div>
+</nav>
+
+<header class="top">
+  <div class="head-main">
+    <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Project icon: a paper bomb of brown parcel paper bound with tape, with a small Colosseum drawn on it and its fuse lit">
+    <defs><clipPath id="bc-clip"><path d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z" transform="rotate(-16 48 62)"/></clipPath></defs>
+    <g transform="rotate(-16 48 62)">
+      <path class="bc-body" d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z"/>
+    </g>
+    <g clip-path="url(#bc-clip)"><g transform="rotate(-16 48 62)"><path class="bc-tape" d="M22 50 L 76 72"/><path class="bc-tape" d="M22 74 L 76 50"/><path class="bc-band" d="M27 80 Q 48 84 70 79"/></g></g>
+    <g transform="rotate(-16 48 62)">
+      <path class="bc-colo" d="M34 76 L34 53 Q 44 50.5 54 51.5 L54 56 L58 56 L58 60 L62 60 L62 76 Z"/>
+      <path class="bc-colo-line" d="M34 70 H62 M34 64 H62 M34 58 H58"/>
+      <path class="bc-colo-arch" d="M36.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M41 76 V73 a1.5 1.5 0 0 1 3 0 V76 M45.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M50 76 V73 a1.5 1.5 0 0 1 3 0 V76 M54.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M58.5 76 V73 a1.5 1.5 0 0 1 3 0 V76 M36.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M41 70 V67 a1.5 1.5 0 0 1 3 0 V70 M45.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M50 70 V67 a1.5 1.5 0 0 1 3 0 V70 M54.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M58.5 70 V67 a1.5 1.5 0 0 1 3 0 V70 M36.5 64 V61 a1.5 1.5 0 0 1 3 0 V64 M41 64 V61 a1.5 1.5 0 0 1 3 0 V64 M45.5 64 V61 a1.5 1.5 0 0 1 3 0 V64 M50 64 V61 a1.5 1.5 0 0 1 3 0 V64 M54.5 64 V61 a1.5 1.5 0 0 1 3 0 V64"/>
+      <path class="bc-colo-win" d="M37.5 54.5 h1.6 v1.6 h-1.6 Z M43.5 54 h1.6 v1.6 h-1.6 Z M49.5 54 h1.6 v1.6 h-1.6 Z"/>
+      <path class="bc-outline" d="M29 39 Q 27 63 30 89 Q 48 93 67 88 Q 70 63 67 38 Q 48 35 29 39 Z"/>
+      <path class="bc-tuft" d="M31 40 L 35 30 L 40 35 L 44 26 L 48 33 L 53 25 L 56 34 L 61 29 L 65 39 Q 48 36 31 40 Z"/>
+      <path class="bc-fuse" d="M48 31 C 47 21 58 22 58 14 C 58 7 65 3 72 6" pathLength="100" stroke-dasharray="100 100">
+        <animate attributeName="stroke-dashoffset" dur="5s" repeatCount="indefinite" values="0;76;76;0" keyTimes="0;0.84;0.93;1"/>
+      </path>
+      <g transform="translate(48 31)"><g class="bc-flash"><path d="M0.0,-11.8 L1.5,-4.0 L8.0,-9.6 L3.8,-2.2 L10.8,-1.9 L4.7,0.8 L13.0,7.5 L3.6,4.2 L4.9,13.4 L0.0,4.5 L-4.5,12.4 L-3.0,3.5 L-9.9,5.7 L-4.2,0.7 L-11.5,-2.0 L-5.0,-2.9 L-9.3,-11.1 L-1.9,-5.2Z"/>
+        <animateTransform attributeName="transform" type="scale" dur="5s" repeatCount="indefinite" values="0;0;1.2;0.6;0" keyTimes="0;0.83;0.87;0.92;1"/>
+        <animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;0.83;0.86;0.93;1"/></g></g>
+      <g class="bc-spark">
+        <circle class="bc-glow" r="5.5"/><g><path d="M0.0,-7.0 L1.0,-2.4 L4.9,-4.9 L2.4,-1.0 L7.0,0.0 L2.4,1.0 L4.9,4.9 L1.0,2.4 L0.0,7.0 L-1.0,2.4 L-4.9,4.9 L-2.4,1.0 L-7.0,0.0 L-2.4,-1.0 L-4.9,-4.9 L-1.0,-2.4Z"/>
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.7s" repeatCount="indefinite"/></g>
+        <circle class="bc-core" r="1.9"/>
+        <animateMotion dur="5s" repeatCount="indefinite" path="M72 6 C 65 3 58 7 58 14 C 58 22 47 21 48 31" keyPoints="0;0.76;0.76;0" keyTimes="0;0.84;0.93;1" calcMode="linear"/>
+        <animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="1;1;0;0;1" keyTimes="0;0.84;0.85;0.98;1"/>
+      </g>
+    </g>
+    </svg>
+    <div>
+    <h1>Where bombs go off in Rome, <span class="h1-sub">neighbourhood by neighbourhood</span></h1>
+    </div>
+  </div>
+  <div class="totals">
+    <div><b id="t-n">–</b><span>episodes</span></div>
+    <div><b id="t-f">–</b><span>injured</span></div>
+    <div><b id="t-m">–</b><span>dead</span></div>
+  </div>
+</header>
+
+<main class="layout">
+  <div class="mapcol">
+    <div id="map" role="region" aria-label="Map of the episodes. The list beside it gives the same episodes as text."></div>
+    <div class="map-legend" id="map-legend">
+      <span class="lg-years"><i style="--c:var(--y2023)"></i>2023 <i style="--c:var(--y2024)"></i>2024 <i style="--c:var(--y2025)"></i>2025 <i style="--c:var(--y2026)"></i>2026</span>
+      <span class="lg-cl"><span class="cl-demo" aria-hidden="true"><b>5</b></span>episodes close together: click to zoom in</span>
+    </div>
+    <section class="filters" aria-label="Filters">
+      <div class="tf-head">
+        <p class="tf-range" id="tf-range" aria-live="polite"></p>
+        <div class="tf-presets" id="tf-presets" role="group" aria-label="Quick periods"></div>
+      </div>
+      <div class="tf-row">
+        <button type="button" class="tf-play" id="tf-play" aria-pressed="false" aria-label="Play the episodes month by month"></button>
+        <div class="tf-track" id="tf-track">
+          <svg id="tf-hist" aria-hidden="true"></svg>
+          <input type="range" id="tf-lo" min="0" step="1" aria-label="Start of the period">
+          <input type="range" id="tf-hi" min="0" step="1" aria-label="End of the period">
+          <div class="tip" id="tip"></div>
+        </div>
+      </div>
+      <div class="f-cat">
+        <p class="ctl-label" id="lab-c">What was hit</p>
+        <div class="chips" id="cats" role="group" aria-labelledby="lab-c"></div>
+      </div>
+    </section>
+  </div>
+  <aside class="panel" aria-label="List of episodes">
+    <div class="list-head"><span id="list-n"></span><span>most recent first</span></div>
+    <ol class="list" id="list"></ol>
+  </aside>
+</main>
+
+<section class="method" id="metodo">
+  <div>
+    <h2>What's on the map</h2>
+    <p>Bombe carta (paper bombs: explosive powder packed in paper and tape), large firecrackers and homemade explosive devices set off against a target in Rome, Ostia and Acilia included, from 1 January 2023 to <span id="upd">24 November 2026</span>.</p>
+    <p>Each point is one attack; the same shop hit twice makes two points, and when there was more than one device the number is in the card.</p>
+    <p>The two dead counted at the top are the anarchists of the Parco degli Acquedotti (March 2026), killed, according to investigators, by the device they were assembling. At La Rustica (July 2023) the target is not known.</p>
+    <p>The map only covers episodes reported in the press. Those that never made it into an article are missing.</p>
+  </div>
+  <aside class="author" aria-labelledby="lab-author">
+    <h2 id="lab-author"><svg class="author-mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="var(--brand)" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>The author</h2>
+    <p><strong>Jacopo Ottaviani</strong> is an Italian data journalist and computer scientist. His work has appeared in The Guardian, Der Spiegel and El País, among others. He writes about AI and journalism for the Reuters Institute.</p>
+    <p>This map is one of his data journalism projects: episodes taken from the news, checked against the articles, mapped and published as open data.</p>
+    <p class="author-link"><a href="https://jacopoottaviani.com/">More projects at jacopoottaviani.com →</a></p>
+  </aside>
+  <div>
+    <h2>How they were located</h2>
+    <p>Each address comes from the article and was geocoded with OpenStreetMap (Nominatim and Overpass), then checked against the neighbourhood the article names. The municipio (Rome's administrative district) comes from OpenStreetMap boundaries.</p>
+    <p>The card says how precise the point is: at the <strong>street number</strong>, at the <strong>junction</strong>, at the <strong>place</strong> named, <strong>on the street</strong> when the number is missing from the article or from OpenStreetMap (common in Rome), <strong>estimated</strong> between nearby street numbers on the Casilina, or in the <strong>area</strong> when no street is given. For <strong>private homes</strong> the point stays on the street, without a number.</p>
+    <p>Motives and leads are those reported by the sources, attributed as investigators' hypotheses.</p>
+  </div>
+  <div id="fonti">
+    <h2>Sources and data</h2>
+    <p>Outlets cited in the cards: AGI, Agenzia Nova, Dissapore, Domani, Il Fatto Quotidiano, Il Post, Internazionale, LaPresse, Open, QN Quotidiano.net, RomaToday. Each card gives the headline, date and link of every article used. The articles are in Italian; the summaries on this page are translations.</p>
+    <p>The episodes were found through RomaToday's topic pages (“bombe”, “esplosioni”, “intimidazioni”, “attentati”) and the articles linked from them, then checked against the other outlets and against web searches by period and neighbourhood.</p>
+    <div class="dl" id="dati"><a href="../data/episodes-en.json" download>JSON data</a><a href="../data/episodes-en.csv" download>CSV data</a></div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <a class="home" href="https://jacopoottaviani.com/">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="var(--brand)" d="M29.4 6.3a3.3 3.3 0 1 0 6.6 0a3.3 3.3 0 1 0 -6.6 0ZM19.7 11.9 L45.7 11.9 L45.7 15 L19.7 15ZM18.7 17.4 L46.7 17.4 L43.7 31.4 L21.7 31.4ZM9.3 17.4 L16.3 17.4 L17.6 24ZM49.05 17.9 A7.16 7.16 0 0 1 46.05 31.9ZM21.7 33.8 L43.7 33.8 L47.2 60 L18.2 60Z"/></svg>
+    <span>JacopoOttaviani.com</span>
+  </a>
+  <a href="#fonti"><span>Sources</span></a>
+  <a href="#dati"><svg class="ico dl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg><span>Download the data</span></a>
+  <a href="https://www.linkedin.com/in/jacopo-ottaviani/" target="_blank" rel="noopener">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    <span>LinkedIn</span>
+  </a>
+  <a href="https://ko-fi.com/jacopoottaviani" target="_blank" rel="noopener">
+    <svg class="ico cup" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 8q-1.3-1.5 0-3t0-3M10.5 8q-1.3-1.5 0-3t0-3M13.5 8q-1.3-1.5 0-3t0-3"/><path d="M4 10h13v4a5.5 5.5 0 0 1-5.5 5.5h-2A5.5 5.5 0 0 1 4 14z"/><path d="M17 11.5h1.4a2.7 2.7 0 0 1 0 5.4h-1.9M2 21.8h17"/></svg>
+    <span>Buy me a coffee</span>
+  </a>
+  <p class="note">Base map OpenFreeMap, © OpenMapTiles, data © OpenStreetMap contributors · Episodes from the articles cited · Updated 24 November 2026</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<script src="../app.js?v=2026-11-24a"></script>
+</body>
+</html>

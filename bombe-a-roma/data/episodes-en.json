@@ -1,0 +1,2207 @@
+[
+ {
+  "id": "R001",
+  "date": "2023-03-13",
+  "time": "00:10",
+  "date_note": "",
+  "neighbourhood": "Piazza Bologna",
+  "municipio": "Municipio II",
+  "address": "via Catanzaro, corner of via Belluno",
+  "precision": "junction",
+  "lat": 41.911622,
+  "lon": 12.516897,
+  "category": "Political, social or religious premises",
+  "target": "Italia-Lanciani branch of the Democratic Party (PD)",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown at the PD branch: a window on via Belluno destroyed. Anarchist graffiti against the 41-bis prison regime on the walls.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte: bomba carta degli anarchici contro il circolo Pd",
+    "date": "2023-03-13",
+    "url": "https://www.romatoday.it/cronaca/esplosione-bomba-carta-pd-via-catanzaro.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "VIDEO | Bomba carta degli anarchici contro la sede del Pd: \"Non ci faremo intimidire\"",
+    "date": "2023-03-13",
+    "url": "https://www.romatoday.it/cronaca/video-bomba-carta-anarchici-circolo-pd-via-catanzaro.html"
+   }
+  ]
+ },
+ {
+  "id": "R002",
+  "date": "2023-06-19",
+  "time": "04:00",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via Aristide Carabelli 106",
+  "precision": "street number",
+  "lat": 41.739297,
+  "lon": 12.269136,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of an apartment building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Went off in the entrance hall and broke a pane of the front door. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Ostia: bomba carta esplode nell'androne del palazzo. Indaga la polizia",
+    "date": "2023-06-19",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-via-aristide-carabelli.html"
+   }
+  ]
+ },
+ {
+  "id": "R003",
+  "date": "2023-07-28",
+  "time": "04:00",
+  "date_note": "",
+  "neighbourhood": "Centocelle",
+  "municipio": "Municipio V",
+  "address": "via delle Robinie 53",
+  "precision": "street",
+  "lat": 41.882519,
+  "lon": 12.569882,
+  "category": "Shop or venue",
+  "target": "Beauty salon",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Placed between the shutter and the glass door, it tore the shutter off. Investigators rule out a gas leak.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Centocelle: bomba carta distrugge centro estetico, il boato risveglia i residenti",
+    "date": "2023-07-28",
+    "url": "https://www.romatoday.it/cronaca/esplosione-centocelle-via-delle-robinie-cosa-e-successo-28-luglio-2023.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Roma: bomba carta distrugge un centro estetico, torna la paura a Centocelle",
+    "date": "2023-07-28",
+    "url": "https://www.agenzianova.com/news/roma-bomba-carta-distrugge-un-centro-estetico-torna-la-paura-a-centocelle/"
+   }
+  ]
+ },
+ {
+  "id": "R004",
+  "date": "2023-07-30",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "La Rustica",
+  "municipio": "Municipio V",
+  "address": "via Federico Turano",
+  "precision": "street",
+  "lat": 41.91047,
+  "lon": 12.604191,
+  "category": "Other",
+  "target": "In the street, along with gunshots",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "After residents called in (“they're shooting at each other”), police found five spent cartridges and the remains of an exploded paper bomb in the street. Target not established.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "\"Si stanno sparando\", in strada 5 bossoli e una bomba carta esplosa",
+    "date": "2023-07-30",
+    "url": "https://www.romatoday.it/cronaca/spari-esplosione-la-rustica-via-turano.html"
+   }
+  ]
+ },
+ {
+  "id": "R005",
+  "date": "2023-08-07",
+  "time": "23:00",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via delle Fiamme Gialle",
+  "precision": "street",
+  "lat": 41.731616,
+  "lon": 12.293725,
+  "category": "Car",
+  "target": "Car parked outside a Guardia di Finanza (financial police) barracks",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A device more powerful than a paper bomb, placed under a car, destroyed its front end and damaged another car. It opened the August series on the coast.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Un ordigno artigianale è esploso a Ostia davanti alla caserma della finanza. Indagini in corso",
+    "date": "2023-08-08",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-cosa-e-successo-7-agosto-2023.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Ostia torna a far paura: la Dda indaga sulle 4 bombe esplose, il prefetto convoca il comitato per la sicurezza",
+    "date": "2023-08-13",
+    "url": "https://www.romatoday.it/cronaca/ostia-4-bombe-indagini.html"
+   },
+   {
+    "outlet": "AGI",
+    "title": "L'ombra del racket sul litorale romano: tre esplosioni in tre giorni",
+    "date": "2023-08-10",
+    "url": "https://www.agi.it/cronaca/news/2023-08-10/racket-sul-litorale-romano-una-bomba-carta-al-giorno-22577299/"
+   }
+  ]
+ },
+ {
+  "id": "R006",
+  "date": "2023-08-10",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "Dragona",
+  "municipio": "Municipio X",
+  "address": "vicolo di Dragone",
+  "precision": "street",
+  "lat": 41.778649,
+  "lon": 12.339524,
+  "category": "Shop or venue",
+  "target": "Car dealership",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Went off in front of the shop window: façade blackened and a parked car damaged.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte: bomba carta davanti all'autosalone",
+    "date": "2023-08-10",
+    "url": "https://www.romatoday.it/cronaca/esplosione-dragona-bomba-carta-autosalone.html"
+   },
+   {
+    "outlet": "AGI",
+    "title": "L'ombra del racket sul litorale romano: tre esplosioni in tre giorni",
+    "date": "2023-08-10",
+    "url": "https://www.agi.it/cronaca/news/2023-08-10/racket-sul-litorale-romano-una-bomba-carta-al-giorno-22577299/"
+   }
+  ]
+ },
+ {
+  "id": "R007",
+  "date": "2023-08-12",
+  "time": "00:40",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "lungomare Amerigo Vespucci, car park of the La Bussola restaurant",
+  "precision": "place",
+  "lat": 41.707092,
+  "lon": 12.331939,
+  "category": "Car",
+  "target": "Car belonging to a restaurant's owners",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown at the owners' car while they were still in the restaurant. The fourth bomb in a few days between Ostia and Fiumicino.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba contro un'auto, esplosione davanti a un ristorante di Ostia. È il quarto caso in pochi giorni",
+    "date": "2023-08-12",
+    "url": "https://www.romatoday.it/cronaca/bomba-ostia-ristorante-11-agosto-2023.html"
+   },
+   {
+    "outlet": "LaPresse",
+    "title": "Ostia, ancora una bomba carta sul litorale: è la quarta",
+    "date": "2023-08-12",
+    "url": "https://www.lapresse.it/cronaca/2023/08/12/ostia-ancora-una-bomba-carta-sul-litorale-e-la-quarta/"
+   },
+   {
+    "outlet": "Dissapore",
+    "title": "Bomba carta davanti al ristorante La Bussola di Ostia: è la quarta",
+    "date": "2023-08-12",
+    "url": "https://www.dissapore.com/notizie/bomba-carta-davanti-al-ristorante-la-bussola-di-ostia-e-la-quarta/"
+   }
+  ]
+ },
+ {
+  "id": "R008",
+  "date": "2023-09-23",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "La Rustica",
+  "municipio": "Municipio V",
+  "address": "via della Rustica",
+  "precision": "street",
+  "lat": 41.91232,
+  "lon": 12.607087,
+  "category": "Shop or venue",
+  "target": "Bar",
+  "device": "crude explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown at the bar's front door, it blackened the façade of the building. The remains of a firecracker or a paper bomb were found.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a La Rustica: ordigno rudimentale contro la porta del bar",
+    "date": "2023-09-23",
+    "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-bar.html"
+   }
+  ]
+ },
+ {
+  "id": "R009",
+  "date": "2024-04-06",
+  "time": "01:00",
+  "date_note": "night between Friday 5 and Saturday 6 April",
+  "neighbourhood": "Villaggio Prenestino",
+  "municipio": "Municipio VI",
+  "address": "via del Fosso Scilicino",
+  "precision": "street",
+  "lat": 41.90233,
+  "lon": 12.681126,
+  "category": "Shop or venue",
+  "target": "Cash-for-gold shop",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown from a car at a cash-for-gold shop, according to the police's hypothesis, it missed the shop and damaged the front door of a building where elderly people live.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba carta contro un compro oro. Danneggiata una palazzina",
+    "date": "2024-04-08",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-compro-oro-villaggio-prenestino.html"
+   }
+  ]
+ },
+ {
+  "id": "R010",
+  "date": "2024-04-16",
+  "time": "01:30",
+  "date_note": "",
+  "neighbourhood": "Casal Bruciato",
+  "municipio": "Municipio IV",
+  "address": "via Cipriano Facchinetti",
+  "precision": "street",
+  "lat": 41.907381,
+  "lon": 12.547965,
+  "category": "Private home",
+  "target": "Door of a flat",
+  "device": "large firecracker",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Set off outside the door of a ground-floor flat: damage to the door and to the stairwell window.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Un grosso petardo è esploso in un palazzo di Casal Bruciato",
+    "date": "2024-04-16",
+    "url": "https://www.romatoday.it/cronaca/esplosione-casal-bruciato-16-aprile.html"
+   }
+  ]
+ },
+ {
+  "id": "R011",
+  "date": "2024-07-10",
+  "time": "",
+  "date_note": "“in recent days” as of 10 July: exact date not reported",
+  "neighbourhood": "Quartiere Trieste",
+  "municipio": "Municipio II",
+  "address": "Quartiere Trieste (street not given)",
+  "precision": "area",
+  "lat": 41.927885,
+  "lon": 12.515777,
+  "category": "Car",
+  "target": "A woman's car",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A paper bomb on the bonnet of his former partner's car; the man had been threatening and following her for some time. A 32-year-old was arrested, with two more pyrotechnic devices at his home.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Lancia bomba carta contro l'auto della ex, poi le manda le foto e la minaccia",
+    "date": "2024-07-10",
+    "url": "https://www.romatoday.it/cronaca/esplosione-quartiere-trieste-bomba-carta-auto-ex-fidanzata.html"
+   }
+  ]
+ },
+ {
+  "id": "R012",
+  "date": "2024-10-28",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Quarticciolo",
+  "municipio": "Municipio V",
+  "address": "viale Palmiro Togliatti at via Prenestina, headquarters of the Local Police's V Casilino unit",
+  "precision": "junction",
+  "lat": 41.89495,
+  "lon": 12.5746,
+  "category": "Institutions",
+  "target": "Local police headquarters",
+  "device": "paper bomb",
+  "devices": 2,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Two paper bombs outside the local police headquarters, already the scene of assaults and damaged cars. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe carta esplodono davanti alla sede dei vigili. Polizia locale sotto attacco al Quarticciolo",
+    "date": "2024-10-29",
+    "url": "https://www.romatoday.it/cronaca/eplosione-bombe-carta-comando-vigili-viale-togliatti.html"
+   }
+  ]
+ },
+ {
+  "id": "R013",
+  "date": "2024-11-14",
+  "time": "04:00",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via delle Nereidi",
+  "precision": "street",
+  "lat": 41.734028,
+  "lon": 12.268857,
+  "category": "Shop or venue",
+  "target": "Jewellery and costume-jewellery shop",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown at the shop, it also damaged two parked cars.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte: bomba carta contro una gioielleria. Danneggiate due auto",
+    "date": "2024-11-14",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-delle-nereidi.html"
+   }
+  ]
+ },
+ {
+  "id": "R014",
+  "date": "2024-11-15",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "Quadraro",
+  "municipio": "Municipio V",
+  "address": "via dei Quintili",
+  "precision": "street",
+  "lat": 41.870606,
+  "lon": 12.546494,
+  "category": "Building or entrance hall",
+  "target": "Front door of an apartment building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Went off outside the front door: the building was evacuated as a precaution. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione al Quadraro: bomba carta davanti ad un portone, evacuato un palazzo",
+    "date": "2024-11-15",
+    "url": "https://www.romatoday.it/cronaca/esplosione-quadraro-bomba-carta-via-dei-quintili.html"
+   }
+  ]
+ },
+ {
+  "id": "R015",
+  "date": "2024-11-16",
+  "time": "04:00",
+  "date_note": "",
+  "neighbourhood": "Giardinetti",
+  "municipio": "Municipio VI",
+  "address": "via di Giardinetti, at via Raimondi",
+  "precision": "street",
+  "lat": 41.859459,
+  "lon": 12.602784,
+  "category": "Shop or venue",
+  "target": "Bar",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A bar's windows and furniture damaged. The third explosion in three nights, after Ostia and the Quadraro.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Giardinetti: bomba carta danneggia vetrine e arredi di un bar",
+    "date": "2024-11-16",
+    "url": "https://www.romatoday.it/cronaca/esplosione-giardinetti-bomba-carta-bar.html"
+   }
+  ]
+ },
+ {
+  "id": "R016",
+  "date": "2024-12-06",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Tor Bella Monaca",
+  "municipio": "Municipio VI",
+  "address": "via Amico Aspertini",
+  "precision": "street",
+  "lat": 41.871403,
+  "lon": 12.629477,
+  "category": "Shop or venue",
+  "target": "Hardware shop",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown at the shutter of a hardware shop that RomaToday links to the family of an alleged drug-dealing ringleader. The same shop would be hit again in March 2026.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Tor Bella Monaca: bomba carta contro la ferramenta dei genitori di 'Naruto'",
+    "date": "2024-12-06",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-farmacia-via-aspertini.html"
+   }
+  ]
+ },
+ {
+  "id": "R017",
+  "date": "2025-01-04",
+  "time": "05:00",
+  "date_note": "the first article says Saturday 4 January, later ones the 5th",
+  "neighbourhood": "Borghesiana (Selvotta)",
+  "municipio": "Municipio VI",
+  "address": "via Cianciana",
+  "precision": "street",
+  "lat": 41.852583,
+  "lon": 12.670507,
+  "category": "Private home",
+  "target": "Detached house",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Three pistol shots fired from a car and a device set off against a detached house: a window and part of the balcony destroyed. To prosecutors it “could have been a massacre”; the anti-mafia prosecutors are investigating.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Far west a Roma, colpi di pistola e una bomba contro un villino. Ipotesi faida tra pusher",
+    "date": "2025-01-05",
+    "url": "https://www.romatoday.it/cronaca/spari-bomba-roma-borghesiana-via-cianciana.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba e spari a Roma est. L'attentato contro 'Kalo' poteva essere una strage",
+    "date": "2025-01-05",
+    "url": "https://www.romatoday.it/cronaca/spari-bomba-roma-borghesiana-cosa-e-successo.html"
+   }
+  ]
+ },
+ {
+  "id": "R018",
+  "date": "2025-03-25",
+  "time": "16:00",
+  "date_note": "",
+  "neighbourhood": "Centocelle",
+  "municipio": "Municipio V",
+  "address": "piazza delle Camelie",
+  "precision": "street",
+  "lat": 41.876372,
+  "lon": 12.564686,
+  "category": "Political, social or religious premises",
+  "target": "Jehovah's Witnesses Kingdom Hall",
+  "device": "small explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Went off outside the door of the place of worship, in the afternoon. No one was involved; meetings were cancelled as a precaution.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Ordigno esploso davanti alla sede dei Testimoni di Geova",
+    "date": "2025-03-26",
+    "url": "https://www.romatoday.it/cronaca/esplosione-sede-testimoni-geova-piazza-delle-camelie.html"
+   }
+  ]
+ },
+ {
+  "id": "R019",
+  "date": "2025-05-15",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Garbatella",
+  "municipio": "Municipio VIII",
+  "address": "via degli Armatori, La Strada social centre",
+  "precision": "street",
+  "lat": 41.861229,
+  "lon": 12.487072,
+  "category": "Political, social or religious premises",
+  "target": "La Strada social centre",
+  "device": "explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The first explosive attack on the social centre, known only from the centre's statement released after the second one (12 September). No dedicated article found.",
+  "sources": [
+   {
+    "outlet": "Open",
+    "title": "Roma, esplosione davanti al centro sociale La Strada. Striscione contro Di Battista. «Se dovesse succedermi qualcosa conoscete i responsabili»",
+    "date": "2025-09-12",
+    "url": "https://www.open.online/2025/09/12/roma-esplosione-centro-sociale-la-strada-di-battista-hamas/"
+   },
+   {
+    "outlet": "Il Fatto Quotidiano",
+    "title": "Bomba contro il Centro Sociale La Strada a Roma, striscione insulta Di Battista",
+    "date": "2025-09-12",
+    "url": "https://www.ilfattoquotidiano.it/2025/09/12/centro-sociale-strada-attacco-esplosivo-roma-notizie/8124088/"
+   }
+  ]
+ },
+ {
+  "id": "R020",
+  "date": "2025-05-22",
+  "time": "23:30",
+  "date_note": "",
+  "neighbourhood": "Esquilino",
+  "municipio": "Municipio I",
+  "address": "via Guglielmo Pepe, Ambra Jovinelli theatre",
+  "precision": "place",
+  "lat": 41.895545,
+  "lon": 12.508261,
+  "category": "Shop or venue",
+  "target": "Ambra Jovinelli theatre",
+  "device": "firecracker",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Set off outside one of the theatre's entrances, with offensive graffiti against Fabrizio Corona, due on stage the following evening. The façade was blackened.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplode petardo davanti all'Ambra Jovinelli. Scritta \"Corona infame\" alla vigilia dello spettacolo",
+    "date": "2025-05-23",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ambra-jovinelli-scritte-corona.html"
+   }
+  ]
+ },
+ {
+  "id": "R021",
+  "date": "2025-05-29",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Casal Bruciato",
+  "municipio": "Municipio IV",
+  "address": "via Giuseppe Donati 99",
+  "precision": "street",
+  "lat": 41.908421,
+  "lon": 12.553144,
+  "category": "Shop or venue",
+  "target": "Newly opened internet café",
+  "device": "unspecified device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "An explosion destroys an internet café opened the day before and damages four cars and nearby shop windows. Among the Carabinieri's hypotheses is a deliberate act.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte a Roma, distrutto internet point. Era appena stato inaugurato",
+    "date": "2025-05-29",
+    "url": "https://www.romatoday.it/cronaca/esplosione-casal-bruciato-sala-scommesse-via-donati.html"
+   }
+  ]
+ },
+ {
+  "id": "R022",
+  "date": "2025-06-26",
+  "time": "02:30",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via delle Azzorre 451",
+  "precision": "street number",
+  "lat": 41.739477,
+  "lon": 12.264777,
+  "category": "Shop or venue",
+  "target": "Boxing gym",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Placed outside the shutter, it gutted the gym and damaged scooters, a car and a shop. The building was evacuated; the anti-mafia prosecutors are investigating.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Ostia: bomba carta davanti alla palestra boxe Di Napoli",
+    "date": "2025-06-26",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-palestra-di-napoli.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "La palestra di Ostia fatta saltare in aria e i fari dell'antimafia. Si indaga sui rapporti dei Di Napoli",
+    "date": "2025-06-26",
+    "url": "https://www.romatoday.it/cronaca/bomba-ostia-di-napoli-cosa-e-successo.html"
+   },
+   {
+    "outlet": "Open",
+    "title": "Ostia, esplode una bomba davanti alla palestra Di Napoli. Il comico Enzo Salvi: «Una scena da guerra»",
+    "date": "2025-06-26",
+    "url": "https://www.open.online/2025/06/26/ostia-esplosione-palestra-di-napoli-indagini/"
+   },
+   {
+    "outlet": "QN Quotidiano.net",
+    "title": "Ostia, bomba carta esplode davanti alla palestra di Gianni Di Napoli. Indaga l’Antimafia",
+    "date": "2025-06-26",
+    "url": "https://www.quotidiano.net/cronaca/ostia-palestra-gianni-di-napoli-a5q57e5a"
+   }
+  ]
+ },
+ {
+  "id": "R023",
+  "date": "2025-06-30",
+  "time": "23:30",
+  "date_note": "",
+  "neighbourhood": "Torrevecchia",
+  "municipio": "Municipio XIII",
+  "address": "via Guido Calcagnini 39",
+  "precision": "street",
+  "lat": 41.918081,
+  "lon": 12.407891,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of a public housing block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Explosion in the entrance hall, residents evacuated. Fragments consistent with a paper bomb were found: for the Carabinieri the hypothesis is a warning.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Notte di paura al Bronx di Torrevecchia. Esplosione nell'androne, palazzo evacuato",
+    "date": "2025-07-01",
+    "url": "https://www.romatoday.it/cronaca/esplosione-via-guido-calcagnini-30-giugno.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Un avvertimento dietro la bomba carta al Bronx di Torrevecchia. L'ipotesi dietro l'esplosione nell'androne",
+    "date": "2025-07-01",
+    "url": "https://www.romatoday.it/cronaca/esplosione-bomba-carta-bronx-torrevecchia-30-giugno.html"
+   }
+  ]
+ },
+ {
+  "id": "R024",
+  "date": "2025-07-01",
+  "time": "22:00",
+  "date_note": "",
+  "neighbourhood": "Colle del Sole",
+  "municipio": "Municipio VI",
+  "address": "via Ollolai 37",
+  "precision": "street",
+  "lat": 41.882976,
+  "lon": 12.682452,
+  "category": "Shop or venue",
+  "target": "Clothes shop",
+  "device": "explosive device (suspected)",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "An explosion destroys the shop, with nothing stolen; fireworks are let off straight afterwards. Initial analyses rule out gas and a short circuit.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Un negozio d'abbigliamento è stato distrutto da un'esplosione nella notte a Roma",
+    "date": "2025-07-04",
+    "url": "https://www.romatoday.it/cronaca/esplosione-negozio-via-ollolai.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Un anno di esplosioni nel municipio VI. Il minisindaco: \"La criminalità sta avanzando\"",
+    "date": "2026-03-25",
+    "url": "https://www.romatoday.it/cronaca/esplosioni-tor-bella-monaca-franco-criminalita.html"
+   }
+  ]
+ },
+ {
+  "id": "R025",
+  "date": "2025-07-28",
+  "time": "00:00",
+  "date_note": "",
+  "neighbourhood": "Acilia",
+  "municipio": "Municipio X",
+  "address": "via Cesare Maccari 421",
+  "precision": "street",
+  "lat": 41.774265,
+  "lon": 12.357619,
+  "category": "Shop or venue",
+  "target": "Bakery",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown near a bakery's gas meter; residents report three hooded youths running away. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba carta ad Acilia, l'esplosione davanti a un forno. L'ipotesi dell'avvertimento",
+    "date": "2025-07-28",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-acilia-via-maccari-cosa-e-successo.html"
+   },
+   {
+    "outlet": "LaPresse",
+    "title": "Acilia, spari da auto in corsa: forse caso collegato a esplosione in panificio",
+    "date": "2025-07-29",
+    "url": "https://www.lapresse.it/cronaca/2025/07/29/acilia-spari-da-auto-in-corsa-forse-caso-collegato-a-esplosione-in-panificio/"
+   }
+  ]
+ },
+ {
+  "id": "R026",
+  "date": "2025-08-17",
+  "time": "02:30",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "viale Vega 5",
+  "precision": "street",
+  "lat": 41.727257,
+  "lon": 12.293505,
+  "category": "Building or entrance hall",
+  "target": "Front door of an apartment building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The front door and the entrance hall destroyed. According to initial checks, no one living in the building has appeared in court reports.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Ostia: bomba carta davanti ad un palazzo, distrutto il portone d'ingresso",
+    "date": "2025-08-17",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-vega-17-agosto-2025.html"
+   }
+  ]
+ },
+ {
+  "id": "R027",
+  "date": "2025-09-12",
+  "time": "04:08",
+  "date_note": "",
+  "neighbourhood": "Garbatella",
+  "municipio": "Municipio VIII",
+  "address": "via degli Armatori, La Strada social centre",
+  "precision": "street",
+  "lat": 41.861229,
+  "lon": 12.487072,
+  "category": "Political, social or religious premises",
+  "target": "La Strada social centre",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Placed on the lock of the entrance, which held; beside it a banner against Alessandro Di Battista. The centre speaks of a “pro-Israeli” hand; the Digos (the police unit for political crime) and forensic police are investigating.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Garbatella, bomba carta contro il centro sociale 'La Strada'. \"Esplosione di matrice filo israeliana\"",
+    "date": "2025-09-12",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-centro-sociale-la-strada-roma.html"
+   },
+   {
+    "outlet": "Open",
+    "title": "Roma, esplosione davanti al centro sociale La Strada. Striscione contro Di Battista. «Se dovesse succedermi qualcosa conoscete i responsabili»",
+    "date": "2025-09-12",
+    "url": "https://www.open.online/2025/09/12/roma-esplosione-centro-sociale-la-strada-di-battista-hamas/"
+   },
+   {
+    "outlet": "Il Fatto Quotidiano",
+    "title": "Bomba contro il Centro Sociale La Strada a Roma, striscione insulta Di Battista",
+    "date": "2025-09-12",
+    "url": "https://www.ilfattoquotidiano.it/2025/09/12/centro-sociale-strada-attacco-esplosivo-roma-notizie/8124088/"
+   },
+   {
+    "outlet": "Domani",
+    "title": "Roma, esplosione all’ingresso de “La strada”. Il centro sociale: «Matrice filoisraeliana, noi contro il genocidio a Gaza»",
+    "date": "2025-09-12",
+    "url": "https://www.editorialedomani.it/fatti/roma-centro-sociale-la-strada-esplosione-attacco-matrice-filoisraeliana-di-battista-ciaccheri-bnl9mh0l"
+   }
+  ]
+ },
+ {
+  "id": "R028",
+  "date": "2025-10-30",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via della Tortuga",
+  "precision": "street",
+  "lat": 41.739581,
+  "lon": 12.259716,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of a public housing block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The glass of the front door destroyed, in the building where friends of a murdered 19-year-old are painting a mural. Investigators do not rule out a link between the two events.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplode bomba carta nella palazzina dove stanno realizzando un murale per Simone Schiavello, ucciso a coltellate a 19 anni",
+    "date": "2025-10-30",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-della-tortuga.html"
+   }
+  ]
+ },
+ {
+  "id": "R029",
+  "date": "2025-11-22",
+  "time": "03:50",
+  "date_note": "",
+  "neighbourhood": "Centocelle",
+  "municipio": "Municipio V",
+  "address": "via dei Platani 171",
+  "precision": "street",
+  "lat": 41.880977,
+  "lon": 12.569968,
+  "category": "Shop or venue",
+  "target": "Car dealership",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The first of two explosions in Centocelle on the same night. The same dealership would be hit again on 8 October 2026.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosioni a Centocelle: bombe carta danneggiano concessionario e negozio di abbigliamento",
+    "date": "2025-11-22",
+    "url": "https://www.romatoday.it/cronaca/esplosioni-centocelle-stanotte-cosa-e-successo.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Centocelle: bomba fuori da un autosalone di via dei Platani",
+    "date": "2026-10-09",
+    "url": "https://www.romatoday.it/cronaca/bomba-via-dei-platani-centocelle-esplosione.html"
+   }
+  ]
+ },
+ {
+  "id": "R030",
+  "date": "2025-11-22",
+  "time": "04:30",
+  "date_note": "",
+  "neighbourhood": "Centocelle",
+  "municipio": "Municipio V",
+  "address": "piazza dei Mirti",
+  "precision": "street",
+  "lat": 41.881181,
+  "lon": 12.566182,
+  "category": "Shop or venue",
+  "target": "Clothes shop",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The night's second explosion, forty minutes after via dei Platani, following the same pattern.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosioni a Centocelle: bombe carta danneggiano concessionario e negozio di abbigliamento",
+    "date": "2025-11-22",
+    "url": "https://www.romatoday.it/cronaca/esplosioni-centocelle-stanotte-cosa-e-successo.html"
+   }
+  ]
+ },
+ {
+  "id": "R031",
+  "date": "2025-11-23",
+  "time": "22:00",
+  "date_note": "",
+  "neighbourhood": "Torrevecchia",
+  "municipio": "Municipio XIII",
+  "address": "via Paolo Emilio Sfondrati 25",
+  "precision": "street",
+  "lat": 41.917628,
+  "lon": 12.403345,
+  "category": "Building or entrance hall",
+  "target": "Stairwell of a public housing block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The glass of the front door shattered, in the same housing complex hit in June. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione al Bronx di Torrevecchia, bomba carta nell'androne di un palazzo",
+    "date": "2025-11-24",
+    "url": "https://www.romatoday.it/cronaca/esplosione-bomba-carta-torrevecchia-23-novembre-2025.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Roma: bomba carta nel vano scale di una casa popolare a Primavalle, indagini in corso",
+    "date": "2025-11-24",
+    "url": "https://www.agenzianova.com/news/roma-bomba-carta-nel-vano-scale-di-una-casa-popolare-a-primavalle-indagini-in-corso/"
+   }
+  ]
+ },
+ {
+  "id": "R032",
+  "date": "2025-12-20",
+  "time": "21:30",
+  "date_note": "",
+  "neighbourhood": "La Rustica",
+  "municipio": "Municipio V",
+  "address": "via di Castel di Ieri",
+  "precision": "street",
+  "lat": 41.915936,
+  "lon": 12.609532,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of an Ater (public housing) block",
+  "device": "“bombone” (big bomb)",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A large device rips through part of the entrance hall and the door of the meter room. A few seconds later, a second explosion in via Naide.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Doppia esplosione a La Rustica, due \"bomboni\" sventrano ingresso di un palazzo e le finestre",
+    "date": "2025-12-22",
+    "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-via-castel-di-ieri-via-naide.html"
+   }
+  ]
+ },
+ {
+  "id": "R033",
+  "date": "2025-12-20",
+  "time": "21:30",
+  "date_note": "",
+  "neighbourhood": "La Rustica",
+  "municipio": "Municipio V",
+  "address": "via Naide",
+  "precision": "street",
+  "lat": 41.913598,
+  "lon": 12.602624,
+  "category": "Building or entrance hall",
+  "target": "Ater (public housing) block",
+  "device": "“bombone” (big bomb)",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The second explosion, a few seconds after the first: windows of buildings and flats destroyed. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Doppia esplosione a La Rustica, due \"bomboni\" sventrano ingresso di un palazzo e le finestre",
+    "date": "2025-12-22",
+    "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-via-castel-di-ieri-via-naide.html"
+   }
+  ]
+ },
+ {
+  "id": "R034",
+  "date": "2025-12-31",
+  "time": "03:30",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via della Tortuga",
+  "precision": "street",
+  "lat": 41.739581,
+  "lon": 12.259716,
+  "category": "Building or entrance hall",
+  "target": "Front door of a building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Damage to the front door, the plaster in the hall and the first-floor windows. The same street was hit on 30 October.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe carta esplose nella notte a Roma: danneggiati un bar e il portone di un palazzo",
+    "date": "2025-12-31",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-roma-esplosione-tufello-ostia.html"
+   }
+  ]
+ },
+ {
+  "id": "R035",
+  "date": "2025-12-31",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Tufello",
+  "municipio": "Municipio III",
+  "address": "via Monte Sirino (“via Monte Serino” in the article)",
+  "precision": "street",
+  "lat": 41.949999,
+  "lon": 12.533363,
+  "category": "Shop or venue",
+  "target": "Bar",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A bar's shutter and two parked cars damaged. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe carta esplose nella notte a Roma: danneggiati un bar e il portone di un palazzo",
+    "date": "2025-12-31",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-roma-esplosione-tufello-ostia.html"
+   }
+  ]
+ },
+ {
+  "id": "R036",
+  "date": "2026-01-14",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "Tor Sapienza",
+  "municipio": "Municipio V",
+  "address": "via Tranquillo Cremona",
+  "precision": "street",
+  "lat": 41.897753,
+  "lon": 12.586914,
+  "category": "Building or entrance hall",
+  "target": "Front door of a public housing block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The front door and several cars damaged. According to investigators, whoever placed it had blocked the lift: the hypothesis is intimidation between drug dealers.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Tor Sapienza: danneggiati portone del palazzo e auto in sosta",
+    "date": "2026-01-14",
+    "url": "https://www.romatoday.it/cronaca/esplosione-tor-sapienza-14-gennaio-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba a Tor Sapienza, l'ipotesi di una faida tra pusher",
+    "date": "2026-01-15",
+    "url": "https://www.romatoday.it/cronaca/esplosione-tor-sapienza-pusher.html"
+   }
+  ]
+ },
+ {
+  "id": "R037",
+  "date": "2026-02-10",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "San Lorenzo",
+  "municipio": "Municipio II",
+  "address": "via dei Falisci",
+  "precision": "street",
+  "lat": 41.897165,
+  "lon": 12.512951,
+  "category": "Shop or venue",
+  "target": "Osteria (tavern)",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The entrance and windows of an osteria damaged. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "San Lorenzo, esploso ordigno davanti all'osteria \"Pesce fritto e baccalà\"",
+    "date": "2026-02-10",
+    "url": "https://www.romatoday.it/cronaca/esplosione-pesce-fritto-baccala-via-dei-falisci.html"
+   }
+  ]
+ },
+ {
+  "id": "R038",
+  "date": "2026-03-06",
+  "time": "03:00",
+  "date_note": "",
+  "neighbourhood": "Acilia",
+  "municipio": "Municipio X",
+  "address": "via di Acilia 50",
+  "precision": "street number",
+  "lat": 41.782266,
+  "lon": 12.365636,
+  "category": "Shop or venue",
+  "target": "Bar",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A bar's veranda and a shop window badly damaged. The Carabinieri detain a 62-year-old man; in the following days, drug checks between Ostia and Acilia.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Boato nella notte ad Acilia: bomba distrugge un bar. Fermato un 62enne in fuga",
+    "date": "2026-03-06",
+    "url": "https://www.romatoday.it/cronaca/esplosione-acilia-cosa-e-successo-6-marzo-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Roma, stretta dei carabinieri tra Ostia e Acilia dopo la bomba al bar",
+    "date": "2026-03-07",
+    "url": "https://www.romatoday.it/cronaca/esplosione-acilia-blitz-ostia-droga.html"
+   }
+  ]
+ },
+ {
+  "id": "R039",
+  "date": "2026-03-15",
+  "time": "",
+  "date_note": "“last weekend”, 14 or 15 March",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "viale dei Misenati",
+  "precision": "street",
+  "lat": 41.729999,
+  "lon": 12.279271,
+  "category": "Building or entrance hall",
+  "target": "Empty building under renovation",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The marble balustrades of the building site destroyed, near piazza Anco Marzio. Whether it was intimidation is yet to be established.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Ostia, bomba carta vicino piazza Anco Marzio: distrutta la balaustra di un cantiere",
+    "date": "2026-03-17",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-viale-dei-misenati.html"
+   }
+  ]
+ },
+ {
+  "id": "R040",
+  "date": "2026-03-20",
+  "time": "02:00",
+  "date_note": "",
+  "neighbourhood": "Capannelle",
+  "municipio": "Municipio VII",
+  "address": "Casale del Sellaretto, Parco degli Acquedotti (via delle Capannelle)",
+  "precision": "place",
+  "lat": 41.844168,
+  "lon": 12.567371,
+  "category": "Other",
+  "target": "Abandoned farmhouse",
+  "device": "homemade explosive device (being assembled)",
+  "devices": 1,
+  "injured": 0,
+  "killed": 2,
+  "summary": "The floor of an abandoned farmhouse collapses and two anarchists die. According to investigators they were assembling a homemade bomb; the counter-terrorism prosecutors are investigating.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione al parco degli Acquedotti: crolla il tetto di un casolare. Due morti",
+    "date": "2026-03-20",
+    "url": "https://www.romatoday.it/cronaca/due-morti-parco-acquedotti-esplosione-casale.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Morti dopo esplosione nel casolare, la pista anarchica e l'ipotesi della bomba artigianale",
+    "date": "2026-03-20",
+    "url": "https://www.romatoday.it/cronaca/anarchici-morti-esplosione-roma.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "Cosa sappiamo dell’esplosione in cui sono morti due anarchici a Roma",
+    "date": "2026-03-21",
+    "url": "https://www.ilpost.it/2026/03/21/esplosione-casale-roma-parco-acquedotti-anarchici-bomba/"
+   }
+  ]
+ },
+ {
+  "id": "R041",
+  "date": "2026-03-25",
+  "time": "00:30",
+  "date_note": "",
+  "neighbourhood": "Tor Bella Monaca",
+  "municipio": "Municipio VI",
+  "address": "via Amico Aspertini",
+  "precision": "street",
+  "lat": 41.871403,
+  "lon": 12.629477,
+  "category": "Shop or venue",
+  "target": "Hardware shop",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A second bomb against the same hardware shop, after the one in December 2024: damage to the grille, the sign, a nearby shop and a car.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Tor Bella Monaca: ordigno contro una ferramenta, era già stata colpita da una bomba carta",
+    "date": "2026-03-25",
+    "url": "https://www.romatoday.it/cronaca/esplosione-tor-bella-monaca-bomba-carta-via-aspertini.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Roma: nella notte bomba carta contro un ferramenta a Tor Bella Monaca, indagini in corso",
+    "date": "2026-03-25",
+    "url": "https://www.agenzianova.com/news/roma-nella-notte-bomba-carta-contro-un-ferramenta-a-tor-bella-monaca-indagini-in-corso/"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R042",
+  "date": "2026-04-29",
+  "time": "00:00",
+  "date_note": "",
+  "neighbourhood": "Ostia Antica (Longarina)",
+  "municipio": "Municipio X",
+  "address": "via Padre Adolfo Catena",
+  "precision": "street",
+  "lat": 41.75338,
+  "lon": 12.313458,
+  "category": "Private home",
+  "target": "Gate of a house",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Damage to the gate and the wall of the home of a 50-year-old man already known to the police.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Ostia, è sempre la stagione delle bombe. Ordigno esplode contro il cancello di un'abitazione alla Longarina",
+    "date": "2026-04-29",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-padre-adolfo-catena.html"
+   }
+  ]
+ },
+ {
+  "id": "R043",
+  "date": "2026-05-01",
+  "time": "23:00",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via Carlo Bosio",
+  "precision": "street",
+  "lat": 41.738132,
+  "lon": 12.272644,
+  "category": "Shop or venue",
+  "target": "Shop selling Lazio football club merchandise",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Thrown at the shop's shutter: damage to the shutter and the pavement. The Carabinieri are investigating.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Ostia, ordigno contro il negozio dei laziali",
+    "date": "2026-05-02",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-negozio-lazio-1-maggio-2026.html"
+   }
+  ]
+ },
+ {
+  "id": "R044",
+  "date": "2026-05-23",
+  "time": "03:45",
+  "date_note": "",
+  "neighbourhood": "Romanina",
+  "municipio": "Municipio VII",
+  "address": "via Vincenzo Manzini",
+  "precision": "street",
+  "lat": 41.84579,
+  "lon": 12.598318,
+  "category": "Building or entrance hall",
+  "target": "Entrance of a former INPS (social security) apartment block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Damage to the gate, ceiling and glass panels of the entrance, and to a car. Intimidation is the line of inquiry.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte: bomba carta nell'androne di una palazzina",
+    "date": "2026-05-23",
+    "url": "https://www.romatoday.it/cronaca/esplosione-via-vincenzo-manzini-23-maggio-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione alla Romanina: bomba carta nell'androne del palazzo, la pista dell'atto intimidatorio",
+    "date": "2026-05-24",
+    "url": "https://www.romatoday.it/cronaca/bomba-romanina-via-vincenzo-manzini-indagini.html"
+   }
+  ]
+ },
+ {
+  "id": "R045",
+  "date": "2026-06-29",
+  "time": "01:30",
+  "date_note": "",
+  "neighbourhood": "Casal Bruciato",
+  "municipio": "Municipio IV",
+  "address": "via Tommaso Smith",
+  "precision": "street",
+  "lat": 41.904826,
+  "lon": 12.552537,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall and landing of a building",
+  "device": "paper bomb",
+  "devices": 2,
+  "injured": 1,
+  "killed": 0,
+  "summary": "Two paper bombs, one in the entrance hall and one on the first floor, placed by two people who then fled. A resident was injured by glass: the only person injured in the East Rome series, according to Il Post.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Casal Bruciato: esplodono due bombe carta in un palazzo, c'è un ferito",
+    "date": "2026-06-29",
+    "url": "https://www.romatoday.it/cronaca/esplosioni-casal-bruciato-bombe-carta-via-tommaso-smith.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Notte di bombe carta a Roma: esplodono tre ordigni in due palazzi. Un ferito e 30 evacuati",
+    "date": "2026-06-29",
+    "url": "https://www.romatoday.it/cronaca/esplosioni-roma-bombe-carta-acilia-casal-bruciato.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R046",
+  "date": "2026-06-29",
+  "time": "01:30",
+  "date_note": "",
+  "neighbourhood": "Acilia (San Giorgio)",
+  "municipio": "Municipio X",
+  "address": "via Cosimo Rosselli",
+  "precision": "street",
+  "lat": 41.777908,
+  "lon": 12.354619,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of an apartment building",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Placed under the stairs, it blew off the ground-floor doors and brought down part of the floor: thirty people evacuated. Investigators are following the drugs lead.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Notte di bombe carta a Roma: esplodono tre ordigni in due palazzi. Un ferito e 30 evacuati",
+    "date": "2026-06-29",
+    "url": "https://www.romatoday.it/cronaca/esplosioni-roma-bombe-carta-acilia-casal-bruciato.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba carta in un palazzo ad Acilia, l'esplosione ha distrutto l'androne. La pista della droga",
+    "date": "2026-06-30",
+    "url": "https://www.romatoday.it/cronaca/esplosione-acilia-29-giugno-2026.html"
+   }
+  ]
+ },
+ {
+  "id": "R047",
+  "date": "2026-07-12",
+  "time": "02:00",
+  "date_note": "",
+  "neighbourhood": "Don Bosco",
+  "municipio": "Municipio VII",
+  "address": "via Valerio Flacco",
+  "precision": "street",
+  "lat": 41.861762,
+  "lon": 12.560157,
+  "category": "Building or entrance hall",
+  "target": "Cellars of an apartment building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Damage to the front door, entrance hall and basement. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte: bomba carta nelle cantine del palazzo, danneggiato ingresso dell'edificio",
+    "date": "2026-07-12",
+    "url": "https://www.romatoday.it/cronaca/esplosione-bomba-carta-via-valerio-flacco.html"
+   }
+  ]
+ },
+ {
+  "id": "R048",
+  "date": "2026-07-29",
+  "time": "01:30",
+  "date_note": "",
+  "neighbourhood": "Casetta Mattei",
+  "municipio": "Municipio XI",
+  "address": "via dei Cantelmo",
+  "precision": "street",
+  "lat": 41.860206,
+  "lon": 12.412668,
+  "category": "Building or entrance hall",
+  "target": "Front door of an apartment building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Residents hear two loud bangs; nearby, a bottle of acetone is found and a small white car is seen driving away.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte a Roma: bomba carta davanti al portone di un palazzo nella zona di Casetta Mattei",
+    "date": "2026-07-29",
+    "url": "https://www.romatoday.it/cronaca/esplosione-via-dei-cantelmo-29-luglio-2026.html"
+   }
+  ]
+ },
+ {
+  "id": "R049",
+  "date": "2026-08-03",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Don Bosco",
+  "municipio": "Municipio VII",
+  "address": "via Statilio Ottato",
+  "precision": "street",
+  "lat": 41.857025,
+  "lon": 12.56943,
+  "category": "Building or entrance hall",
+  "target": "Entrance of a building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The front door blown off and part of the false ceiling collapsed: residents evacuated, then allowed back in.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Don Bosco: divelto il portone di ingresso di un palazzo",
+    "date": "2026-08-03",
+    "url": "https://www.romatoday.it/cronaca/esplosione-roma-don-bosco-oggi-3-agosto-2026.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R050",
+  "date": "2026-08-14",
+  "time": "04:00",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via Marino Fasan",
+  "precision": "street",
+  "lat": 41.737781,
+  "lon": 12.255023,
+  "category": "Other",
+  "target": "Pavement outside a building",
+  "device": "large firecracker",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A car window and the cover of a meter damaged. For the Carabinieri the context is the fight over drug-dealing pitches: two arrests.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte a Ostia: boato risveglia i residenti, danneggiati un’auto e un palazzo",
+    "date": "2026-08-14",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-via-fasan-14-agosto-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Ostia, la bomba per contendersi le piazze di spaccio. Due arresti",
+    "date": "2026-08-16",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-2-pusher-arrestati.html"
+   }
+  ]
+ },
+ {
+  "id": "R051",
+  "date": "2026-08-29",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "Alessandrino",
+  "municipio": "Municipio V",
+  "address": "via Casilina 953",
+  "precision": "estimated",
+  "lat": 41.87197,
+  "lon": 12.57721,
+  "category": "Shop or venue",
+  "target": "Car hire and used-car dealer",
+  "device": "homemade explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The shutter badly damaged. The first of four explosions in less than 24 hours in East Rome; the case passes to the anti-mafia prosecutors.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba nella notte all'Alessandrino: esplosione davanti a un concessionario in via Casilina",
+    "date": "2026-08-29",
+    "url": "https://www.romatoday.it/cronaca/esplosione-via-casilina-autonoleggio.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe a Roma est, 4 esplosioni in 24 ore. L'antimafia indaga su possibili collegamenti",
+    "date": "2026-08-31",
+    "url": "https://www.romatoday.it/cronaca/bombe-a-roma-antimafia-indagini.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R052",
+  "date": "2026-08-30",
+  "time": "02:00",
+  "date_note": "",
+  "neighbourhood": "Alessandrino",
+  "municipio": "Municipio V",
+  "address": "via Casilina 953",
+  "precision": "estimated",
+  "lat": 41.87197,
+  "lon": 12.57721,
+  "category": "Shop or venue",
+  "target": "The same car hire business",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Twenty-four hours later, a second, more powerful bomb against the same dealership: the shutter blown off, damage to parked cars and to a flat.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Ancora un'esplosione all'Alessandrino. Seconda bomba carta in 24 ore contro lo stesso autosalone",
+    "date": "2026-08-30",
+    "url": "https://www.romatoday.it/cronaca/seconda-bomba-autosalone-via-casilina-alessandrino.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe a Roma est, 4 esplosioni in 24 ore. L'antimafia indaga su possibili collegamenti",
+    "date": "2026-08-31",
+    "url": "https://www.romatoday.it/cronaca/bombe-a-roma-antimafia-indagini.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R053",
+  "date": "2026-08-30",
+  "time": "02:10",
+  "date_note": "",
+  "neighbourhood": "Due Leoni",
+  "municipio": "Municipio VI",
+  "address": "via Salemi",
+  "precision": "street",
+  "lat": 41.866664,
+  "lon": 12.650442,
+  "category": "Shop or venue",
+  "target": "Barber's shop",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The shutter blown off, a building's glass front cracked, three cars damaged. According to RomaToday the business was once run by someone with a criminal record.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Boato nella notte: bomba carta all'esterno di un barber shop ai Due Leoni",
+    "date": "2026-08-30",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-via-salemi.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe a Roma est, 4 esplosioni in 24 ore. L'antimafia indaga su possibili collegamenti",
+    "date": "2026-08-31",
+    "url": "https://www.romatoday.it/cronaca/bombe-a-roma-antimafia-indagini.html"
+   }
+  ]
+ },
+ {
+  "id": "R054",
+  "date": "2026-08-30",
+  "time": "03:00",
+  "date_note": "",
+  "neighbourhood": "Torre Maura",
+  "municipio": "Municipio VI",
+  "address": "via delle Alzavole",
+  "precision": "street",
+  "lat": 41.873844,
+  "lon": 12.601743,
+  "category": "Shop or venue",
+  "target": "Bakery",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The night's third explosion in East Rome: a bakery's shutter blown off, the pavement damaged.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba carta anche a Torre Maura: esplosione fuori da un forno. È il terzo caso nella notte a Roma est",
+    "date": "2026-08-30",
+    "url": "https://www.romatoday.it/cronaca/bomba-torre-maura-via-delle-alzavole.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe a Roma est, 4 esplosioni in 24 ore. L'antimafia indaga su possibili collegamenti",
+    "date": "2026-08-31",
+    "url": "https://www.romatoday.it/cronaca/bombe-a-roma-antimafia-indagini.html"
+   }
+  ]
+ },
+ {
+  "id": "R055",
+  "date": "2026-10-03",
+  "time": "02:30",
+  "date_note": "",
+  "neighbourhood": "Borghesiana",
+  "municipio": "Municipio VI",
+  "address": "via Casilina 1750, corner of via Burgio",
+  "precision": "junction",
+  "lat": 41.863538,
+  "lon": 12.668195,
+  "category": "Shop or venue",
+  "target": "Car hire business",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The shop window destroyed, a car damaged. The fifth explosion against a business along the Casilina in less than forty days; a single orchestrator is not ruled out.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte alla Borghesiana: bomba carta contro un autonoleggio",
+    "date": "2026-10-03",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-borghesiana.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bombe senza fine a Roma est. La mappa delle esplosioni e l'ipotesi di un'unica regia",
+    "date": "2026-10-04",
+    "url": "https://www.romatoday.it/cronaca/bomba-autonoleggio-costantino-chi-e-stato.html"
+   },
+   {
+    "outlet": "LaPresse",
+    "title": "Roma, ordigno esplode nella notte davanti autonoleggio al Casilino",
+    "date": "2026-10-03",
+    "url": "https://www.lapresse.it/video/2026/10/03/roma-ordigno-esplode-nella-notte-davanti-autonoleggio-al-casilino/"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R056",
+  "date": "2026-10-05",
+  "time": "00:00",
+  "date_note": "",
+  "neighbourhood": "Alessandrino",
+  "municipio": "Municipio V",
+  "address": "via Antonio Bottini 5",
+  "precision": "street",
+  "lat": 41.876252,
+  "lon": 12.578237,
+  "category": "Shop or venue",
+  "target": "Slot-machine arcade",
+  "device": "explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Went off outside a slot-machine arcade, damaging two cars. With the wine shop in via Calpurnio Fiamma a few hours later, RomaToday counts seven cases in East Rome since late August.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Ancora paura a Roma est: esplode un'altra bomba: danneggiata una sala slot all'Alessandrino",
+    "date": "2026-10-05",
+    "url": "https://www.romatoday.it/cronaca/esplosione-alessandrino-bomba-carta-via-bottini.html"
+   }
+  ]
+ },
+ {
+  "id": "R057",
+  "date": "2026-10-05",
+  "time": "05:00",
+  "date_note": "",
+  "neighbourhood": "Tuscolano (Don Bosco)",
+  "municipio": "Municipio VII",
+  "address": "via Calpurnio Fiamma 33",
+  "precision": "street",
+  "lat": 41.861873,
+  "lon": 12.561701,
+  "category": "Shop or venue",
+  "target": "Wine shop",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A few hours after the Alessandrino: damage to a wine shop, a bin and parked cars (two destroyed according to RomaToday, three damaged according to Agenzia Nova).",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Boato all'alba al Tuscolano. Esplode una bomba davanti a un'enoteca: distrutte due auto",
+    "date": "2026-10-05",
+    "url": "https://www.romatoday.it/cronaca/bomba-roma-oggi-via-calpurnio-fiamma.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Roma: esplode un ordigno al Tuscolano, tre auto danneggiate",
+    "date": "2026-10-05",
+    "url": "https://www.agenzianova.com/news/roma-esplode-un-ordigno-al-tuscolano-tre-auto-danneggiate/"
+   }
+  ]
+ },
+ {
+  "id": "R058",
+  "date": "2026-10-06",
+  "time": "02:15",
+  "date_note": "",
+  "neighbourhood": "San Basilio",
+  "municipio": "Municipio IV",
+  "address": "via Filottrano 11",
+  "precision": "street",
+  "lat": 41.939778,
+  "lon": 12.581094,
+  "category": "Building or entrance hall",
+  "target": "Courtyard of a building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Went off in a building's courtyard: fifty people evacuated. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Boato nella notte: bomba carta esplode nel cortile di un palazzo a San Basilio. Evacuate 50 persone",
+    "date": "2026-10-06",
+    "url": "https://www.romatoday.it/cronaca/esplosione-san-basilio-bomba-carta-via-filottrano.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Roma: paura nella notte a San Basilio, bomba carta esplode nel cortile di un palazzo",
+    "date": "2026-10-06",
+    "url": "https://www.agenzianova.com/news/roma-paura-nella-notte-a-san-basilio-bomba-carta-esplode-nel-cortile-di-un-palazzo/"
+   }
+  ]
+ },
+ {
+  "id": "R059",
+  "date": "2026-10-08",
+  "time": "22:50",
+  "date_note": "",
+  "neighbourhood": "Centocelle",
+  "municipio": "Municipio V",
+  "address": "via dei Platani 171",
+  "precision": "street",
+  "lat": 41.880977,
+  "lon": 12.569968,
+  "category": "Shop or venue",
+  "target": "Car dealership",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A high-powered paper bomb outside the same dealership already hit in November 2025. RomaToday counts it as the eighth episode in East Rome since late August.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Centocelle: bomba fuori da un autosalone di via dei Platani",
+    "date": "2026-10-09",
+    "url": "https://www.romatoday.it/cronaca/bomba-via-dei-platani-centocelle-esplosione.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Il boato e la gente in strada. Via dei Platani dopo la bomba: il video dell'autonoleggio esploso",
+    "date": "2026-10-09",
+    "url": "https://www.romatoday.it/cronaca/video-esplosione-via-dei-platani.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Roma: esplosione nella notte a Centocelle, colpita una concessionaria",
+    "date": "2026-10-09",
+    "url": "https://www.agenzianova.com/news/roma-esplosione-nella-notte-a-centocelle-colpita-una-concessionaria/"
+   },
+   {
+    "outlet": "Open",
+    "title": "Dietro la bomba a Centocelle c'è una guerra di mafia a Roma Est: 13 ordigni da maggio dopo il vuoto nel clan Senese",
+    "date": "2026-10-10",
+    "url": "https://www.open.online/2026/10/10/roma-est-bomba-centocelle-faida-mafia-clan-senese/"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R060",
+  "date": "2026-10-17",
+  "time": "00:00",
+  "date_note": "",
+  "neighbourhood": "La Rustica",
+  "municipio": "Municipio V",
+  "address": "via Bisegna",
+  "precision": "street",
+  "lat": 41.916681,
+  "lon": 12.61489,
+  "category": "Private home",
+  "target": "Private garage",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A garage's roller shutter damaged. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione nella notte a La Rustica: bomba carta contro un box privato",
+    "date": "2026-10-17",
+    "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-via-bisegna.html"
+   }
+  ]
+ },
+ {
+  "id": "R061",
+  "date": "2026-10-20",
+  "time": "",
+  "date_note": "",
+  "neighbourhood": "Castelverde",
+  "municipio": "Municipio VI",
+  "address": "via Fano Adriano",
+  "precision": "street",
+  "lat": 41.908083,
+  "lon": 12.693191,
+  "category": "Private home",
+  "target": "Gate of a house",
+  "device": "explosive device",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "On the same night a car dealership burns on the Prenestina and a device blows off the small gate of a house: for the police the two episodes are linked.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Prima l'incendio nell'autosalone, poi la bomba davanti casa. Notte di paura a Roma est",
+    "date": "2026-10-20",
+    "url": "https://www.romatoday.it/cronaca/boato-castelverde-esplosione-incendio-cosa-e-successo.html"
+   },
+   {
+    "outlet": "Open",
+    "title": "Continuano gli agguati a Roma Est: un altro autosalone dato alle fiamme e poi la bomba davanti casa del proprietario",
+    "date": "2026-10-20",
+    "url": "https://www.open.online/2026/10/20/agguati-roma-est-autosalone-fiamme-bomba-casa/"
+   }
+  ]
+ },
+ {
+  "id": "R062",
+  "date": "2026-10-23",
+  "time": "21:40",
+  "date_note": "",
+  "neighbourhood": "Ostia",
+  "municipio": "Municipio X",
+  "address": "via dei Velieri, corner of viale Vasco de Gama",
+  "precision": "junction",
+  "lat": 41.734613,
+  "lon": 12.274569,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of a public housing block",
+  "device": "large paper bomb",
+  "devices": 1,
+  "injured": 2,
+  "killed": 0,
+  "summary": "The entrance of a five-storey building destroyed: two injured, thirteen families evacuated. Three weeks later a 19-year-old woman and a 26-year-old man were arrested; according to investigators, control of drug dealing lies behind it.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione ad Ostia: bomba carta distrugge l'ingresso di una palazzina popolare, due feriti",
+    "date": "2026-10-24",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ostia-23-ottobre-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Ostia: chi è l'uomo ferito nella bomba ai Lotti di viale Vasco de Gama",
+    "date": "2026-10-24",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-ostia-esplosione-intimidazione.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Ostia, bomba in via dei Velieri, svolta nelle indagini: due arresti. Le piazze di spaccio contese dietro l'attentato",
+    "date": "2026-11-13",
+    "url": "https://www.romatoday.it/cronaca/ostia-bomba-via-dei-velieri-2-arresti.html"
+   },
+   {
+    "outlet": "Agenzia Nova",
+    "title": "Building explosion in Ostia: Two young men arrested for attempted massacre",
+    "date": "2026-11-13",
+    "url": "https://www.agenzianova.com/en/news/Explosion-in-a-building-in-Ostia%3A-two-young-men-arrested-for-attempted-massacre/"
+   }
+  ]
+ },
+ {
+  "id": "R063",
+  "date": "2026-11-02",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "Casal Bruciato",
+  "municipio": "Municipio IV",
+  "address": "via di Casal Bruciato 53",
+  "precision": "street",
+  "lat": 41.906379,
+  "lon": 12.546831,
+  "category": "Building or entrance hall",
+  "target": "Entrance hall of an eight-storey building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Glass panels destroyed up to the second floor. Shortly afterwards, another bomb in Tor Bella Monaca.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Casal Bruciato, bomba carta nell'androne di un palazzo",
+    "date": "2026-11-02",
+    "url": "https://www.romatoday.it/cronaca/bomba-casal-bruciato-2-novembre-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Bomba carta a Casal Bruciato, gli abitanti della palazzina: \"È un miracolo che non ci sia nessun ferito\"",
+    "date": "2026-11-02",
+    "url": "https://www.romatoday.it/cronaca/esplosione-casal-bruciato-bomba-carta-video.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   },
+   {
+    "outlet": "Internazionale",
+    "title": "Le ipotesi sugli attentati criminali a Roma negli ultimi mesi",
+    "date": "2026-11-12",
+    "url": "https://www.internazionale.it/notizie/annalisa-camilli/2026/11/12/criminalita-organizzata-roma-bombe"
+   }
+  ]
+ },
+ {
+  "id": "R064",
+  "date": "2026-11-02",
+  "time": "01:20",
+  "date_note": "",
+  "neighbourhood": "Tor Bella Monaca (Torre Gaia)",
+  "municipio": "Municipio VI",
+  "address": "via Giacomo Galopini 21",
+  "precision": "street",
+  "lat": 41.867289,
+  "lon": 12.640481,
+  "category": "Building or entrance hall",
+  "target": "Front door and two ground-floor flats",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Flames in the entrance hall; the front door and the entrances of two flats wrecked. No one was injured.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Tor Bella Monaca, bomba carta sventra ingresso di un palazzo. Danni a 2 appartamenti",
+    "date": "2026-11-02",
+    "url": "https://www.romatoday.it/cronaca/bomba-tor-bella-monaca-via-galopini-2-novembre-2026.html"
+   },
+   {
+    "outlet": "RomaToday",
+    "title": "Due bombe a Roma esplose in una mezz'ora. Palazzi danneggiati a Tor Bella Monaca e Casal Bruciato",
+    "date": "2026-11-02",
+    "url": "https://www.romatoday.it/cronaca/bombe-roma-2-novembre-2026.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R065",
+  "date": "2026-11-03",
+  "time": "04:00",
+  "date_note": "",
+  "neighbourhood": "Castelverde",
+  "municipio": "Municipio VI",
+  "address": "via di Massa San Giuliano",
+  "precision": "street",
+  "lat": 41.903484,
+  "lon": 12.695011,
+  "category": "Shop or venue",
+  "target": "Bar",
+  "device": "paper bomb",
+  "devices": 2,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Two devices against a bar: the shutter and the outdoor seating damaged, the balcony above blackened.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "A Roma l'autunno delle bombe è senza fine. Boato nella notte: due ordigni contro un bar di Castelverde",
+    "date": "2026-11-03",
+    "url": "https://www.romatoday.it/cronaca/bomba-castelverde-oggi-3-novembre-2026.html"
+   },
+   {
+    "outlet": "Il Post",
+    "title": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "date": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "R066",
+  "date": "2026-11-16",
+  "time": "01:30",
+  "date_note": "",
+  "neighbourhood": "San Basilio",
+  "municipio": "Municipio IV",
+  "address": "via Treia 26",
+  "precision": "street",
+  "lat": 41.937552,
+  "lon": 12.585148,
+  "category": "Building or entrance hall",
+  "target": "Front door of an Ater (public housing) block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The front door and the canopy damaged, not far from the via Filottrano bomb of October.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a San Basilio, nuova bomba carta nel quartiere. Danni al portone di un palazzo",
+    "date": "2026-11-16",
+    "url": "https://www.romatoday.it/cronaca/bomba-san-basilio-16-novembre-2026.html"
+   }
+  ]
+ },
+ {
+  "id": "R067",
+  "date": "2026-11-22",
+  "time": "02:50",
+  "date_note": "",
+  "neighbourhood": "Tufello",
+  "municipio": "Municipio III",
+  "address": "via Monte Resegone",
+  "precision": "street",
+  "lat": 41.952642,
+  "lon": 12.533521,
+  "category": "Building or entrance hall",
+  "target": "Front door of a building",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The front door destroyed. RomaToday pieced it together from its own sources: the news had not been released by official sources.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione al Tufello, altra bomba carta a Roma. Distrutto portone di un palazzo",
+    "date": "2026-11-22",
+    "url": "https://www.romatoday.it/cronaca/bomba-tufello-22-novembre-2026.html"
+   }
+  ]
+ },
+ {
+  "id": "R068",
+  "date": "2026-11-23",
+  "time": "01:30",
+  "date_note": "",
+  "neighbourhood": "Casal Monastero",
+  "municipio": "Municipio IV",
+  "address": "viale Ratto delle Sabine",
+  "precision": "street",
+  "lat": 41.945961,
+  "lon": 12.600895,
+  "category": "Shop or venue",
+  "target": "Greengrocer's",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "The shutters of a greengrocer's and of the bar next door damaged. The third bomb in 24 hours across Rome and its province.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Esplosione a Roma: bomba carta contro una frutteria a Casal Monastero",
+    "date": "2026-11-23",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-casal-monastero-frutteria-23-novembre-2026.html"
+   }
+  ]
+ },
+ {
+  "id": "R069",
+  "date": "2026-11-24",
+  "time": "01:00",
+  "date_note": "",
+  "neighbourhood": "Tufello",
+  "municipio": "Municipio III",
+  "address": "via Monte Ruggero",
+  "precision": "street",
+  "lat": 41.947777,
+  "lon": 12.531019,
+  "category": "Building or entrance hall",
+  "target": "Front door of a public housing block",
+  "device": "paper bomb",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "Two nights after via Monte Resegone, the entry phones, lights and glass of the front door damaged. According to RomaToday no resident called the police: officers arrived in the afternoon.",
+  "sources": [
+   {
+    "outlet": "RomaToday",
+    "title": "Nuova bomba carta al Tufello, danneggiato altro palazzo popolare. Ma nessuno chiama le forze dell'ordine",
+    "date": "2026-11-24",
+    "url": "https://www.romatoday.it/cronaca/esplosione-tufello-bomba-via-monte-ruggero-24-novembre-2026.html"
+   }
+  ]
+ }
+]
