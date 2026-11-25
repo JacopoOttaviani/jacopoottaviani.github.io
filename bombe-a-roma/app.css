@@ -243,9 +243,10 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .pop .src b { font-weight: 600; }
 .pop .src time { color: var(--ink-3); font: 11px var(--mono); }
 
+/* every section below the map runs the full width of the window, like the map and the bar above it (no max-width) */
 /* further reading, right under the map: one card per article or document (preview image, outlet, headline and date,
    no figures), most recent first; the columns share the row: four across on wide screens, then two and one */
-.reads { padding: 30px 24px 6px; max-width: 1400px; }
+.reads { padding: 30px 24px 6px; }
 .reads h2 { font: 600 13px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
 .rd-lang { margin-left: 8px; font-weight: 500; letter-spacing: .02em; text-transform: none; color: var(--ink-3); }
 .rd-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
@@ -268,12 +269,13 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .rd-t { font: 600 15px/1.22 var(--head); }
 .rd-by { margin-top: auto; padding-top: 2px; font-size: 12px; line-height: 1.35; color: var(--ink-2); }
 .rd-by time { font: 11.5px var(--mono); white-space: nowrap; }
+@media (min-width: 1800px) { .rd-img { aspect-ratio: 3 / 1; } }  /* very wide screens: the cards fill the row without growing too tall */
 @media (max-width: 1179px) { .rd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .reads { padding: 24px 16px 2px; } .rd-grid { gap: 10px; } }
 @media (max-width: 559px) { .rd-grid { grid-template-columns: minmax(0, 1fr); } .rd-img { aspect-ratio: 5 / 2; } }
 
 /* method */
-.method { padding: 34px 24px 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px 40px; max-width: 1400px; }
+.method { padding: 34px 24px 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px 40px; }
 .method h2 { font: 600 13px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
 .method p, .method li { font-size: 14px; color: var(--ink-2); }
 .method p + p { margin-top: 8px; }
@@ -302,7 +304,7 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 
 /* charts by municipio and neighbourhood, above the method notes: their own year buttons (one year at a time), a small map
    of the municipi and two bar charts stacked by year; app.js draws the SVGs at the width of each cell, so the text keeps its size */
-.charts { border-top: 2px solid var(--ink); padding: 30px 24px 28px; max-width: 1400px; }
+.charts { border-top: 2px solid var(--ink); padding: 30px 24px 28px; }
 #grafici { scroll-margin-top: 48px; }
 .charts + .method { border-top: 2px solid var(--ink); }
 .ch-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px; margin-bottom: 24px; }
