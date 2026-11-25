@@ -1,0 +1,81 @@
+[
+ {
+  "key": "2023-08-08|via Passo Buole",
+  "it": "Lanciata contro il ristorante, ha distrutto la veranda esterna. È la seconda delle quattro bombe carta di agosto sul litorale, con Ostia e Dragona.",
+  "target": "Da Cacio e Pepe restaurant",
+  "summary": "Thrown at the restaurant, it destroyed the outdoor veranda. It was the second of four paper bombs on the coast that August, with Ostia and Dragona."
+ },
+ {
+  "key": "2024-06-16|via Trieste",
+  "it": "Esploso sotto l'auto parcheggiata vicino a casa, le fiamme hanno raggiunto i contatori. Denunciato un 15enne, per un litigio con il figlio della coppia.",
+  "target": "Car of a security guard",
+  "summary": "Went off under the car parked near his home; the flames reached the utility meters. A 15-year-old was reported to the authorities over a quarrel with the couple's son."
+ },
+ {
+  "key": "2024-12-29|piazza Pia",
+  "it": "Esplosa nell'androne delle scale, ha rotto i vetri del portoncino. Movente non chiarito, a due giorni da Capodanno.",
+  "target": "Entrance hall of an apartment building",
+  "date_note": "“in the early hours of the morning”",
+  "summary": "Went off in the stairwell entrance and broke the glass of the front door. The motive is unclear; it was two days before New Year's Eve."
+ },
+ {
+  "key": "2025-07|Lavinio (via non indicata)",
+  "it": "Un ordigno potenzialmente letale esplode nel giardino di due coniugi, già bersaglio di colpi di pistola. A novembre arrestato un 38enne: voleva colpire il figlio della coppia.",
+  "target": "Garden of a couple's house",
+  "date_note": "July 2025: no source gives the day",
+  "summary": "A potentially lethal device went off in the garden of a married couple who had already been shot at. In November a 38-year-old was arrested: he was after the couple's son.",
+  "address": "Lavinio (street not given)"
+ },
+ {
+  "key": "2025-10-16|Campo Ascolano (via non indicata)",
+  "it": "Circa un chilo di esplosivo con miccia distrugge l'auto del giornalista di Report e quella della figlia e danneggia la facciata. Nel 2026 quattro arresti; Valter Lavitola si è detto mandante.",
+  "target": "Sigfrido Ranucci's car outside his home",
+  "summary": "About a kilo of explosive with a fuse destroyed the car of the Report journalist and his daughter's car and damaged the front of the house. Four arrests in 2026; Valter Lavitola said he ordered it.",
+  "address": "Campo Ascolano (street not given)"
+ },
+ {
+  "key": "2025-11-03|via Puglia",
+  "it": "Danneggiati parabrezza e cofano di una Mercedes; i vigili del fuoco trovano residui di carta bruciata. Pochi giorni prima, nella stessa via, un'auto era stata incendiata.",
+  "target": "Parked car",
+  "summary": "The windscreen and bonnet of a Mercedes were damaged; firefighters found traces of burnt paper. A few days earlier a car had been set on fire in the same street."
+ },
+ {
+  "key": "2026-03-30|via Redipuglia, centro sportivo Piero Garbaglia",
+  "it": "Esplosa all'esterno della sala ritrovo, ha aperto un buco nel muro. La notte dopo un uomo incappucciato ha dato fuoco al bar.",
+  "target": "Bar of the Fiumicino Calcio sports ground",
+  "date_note": "“the evening before” the fire at 3.30am on 31 March",
+  "address": "via Redipuglia, Piero Garbaglia sports ground",
+  "summary": "Went off outside the clubroom and blew a hole in the wall. The next night a hooded man set fire to the bar."
+ },
+ {
+  "key": "2026-04-12|via Grazia Deledda",
+  "it": "Lanciato contro la palazzina, ne ha annerito la facciata. Due notti prima un'auto era bruciata in via Pirandello, lì accanto.",
+  "target": "Front of an apartment building",
+  "summary": "Thrown at the building, it blackened the front. Two nights earlier a car had burnt on via Pirandello, nearby."
+ },
+ {
+  "key": "2026-07-30|via Due Giugno",
+  "it": "Portone divelto, muri scrostati, scala annerita; residenti evacuati, uno in ospedale per un malore.",
+  "target": "Entrance hall of a building",
+  "summary": "Front door torn off, walls stripped, stairwell blackened; residents evacuated, one taken to hospital after feeling unwell."
+ },
+ {
+  "key": "2026-08-31|via Urbano Rattazzi",
+  "it": "Cancello divelto, muro di cinta scrostato, tre auto danneggiate, due delle quali sue.",
+  "target": "Home of a 40-year-old known to the police",
+  "summary": "Gate torn off, boundary wall stripped, three cars damaged, two of them his."
+ },
+ {
+  "key": "2026-10-23|via della Folgarella",
+  "it": "Distrutta la porta d'ingresso; danneggiati il portone del palazzo accanto, quattro auto e uno scooter.",
+  "target": "Snai betting shop",
+  "summary": "The entrance door destroyed; the front door of the building next door, four cars and a scooter damaged."
+ },
+ {
+  "key": "2026-11-22|via Cadorna",
+  "it": "Divelto il cancello della villetta, dove nel 2025 era stato arrestato Frignani, oggi detenuto.",
+  "target": "Home of the mother of Stefano Frignani, known as “Lupo”",
+  "date_note": "night between Saturday 21 and Sunday 22 November",
+  "summary": "The gate of the house was torn off; Frignani, now in prison, had been arrested there in 2025."
+ }
+]

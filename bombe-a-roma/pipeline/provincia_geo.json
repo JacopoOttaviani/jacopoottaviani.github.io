@@ -1,0 +1,62 @@
+{
+ "2023-08-08|via Passo Buole": {
+  "lat": 41.746958,
+  "lon": 12.249883,
+  "fonte_geo": "Nominatim: Via Passo Buole, Isola Sacra, Fiumicino, Roma, Lazio, 00121, Italia"
+ },
+ "2024-06-16|via Trieste": {
+  "lat": 41.613553,
+  "lon": 12.507217,
+  "fonte_geo": "Nominatim: Via Trieste, Nuova Florida, Ardea, Roma, Lazio, 00040, Italia"
+ },
+ "2024-12-29|piazza Pia": {
+  "lat": 41.447007,
+  "lon": 12.62868,
+  "fonte_geo": "Nominatim: Piazza Pia, Anzio, Europa, Anzio, Roma, Lazio, Italia"
+ },
+ "2025-11-03|via Puglia": {
+  "lat": 41.461016,
+  "lon": 12.663373,
+  "fonte_geo": "Nominatim: Via Puglia, Borgo Medievale, Nettuno, Roma, Lazio, 00048, Italia"
+ },
+ "2026-03-30|via Redipuglia, centro sportivo Piero Garbaglia": {
+  "lat": 41.764005,
+  "lon": 12.274348,
+  "fonte_geo": "Nominatim: via Redipuglia, Isola Sacra (OpenStreetMap non ha il centro sportivo, tra via Redipuglia e via Michele Valeri)"
+ },
+ "2026-04-12|via Grazia Deledda": {
+  "lat": 41.99613,
+  "lon": 12.617489,
+  "fonte_geo": "Nominatim: Via Grazia Deledda, Tor Lupara, Fonte Nuova, Roma, Lazio, 00010, Italia"
+ },
+ "2026-07-30|via Due Giugno": {
+  "lat": 41.996895,
+  "lon": 12.615929,
+  "fonte_geo": "Nominatim: Via Due Giugno, Tor Lupara, Fonte Nuova, Roma, Lazio, 00010, Italia"
+ },
+ "2026-08-31|via Urbano Rattazzi": {
+  "lat": 41.967861,
+  "lon": 12.764272,
+  "fonte_geo": "Nominatim: Via Urbano Rattazzi, Le Sprete, Villanova, Guidonia Montecelio, Roma, Lazio, 00010, Italia"
+ },
+ "2026-10-23|via della Folgarella": {
+  "lat": 41.805653,
+  "lon": 12.594879,
+  "fonte_geo": "Nominatim: Via della Folgarella, Ciampino, Roma, Lazio, 00043, Italia"
+ },
+ "2026-11-22|via Cadorna": {
+  "lat": 42.036584,
+  "lon": 11.858792,
+  "fonte_geo": "Nominatim: Via Luigi Cadorna, Colfiorito, Santa Marinella, Roma, Lazio, 00058, Italia"
+ },
+ "2025-07|Lavinio (via non indicata)": {
+  "lat": 41.503579,
+  "lon": 12.594498,
+  "fonte_geo": "Nominatim: Lavinio, Anzio (zona: le fonti non danno la via)"
+ },
+ "2025-10-16|Campo Ascolano (via non indicata)": {
+  "lat": 41.653494,
+  "lon": 12.42893,
+  "fonte_geo": "Nominatim: Campo Ascolano, Pomezia (zona: abitazione privata, le fonti non danno la via)"
+ }
+}

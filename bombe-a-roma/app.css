@@ -209,6 +209,19 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .mk.multi { width: 21px; height: 21px; }
 .mk.zone { outline: 1.5px dashed var(--ink); outline-offset: 3px; }
 .mk-btn:hover .mk, .mk-btn:focus-visible .mk, .mk-btn.hot .mk { transform: scale(1.35); }
+/* the province layer: square markers, the "Provincia" button joined to "Raggruppa" (one block, as wide as the wider label) */
+.mk.prov { border-radius: 3px; }
+.item .sw.sq { border-radius: 2px; }
+.maplibregl-ctrl-top-right { display: flex; flex-direction: column; align-items: stretch; }
+.maplibregl-ctrl-top-right .cl-toggle button { width: 100% !important; justify-content: flex-start; }
+.maplibregl-ctrl-top-right .cl-toggle:has(+ .prov-toggle) { border-bottom: 0; }
+.maplibregl-ctrl-top-right .maplibregl-ctrl.prov-toggle { margin-top: 0; border-top: 0; }
+.prov-toggle button { border-top: 1px solid var(--rule) !important; }
+.prov-ico { width: 20px; height: 18px; flex: none; color: var(--ink); }
+.prov-toggle button[aria-pressed="false"] .prov-ico { color: var(--ink-3); filter: grayscale(1); opacity: .6; }
+.map-legend .lg-prov { display: none; }
+.show-prov .map-legend .lg-prov { display: block; }
+.map-legend .lg-prov i { border-radius: 2px; }
 /* clusters: a donut of the years inside, the count in the middle */
 .cl-btn { position: absolute; top: 0; left: 0; padding: 0; margin: 0; border: 0; background: none; cursor: zoom-in; display: grid; place-items: center; z-index: 10; -webkit-tap-highlight-color: transparent; }
 .cl-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 50%; }

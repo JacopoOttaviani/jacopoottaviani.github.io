@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="../app.css?v=2026-11-25g">
+<link rel="stylesheet" href="../app.css?v=2026-11-25p">
 </head>
 <body>
 
@@ -103,6 +103,7 @@
     <div id="map" role="region" aria-label="Map of the episodes. The list beside it gives the same episodes as text."></div>
     <div class="map-legend" id="map-legend">
       <span class="lg-years"><i style="--c:var(--y2023)"></i>2023 <i style="--c:var(--y2024)"></i>2024 <i style="--c:var(--y2025)"></i>2025 <i style="--c:var(--y2026)"></i>2026</span>
+      <span class="lg-prov"><i style="--c:var(--y2025)"></i>in the province of Rome</span>
       <span class="lg-cl"><span class="cl-demo" aria-hidden="true"><b>5</b></span>episodes close together: click to zoom in</span>
     </div>
     <section class="filters" aria-label="Filters">
@@ -175,6 +176,7 @@
   <div>
     <h2>What's on the map</h2>
     <p>Bombe carta (paper bombs: explosive powder packed in paper and tape), large firecrackers and homemade explosive devices set off against a target in Rome, Ostia and Acilia included, from 1 January 2023 to <span id="upd">24 November 2026</span>.</p>
+    <p>The “Province” button on the map adds the episodes in the rest of the province of Rome, gathered on the same basis and marked with a square.</p>
     <p>The two dead counted at the top are the anarchists of the Parco degli Acquedotti (March 2026), killed, according to investigators, by the device they were assembling.</p>
     <p>The map only covers episodes reported in the press. Those that never made it into an article are missing.</p>
     <p>To report an incident to add to the map, or to help improve the information on this site, get in touch at <a href="https://jacopoottaviani.com/#contact">jacopoottaviani.com</a>.</p>
@@ -193,9 +195,9 @@
   </div>
   <div id="fonti">
     <h2>Sources and data</h2>
-    <p>Outlets cited in the cards: AGI, Agenzia Nova, Dissapore, Domani, Il Fatto Quotidiano, Il Post, Internazionale, LaPresse, Open, QN Quotidiano.net, RomaToday. Each card gives the headline, date and link of every article used. The articles are in Italian; the summaries on this page are translations.</p>
-    <p>The episodes were found through RomaToday's topic pages (“bombe”, “esplosioni”, “intimidazioni”, “attentati”) and the articles linked from them, then checked against the other outlets and against web searches by period and neighbourhood.</p>
-    <div class="dl" id="dati"><a href="../data/episodes-en.json" download>JSON data</a><a href="../data/episodes-en.csv" download>CSV data</a></div>
+    <p>Outlets cited in the cards: 7colli, AGI, Agenzia Nova, Baraonda News, Canale 10, Castelli Notizie, Dissapore, Domani, Fiumicino Online, Il Caffè, Il Clandestino, Il Faro online, Il Fatto Quotidiano, Il Post, Il Quotidiano del Lazio, Internazionale, LaPresse, Open, QN Quotidiano.net, Quotidiano La Voce, RomaToday, Tiburno.tv. Each card gives the headline, date and link of every article used. The articles are in Italian; the summaries on this page are translations.</p>
+    <p>The episodes were found through RomaToday's topic pages (“bombe”, “esplosioni”, “intimidazioni”, “attentati”) and the articles linked from them, then checked against the other outlets and against web searches by period and neighbourhood. For the province, also through the archives of local outlets, from the coast to the Castelli Romani and the Tiburtina.</p>
+    <div class="dl" id="dati"><a href="../data/episodes-en.json" download>JSON data</a><a href="../data/episodes-en.csv" download>CSV data</a><a href="../data/provincia-en.json" download>Province JSON</a><a href="../data/provincia-en.csv" download>Province CSV</a></div>
   </div>
 </section>
 
@@ -216,6 +218,6 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
-<script src="../app.js?v=2026-11-25c"></script>
+<script src="../app.js?v=2026-11-25p"></script>
 </body>
 </html>

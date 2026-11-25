@@ -1,0 +1,470 @@
+[
+ {
+  "id": "P001",
+  "data": "2023-08-08",
+  "ora": "03:00",
+  "quartiere": "Fiumicino (Isola Sacra)",
+  "indirizzo": "via Passo Buole",
+  "nota_data": "",
+  "comune": "Fiumicino",
+  "municipio": "",
+  "lat": 41.746958,
+  "lon": 12.249883,
+  "precisione": "via",
+  "categoria": "Negozio o locale",
+  "bersaglio": "Ristorante Da Cacio e Pepe",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Lanciata contro il ristorante, ha distrutto la veranda esterna. È la seconda delle quattro bombe carta di agosto sul litorale, con Ostia e Dragona.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione a Fiumicino, distrutta veranda di un ristorante: l'ipotesi una bomba carta",
+    "data": "2023-08-08",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ristorante-isola-sacra.html"
+   },
+   {
+    "testata": "RomaToday",
+    "titolo": "Perché sono state fatte esplodere quattro bombe carta a Ostia, Fiumicino e Dragona: le indagini",
+    "data": "2023-08-15",
+    "url": "https://www.romatoday.it/cronaca/perche-sono-esplose-bombe-a-ostia-fiumicino-dragona.html"
+   },
+   {
+    "testata": "Fiumicino Online",
+    "titolo": "Isola Sacra, forte boato nella notte: una bomba carta è stata lanciata contro un ristorante",
+    "data": "2023-08-08",
+    "url": "https://www.fiumicino-online.it/articoli/cronaca-2/isola-sacra-forte-boato-nella-notte-una-bomba-carta-e-stata-lanciata-contro-un-ristorante"
+   },
+   {
+    "testata": "Il Faro online",
+    "titolo": "Fiumicino, esplosione nella notte al locale Cacio e Pepe. Danni ingenti",
+    "data": "2023-08-08",
+    "url": "https://www.ilfaroonline.it/2023/08/08/fiumicino-esplosione-nella-notte-al-locale-cacio-e-pepe-a-fiumicino-danni-ingenti/530314/"
+   }
+  ]
+ },
+ {
+  "id": "P002",
+  "data": "2024-06-16",
+  "ora": "22:00",
+  "quartiere": "Ardea (Nuova Florida)",
+  "indirizzo": "via Trieste",
+  "nota_data": "",
+  "comune": "Ardea",
+  "municipio": "",
+  "lat": 41.613553,
+  "lon": 12.507217,
+  "precisione": "via",
+  "categoria": "Auto",
+  "bersaglio": "Auto di una guardia giurata",
+  "ordigno": "ordigno artigianale",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Esploso sotto l'auto parcheggiata vicino a casa, le fiamme hanno raggiunto i contatori. Denunciato un 15enne, per un litigio con il figlio della coppia.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione ad Ardea, ordigno sotto l'auto di una guardia giurata. Indagini a 360 gradi",
+    "data": "2024-06-17",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ardea-bomba-sotto-auto-guardia-giurata.html"
+   },
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione ad Ardea, ordigno sotto l'auto di una guardia giurata: denunciato un 15enne",
+    "data": "2024-06-22",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ardea-bomba-auto-guardia-giurata-denunciato-15enne.html"
+   },
+   {
+    "testata": "Il Caffè",
+    "titolo": "Ordigno esplode vicino l'auto di una guardia giurata ad Ardea",
+    "data": "2024-06-17",
+    "url": "https://ilcaffe.tv/articolo/224809/ordigno-esplode-vicino-lauto-di-una-guardia-giurata-ad-ardea"
+   }
+  ]
+ },
+ {
+  "id": "P003",
+  "data": "2024-12-29",
+  "ora": "",
+  "quartiere": "Anzio",
+  "indirizzo": "piazza Pia",
+  "nota_data": "«alle prime ore del mattino»",
+  "comune": "Anzio",
+  "municipio": "",
+  "lat": 41.447007,
+  "lon": 12.62868,
+  "precisione": "luogo",
+  "categoria": "Palazzo o androne",
+  "bersaglio": "Androne di una palazzina",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Esplosa nell'androne delle scale, ha rotto i vetri del portoncino. Movente non chiarito, a due giorni da Capodanno.",
+  "fonti": [
+   {
+    "testata": "Il Clandestino",
+    "titolo": "Bomba carta esplode nell'androne di una palazzina ad Anzio: indaga la polizia",
+    "data": "2024-12-29",
+    "url": "https://ilclandestinogiornale.radioroma.it/ultime-notizie/184306/bomba-carta-esplode-nellandrone-di-una-palazzina-ad-anzio-indaga-la-polizia/"
+   },
+   {
+    "testata": "7colli",
+    "titolo": "Anzio, esplode una bomba carta in pieno centro: trovati gli inneschi",
+    "data": "2025-08-13",
+    "url": "https://www.7colli.it/anzio-esplode-una-bomba-carta-in-pieno-centro-trovati-gli-inneschi-188696/"
+   }
+  ]
+ },
+ {
+  "id": "P004",
+  "data": "2025-07",
+  "ora": "",
+  "quartiere": "Anzio (Lavinio)",
+  "indirizzo": "Lavinio (via non indicata)",
+  "nota_data": "luglio 2025: nessuna fonte indica il giorno",
+  "comune": "Anzio",
+  "municipio": "",
+  "lat": 41.503579,
+  "lon": 12.594498,
+  "precisione": "zona",
+  "categoria": "Abitazione privata",
+  "bersaglio": "Giardino della casa di una coppia",
+  "ordigno": "ordigno artigianale",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Un ordigno potenzialmente letale esplode nel giardino di due coniugi, già bersaglio di colpi di pistola. A novembre arrestato un 38enne: voleva colpire il figlio della coppia.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Bomba artigianale nel giardino di casa e spari contro l'auto di una coppia di coniugi, erano un avvertimento al figlio",
+    "data": "2025-11-11",
+    "url": "https://www.romatoday.it/cronaca/spari-bomba-lavinio-arresto.html"
+   },
+   {
+    "testata": "Il Faro online",
+    "titolo": "Lavinio, colpi d'arma da fuoco e ordigno artigianale fatto esplodere in giardino",
+    "data": "2025-11-11",
+    "url": "https://www.ilfaroonline.it/2025/11/11/lavinio-colpi-darma-da-fuoco-e-ordigno-artigianale-fatto-esplodere-in-giardino/623421/"
+   },
+   {
+    "testata": "Il Quotidiano del Lazio",
+    "titolo": "Lavinio, esplosione e colpi di pistola: arrestato 38enne per tentato omicidio e atti persecutori",
+    "data": "2025-11-11",
+    "url": "https://www.ilquotidianodellazio.it/lavinio-esplosione-e-colpi-di-pistola-arrestato-38enne-per-tentato-omicidio-e-atti-persecutori.html"
+   }
+  ]
+ },
+ {
+  "id": "P005",
+  "data": "2025-10-16",
+  "ora": "22:00",
+  "quartiere": "Pomezia (Campo Ascolano)",
+  "indirizzo": "Campo Ascolano (via non indicata)",
+  "nota_data": "",
+  "comune": "Pomezia",
+  "municipio": "",
+  "lat": 41.653494,
+  "lon": 12.42893,
+  "precisione": "zona",
+  "categoria": "Auto",
+  "bersaglio": "Auto di Sigfrido Ranucci davanti a casa",
+  "ordigno": "ordigno artigianale",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Circa un chilo di esplosivo con miccia distrugge l'auto del giornalista di Report e quella della figlia e danneggia la facciata. Nel 2026 quattro arresti; Valter Lavitola si è detto mandante.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Attentato a Sigfrido Ranucci, esploso ordigno sotto casa del giornalista di Report. \"Rafforzata la protezione\"",
+    "data": "2025-10-17",
+    "url": "https://www.romatoday.it/cronaca/ranucci-auto-esplosa.html"
+   },
+   {
+    "testata": "RomaToday",
+    "titolo": "Attentato a Sigfrido Ranucci, ordigno attivato da una miccia. \"Visto fuggire un uomo incappucciato\"",
+    "data": "2025-10-17",
+    "url": "https://www.romatoday.it/cronaca/sigfrido-ranucci-attentato-indagini.html"
+   },
+   {
+    "testata": "Il Post",
+    "titolo": "Che cosa sappiamo sulla bomba esplosa davanti alla casa di Sigfrido Ranucci",
+    "data": "2025-10-18",
+    "url": "https://www.ilpost.it/2025/10/18/bomba-sigfrido-ranucci/"
+   },
+   {
+    "testata": "AGI",
+    "titolo": "Attentato a Ranucci: bomba distrugge l'auto, 'un chilo di esplosivo'",
+    "data": "2025-10-17",
+    "url": "https://www.agi.it/cronaca/news/2025-10-17/bomba-distrugge-auto-ranucci-figlia-33715202/"
+   }
+  ]
+ },
+ {
+  "id": "P006",
+  "data": "2025-11-03",
+  "ora": "05:30",
+  "quartiere": "Nettuno",
+  "indirizzo": "via Puglia",
+  "nota_data": "",
+  "comune": "Nettuno",
+  "municipio": "",
+  "lat": 41.461016,
+  "lon": 12.663373,
+  "precisione": "via",
+  "categoria": "Auto",
+  "bersaglio": "Auto in sosta",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Danneggiati parabrezza e cofano di una Mercedes; i vigili del fuoco trovano residui di carta bruciata. Pochi giorni prima, nella stessa via, un'auto era stata incendiata.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Nettuno, bomba carta esplosa all'alba: danneggiata un'auto. Indagano i carabinieri",
+    "data": "2025-11-03",
+    "url": "https://www.romatoday.it/cronaca/bomba-carta-nettuno-indagini-2-novembre-2025.html"
+   },
+   {
+    "testata": "Il Faro online",
+    "titolo": "Esplode un ordigno a Nettuno, danneggiata l'auto di una donna",
+    "data": "2025-11-03",
+    "url": "https://www.ilfaroonline.it/2025/11/03/esplosione-allalba-a-nettuno-auto-danneggiata-da-ordigno-rudimentale/622706/"
+   },
+   {
+    "testata": "Il Clandestino",
+    "titolo": "Nuova esplosione in via Puglie a Nettuno: paura tra i residenti",
+    "data": "2025-11-03",
+    "url": "https://ilclandestinogiornale.radioroma.it/cronaca/208650/nuova-esplosione-in-via-puglie-a-nettuno-paura-tra-i-residenti/"
+   }
+  ]
+ },
+ {
+  "id": "P007",
+  "data": "2026-03-30",
+  "ora": "",
+  "quartiere": "Fiumicino (Isola Sacra)",
+  "indirizzo": "via Redipuglia, centro sportivo Piero Garbaglia",
+  "nota_data": "«la sera precedente» all'incendio delle 3.30 del 31 marzo",
+  "comune": "Fiumicino",
+  "municipio": "",
+  "lat": 41.764005,
+  "lon": 12.274348,
+  "precisione": "via",
+  "categoria": "Negozio o locale",
+  "bersaglio": "Bar del centro sportivo del Fiumicino Calcio",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Esplosa all'esterno della sala ritrovo, ha aperto un buco nel muro. La notte dopo un uomo incappucciato ha dato fuoco al bar.",
+  "fonti": [
+   {
+    "testata": "Fiumicino Online",
+    "titolo": "A fuoco bar e sala giochi dell’impianto sportivo “Piero Garbaglia”",
+    "data": "2026-04-01",
+    "url": "https://www.fiumicino-online.it/articoli/cronaca-2/a-fuoco-bar-e-sala-giochi-dellimpianto-sportivo-piero-garbaglia"
+   },
+   {
+    "testata": "Canale 10",
+    "titolo": "Prima una bomba carta, poi le fiamme nella notte: il VIDEO dell’incendio allo stadio del Fiumicino",
+    "data": "2026-04-01",
+    "url": "https://canaledieci.it/2026/04/01/prima-una-bomba-carta-poi-le-fiamme-nella-notte-il-video-dellincendio-allo-stadio-del-fiumicino/"
+   },
+   {
+    "testata": "Fiumicino Online",
+    "titolo": "Attentato al centro sportivo Garbaglia, il cuore del Fiumicino Calcio non si spegne",
+    "data": "2026-04-02",
+    "url": "https://www.fiumicino-online.it/articoli/cronaca-2/attentato-al-centro-sportivo-garbaglia-il-cuore-del-fiumicino-calcio-non-si-spegne"
+   }
+  ]
+ },
+ {
+  "id": "P008",
+  "data": "2026-04-12",
+  "ora": "02:00",
+  "quartiere": "Fonte Nuova (Tor Lupara)",
+  "indirizzo": "via Grazia Deledda",
+  "nota_data": "",
+  "comune": "Fonte Nuova",
+  "municipio": "",
+  "lat": 41.99613,
+  "lon": 12.617489,
+  "precisione": "via",
+  "categoria": "Palazzo o androne",
+  "bersaglio": "Facciata di un condominio",
+  "ordigno": "grosso petardo",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Lanciato contro la palazzina, ne ha annerito la facciata. Due notti prima un'auto era bruciata in via Pirandello, lì accanto.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Prima l'auto incendiata, poi l'esplosione: giallo sulle 48 ore di fuoco a Fonte Nuova",
+    "data": "2026-04-13",
+    "url": "https://www.romatoday.it/cronaca/incendio-esplosione-fonte-nuova-cosa-e-successo.html"
+   },
+   {
+    "testata": "Tiburno.tv",
+    "titolo": "FONTE NUOVA - Auto in fiamme e bomba carta: notti di paura a Tor Lupara",
+    "data": "2026-04-12",
+    "url": "https://tiburno.tv/2026/04/12/fonte-nuova-auto-in-fiamme-e-bomba-carta-notti-di-paura-a-tor-lupara/"
+   }
+  ]
+ },
+ {
+  "id": "P009",
+  "data": "2026-07-30",
+  "ora": "01:00",
+  "quartiere": "Fonte Nuova (Tor Lupara)",
+  "indirizzo": "via Due Giugno",
+  "nota_data": "",
+  "comune": "Fonte Nuova",
+  "municipio": "",
+  "lat": 41.996895,
+  "lon": 12.615929,
+  "precisione": "via",
+  "categoria": "Palazzo o androne",
+  "bersaglio": "Androne di un palazzo",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Portone divelto, muri scrostati, scala annerita; residenti evacuati, uno in ospedale per un malore.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione a Fonte Nuova: danneggiato portone di un palazzo. Malore per un residente",
+    "data": "2026-07-30",
+    "url": "https://www.romatoday.it/cronaca/esplosione-fonte-nuova-30-luglio-2026.html"
+   },
+   {
+    "testata": "Tiburno.tv",
+    "titolo": "FONTE NUOVA - Esplosione nell'androne del palazzo, condomino colto da malore",
+    "data": "2026-07-30",
+    "url": "https://tiburno.tv/2026/07/30/fonte-nuova-esplosione-nellandrone-del-palazzo-condomino-colto-da-malore/"
+   }
+  ]
+ },
+ {
+  "id": "P010",
+  "data": "2026-08-31",
+  "ora": "01:30",
+  "quartiere": "Guidonia Montecelio (Villanova)",
+  "indirizzo": "via Urbano Rattazzi",
+  "nota_data": "",
+  "comune": "Guidonia Montecelio",
+  "municipio": "",
+  "lat": 41.967861,
+  "lon": 12.764272,
+  "precisione": "via",
+  "categoria": "Abitazione privata",
+  "bersaglio": "Casa di un 40enne noto alle forze dell'ordine",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Cancello divelto, muro di cinta scrostato, tre auto danneggiate, due delle quali sue.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione a Guidonia, bomba carta contro una palazzina. Danneggiate auto parcheggiate",
+    "data": "2026-08-31",
+    "url": "https://www.romatoday.it/cronaca/bomba-guidonia-via-rattazzi-31-agosto-2026-.html"
+   },
+   {
+    "testata": "Tiburno.tv",
+    "titolo": "GUIDONIA - Bomba carta danneggia 3 auto e il muro di cinta di un’abitazione",
+    "data": "2026-08-31",
+    "url": "https://tiburno.tv/2026/08/31/guidonia-bomba-carta-danneggia-3-auto-e-il-muro-di-cinta-di-unabitazione/"
+   }
+  ]
+ },
+ {
+  "id": "P011",
+  "data": "2026-10-23",
+  "ora": "00:30",
+  "quartiere": "Ciampino",
+  "indirizzo": "via della Folgarella",
+  "nota_data": "",
+  "comune": "Ciampino",
+  "municipio": "",
+  "lat": 41.805653,
+  "lon": 12.594879,
+  "precisione": "via",
+  "categoria": "Negozio o locale",
+  "bersaglio": "Centro scommesse Snai",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Distrutta la porta d'ingresso; danneggiati il portone del palazzo accanto, quattro auto e uno scooter.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione a Ciampino: bomba carta davanti a un centro scommesse. Danni al locale e alle auto parcheggiate",
+    "data": "2026-10-23",
+    "url": "https://www.romatoday.it/cronaca/esplosione-ciampino-23-ottobre-2026.html"
+   },
+   {
+    "testata": "Castelli Notizie",
+    "titolo": "Ciampino, assalto nella notte alla Snai di via della Folgarella con un ordigno esplosivo: boato allarma i residenti",
+    "data": "2026-10-23",
+    "url": "https://www.castellinotizie.it/2026/10/23/ciampino-assalto-nella-notte-alla-snai-di-via-della-folgarella-con-un-ordigno-esplosivo-boato-allarma-i-residenti/"
+   },
+   {
+    "testata": "Il Post",
+    "titolo": "In pochi mesi a Roma sono esplose quasi venti bombe",
+    "data": "2026-11-04",
+    "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
+   }
+  ]
+ },
+ {
+  "id": "P012",
+  "data": "2026-11-22",
+  "ora": "",
+  "quartiere": "Santa Marinella",
+  "indirizzo": "via Cadorna",
+  "nota_data": "notte tra sabato 21 e domenica 22 novembre",
+  "comune": "Santa Marinella",
+  "municipio": "",
+  "lat": 42.036584,
+  "lon": 11.858792,
+  "precisione": "via",
+  "categoria": "Abitazione privata",
+  "bersaglio": "Casa della madre di Stefano Frignani, detto «Lupo»",
+  "ordigno": "bomba carta",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Divelto il cancello della villetta, dove nel 2025 era stato arrestato Frignani, oggi detenuto.",
+  "fonti": [
+   {
+    "testata": "RomaToday",
+    "titolo": "Esplosione a Santa Marinella: bomba carta contro casa del 'Lupo', boss del litorale nord",
+    "data": "2026-11-22",
+    "url": "https://www.romatoday.it/cronaca/bomba-santa-marinella-22-novembre-2026.html"
+   },
+   {
+    "testata": "Baraonda News",
+    "titolo": "Santa Marinella, esplosione nella notte davanti alla casa della madre del “Lupo”: si indaga sulla pista intimidatoria",
+    "data": "2026-11-23",
+    "url": "https://baraondanews.it/santa-marinella-esplosione-nella-notte-davanti-alla-casa-della-madre-del-lupo-si-indaga-sulla-pista-intimidatoria/"
+   },
+   {
+    "testata": "Quotidiano La Voce",
+    "titolo": "Santa Marinella, bomba carta davanti a una villetta: esplosione nella notte, indagini sulla pista criminale",
+    "data": "2026-11-23",
+    "url": "https://www.quotidianolavoce.it/2026/11/23/santa-marinella-bomba-carta-davanti-a-una-villetta-esplosione-nella-notte-indagini-sulla-pista-criminale/"
+   }
+  ]
+ }
+]

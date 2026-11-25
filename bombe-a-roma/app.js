@@ -27,7 +27,8 @@
     "Auto": "Car", "Sede politica, sociale o religiosa": "Political, social or religious premises", "Istituzioni": "Institutions", "Altro": "Other" };
   const PREC_EN = { civico: "street number", incrocio: "junction", luogo: "place", via: "street", stimato: "estimated", zona: "area" };
   const T = EN ? {
-    data: "../data/episodes-en.json",
+    data: "../data/episodes-en.json", provData: "../data/provincia-en.json",
+    prov: "Province", provTitle: "Also show the episodes in the rest of the province of Rome", provSuffix: " · province of Rome",
     months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
     mon: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
     days: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
@@ -59,7 +60,8 @@
     chMapLabel: "Map of the 15 municipi of Rome with the number of episodes in each: ", chMunLabel: "Episodes by municipio: ",
     chQLabel: "Neighbourhoods with at least two episodes: "
   } : {
-    data: "data/episodi.json",
+    data: "data/episodi.json", provData: "data/provincia.json",
+    prov: "Provincia", provTitle: "Mostra anche gli episodi negli altri comuni della provincia di Roma", provSuffix: " · provincia di Roma",
     months: ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"],
     mon: ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"],
     days: ["dom","lun","mar","mer","gio","ven","sab"],
@@ -103,6 +105,7 @@
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const fmtDate = (iso, long) => {
     const [y, m, d] = iso.split("-").map(Number);
+    if (!d) return long ? `${MESI[m - 1]} ${y}` : `${MES[m - 1]} ${y}`;  // "YYYY-MM": the sources give the month, not the day
     const dt = new Date(Date.UTC(y, m - 1, d));
     return long ? `${GIORNI[dt.getUTCDay()]} ${d} ${MESI[m - 1]} ${y}` : `${d} ${MES[m - 1]} ${y}`;
   };
@@ -115,6 +118,14 @@
     document.getElementById("list").innerHTML = `<li style="padding:18px">${T.loadError}</li>`;
     return;
   }
+  /* the province layer: the episodes in the other comuni of the province of Rome (pipeline/provincia.py), shown when the
+     "Provincia" map button is on. cityData keeps the starting view and the charts by municipio on Rome alone. */
+  const cityData = data.slice();
+  try {
+    let pv = await (await fetch(T.provData, { cache: "no-cache" })).json();
+    if (EN) pv = pv.map(fromEN);
+    pv.forEach(d => { d.prov = true; data.push(d); });
+  } catch (e) {}
   data.forEach(d => { d.anno = +d.data.slice(0, 4); });
 
   /* months from January 2023 to November 2026: the time filter works on their index */
@@ -123,15 +134,17 @@
   const LAST = months.length - 1;
   data.forEach(d => { d.mi = months.indexOf(d.data.slice(0, 7)); });
 
-  const state = { lo: 0, hi: LAST, cats: new Set(CATS), cluster: true };
+  const state = { lo: 0, hi: LAST, cats: new Set(CATS), cluster: true, prov: /[?&]provincia=1\b/.test(location.search) && data.some(d => d.prov) };
+  const inLayer = d => state.prov || !d.prov;
   const inTime = d => d.mi >= state.lo && d.mi <= state.hi;
-  const visible = d => inTime(d) && state.cats.has(d.categoria);
+  const visible = d => inLayer(d) && inTime(d) && state.cats.has(d.categoria);
 
   /* ── map: MapLibre + OpenFreeMap (no key), positron in light mode, dark in dark mode ── */
   const dark = matchMedia("(prefers-color-scheme: dark)");
   const isDark = () => document.documentElement.dataset.theme === "dark" || (document.documentElement.dataset.theme !== "light" && dark.matches);
   const styleURL = () => `https://tiles.openfreemap.org/styles/${isDark() ? "dark" : "positron"}`;
-  const lons = data.map(d => d.lon), lats = data.map(d => d.lat);
+  const lons = cityData.map(d => d.lon), lats = cityData.map(d => d.lat);
+  const provBounds = [[Math.min(...data.map(d => d.lon)), Math.min(...data.map(d => d.lat))], [Math.max(...data.map(d => d.lon)), Math.max(...data.map(d => d.lat))]];
   const map = new maplibregl.Map({
     container: "map", style: styleURL(),
     bounds: [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]],
@@ -151,7 +164,7 @@
       c.innerHTML = `<button type="button" title="${T.reset}" aria-label="${T.resetLabel}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/><circle cx="12" cy="12" r="2.4"/></svg></button>`;
       c.querySelector("button").addEventListener("click", () => {
         card.remove(); tt.remove();
-        map.fitBounds(homeBounds, { padding: 40, duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700 });
+        map.fitBounds(state.prov ? provBounds : homeBounds, { padding: 40, duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700 });
       });
       return c;
     },
@@ -193,7 +206,7 @@
     return `<article class="pop">
       <p class="pd">${fmtDate(d.data, true)}${d.ora ? " · " + esc(d.ora) : ""}${d.nota_data ? ` <span title="${esc(d.nota_data)}">*</span>` : ""}</p>
       <h3>${esc(d.bersaglio)}</h3>
-      <p class="pl">${esc(d.indirizzo)} — ${esc(d.quartiere)}${d.municipio ? " · " + esc(d.municipio) : ""}</p>
+      <p class="pl">${esc(d.indirizzo)} — ${esc(d.quartiere)}${d.municipio ? " · " + esc(d.municipio) : ""}${d.prov ? T.provSuffix : ""}</p>
       <p class="pm"><span>${meta.join("</span><span>")}</span></p>
       <p class="px">${esc(d.sintesi)}</p>
       <p class="pp">${PREC[d.precisione] || ""}${d.nota_data ? T.dateNote + esc(d.nota_data) + "." : ""}</p>
@@ -226,11 +239,11 @@
     m.refresh = () => {
       const shown = shownEps(), n = shown.length;
       const top = shown[0] || eps[0];
-      const cls = ["mk", n > 1 ? "multi" : "", eps[0].precisione === "zona" ? "zone" : ""].join(" ");
+      const cls = ["mk", n > 1 ? "multi" : "", eps[0].precisione === "zona" ? "zone" : "", eps[0].prov ? "prov" : ""].join(" ");
       btn.innerHTML = `<span class="${cls}" style="--c:${col(top.anno)};--tc:var(--t${top.anno})">${n > 1 ? n : ""}</span>`;
       btn.dataset.label = label().join("; ") + T.openCard;
       btn.setAttribute("aria-label", btn.dataset.label);
-      btn.style.zIndex = top.anno - 2020;  // newer years drawn above older ones; clusters at 10, cards at 20
+      btn.style.zIndex = eps[0].prov ? 11 : top.anno - 2020;  // newer years drawn above older ones; clusters at 10, province squares at 11, cards at 20
     };
     btn.addEventListener("click", e => { e.stopPropagation(); m.open(); });
     btn.addEventListener("mouseenter", () => showTip(m.getLngLat(), label().map(esc).join("<br>")));
@@ -242,7 +255,7 @@
   const CLUSTER_MAX = 14;  // from zoom 15 every place is shown on its own
   const geojson = () => ({
     type: "FeatureCollection",
-    features: [...places].map(([key, eps]) => {
+    features: [...places].filter(([key, eps]) => !eps[0].prov).map(([key, eps]) => {  // province places never join the Rome groups
       const shown = eps.filter(visible), props = { key, n: shown.length };
       YEARS.forEach(y => { props["y" + y] = shown.filter(d => d.anno === y).length; });
       return { type: "Feature", geometry: { type: "Point", coordinates: [eps[0].lon, eps[0].lat] }, properties: props };
@@ -296,6 +309,7 @@
         next.set("p" + p.key, byKey.get(p.key));
       }
     }
+    markers.forEach(m => { if (m.eps[0].prov && m.eps.some(visible)) next.set("p" + m.key, m); });  // province places: always on their own
     }
     for (const [id, m] of onMap) if (!next.has(id)) m.remove();
     for (const [id, m] of next) if (!onMap.has(id)) {
@@ -321,6 +335,28 @@
     },
     onRemove() {}
   }, "top-right");
+  // the province layer button, joined to "Raggruppa" below it: on, the map adds the province squares and widens to show them
+  if (data.some(d => d.prov)) {
+    map.addControl({
+      onAdd() {
+        const c = document.createElement("div");
+        c.className = "maplibregl-ctrl maplibregl-ctrl-group cl-toggle prov-toggle";
+        c.innerHTML = `<button type="button" aria-pressed="${state.prov}" title="${T.provTitle}"><svg class="prov-ico" viewBox="0 0 20 18" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="2.1" stroke-dasharray="2.8 2"/><circle cx="8" cy="8" r="2.4" fill="currentColor"/><rect x="11.6" y="9.6" width="7.6" height="7.6" rx="1.2" fill="var(--y2025)" stroke="var(--paper)" stroke-width="1.2"/></svg>${T.prov}</button>`;
+        const b = c.querySelector("button");
+        b.addEventListener("click", () => {
+          state.prov = !state.prov;
+          b.setAttribute("aria-pressed", state.prov);
+          document.documentElement.classList.toggle("show-prov", state.prov);
+          update();
+          map.fitBounds(state.prov ? provBounds : homeBounds, { padding: 40, duration: reduced.matches ? 0 : 700 });
+        });
+        return c;
+      },
+      onRemove() {}
+    }, "top-right");
+    document.documentElement.classList.toggle("show-prov", state.prov);
+    if (state.prov) map.once("load", () => map.fitBounds(provBounds, { padding: 40, duration: 0 }));
+  }
   function refreshClusters() {
     const src = map.getSource("ep");
     if (!src) return;
@@ -346,7 +382,7 @@
   };
   function renderChips() {
     catsEl.innerHTML = "";
-    CATS.filter(c => data.some(d => d.categoria === c)).forEach(c => catsEl.append(chip(T.cat[c] || c, data.filter(d => d.categoria === c && inTime(d)).length, state.cats.has(c), () => { toggle(state.cats, c, CATS); update(); })));
+    CATS.filter(c => data.some(d => d.categoria === c)).forEach(c => catsEl.append(chip(T.cat[c] || c, data.filter(d => d.categoria === c && inTime(d) && inLayer(d)).length, state.cats.has(c), () => { toggle(state.cats, c, CATS); update(); })));
   }
 
   /* ── time filter: monthly histogram with two range handles ── */
@@ -376,7 +412,7 @@
   function renderTime() {
     const W = track.clientWidth, step = Math.max(0, (W - TW) / LAST), bw = Math.max(2, step - 2);  // the track can measure 0 while the layout changes
     const x = i => TW / 2 + i * step;
-    const counts = months.map((k, i) => data.filter(d => d.mi === i && state.cats.has(d.categoria)).length);
+    const counts = months.map((k, i) => data.filter(d => d.mi === i && state.cats.has(d.categoria) && inLayer(d)).length);
     const max = Math.max(1, ...counts);
     let s = `<rect class="sel" x="${x(state.lo) - step / 2}" y="0" width="${(state.hi - state.lo + 1) * step}" height="${HB}"/>`;
     YEARS.forEach(y => { const i = months.indexOf(`${y}-01`); s += `<line class="tick" x1="${x(i) - step / 2}" x2="${x(i) - step / 2}" y1="0" y2="${HB + 4}"/><text class="axis" x="${x(i) - step / 2 + 3}" y="${HB + 15}">${y}</text>`; });
@@ -431,7 +467,7 @@
     setTimeout(() => m.remove(), reduced.matches ? 700 : 1500);
   }
   function showMonth(i) {
-    const eps = data.filter(d => d.mi === i && state.cats.has(d.categoria));
+    const eps = data.filter(d => d.mi === i && state.cats.has(d.categoria) && inLayer(d));
     playMonth.innerHTML = `${monthName(i)}<small>${eps.length ? plural(eps.length) : T.none}</small>`;
     playMonth.classList.add("on");
     eps.forEach(boom);
@@ -463,7 +499,7 @@
     document.getElementById("list-n").textContent = plural(shown.length);
     listEl.innerHTML = shown.slice().sort((a, b) => (b.data + (b.ora || "")).localeCompare(a.data + (a.ora || ""))).map(d =>
       `<li class="item" data-id="${d.id}"><button type="button" aria-label="${esc(fmtDate(d.data, true) + ", " + d.quartiere + ": " + d.bersaglio + T.openMap)}">
-        <span class="sw" style="--c:${col(d.anno)}"></span><span class="d">${fmtDate(d.data)}</span>
+        <span class="sw${d.prov ? " sq" : ""}" style="--c:${col(d.anno)}"></span><span class="d">${fmtDate(d.data)}</span>
         <span class="q">${quartiereHTML(d.quartiere)}</span>
         <span class="t">${esc(d.bersaglio)}</span><span class="s">${esc(d.indirizzo)} · ${esc(d.ordigni > 1 ? T.devicesShort(d.ordigni) : d.ordigno)}</span>
       </button></li>`).join("");
@@ -523,7 +559,7 @@
   const cnt = o => act().reduce((s, y) => s + (o[y] || 0), 0);
   const all = o => YEARS.reduce((s, y) => s + (o[y] || 0), 0);
   const byM = Object.fromEntries(ROM.map(r => [r, {}])), byQ = new Map(), perYear = {};
-  for (const d of data) {
+  for (const d of cityData) {
     const r = String(d.municipio).replace("Municipio ", ""), q = qName(d.quartiere);
     perYear[d.anno] = (perYear[d.anno] || 0) + 1;
     if (byM[r]) byM[r][d.anno] = (byM[r][d.anno] || 0) + 1;
@@ -545,7 +581,7 @@
   const yrs = o => sel !== "all" ? "" : "<br>" + YEARS.filter(y => o[y]).map(y => `${y}: ${o[y]}`).join(" · ");
 
   const yb = document.getElementById("ch-years");
-  yb.innerHTML = [["all", T.chAll, data.length], ...YEARS.map(y => [String(y), String(y), perYear[y] || 0])]
+  yb.innerHTML = [["all", T.chAll, cityData.length], ...YEARS.map(y => [String(y), String(y), perYear[y] || 0])]
     .map(([k, l, n]) => `<button type="button" class="ych" data-y="${k}" aria-pressed="${k === "all"}">${k === "all" ? "" : `<span class="sw" style="--c:${col(k)}"></span>`}${l} <span class="n">${n}</span></button>`).join("");
   yb.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; sel = b.dataset.y; render(); });
 
@@ -571,7 +607,7 @@
       M[r] = { a, p };
     }
     const pg = el("g", {}, mapSvg);
-    M.pts = data.filter(d => isFinite(d.lat) && isFinite(d.lon)).map(d => { const [x, y] = xy(d); return { y: d.anno, c: el("circle", { class: "ch-pt", cx: x.toFixed(1), cy: y.toFixed(1), fill: col(d.anno) }, pg) }; });
+    M.pts = cityData.filter(d => isFinite(d.lat) && isFinite(d.lon)).map(d => { const [x, y] = xy(d); return { y: d.anno, c: el("circle", { class: "ch-pt", cx: x.toFixed(1), cy: y.toFixed(1), fill: col(d.anno) }, pg) }; });
     const lg = el("g", {}, mapSvg);
     for (const r of ROM) {
       const m = geo.municipi[r], t = el("text", { class: "ch-lab", x: m.lx, y: m.ly }, lg);
