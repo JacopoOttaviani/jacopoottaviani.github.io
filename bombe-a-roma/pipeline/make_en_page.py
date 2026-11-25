@@ -46,6 +46,12 @@ R = [
     ('aria-label="Inizio del periodo"', 'aria-label="Start of the period"'), ('aria-label="Fine del periodo"', 'aria-label="End of the period"'),
     ('>Cosa è stato colpito</p>', '>What was hit</p>'),
     ('aria-label="Elenco degli episodi"', 'aria-label="List of episodes"'), ('<span>dal più recente</span>', '<span>most recent first</span>'),
+    # further reading (the headlines stay in Italian, marked lang="it"; the Camera card's label is ours, so it is translated)
+    ('<h2 id="rd-title">Approfondimenti</h2>', '<h2 id="rd-title">Further reading<span class="rd-lang">in Italian</span></h2>'),
+    ('<span class="rd-t">Audizione dei presidenti dei Municipi VI e VII</span>', '<span class="rd-t">Hearing of the presidents of Municipi VI and VII</span>'),
+    ('>17 novembre 2026</time>', '>17 November 2026</time>'),
+    ('>12 novembre 2026</time>', '>12 November 2026</time>'), ('>4 novembre 2026</time>', '>4 November 2026</time>'),
+    ('>2 novembre 2026</time>', '>2 November 2026</time>'),
     # method
     ("<h2>Cosa c'è sulla mappa</h2>", "<h2>What's on the map</h2>"),
     ('<p>Bombe carta, grossi petardi e ordigni artigianali fatti esplodere contro un bersaglio a Roma, Ostia e Acilia comprese, dal 1° gennaio 2023 al <span id="upd">24 novembre 2026</span>.</p>',

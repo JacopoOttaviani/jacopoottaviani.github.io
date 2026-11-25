@@ -243,6 +243,35 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .pop .src b { font-weight: 600; }
 .pop .src time { color: var(--ink-3); font: 11px var(--mono); }
 
+/* further reading, right under the map: one card per article or document (preview image, outlet, headline and date,
+   no figures), most recent first; the columns share the row: four across on wide screens, then two and one */
+.reads { padding: 30px 24px 6px; max-width: 1400px; }
+.reads h2 { font: 600 13px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+.rd-lang { margin-left: 8px; font-weight: 500; letter-spacing: .02em; text-transform: none; color: var(--ink-3); }
+.rd-grid { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.rd { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 10px 12px 11px; border: 1.5px solid var(--ink); background: var(--paper); color: var(--ink); text-decoration: none; }
+.rd:hover, .rd:focus-visible { box-shadow: 4px 4px 0 var(--accent); }
+/* the preview runs to the card's border: the outlet's own share image (og:image, loaded from its site, as a link preview
+   does; for the Camera, the web TV frame of the hearing); the hatching shows while it loads or if it fails (onerror
+   removes the img) */
+.rd-img { position: relative; display: block; margin: -10px -12px 4px; aspect-ratio: 2 / 1; overflow: hidden; border-bottom: 1.5px solid var(--ink);
+  background: repeating-linear-gradient(135deg, var(--paper-2) 0 9px, var(--rule) 9px 10px); }
+.rd-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* the "carta da pacchi" filter (chosen 2026-11-25 over black and white and amber): the photo in grey, printed on the
+   bomba carta's kraft through a multiply blend, so the four pictures read as one set; it shows in colour on hover or focus */
+.rd-img img { filter: grayscale(1) contrast(1.25) brightness(1.06); }
+.rd-img::after { content: ""; position: absolute; inset: 0; background: var(--kraft); mix-blend-mode: multiply; pointer-events: none; }
+.rd:hover .rd-img img, .rd:focus-visible .rd-img img { filter: none; }
+.rd:hover .rd-img::after, .rd:focus-visible .rd-img::after { opacity: 0; }
+.rd-src { display: flex; justify-content: space-between; align-items: center; gap: 8px; font: 600 10.5px/1.2 var(--head); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.rd-ext { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.rd-t { font: 600 15px/1.22 var(--head); }
+.rd-by { margin-top: auto; padding-top: 2px; font-size: 12px; line-height: 1.35; color: var(--ink-2); }
+.rd-by time { font: 11.5px var(--mono); white-space: nowrap; }
+@media (max-width: 1179px) { .rd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .reads { padding: 24px 16px 2px; } .rd-grid { gap: 10px; } }
+@media (max-width: 559px) { .rd-grid { grid-template-columns: minmax(0, 1fr); } .rd-img { aspect-ratio: 5 / 2; } }
+
 /* method */
 .method { padding: 34px 24px 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px 40px; max-width: 1400px; }
 .method h2 { font: 600 13px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
