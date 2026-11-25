@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="../app.css?v=2026-11-25a">
+<link rel="stylesheet" href="../app.css?v=2026-11-25b">
 </head>
 <body>
 
@@ -131,6 +131,30 @@
   </aside>
 </main>
 
+<section class="charts" id="grafici" aria-labelledby="ch-title">
+  <div class="ch-head">
+    <div>
+      <h2 id="ch-title">By municipio</h2>
+      <p class="ch-sub" id="ch-sub" aria-live="polite"></p>
+    </div>
+    <div class="ch-years" id="ch-years" role="group" aria-label="Filter the charts by year"></div>
+  </div>
+  <div class="ch-grid">
+    <figure class="ch-cell" id="ch-map-cell">
+      <h3>The municipi</h3>
+      <p class="ch-note">The grey follows the number of episodes; each dot is an episode.</p>
+      <div class="ch-legend" id="ch-legend"></div>
+      <svg id="ch-map" role="img"></svg>
+    </figure>
+    <figure class="ch-cell">
+      <h3>Episodes by municipio</h3>
+      <p class="ch-note">All 15 municipi. The scale stays the same for every year.</p>
+      <svg id="ch-mun" role="img"></svg>
+    </figure>
+  </div>
+  <p class="ch-foot">The counts are absolute, not per resident.</p>
+</section>
+
 <section class="method" id="metodo">
   <div>
     <h2>What's on the map</h2>
@@ -176,6 +200,6 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
-<script src="../app.js?v=2026-11-24a"></script>
+<script src="../app.js?v=2026-11-25a"></script>
 </body>
 </html>

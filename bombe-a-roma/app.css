@@ -10,6 +10,7 @@
   --paper: #FCF8F1; --paper-2: #F5EFE3; --rule: #E6DECF; --bar-off: #DCD3C2;
   --y2023: #E0943C; --y2024: #C97621; --y2025: #A05812; --y2026: #6E3B09;
   --t2023: #1A1A1A; --t2024: #1A1A1A; --t2025: #FFFFFF; --t2026: #FFFFFF;  /* count label on each step */
+  --m0: #F3EEE5; --m1: #E6E1D8; --m2: #D6D0C5; --m3: #C2BBAE;  /* municipi map in the charts: no episodes, 1-2, 3-7, 8 or more */
   --accent: #A05812;
   --kraft: #E4CCA4; --kraft-2: #D3B588; --tape: #B9B5AD;
   --brand: #C8102E;
@@ -25,6 +26,7 @@
     --paper: #161616; --paper-2: #1F1F1E; --rule: #33322F; --bar-off: #3A3936;
     --y2023: #7E4A14; --y2024: #B06A1E; --y2025: #E59A45; --y2026: #F7C98F;  /* dark steps: recent = brightest */
     --t2023: #FFFFFF; --t2024: #FFFFFF; --t2025: #161616; --t2026: #161616;
+    --m0: #1C1C1B; --m1: #262625; --m2: #33322F; --m3: #45433F;
     --accent: #E59A45;
     --kraft: #8C7352; --kraft-2: #7A6346; --tape: #5A5752;
     --brand: #E0394F; --focus: #7FA6F0;
@@ -36,6 +38,7 @@
   --paper: #161616; --paper-2: #1F1F1E; --rule: #33322F; --bar-off: #3A3936;
   --y2023: #7E4A14; --y2024: #B06A1E; --y2025: #E59A45; --y2026: #F7C98F;
   --t2023: #FFFFFF; --t2024: #FFFFFF; --t2025: #161616; --t2026: #161616;
+  --m0: #1C1C1B; --m1: #262625; --m2: #33322F; --m3: #45433F;
   --accent: #E59A45;
   --kraft: #8C7352; --kraft-2: #7A6346; --tape: #5A5752;
   --brand: #E0394F; --focus: #7FA6F0;
@@ -268,7 +271,50 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .site-foot .ico { width: 18px; height: 18px; flex: none; }
 .site-foot .note { margin-left: auto; font: 400 12px/1.4 var(--sans); color: var(--ink-3); }
 
+/* charts by municipio, above the method notes: their own year buttons (one year at a time), a small map of the
+   municipi and a bar chart stacked by year; app.js draws the SVGs at the width of each cell, so the text keeps its size */
+.charts { border-top: 2px solid var(--ink); padding: 30px 24px 28px; max-width: 1400px; }
+#grafici { scroll-margin-top: 48px; }
+.charts + .method { border-top: 2px solid var(--ink); }
+.ch-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px; margin-bottom: 24px; }
+.charts h2 { font: 600 13px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+.ch-sub { font: 600 19px/1.15 var(--head); }
+.ch-years { display: flex; flex-wrap: wrap; gap: 6px; }
+.ych { font: 500 13px/1 var(--sans); color: var(--ink); background: var(--paper); border: 1.5px solid var(--ink); padding: 7px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; min-height: 32px; }
+.ych .sw { width: 11px; height: 11px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1.5px var(--paper); }
+.ych .n { font: 12px/1 var(--mono); color: var(--ink-2); }
+.ych:hover { box-shadow: 3px 3px 0 var(--accent); }
+.ych[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.ych[aria-pressed="true"] .n { color: var(--paper); opacity: .75; }
+.ych[aria-pressed="true"] .sw { box-shadow: 0 0 0 1.5px var(--ink); }
+.ych:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.ch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 48px; max-width: 1100px; }
+.ch-cell { margin: 0; min-width: 0; }
+.ch-cell h3 { font: 600 17px/1.2 var(--head); }
+.ch-note { font-size: 13px; color: var(--ink-3); margin: 3px 0 12px; }
+.ch-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--ink-2); margin: -4px 0 6px; }
+.ch-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.ch-legend i { width: 11px; height: 11px; background: var(--c); box-shadow: inset 0 0 0 1px var(--rule); }
+.charts svg { display: block; width: 100%; height: auto; overflow: visible; }
+.charts svg text { font-family: var(--sans); font-variant-numeric: tabular-nums; }
+.ch-m path { stroke: var(--paper); stroke-linejoin: round; }
+.ch-m:hover path, .ch-m:focus-visible path { stroke: var(--ink); }
+.ch-m:focus { outline: none; }
+.ch-lab { fill: var(--ink); text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: var(--paper); stroke-linejoin: round; }
+.ch-lab .n { font-weight: 700; }
+.ch-pt { stroke: var(--paper); pointer-events: none; }
+.ch-ax { font-size: 12px; fill: var(--ink-2); }
+.ch-ax.m { font-size: 11.5px; fill: var(--ink-3); }
+.ch-tot { font-size: 12px; font-weight: 600; fill: var(--ink); }
+.ch-gl { stroke: var(--rule); stroke-width: 1; }
+.ch-row:hover .ch-bg { fill: var(--paper-2); }
+.ch-foot { margin-top: 20px; font-size: 12px; color: var(--ink-3); }
+.ch-tip { position: fixed; z-index: 60; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px/1.4 var(--sans); padding: 6px 9px; max-width: 260px; display: none; }
+.ch-tip b { font-weight: 600; }
+.ch-tip .q { opacity: .75; }
+
 @media (max-width: 900px) {
+  .charts { padding: 26px 16px 22px; }
   .top { grid-template-columns: 1fr; padding: 18px 16px 14px; }
   .logo { width: 62px; height: 62px; }
   .head-main { gap: 14px; align-items: flex-start; }

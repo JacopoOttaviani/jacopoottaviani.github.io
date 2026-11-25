@@ -51,7 +51,11 @@
     clusterTip: (eps, years) => `<b>${eps}</b> close together<br>${years}<br>click to zoom in`,
     group: "Group", groupTitle: "Group episodes that are close together",
     all: "All", last6: "Last 6 months", none: "no episodes",
-    play: "Play the episodes month by month", pause: "Pause"
+    play: "Play the episodes month by month", pause: "Pause",
+    geo: "../municipi.json", chAll: "All years",
+    chSubAll: (e, upd) => `${e} from 2023 to ${upd}`, chSubYear: (e, y) => `${e} in ${y}`, chSubLast: (e, y, upTo) => `${e} in ${y}, up to ${upTo}`,
+    chLegend: ["no episodes", "1–2", "3–7", "8 or more"],
+    chMapLabel: "Map of the 15 municipi of Rome with the number of episodes in each: ", chMunLabel: "Episodes by municipio: "
   } : {
     data: "data/episodi.json",
     months: ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"],
@@ -77,7 +81,11 @@
     clusterTip: (eps, years) => `<b>${eps}</b> vicini<br>${years}<br>clic per ingrandire`,
     group: "Raggruppa", groupTitle: "Raggruppa gli episodi vicini",
     all: "Tutto", last6: "Ultimi 6 mesi", none: "nessun episodio",
-    play: "Riproduci gli episodi mese per mese", pause: "Metti in pausa"
+    play: "Riproduci gli episodi mese per mese", pause: "Metti in pausa",
+    geo: "municipi.json", chAll: "Tutti gli anni",
+    chSubAll: (e, upd) => `${e} dal 2023 al ${upd}`, chSubYear: (e, y) => `${e} nel ${y}`, chSubLast: (e, y, upTo) => `${e} nel ${y}, fino al ${upTo}`,
+    chLegend: ["nessun episodio", "1–2", "3–7", "8 o più"],
+    chMapLabel: "Mappa dei 15 municipi di Roma con il numero di episodi in ciascuno: ", chMunLabel: "Episodi per municipio: "
   };
   const CAT_CODE = Object.fromEntries(Object.entries(CAT_EN).map(([k, v]) => [v, k]));
   const PREC_CODE = Object.fromEntries(Object.entries(PREC_EN).map(([k, v]) => [v, k]));
@@ -362,7 +370,7 @@
     i.addEventListener("blur", () => hist.querySelectorAll(".handle").forEach(h => h.classList.remove("focus")));
   });
   function renderTime() {
-    const W = track.clientWidth, step = (W - TW) / LAST, bw = Math.max(2, step - 2);
+    const W = track.clientWidth, step = Math.max(0, (W - TW) / LAST), bw = Math.max(2, step - 2);  // the track can measure 0 while the layout changes
     const x = i => TW / 2 + i * step;
     const counts = months.map((k, i) => data.filter(d => d.mi === i && state.cats.has(d.categoria)).length);
     const max = Math.max(1, ...counts);
@@ -492,4 +500,149 @@
     renderChips(); renderTime(); renderList(shown);
   }
   update();
+
+  /* ── charts by municipio, above the method notes, with their own year buttons (one year at a time, independent of the
+     map filters). The map tooltip lists each municipio's neighbourhoods as named in the data, with the part in
+     brackets dropped ("Acilia (San Giorgio)" counts as Acilia; "Tuscolano (Don Bosco)" as Don Bosco). The bar scale stays that of
+     all the years, so years compare. ── */
+  const sec = document.getElementById("grafici");
+  if (!sec) return;
+  const ROM = "I II III IV V VI VII VIII IX X XI XII XIII XIV XV".split(" ");
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+  const epN = n => `${n} ${n === 1 ? T.one : T.many}`;
+  const qName = q => q === "Tuscolano (Don Bosco)" ? "Don Bosco" : q.replace(/\s*\(.*\)$/, "");
+  const LASTY = YEARS[YEARS.length - 1];
+  const upd = (document.getElementById("upd")?.textContent || "").trim();
+  let sel = "all";
+  const act = () => sel === "all" ? YEARS : [+sel];
+  const cnt = o => act().reduce((s, y) => s + (o[y] || 0), 0);
+  const all = o => YEARS.reduce((s, y) => s + (o[y] || 0), 0);
+  const byM = Object.fromEntries(ROM.map(r => [r, {}])), byQ = new Map(), perYear = {};
+  for (const d of data) {
+    const r = String(d.municipio).replace("Municipio ", ""), q = qName(d.quartiere);
+    perYear[d.anno] = (perYear[d.anno] || 0) + 1;
+    if (byM[r]) byM[r][d.anno] = (byM[r][d.anno] || 0) + 1;
+    if (!byQ.has(q)) byQ.set(q, { q, r });
+    const o = byQ.get(q); o[d.anno] = (o[d.anno] || 0) + 1;
+  }
+  const nice = v => { for (const s of [1, 2, 3, 5, 10, 20, 50]) { const m = Math.max(s, Math.ceil(v / s) * s); if (m / s <= 6) return [m, s]; } return [v, v]; };
+  const [munMax, munStep] = nice(Math.max(...ROM.map(r => all(byM[r]))));
+
+  const chTip = document.createElement("div"); chTip.className = "ch-tip"; document.body.append(chTip);
+  const show = (e, html) => {
+    chTip.innerHTML = html; chTip.style.display = "block";
+    const w = chTip.offsetWidth, h = chTip.offsetHeight; let x = e.clientX + 14, y = e.clientY + 14;
+    if (x + w > innerWidth - 8) x = e.clientX - w - 14; if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+    chTip.style.left = x + "px"; chTip.style.top = y + "px";
+  };
+  const hide = () => { chTip.style.display = "none"; };
+  const yrs = o => sel !== "all" ? "" : "<br>" + YEARS.filter(y => o[y]).map(y => `${y}: ${o[y]}`).join(" · ");
+
+  const yb = document.getElementById("ch-years");
+  yb.innerHTML = [["all", T.chAll, data.length], ...YEARS.map(y => [String(y), String(y), perYear[y] || 0])]
+    .map(([k, l, n]) => `<button type="button" class="ych" data-y="${k}" aria-pressed="${k === "all"}">${k === "all" ? "" : `<span class="sw" style="--c:${col(k)}"></span>`}${l} <span class="n">${n}</span></button>`).join("");
+  yb.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; sel = b.dataset.y; render(); });
+
+  /* the municipi map: grey by number of episodes (0, 1-2, 3-7, 8+), a dot per episode in its year colour; ../municipi.json comes
+     from pipeline/make_municipi_svg.py with the projection used below. Text, dots and edges are resized to keep their pixel size. */
+  const bin = n => n === 0 ? 0 : n <= 2 ? 1 : n <= 7 ? 2 : 3;
+  document.getElementById("ch-legend").innerHTML = T.chLegend.map((l, i) => `<span><i style="--c:var(--m${i})"></i>${l}</span>`).join("");
+  let geo = null;
+  try { geo = await (await fetch(T.geo, { cache: "no-cache" })).json(); } catch (e) { document.getElementById("ch-map-cell").hidden = true; }
+  const mapSvg = document.getElementById("ch-map"), M = {};
+  if (geo) {
+    mapSvg.setAttribute("viewBox", `0 0 ${geo.w} ${geo.h}`);
+    const P = geo.proj, xy = d => [P.pad + (d.lon - P.minlon) * P.c * P.k, P.pad + (P.maxlat - d.lat) * P.k];
+    const g = el("g", {}, mapSvg);
+    for (const r of ROM) {
+      const a = el("g", { class: "ch-m", tabindex: 0 }, g);
+      const p = el("path", { d: geo.municipi[r].d }, a);
+      const html = () => {
+        const o = byM[r], n = cnt(o), qs = [...byQ.values()].filter(q => q.r === r && cnt(q)).map(q => esc(q.q));
+        return `<b>Municipio ${r}</b><br>${epN(n)}${n ? yrs(o) + `<br><span class="q">${qs.join(", ")}</span>` : ""}`;
+      };
+      a.addEventListener("mousemove", e => show(e, html())); a.addEventListener("mouseleave", hide);
+      M[r] = { a, p };
+    }
+    const pg = el("g", {}, mapSvg);
+    M.pts = data.filter(d => isFinite(d.lat) && isFinite(d.lon)).map(d => { const [x, y] = xy(d); return { y: d.anno, c: el("circle", { class: "ch-pt", cx: x.toFixed(1), cy: y.toFixed(1), fill: col(d.anno) }, pg) }; });
+    const lg = el("g", {}, mapSvg);
+    for (const r of ROM) {
+      const m = geo.municipi[r], t = el("text", { class: "ch-lab", x: m.lx, y: m.ly }, lg);
+      t.append(r + " "); M[r].n = el("tspan", { class: "n" }, t); M[r].t = t;
+    }
+  }
+  function scaleMap() {
+    if (!geo) return;
+    const w = mapSvg.getBoundingClientRect().width; if (!w) return;
+    const s = geo.w / w;
+    for (const r of ROM) {
+      const m = M[r];
+      m.p.setAttribute("stroke-width", 1.2 * s);
+      m.t.setAttribute("font-size", 12 * s); m.t.setAttribute("stroke-width", 3 * s); m.t.setAttribute("y", geo.municipi[r].ly + 4 * s);
+    }
+    M.pts.forEach(p => { p.c.setAttribute("r", 3.4 * s); p.c.setAttribute("stroke-width", 1.2 * s); });
+  }
+
+  /* horizontal bars stacked by year, drawn at the width of their cell; the label column is measured from the labels themselves */
+  function bars(svg, rows, max, step, withSub, label) {
+    svg.innerHTML = "";
+    svg.style.display = rows.length ? "" : "none";
+    if (!rows.length) return;
+    const W = Math.max(260, Math.round(svg.parentNode.getBoundingClientRect().width)), bh = 18, gap = 10, top = 22, R = 30;
+    const H = top + rows.length * (bh + gap);
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("width", W); svg.setAttribute("height", H);
+    svg.setAttribute("aria-label", label + rows.map(r => `${r.label} ${cnt(r)}`).join(", "));
+    const grid = el("g", {}, svg);
+    const R_ = rows.map((r, i) => {
+      const y = top + i * (bh + gap), g = el("g", { class: "ch-row" }, svg);
+      el("rect", { class: "ch-bg", x: -6, y: y - gap / 2, width: W + 6, height: bh + gap, fill: "transparent" }, g);
+      const t = el("text", { class: "ch-ax", y: y + bh / 2 + 4 }, g); t.textContent = r.label;
+      let s = null; if (withSub) { s = el("text", { class: "ch-ax m", y: y + bh / 2 + 4, "text-anchor": "end" }, g); s.textContent = r.sub; }
+      return { r, y, g, t, s };
+    });
+    const lw = Math.max(...R_.map(o => o.t.getComputedTextLength()));
+    const sw = withSub ? Math.max(...R_.map(o => o.s.getComputedTextLength())) : 0;
+    const L = Math.ceil(lw + (withSub ? sw + 16 : 0) + 10), sc = (W - L - R) / max;
+    for (let v = 0; v <= max; v += step) {
+      const x = L + v * sc;
+      el("line", { class: "ch-gl", x1: x, x2: x, y1: top - 6, y2: H }, grid);
+      const t = el("text", { class: "ch-ax", x, y: 12, "text-anchor": "middle" }, grid); t.textContent = v;
+    }
+    R_.forEach(({ r, y, g, t, s }, i) => {
+      if (withSub) { t.setAttribute("x", 0); s.setAttribute("x", L - 10); } else { t.setAttribute("x", L - 10); t.setAttribute("text-anchor", "end"); }
+      const n = cnt(r);
+      if (n) {
+        const w = n * sc, id = `${svg.id}-c${i}`, cp = el("clipPath", { id }, g);
+        el("path", { d: `M${L},${y}h${w - 4}a4,4 0 0 1 4,4v${bh - 8}a4,4 0 0 1 -4,4h${-(w - 4)}z` }, cp);
+        const bg = el("g", { "clip-path": `url(#${id})` }, g), ys = act().filter(k => r[k]);
+        let x = L;
+        ys.forEach((k, j) => { const ww = r[k] * sc; el("rect", { x, y, width: Math.max(0, ww - (j < ys.length - 1 ? 2 : 0)), height: bh, fill: col(k) }, bg); x += ww; });
+      }
+      const tt = el("text", { class: "ch-tot", x: L + n * sc + 6, y: y + bh / 2 + 4 }, g); tt.textContent = n;
+      g.addEventListener("mousemove", e => show(e, `<b>${esc(r.full)}</b><br>${epN(n)}${n ? yrs(r) : ""}`)); g.addEventListener("mouseleave", hide);
+    });
+  }
+
+  function draw() {
+    scaleMap();
+    const mrows = ROM.map(r => ({ ...byM[r], r, label: "Municipio " + r, full: "Municipio " + r })).sort((a, b) => cnt(b) - cnt(a) || ROM.indexOf(a.r) - ROM.indexOf(b.r));
+    bars(document.getElementById("ch-mun"), mrows, munMax, munStep, false, T.chMunLabel);
+  }
+  function render() {
+    yb.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.y === sel));
+    const e = epN(act().reduce((s, y) => s + (perYear[y] || 0), 0));
+    document.getElementById("ch-sub").textContent = sel === "all" ? T.chSubAll(e, upd)
+      : +sel === LASTY && upd ? T.chSubLast(e, sel, upd.replace(/\s*\d{4}$/, "")) : T.chSubYear(e, sel);
+    if (geo) {
+      for (const r of ROM) { const k = cnt(byM[r]); M[r].p.setAttribute("fill", `var(--m${bin(k)})`); M[r].n.textContent = k; M[r].a.setAttribute("aria-label", `Municipio ${r}: ${epN(k)}`); }
+      const on = new Set(act()); M.pts.forEach(p => { p.c.style.display = on.has(p.y) ? "" : "none"; });
+      mapSvg.setAttribute("aria-label", T.chMapLabel + ROM.map(r => `${r} ${cnt(byM[r])}`).join(", "));
+    }
+    draw();
+  }
+  render();
+  let lastW = 0;
+  new ResizeObserver(() => { const w = sec.clientWidth; if (w !== lastW) { lastW = w; draw(); } }).observe(sec);
 })();
