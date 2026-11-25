@@ -6,7 +6,7 @@ from episodes_src import E
 
 arts = {a["url"]: a for a in json.load(open(sys.argv[1]))}
 ext = json.load(open(sys.argv[2]))
-OUTLET = {"romatoday.it": "RomaToday", "agenzianova.com": "Agenzia Nova", "ilpost.it": "Il Post", "open.online": "Open",
+OUTLET = {"romatoday.it": "RomaToday", "agenzianova.com": "Agenzia Nova", "ilpost.it": "Il Post", "ilmessaggero.it": "Il Messaggero", "open.online": "Open",
           "lapresse.it": "LaPresse", "agi.it": "AGI", "dissapore.com": "Dissapore", "quotidiano.net": "QN Quotidiano.net",
           "ilfattoquotidiano.it": "Il Fatto Quotidiano", "editorialedomani.it": "Domani", "internazionale.it": "Internazionale"}
 

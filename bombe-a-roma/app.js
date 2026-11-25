@@ -535,8 +535,6 @@
     markers.forEach(m => m.refresh());
     refreshClusters();
     countTo(document.getElementById("t-n"), shown.length);
-    countTo(document.getElementById("t-f"), shown.reduce((s, d) => s + (d.feriti || 0), 0));
-    countTo(document.getElementById("t-m"), shown.reduce((s, d) => s + (d.morti || 0), 0));
     renderChips(); renderTime(); renderList(shown);
   }
   update();

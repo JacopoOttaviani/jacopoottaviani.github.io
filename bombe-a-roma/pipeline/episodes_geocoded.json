@@ -793,6 +793,52 @@
   }
  },
  {
+  "data": "2025-04-19",
+  "ora": "10:20",
+  "quartiere": "Appio",
+  "indirizzo": "via Faleria 37",
+  "q": [
+   {
+    "street": "37 via Faleria"
+   },
+   {
+    "street": "via Faleria"
+   }
+  ],
+  "precisione": "civico",
+  "cat": "Palazzo o androne",
+  "bersaglio": "Citofono di un condominio",
+  "ordigno": "petardo",
+  "sintesi": "Un Cobra, fuoco d'artificio professionale, attaccato con il nastro adesivo al citofono e fatto esplodere in pieno giorno: citofono distrutto, nessun ferito. Il movente non è chiaro; alcuni residenti pensano a una vendetta per le segnalazioni sulla sosta selvaggia.",
+  "fonti": [
+   {
+    "testata": "Il Messaggero",
+    "titolo": "Roma, bomba carta \"Cobra\" nel citofono: misterioso attentato in un condominio all’Appio",
+    "data": "2025-04-20",
+    "url": "https://www.ilmessaggero.it/roma/centro_storico/bomba_carta_cobra_citofono_roma_misterioso_attentato_un_condominio_appio-8789571.html"
+   }
+  ],
+  "nota_data": "l'articolo, uscito poco dopo la mezzanotte del 20 aprile, non indica il giorno: si presume il 19",
+  "id": "R019",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "geo": {
+   "lat": 41.882902,
+   "lon": 12.509923,
+   "used": {
+    "street": "37 via Faleria"
+   },
+   "osm": "Via Faleria, San Giovanni, Municipio Roma VII, Roma, Lazio, 00183, Italia",
+   "type": "tertiary",
+   "suburb": "Municipio Roma VII",
+   "district": "",
+   "city": "Roma",
+   "road": "Via Faleria",
+   "house": ""
+  }
+ },
+ {
   "data": "2025-05-15",
   "ora": "",
   "quartiere": "Garbatella",
@@ -824,7 +870,7 @@
     "url": "https://www.ilfattoquotidiano.it/2025/09/12/centro-sociale-strada-attacco-esplosivo-roma-notizie/8124088/"
    }
   ],
-  "id": "R019",
+  "id": "R020",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -869,7 +915,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-ambra-jovinelli-scritte-corona.html"
    }
   ],
-  "id": "R020",
+  "id": "R021",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -914,7 +960,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-casal-bruciato-sala-scommesse-via-donati.html"
    }
   ],
-  "id": "R021",
+  "id": "R022",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -977,7 +1023,7 @@
     "url": "https://www.quotidiano.net/cronaca/ostia-palestra-gianni-di-napoli-a5q57e5a"
    }
   ],
-  "id": "R022",
+  "id": "R023",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1028,7 +1074,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-bomba-carta-bronx-torrevecchia-30-giugno.html"
    }
   ],
-  "id": "R023",
+  "id": "R024",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1079,7 +1125,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosioni-tor-bella-monaca-franco-criminalita.html"
    }
   ],
-  "id": "R024",
+  "id": "R025",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1130,7 +1176,7 @@
     "url": "https://www.lapresse.it/cronaca/2025/07/29/acilia-spari-da-auto-in-corsa-forse-caso-collegato-a-esplosione-in-panificio/"
    }
   ],
-  "id": "R025",
+  "id": "R026",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1175,7 +1221,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-vega-17-agosto-2025.html"
    }
   ],
-  "id": "R026",
+  "id": "R027",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1238,7 +1284,7 @@
     "url": "https://www.editorialedomani.it/fatti/roma-centro-sociale-la-strada-esplosione-attacco-matrice-filoisraeliana-di-battista-ciaccheri-bnl9mh0l"
    }
   ],
-  "id": "R027",
+  "id": "R028",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1280,7 +1326,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-della-tortuga.html"
    }
   ],
-  "id": "R028",
+  "id": "R029",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1331,7 +1377,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-via-dei-platani-centocelle-esplosione.html"
    }
   ],
-  "id": "R029",
+  "id": "R030",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1373,7 +1419,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosioni-centocelle-stanotte-cosa-e-successo.html"
    }
   ],
-  "id": "R030",
+  "id": "R031",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1424,7 +1470,7 @@
     "url": "https://www.agenzianova.com/news/roma-bomba-carta-nel-vano-scale-di-una-casa-popolare-a-primavalle-indagini-in-corso/"
    }
   ],
-  "id": "R031",
+  "id": "R032",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1466,7 +1512,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-via-castel-di-ieri-via-naide.html"
    }
   ],
-  "id": "R032",
+  "id": "R033",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1508,7 +1554,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-via-castel-di-ieri-via-naide.html"
    }
   ],
-  "id": "R033",
+  "id": "R034",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1550,7 +1596,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-carta-roma-esplosione-tufello-ostia.html"
    }
   ],
-  "id": "R034",
+  "id": "R035",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1592,7 +1638,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-carta-roma-esplosione-tufello-ostia.html"
    }
   ],
-  "id": "R035",
+  "id": "R036",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1627,7 +1673,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-tor-sapienza-pusher.html"
    }
   ],
-  "id": "R036",
+  "id": "R037",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1669,7 +1715,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-pesce-fritto-baccala-via-dei-falisci.html"
    }
   ],
-  "id": "R037",
+  "id": "R038",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1720,7 +1766,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-acilia-blitz-ostia-droga.html"
    }
   ],
-  "id": "R038",
+  "id": "R039",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1763,7 +1809,7 @@
    }
   ],
   "nota_data": "«lo scorso weekend», 14 o 15 marzo",
-  "id": "R039",
+  "id": "R040",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1821,7 +1867,7 @@
     "url": "https://www.ilpost.it/2026/03/21/esplosione-casale-roma-parco-acquedotti-anarchici-bomba/"
    }
   ],
-  "id": "R040",
+  "id": "R041",
   "ordigni": 1,
   "feriti": 0,
   "geo": {
@@ -1874,7 +1920,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R041",
+  "id": "R042",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1916,7 +1962,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-ostia-bomba-carta-via-padre-adolfo-catena.html"
    }
   ],
-  "id": "R042",
+  "id": "R043",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -1958,7 +2004,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-ostia-negozio-lazio-1-maggio-2026.html"
    }
   ],
-  "id": "R043",
+  "id": "R044",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2006,7 +2052,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-romanina-via-vincenzo-manzini-indagini.html"
    }
   ],
-  "id": "R044",
+  "id": "R045",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2062,7 +2108,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R045",
+  "id": "R046",
   "morti": 0,
   "geo": {
    "lat": 41.904826,
@@ -2108,7 +2154,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-acilia-29-giugno-2026.html"
    }
   ],
-  "id": "R046",
+  "id": "R047",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2150,7 +2196,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-bomba-carta-via-valerio-flacco.html"
    }
   ],
-  "id": "R047",
+  "id": "R048",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2192,7 +2238,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-via-dei-cantelmo-29-luglio-2026.html"
    }
   ],
-  "id": "R048",
+  "id": "R049",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2240,7 +2286,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R049",
+  "id": "R050",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2288,7 +2334,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-ostia-2-pusher-arrestati.html"
    }
   ],
-  "id": "R050",
+  "id": "R051",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2342,7 +2388,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R051",
+  "id": "R052",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2396,7 +2442,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R052",
+  "id": "R053",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2444,7 +2490,7 @@
     "url": "https://www.romatoday.it/cronaca/bombe-a-roma-antimafia-indagini.html"
    }
   ],
-  "id": "R053",
+  "id": "R054",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2492,7 +2538,7 @@
     "url": "https://www.romatoday.it/cronaca/bombe-a-roma-antimafia-indagini.html"
    }
   ],
-  "id": "R054",
+  "id": "R055",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2555,7 +2601,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R055",
+  "id": "R056",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2600,7 +2646,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-alessandrino-bomba-carta-via-bottini.html"
    }
   ],
-  "id": "R056",
+  "id": "R057",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2651,7 +2697,7 @@
     "url": "https://www.agenzianova.com/news/roma-esplode-un-ordigno-al-tuscolano-tre-auto-danneggiate/"
    }
   ],
-  "id": "R057",
+  "id": "R058",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2702,7 +2748,7 @@
     "url": "https://www.agenzianova.com/news/roma-paura-nella-notte-a-san-basilio-bomba-carta-esplode-nel-cortile-di-un-palazzo/"
    }
   ],
-  "id": "R058",
+  "id": "R059",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2771,7 +2817,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R059",
+  "id": "R060",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2813,7 +2859,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-la-rustica-via-bisegna.html"
    }
   ],
-  "id": "R060",
+  "id": "R061",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2864,7 +2910,7 @@
     "url": "https://www.open.online/2026/10/20/agguati-roma-est-autosalone-fiamme-bomba-casa/"
    }
   ],
-  "id": "R061",
+  "id": "R062",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -2928,7 +2974,7 @@
     "url": "https://www.agenzianova.com/en/news/Explosion-in-a-building-in-Ostia%3A-two-young-men-arrested-for-attempted-massacre/"
    }
   ],
-  "id": "R062",
+  "id": "R063",
   "ordigni": 1,
   "morti": 0,
   "geo": {
@@ -2990,7 +3036,7 @@
     "url": "https://www.internazionale.it/notizie/annalisa-camilli/2026/11/12/criminalita-organizzata-roma-bombe"
    }
   ],
-  "id": "R063",
+  "id": "R064",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -3047,7 +3093,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R064",
+  "id": "R065",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -3096,7 +3142,7 @@
     "url": "https://www.ilpost.it/2026/11/04/bombe-roma-est-senese-tor-bella-monaca/"
    }
   ],
-  "id": "R065",
+  "id": "R066",
   "feriti": 0,
   "morti": 0,
   "geo": {
@@ -3140,7 +3186,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-san-basilio-16-novembre-2026.html"
    }
   ],
-  "id": "R066",
+  "id": "R067",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -3182,7 +3228,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-tufello-22-novembre-2026.html"
    }
   ],
-  "id": "R067",
+  "id": "R068",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -3224,7 +3270,7 @@
     "url": "https://www.romatoday.it/cronaca/bomba-carta-casal-monastero-frutteria-23-novembre-2026.html"
    }
   ],
-  "id": "R068",
+  "id": "R069",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,
@@ -3253,7 +3299,7 @@
     "url": "https://www.romatoday.it/cronaca/esplosione-tufello-bomba-via-monte-ruggero-24-novembre-2026.html"
    }
   ],
-  "id": "R069",
+  "id": "R070",
   "ordigni": 1,
   "feriti": 0,
   "morti": 0,

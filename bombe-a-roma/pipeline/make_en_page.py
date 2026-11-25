@@ -6,7 +6,7 @@ import os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(HERE, "..", "index.html"), encoding="utf-8").read()
-OG_EN = "og-image-en.jpg?v=2026-11-24a"
+OG_EN = "og-image-en.jpg?v=2026-11-25a"
 
 R = [
     ('<html lang="it">', '<html lang="en">'),
@@ -20,8 +20,8 @@ R = [
     ('<meta property="og:url" content="https://jacopoottaviani.com/bombe-a-roma/">', '<meta property="og:url" content="https://jacopoottaviani.com/bombe-a-roma/en/">'),
     ('<meta property="og:locale" content="it_IT">\n<meta property="og:locale:alternate" content="en_GB">', '<meta property="og:locale" content="en_GB">\n<meta property="og:locale:alternate" content="it_IT">'),
     ('content="https://jacopoottaviani.com/bombe-a-roma/og-image.jpg?v=', 'content="https://jacopoottaviani.com/bombe-a-roma/' + OG_EN + '" data-it-v="', 2),
-    ('content="Una bomba carta disegnata con il Colosseo sopra, il titolo «Dove esplodono le bombe a Roma, quartiere per quartiere» e un grafico degli episodi per anno: 8 nel 2023, 8 nel 2024, 19 nel 2025, 34 nel 2026."',
-     'content="A paper bomb drawn with the Colosseum on it, the title “Where bombs go off in Rome, neighbourhood by neighbourhood” and a chart of episodes per year: 8 in 2023, 8 in 2024, 19 in 2025, 34 in 2026."'),
+    ('content="Una bomba carta disegnata con il Colosseo sopra, il titolo «Dove esplodono le bombe a Roma, quartiere per quartiere» e un grafico degli episodi per anno: 8 nel 2023, 8 nel 2024, 20 nel 2025, 34 nel 2026."',
+     'content="A paper bomb drawn with the Colosseum on it, the title “Where bombs go off in Rome, neighbourhood by neighbourhood” and a chart of episodes per year: 8 in 2023, 8 in 2024, 20 in 2025, 34 in 2026."'),
     ('href="icon.svg"', 'href="../icon.svg"'), ('href="icon-32.png"', 'href="../icon-32.png"'), ('href="apple-touch-icon.png"', 'href="../apple-touch-icon.png"'),
     ('href="app.css?v=', 'href="../app.css?v='), ('src="app.js?v=', 'src="../app.js?v='),
     # menu bar
@@ -37,7 +37,7 @@ R = [
     ('aria-label="Icona del progetto: una bomba carta di carta da pacchi fasciata col nastro, con un piccolo Colosseo disegnato sopra e la miccia accesa"',
      'aria-label="Project icon: a paper bomb of brown parcel paper bound with tape, with a small Colosseum drawn on it and its fuse lit"'),
     ('<h1>Dove esplodono le bombe a Roma, <span class="h1-sub">quartiere per quartiere</span></h1>', '<h1>Where bombs go off in Rome, <span class="h1-sub">neighbourhood by neighbourhood</span></h1>'),
-    ('<span>episodi</span>', '<span>episodes</span>'), ('<span>feriti</span>', '<span>injured</span>'), ('<span>morti</span>', '<span>dead</span>'),
+    ('<span>episodi</span>', '<span>episodes</span>'),
     # map, filters, list
     ('aria-label="Mappa degli episodi. L\'elenco a fianco riporta gli stessi episodi in forma di testo."', 'aria-label="Map of the episodes. The list beside it gives the same episodes as text."'),
     ('</span>episodi vicini: clic per ingrandire</span>', '</span>episodes close together: click to zoom in</span>'),
@@ -59,8 +59,8 @@ R = [
      '<p>Bombe carta (paper bombs: explosive powder packed in paper and tape), large firecrackers and homemade explosive devices set off against a target in Rome, Ostia and Acilia included, from 1 January 2023 to <span id="upd">24 November 2026</span>.</p>'),
     ("<p>Il pulsante «Provincia» sulla mappa aggiunge gli episodi negli altri comuni della provincia di Roma, raccolti con lo stesso criterio e segnati con un quadrato.</p>",
      "<p>The “Province” button on the map adds the episodes in the rest of the province of Rome, gathered on the same basis and marked with a square.</p>"),
-    ("<p>I due morti indicati in alto sono gli anarchici del Parco degli Acquedotti (marzo 2026), uccisi secondo gli inquirenti dall'ordigno che stavano preparando.</p>",
-     "<p>The two dead counted at the top are the anarchists of the Parco degli Acquedotti (March 2026), killed, according to investigators, by the device they were assembling.</p>"),
+    ("<p>Non tutti gli ordigni hanno la stessa matrice: l'esplosione del marzo 2026 nel casale del Parco degli Acquedotti, per esempio, è un episodio di matrice anarchica. Secondo gli inquirenti, i due anarchici morti stavano preparando l'ordigno.</p>",
+     "<p>Not every device has the same origin: the March 2026 explosion in the abandoned farmhouse in the Parco degli Acquedotti, for example, is linked to anarchists. According to investigators, the two anarchists who died were assembling the device.</p>"),
     ("<p>La mappa raccoglie solo gli episodi raccontati dalla stampa. Quelli mai finiti in un articolo mancano.</p>",
      "<p>The map only covers episodes reported in the press. Those that never made it into an article are missing.</p>"),
     ('<p>Se vuoi segnalare un evento da aggiungere alla mappa o migliorare le informazioni presenti sul sito, contattami su <a href="https://jacopoottaviani.com/it/#contact">jacopoottaviani.com</a>.</p>',
@@ -79,8 +79,8 @@ R = [
     ("<p>Moventi e piste sono quelli riportati dalle fonti, attribuiti come ipotesi degli investigatori.</p>",
      "<p>Motives and leads are those reported by the sources, attributed as investigators' hypotheses.</p>"),
     ("<h2>Fonti e dati</h2>", "<h2>Sources and data</h2>"),
-    ("<p>Testate citate nelle schede: 7colli, AGI, Agenzia Nova, Baraonda News, Canale 10, Castelli Notizie, Dissapore, Domani, Fiumicino Online, Il Caffè, Il Clandestino, Il Faro online, Il Fatto Quotidiano, Il Post, Il Quotidiano del Lazio, Internazionale, LaPresse, Open, QN Quotidiano.net, Quotidiano La Voce, RomaToday, Tiburno.tv. Ogni scheda riporta titolo, data e link di ciascun articolo usato.</p>",
-     "<p>Outlets cited in the cards: 7colli, AGI, Agenzia Nova, Baraonda News, Canale 10, Castelli Notizie, Dissapore, Domani, Fiumicino Online, Il Caffè, Il Clandestino, Il Faro online, Il Fatto Quotidiano, Il Post, Il Quotidiano del Lazio, Internazionale, LaPresse, Open, QN Quotidiano.net, Quotidiano La Voce, RomaToday, Tiburno.tv. Each card gives the headline, date and link of every article used. The articles are in Italian; the summaries on this page are translations.</p>"),
+    ("<p>Testate citate nelle schede: 7colli, AGI, Agenzia Nova, Baraonda News, Canale 10, Castelli Notizie, Dissapore, Domani, Fiumicino Online, Il Caffè, Il Clandestino, Il Faro online, Il Fatto Quotidiano, Il Messaggero, Il Post, Il Quotidiano del Lazio, Internazionale, LaPresse, Open, QN Quotidiano.net, Quotidiano La Voce, RomaToday, Tiburno.tv. Ogni scheda riporta titolo, data e link di ciascun articolo usato.</p>",
+     "<p>Outlets cited in the cards: 7colli, AGI, Agenzia Nova, Baraonda News, Canale 10, Castelli Notizie, Dissapore, Domani, Fiumicino Online, Il Caffè, Il Clandestino, Il Faro online, Il Fatto Quotidiano, Il Messaggero, Il Post, Il Quotidiano del Lazio, Internazionale, LaPresse, Open, QN Quotidiano.net, Quotidiano La Voce, RomaToday, Tiburno.tv. Each card gives the headline, date and link of every article used. The articles are in Italian; the summaries on this page are translations.</p>"),
     ("<p>Gli episodi sono stati cercati nelle pagine per argomento di RomaToday («bombe», «esplosioni», «intimidazioni», «attentati») e negli articoli collegati, poi confrontati con le altre testate e con ricerche web per periodo e quartiere. Per la provincia anche negli archivi delle testate locali, dal litorale ai Castelli alla Tiburtina.</p>",
      "<p>The episodes were found through RomaToday's topic pages (“bombe”, “esplosioni”, “intimidazioni”, “attentati”) and the articles linked from them, then checked against the other outlets and against web searches by period and neighbourhood. For the province, also through the archives of local outlets, from the coast to the Castelli Romani and the Tiburtina.</p>"),
     ('<a href="data/episodi.json" download>Dati JSON</a><a href="data/episodi.csv" download>Dati CSV</a><a href="data/provincia.json" download>Provincia JSON</a><a href="data/provincia.csv" download>Provincia CSV</a>',

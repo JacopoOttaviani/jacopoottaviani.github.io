@@ -535,6 +535,33 @@
  },
  {
   "id": "R019",
+  "date": "2025-04-19",
+  "time": "10:20",
+  "date_note": "the article, published just after midnight on 20 April, gives no day: the 19th is assumed",
+  "neighbourhood": "Appio",
+  "municipio": "Municipio VII",
+  "address": "via Faleria 37",
+  "precision": "street",
+  "lat": 41.882902,
+  "lon": 12.509923,
+  "category": "Building or entrance hall",
+  "target": "Entry phone of a residential building",
+  "device": "firecracker",
+  "devices": 1,
+  "injured": 0,
+  "killed": 0,
+  "summary": "A Cobra, a professional firework, taped to the entry phone and set off in broad daylight: the entry phone destroyed, no one injured. The motive is unclear; some residents suspect revenge for their complaints about illegal parking.",
+  "sources": [
+   {
+    "outlet": "Il Messaggero",
+    "title": "Roma, bomba carta \"Cobra\" nel citofono: misterioso attentato in un condominio all’Appio",
+    "date": "2025-04-20",
+    "url": "https://www.ilmessaggero.it/roma/centro_storico/bomba_carta_cobra_citofono_roma_misterioso_attentato_un_condominio_appio-8789571.html"
+   }
+  ]
+ },
+ {
+  "id": "R020",
   "date": "2025-05-15",
   "time": "",
   "date_note": "",
@@ -567,7 +594,7 @@
   ]
  },
  {
-  "id": "R020",
+  "id": "R021",
   "date": "2025-05-22",
   "time": "23:30",
   "date_note": "",
@@ -594,7 +621,7 @@
   ]
  },
  {
-  "id": "R021",
+  "id": "R022",
   "date": "2025-05-29",
   "time": "",
   "date_note": "",
@@ -621,7 +648,7 @@
   ]
  },
  {
-  "id": "R022",
+  "id": "R023",
   "date": "2025-06-26",
   "time": "02:30",
   "date_note": "",
@@ -666,7 +693,7 @@
   ]
  },
  {
-  "id": "R023",
+  "id": "R024",
   "date": "2025-06-30",
   "time": "23:30",
   "date_note": "",
@@ -699,7 +726,7 @@
   ]
  },
  {
-  "id": "R024",
+  "id": "R025",
   "date": "2025-07-01",
   "time": "22:00",
   "date_note": "",
@@ -732,7 +759,7 @@
   ]
  },
  {
-  "id": "R025",
+  "id": "R026",
   "date": "2025-07-28",
   "time": "00:00",
   "date_note": "",
@@ -765,7 +792,7 @@
   ]
  },
  {
-  "id": "R026",
+  "id": "R027",
   "date": "2025-08-17",
   "time": "02:30",
   "date_note": "",
@@ -792,7 +819,7 @@
   ]
  },
  {
-  "id": "R027",
+  "id": "R028",
   "date": "2025-09-12",
   "time": "04:08",
   "date_note": "",
@@ -837,7 +864,7 @@
   ]
  },
  {
-  "id": "R028",
+  "id": "R029",
   "date": "2025-10-30",
   "time": "",
   "date_note": "",
@@ -864,7 +891,7 @@
   ]
  },
  {
-  "id": "R029",
+  "id": "R030",
   "date": "2025-11-22",
   "time": "03:50",
   "date_note": "",
@@ -897,7 +924,7 @@
   ]
  },
  {
-  "id": "R030",
+  "id": "R031",
   "date": "2025-11-22",
   "time": "04:30",
   "date_note": "",
@@ -924,7 +951,7 @@
   ]
  },
  {
-  "id": "R031",
+  "id": "R032",
   "date": "2025-11-23",
   "time": "22:00",
   "date_note": "",
@@ -957,7 +984,7 @@
   ]
  },
  {
-  "id": "R032",
+  "id": "R033",
   "date": "2025-12-20",
   "time": "21:30",
   "date_note": "",
@@ -984,7 +1011,7 @@
   ]
  },
  {
-  "id": "R033",
+  "id": "R034",
   "date": "2025-12-20",
   "time": "21:30",
   "date_note": "",
@@ -1011,7 +1038,7 @@
   ]
  },
  {
-  "id": "R034",
+  "id": "R035",
   "date": "2025-12-31",
   "time": "03:30",
   "date_note": "",
@@ -1038,7 +1065,7 @@
   ]
  },
  {
-  "id": "R035",
+  "id": "R036",
   "date": "2025-12-31",
   "time": "",
   "date_note": "",
@@ -1065,7 +1092,7 @@
   ]
  },
  {
-  "id": "R036",
+  "id": "R037",
   "date": "2026-01-14",
   "time": "01:00",
   "date_note": "",
@@ -1098,7 +1125,7 @@
   ]
  },
  {
-  "id": "R037",
+  "id": "R038",
   "date": "2026-02-10",
   "time": "01:00",
   "date_note": "",
@@ -1125,7 +1152,7 @@
   ]
  },
  {
-  "id": "R038",
+  "id": "R039",
   "date": "2026-03-06",
   "time": "03:00",
   "date_note": "",
@@ -1158,7 +1185,7 @@
   ]
  },
  {
-  "id": "R039",
+  "id": "R040",
   "date": "2026-03-15",
   "time": "",
   "date_note": "“last weekend”, 14 or 15 March",
@@ -1185,7 +1212,7 @@
   ]
  },
  {
-  "id": "R040",
+  "id": "R041",
   "date": "2026-03-20",
   "time": "02:00",
   "date_note": "",
@@ -1224,7 +1251,7 @@
   ]
  },
  {
-  "id": "R041",
+  "id": "R042",
   "date": "2026-03-25",
   "time": "00:30",
   "date_note": "",
@@ -1263,7 +1290,7 @@
   ]
  },
  {
-  "id": "R042",
+  "id": "R043",
   "date": "2026-04-29",
   "time": "00:00",
   "date_note": "",
@@ -1290,7 +1317,7 @@
   ]
  },
  {
-  "id": "R043",
+  "id": "R044",
   "date": "2026-05-01",
   "time": "23:00",
   "date_note": "",
@@ -1317,7 +1344,7 @@
   ]
  },
  {
-  "id": "R044",
+  "id": "R045",
   "date": "2026-05-23",
   "time": "03:45",
   "date_note": "",
@@ -1350,7 +1377,7 @@
   ]
  },
  {
-  "id": "R045",
+  "id": "R046",
   "date": "2026-06-29",
   "time": "01:30",
   "date_note": "",
@@ -1389,7 +1416,7 @@
   ]
  },
  {
-  "id": "R046",
+  "id": "R047",
   "date": "2026-06-29",
   "time": "01:30",
   "date_note": "",
@@ -1422,7 +1449,7 @@
   ]
  },
  {
-  "id": "R047",
+  "id": "R048",
   "date": "2026-07-12",
   "time": "02:00",
   "date_note": "",
@@ -1449,7 +1476,7 @@
   ]
  },
  {
-  "id": "R048",
+  "id": "R049",
   "date": "2026-07-29",
   "time": "01:30",
   "date_note": "",
@@ -1476,7 +1503,7 @@
   ]
  },
  {
-  "id": "R049",
+  "id": "R050",
   "date": "2026-08-03",
   "time": "",
   "date_note": "",
@@ -1509,7 +1536,7 @@
   ]
  },
  {
-  "id": "R050",
+  "id": "R051",
   "date": "2026-08-14",
   "time": "04:00",
   "date_note": "",
@@ -1542,7 +1569,7 @@
   ]
  },
  {
-  "id": "R051",
+  "id": "R052",
   "date": "2026-08-29",
   "time": "01:00",
   "date_note": "",
@@ -1581,7 +1608,7 @@
   ]
  },
  {
-  "id": "R052",
+  "id": "R053",
   "date": "2026-08-30",
   "time": "02:00",
   "date_note": "",
@@ -1620,7 +1647,7 @@
   ]
  },
  {
-  "id": "R053",
+  "id": "R054",
   "date": "2026-08-30",
   "time": "02:10",
   "date_note": "",
@@ -1653,7 +1680,7 @@
   ]
  },
  {
-  "id": "R054",
+  "id": "R055",
   "date": "2026-08-30",
   "time": "03:00",
   "date_note": "",
@@ -1686,7 +1713,7 @@
   ]
  },
  {
-  "id": "R055",
+  "id": "R056",
   "date": "2026-10-03",
   "time": "02:30",
   "date_note": "",
@@ -1731,7 +1758,7 @@
   ]
  },
  {
-  "id": "R056",
+  "id": "R057",
   "date": "2026-10-05",
   "time": "00:00",
   "date_note": "",
@@ -1758,7 +1785,7 @@
   ]
  },
  {
-  "id": "R057",
+  "id": "R058",
   "date": "2026-10-05",
   "time": "05:00",
   "date_note": "",
@@ -1791,7 +1818,7 @@
   ]
  },
  {
-  "id": "R058",
+  "id": "R059",
   "date": "2026-10-06",
   "time": "02:15",
   "date_note": "",
@@ -1824,7 +1851,7 @@
   ]
  },
  {
-  "id": "R059",
+  "id": "R060",
   "date": "2026-10-08",
   "time": "22:50",
   "date_note": "",
@@ -1875,7 +1902,7 @@
   ]
  },
  {
-  "id": "R060",
+  "id": "R061",
   "date": "2026-10-17",
   "time": "00:00",
   "date_note": "",
@@ -1902,7 +1929,7 @@
   ]
  },
  {
-  "id": "R061",
+  "id": "R062",
   "date": "2026-10-20",
   "time": "",
   "date_note": "",
@@ -1935,7 +1962,7 @@
   ]
  },
  {
-  "id": "R062",
+  "id": "R063",
   "date": "2026-10-23",
   "time": "21:40",
   "date_note": "",
@@ -1980,7 +2007,7 @@
   ]
  },
  {
-  "id": "R063",
+  "id": "R064",
   "date": "2026-11-02",
   "time": "01:00",
   "date_note": "",
@@ -2025,7 +2052,7 @@
   ]
  },
  {
-  "id": "R064",
+  "id": "R065",
   "date": "2026-11-02",
   "time": "01:20",
   "date_note": "",
@@ -2064,7 +2091,7 @@
   ]
  },
  {
-  "id": "R065",
+  "id": "R066",
   "date": "2026-11-03",
   "time": "04:00",
   "date_note": "",
@@ -2097,7 +2124,7 @@
   ]
  },
  {
-  "id": "R066",
+  "id": "R067",
   "date": "2026-11-16",
   "time": "01:30",
   "date_note": "",
@@ -2124,7 +2151,7 @@
   ]
  },
  {
-  "id": "R067",
+  "id": "R068",
   "date": "2026-11-22",
   "time": "02:50",
   "date_note": "",
@@ -2151,7 +2178,7 @@
   ]
  },
  {
-  "id": "R068",
+  "id": "R069",
   "date": "2026-11-23",
   "time": "01:30",
   "date_note": "",
@@ -2178,7 +2205,7 @@
   ]
  },
  {
-  "id": "R069",
+  "id": "R070",
   "date": "2026-11-24",
   "time": "01:00",
   "date_note": "",

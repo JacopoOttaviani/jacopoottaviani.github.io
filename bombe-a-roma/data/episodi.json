@@ -535,6 +535,33 @@
  },
  {
   "id": "R019",
+  "data": "2025-04-19",
+  "ora": "10:20",
+  "quartiere": "Appio",
+  "indirizzo": "via Faleria 37",
+  "nota_data": "l'articolo, uscito poco dopo la mezzanotte del 20 aprile, non indica il giorno: si presume il 19",
+  "municipio": "Municipio VII",
+  "lat": 41.882902,
+  "lon": 12.509923,
+  "precisione": "via",
+  "categoria": "Palazzo o androne",
+  "bersaglio": "Citofono di un condominio",
+  "ordigno": "petardo",
+  "ordigni": 1,
+  "feriti": 0,
+  "morti": 0,
+  "sintesi": "Un Cobra, fuoco d'artificio professionale, attaccato con il nastro adesivo al citofono e fatto esplodere in pieno giorno: citofono distrutto, nessun ferito. Il movente non è chiaro; alcuni residenti pensano a una vendetta per le segnalazioni sulla sosta selvaggia.",
+  "fonti": [
+   {
+    "testata": "Il Messaggero",
+    "titolo": "Roma, bomba carta \"Cobra\" nel citofono: misterioso attentato in un condominio all’Appio",
+    "data": "2025-04-20",
+    "url": "https://www.ilmessaggero.it/roma/centro_storico/bomba_carta_cobra_citofono_roma_misterioso_attentato_un_condominio_appio-8789571.html"
+   }
+  ]
+ },
+ {
+  "id": "R020",
   "data": "2025-05-15",
   "ora": "",
   "quartiere": "Garbatella",
@@ -567,7 +594,7 @@
   ]
  },
  {
-  "id": "R020",
+  "id": "R021",
   "data": "2025-05-22",
   "ora": "23:30",
   "quartiere": "Esquilino",
@@ -594,7 +621,7 @@
   ]
  },
  {
-  "id": "R021",
+  "id": "R022",
   "data": "2025-05-29",
   "ora": "",
   "quartiere": "Casal Bruciato",
@@ -621,7 +648,7 @@
   ]
  },
  {
-  "id": "R022",
+  "id": "R023",
   "data": "2025-06-26",
   "ora": "02:30",
   "quartiere": "Ostia",
@@ -666,7 +693,7 @@
   ]
  },
  {
-  "id": "R023",
+  "id": "R024",
   "data": "2025-06-30",
   "ora": "23:30",
   "quartiere": "Torrevecchia",
@@ -699,7 +726,7 @@
   ]
  },
  {
-  "id": "R024",
+  "id": "R025",
   "data": "2025-07-01",
   "ora": "22:00",
   "quartiere": "Colle del Sole",
@@ -732,7 +759,7 @@
   ]
  },
  {
-  "id": "R025",
+  "id": "R026",
   "data": "2025-07-28",
   "ora": "00:00",
   "quartiere": "Acilia",
@@ -765,7 +792,7 @@
   ]
  },
  {
-  "id": "R026",
+  "id": "R027",
   "data": "2025-08-17",
   "ora": "02:30",
   "quartiere": "Ostia",
@@ -792,7 +819,7 @@
   ]
  },
  {
-  "id": "R027",
+  "id": "R028",
   "data": "2025-09-12",
   "ora": "04:08",
   "quartiere": "Garbatella",
@@ -837,7 +864,7 @@
   ]
  },
  {
-  "id": "R028",
+  "id": "R029",
   "data": "2025-10-30",
   "ora": "",
   "quartiere": "Ostia",
@@ -864,7 +891,7 @@
   ]
  },
  {
-  "id": "R029",
+  "id": "R030",
   "data": "2025-11-22",
   "ora": "03:50",
   "quartiere": "Centocelle",
@@ -897,7 +924,7 @@
   ]
  },
  {
-  "id": "R030",
+  "id": "R031",
   "data": "2025-11-22",
   "ora": "04:30",
   "quartiere": "Centocelle",
@@ -924,7 +951,7 @@
   ]
  },
  {
-  "id": "R031",
+  "id": "R032",
   "data": "2025-11-23",
   "ora": "22:00",
   "quartiere": "Torrevecchia",
@@ -957,7 +984,7 @@
   ]
  },
  {
-  "id": "R032",
+  "id": "R033",
   "data": "2025-12-20",
   "ora": "21:30",
   "quartiere": "La Rustica",
@@ -984,7 +1011,7 @@
   ]
  },
  {
-  "id": "R033",
+  "id": "R034",
   "data": "2025-12-20",
   "ora": "21:30",
   "quartiere": "La Rustica",
@@ -1011,7 +1038,7 @@
   ]
  },
  {
-  "id": "R034",
+  "id": "R035",
   "data": "2025-12-31",
   "ora": "03:30",
   "quartiere": "Ostia",
@@ -1038,7 +1065,7 @@
   ]
  },
  {
-  "id": "R035",
+  "id": "R036",
   "data": "2025-12-31",
   "ora": "",
   "quartiere": "Tufello",
@@ -1065,7 +1092,7 @@
   ]
  },
  {
-  "id": "R036",
+  "id": "R037",
   "data": "2026-01-14",
   "ora": "01:00",
   "quartiere": "Tor Sapienza",
@@ -1098,7 +1125,7 @@
   ]
  },
  {
-  "id": "R037",
+  "id": "R038",
   "data": "2026-02-10",
   "ora": "01:00",
   "quartiere": "San Lorenzo",
@@ -1125,7 +1152,7 @@
   ]
  },
  {
-  "id": "R038",
+  "id": "R039",
   "data": "2026-03-06",
   "ora": "03:00",
   "quartiere": "Acilia",
@@ -1158,7 +1185,7 @@
   ]
  },
  {
-  "id": "R039",
+  "id": "R040",
   "data": "2026-03-15",
   "ora": "",
   "quartiere": "Ostia",
@@ -1185,7 +1212,7 @@
   ]
  },
  {
-  "id": "R040",
+  "id": "R041",
   "data": "2026-03-20",
   "ora": "02:00",
   "quartiere": "Capannelle",
@@ -1224,7 +1251,7 @@
   ]
  },
  {
-  "id": "R041",
+  "id": "R042",
   "data": "2026-03-25",
   "ora": "00:30",
   "quartiere": "Tor Bella Monaca",
@@ -1263,7 +1290,7 @@
   ]
  },
  {
-  "id": "R042",
+  "id": "R043",
   "data": "2026-04-29",
   "ora": "00:00",
   "quartiere": "Ostia Antica (Longarina)",
@@ -1290,7 +1317,7 @@
   ]
  },
  {
-  "id": "R043",
+  "id": "R044",
   "data": "2026-05-01",
   "ora": "23:00",
   "quartiere": "Ostia",
@@ -1317,7 +1344,7 @@
   ]
  },
  {
-  "id": "R044",
+  "id": "R045",
   "data": "2026-05-23",
   "ora": "03:45",
   "quartiere": "Romanina",
@@ -1350,7 +1377,7 @@
   ]
  },
  {
-  "id": "R045",
+  "id": "R046",
   "data": "2026-06-29",
   "ora": "01:30",
   "quartiere": "Casal Bruciato",
@@ -1389,7 +1416,7 @@
   ]
  },
  {
-  "id": "R046",
+  "id": "R047",
   "data": "2026-06-29",
   "ora": "01:30",
   "quartiere": "Acilia (San Giorgio)",
@@ -1422,7 +1449,7 @@
   ]
  },
  {
-  "id": "R047",
+  "id": "R048",
   "data": "2026-07-12",
   "ora": "02:00",
   "quartiere": "Don Bosco",
@@ -1449,7 +1476,7 @@
   ]
  },
  {
-  "id": "R048",
+  "id": "R049",
   "data": "2026-07-29",
   "ora": "01:30",
   "quartiere": "Casetta Mattei",
@@ -1476,7 +1503,7 @@
   ]
  },
  {
-  "id": "R049",
+  "id": "R050",
   "data": "2026-08-03",
   "ora": "",
   "quartiere": "Don Bosco",
@@ -1509,7 +1536,7 @@
   ]
  },
  {
-  "id": "R050",
+  "id": "R051",
   "data": "2026-08-14",
   "ora": "04:00",
   "quartiere": "Ostia",
@@ -1542,7 +1569,7 @@
   ]
  },
  {
-  "id": "R051",
+  "id": "R052",
   "data": "2026-08-29",
   "ora": "01:00",
   "quartiere": "Alessandrino",
@@ -1581,7 +1608,7 @@
   ]
  },
  {
-  "id": "R052",
+  "id": "R053",
   "data": "2026-08-30",
   "ora": "02:00",
   "quartiere": "Alessandrino",
@@ -1620,7 +1647,7 @@
   ]
  },
  {
-  "id": "R053",
+  "id": "R054",
   "data": "2026-08-30",
   "ora": "02:10",
   "quartiere": "Due Leoni",
@@ -1653,7 +1680,7 @@
   ]
  },
  {
-  "id": "R054",
+  "id": "R055",
   "data": "2026-08-30",
   "ora": "03:00",
   "quartiere": "Torre Maura",
@@ -1686,7 +1713,7 @@
   ]
  },
  {
-  "id": "R055",
+  "id": "R056",
   "data": "2026-10-03",
   "ora": "02:30",
   "quartiere": "Borghesiana",
@@ -1731,7 +1758,7 @@
   ]
  },
  {
-  "id": "R056",
+  "id": "R057",
   "data": "2026-10-05",
   "ora": "00:00",
   "quartiere": "Alessandrino",
@@ -1758,7 +1785,7 @@
   ]
  },
  {
-  "id": "R057",
+  "id": "R058",
   "data": "2026-10-05",
   "ora": "05:00",
   "quartiere": "Tuscolano (Don Bosco)",
@@ -1791,7 +1818,7 @@
   ]
  },
  {
-  "id": "R058",
+  "id": "R059",
   "data": "2026-10-06",
   "ora": "02:15",
   "quartiere": "San Basilio",
@@ -1824,7 +1851,7 @@
   ]
  },
  {
-  "id": "R059",
+  "id": "R060",
   "data": "2026-10-08",
   "ora": "22:50",
   "quartiere": "Centocelle",
@@ -1875,7 +1902,7 @@
   ]
  },
  {
-  "id": "R060",
+  "id": "R061",
   "data": "2026-10-17",
   "ora": "00:00",
   "quartiere": "La Rustica",
@@ -1902,7 +1929,7 @@
   ]
  },
  {
-  "id": "R061",
+  "id": "R062",
   "data": "2026-10-20",
   "ora": "",
   "quartiere": "Castelverde",
@@ -1935,7 +1962,7 @@
   ]
  },
  {
-  "id": "R062",
+  "id": "R063",
   "data": "2026-10-23",
   "ora": "21:40",
   "quartiere": "Ostia",
@@ -1980,7 +2007,7 @@
   ]
  },
  {
-  "id": "R063",
+  "id": "R064",
   "data": "2026-11-02",
   "ora": "01:00",
   "quartiere": "Casal Bruciato",
@@ -2025,7 +2052,7 @@
   ]
  },
  {
-  "id": "R064",
+  "id": "R065",
   "data": "2026-11-02",
   "ora": "01:20",
   "quartiere": "Tor Bella Monaca (Torre Gaia)",
@@ -2064,7 +2091,7 @@
   ]
  },
  {
-  "id": "R065",
+  "id": "R066",
   "data": "2026-11-03",
   "ora": "04:00",
   "quartiere": "Castelverde",
@@ -2097,7 +2124,7 @@
   ]
  },
  {
-  "id": "R066",
+  "id": "R067",
   "data": "2026-11-16",
   "ora": "01:30",
   "quartiere": "San Basilio",
@@ -2124,7 +2151,7 @@
   ]
  },
  {
-  "id": "R067",
+  "id": "R068",
   "data": "2026-11-22",
   "ora": "02:50",
   "quartiere": "Tufello",
@@ -2151,7 +2178,7 @@
   ]
  },
  {
-  "id": "R068",
+  "id": "R069",
   "data": "2026-11-23",
   "ora": "01:30",
   "quartiere": "Casal Monastero",
@@ -2178,7 +2205,7 @@
   ]
  },
  {
-  "id": "R069",
+  "id": "R070",
   "data": "2026-11-24",
   "ora": "01:00",
   "quartiere": "Tufello",
