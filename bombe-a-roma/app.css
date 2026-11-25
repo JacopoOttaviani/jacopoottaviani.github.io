@@ -340,8 +340,6 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .ch-gl { stroke: var(--rule); stroke-width: 1; }
 .ch-row:hover .ch-bg { fill: var(--paper-2); }
 .ch-empty { font-size: 13px; color: var(--ink-3); }
-.ch-singles { margin-top: 12px; font-size: 13px; color: var(--ink-2); line-height: 1.55; }
-.ch-singles b { color: var(--ink); font-weight: 600; }
 .ch-foot { margin-top: 20px; font-size: 12px; color: var(--ink-3); }
 .ch-tip { position: fixed; z-index: 60; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px/1.4 var(--sans); padding: 6px 9px; max-width: 260px; display: none; }
 .ch-tip b { font-weight: 600; }

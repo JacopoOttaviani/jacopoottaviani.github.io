@@ -638,8 +638,10 @@
     bars(document.getElementById("ch-q"), q2, qMax, qStep, true, T.chQLabel);
     const em = document.getElementById("ch-q-empty"); em.hidden = q2.length > 0; em.textContent = T.chEmpty(sel);
     const ones = [...byQ.values()].filter(q => cnt(q) === 1).sort((a, b) => a.q.localeCompare(b.q, "it")), gm = {};
-    ones.forEach(q => (gm[q.r] = gm[q.r] || []).push(esc(q.q)));
-    document.getElementById("ch-singles").innerHTML = ones.length ? `<b>${T.chSingles(ones.length)}</b> ` + ROM.filter(r => gm[r]).map(r => `${gm[r].join(", ")} (${r})`).join("; ") + "." : "";
+    ones.forEach(q => (gm[q.r] = gm[q.r] || []).push(q.q));  // plain text: it goes in with textContent
+    // the neighbourhoods with one episode join the chart's subtitle, after its own sentence (kept from the markup)
+    const qn = document.getElementById("ch-q-note"); qn.dataset.base = qn.dataset.base || qn.textContent;
+    qn.textContent = qn.dataset.base + (ones.length ? " " + T.chSingles(ones.length) + " " + ROM.filter(r => gm[r]).map(r => `${gm[r].join(", ")} (${r})`).join("; ") + "." : "");
   }
   function render() {
     yb.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.y === sel));
