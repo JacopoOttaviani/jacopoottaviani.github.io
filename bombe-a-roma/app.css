@@ -76,10 +76,10 @@ html { scroll-behavior: smooth; }
 .top { padding: 22px 24px 18px; border-bottom: 2px solid var(--ink); display: grid; grid-template-columns: 1fr auto; gap: 8px 32px; align-items: center; }
 h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em; }
 .h1-sub { display: block; font-weight: 500; color: var(--ink-2); }
-.totals { display: flex; gap: 32px; text-align: right; }
+.totals { display: flex; gap: 32px; text-align: center; }  /* each label centred under its number */
 .totals div { min-width: 84px; }
 .totals b { display: block; font: 600 clamp(46px, 5.4vw, 76px)/.92 var(--head); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
-.totals span { display: block; margin-top: 6px; font: 500 13px/1 var(--head); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.totals span { display: block; margin-top: 6px; font: 500 13px/1 var(--head); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); padding-left: .08em; }  /* balances the letter-spacing after the last letter */
 
 /* project icon: the bomba carta (fuse and spark are SMIL, paused by the script under reduced motion) */
 .head-main { display: flex; gap: 20px; align-items: center; }
@@ -248,6 +248,8 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .method ul { padding-left: 18px; }
 .method li + li { margin-top: 4px; }
 .method strong { color: var(--ink); font-weight: 600; }
+.method p a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 2px; }
+.method p a:hover { text-decoration-thickness: 2px; }
 .author { background: var(--paper-2); border-left: 4px solid var(--accent); padding: 16px 18px; align-self: start; }
 .author h2 { display: flex; align-items: center; gap: 8px; }
 .author-mark { width: 18px; height: 18px; flex: none; }
@@ -270,7 +272,6 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
   .top { grid-template-columns: 1fr; padding: 18px 16px 14px; }
   .logo { width: 62px; height: 62px; }
   .head-main { gap: 14px; align-items: flex-start; }
-  .totals { text-align: left; }
   .filters { padding: 12px 16px 12px; }
   .tf-presets { margin-left: 0; }
   .f-cat { display: block; }
