@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="app.css?v=2026-11-25d">
+<link rel="stylesheet" href="app.css?v=2026-11-25e">
 </head>
 <body>
 
@@ -144,7 +144,7 @@
 <section class="charts" id="grafici" aria-labelledby="ch-title">
   <div class="ch-head">
     <div>
-      <h2 id="ch-title">Per municipio</h2>
+      <h2 id="ch-title">Per municipio e quartiere</h2>
       <p class="ch-sub" id="ch-sub" aria-live="polite"></p>
     </div>
     <div class="ch-years" id="ch-years" role="group" aria-label="Filtra i grafici per anno"></div>
@@ -160,6 +160,13 @@
       <h3>Episodi per municipio</h3>
       <p class="ch-note">Tutti e 15 i municipi. La scala resta la stessa per ogni anno.</p>
       <svg id="ch-mun" role="img"></svg>
+    </figure>
+    <figure class="ch-cell">
+      <h3>Quartieri con almeno due episodi</h3>
+      <p class="ch-note">Il nome del quartiere è quello delle cronache; accanto, il municipio.</p>
+      <svg id="ch-q" role="img"></svg>
+      <p class="ch-empty" id="ch-q-empty" hidden></p>
+      <p class="ch-singles" id="ch-singles"></p>
     </figure>
   </div>
   <p class="ch-foot">I conteggi sono assoluti, non per abitante.</p>
@@ -210,6 +217,6 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
-<script src="app.js?v=2026-11-25a"></script>
+<script src="app.js?v=2026-11-25b"></script>
 </body>
 </html>

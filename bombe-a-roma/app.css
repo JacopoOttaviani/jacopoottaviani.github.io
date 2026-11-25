@@ -300,8 +300,8 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .site-foot .ico { width: 18px; height: 18px; flex: none; }
 .site-foot .note { margin-left: auto; font: 400 12px/1.4 var(--sans); color: var(--ink-3); }
 
-/* charts by municipio, above the method notes: their own year buttons (one year at a time), a small map of the
-   municipi and a bar chart stacked by year; app.js draws the SVGs at the width of each cell, so the text keeps its size */
+/* charts by municipio and neighbourhood, above the method notes: their own year buttons (one year at a time), a small map
+   of the municipi and two bar charts stacked by year; app.js draws the SVGs at the width of each cell, so the text keeps its size */
 .charts { border-top: 2px solid var(--ink); padding: 30px 24px 28px; max-width: 1400px; }
 #grafici { scroll-margin-top: 48px; }
 .charts + .method { border-top: 2px solid var(--ink); }
@@ -317,7 +317,7 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .ych[aria-pressed="true"] .n { color: var(--paper); opacity: .75; }
 .ych[aria-pressed="true"] .sw { box-shadow: 0 0 0 1.5px var(--ink); }
 .ych:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.ch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 48px; max-width: 1100px; }
+.ch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 40px; }
 .ch-cell { margin: 0; min-width: 0; }
 .ch-cell h3 { font: 600 17px/1.2 var(--head); }
 .ch-note { font-size: 13px; color: var(--ink-3); margin: 3px 0 12px; }
@@ -337,6 +337,9 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .ch-tot { font-size: 12px; font-weight: 600; fill: var(--ink); }
 .ch-gl { stroke: var(--rule); stroke-width: 1; }
 .ch-row:hover .ch-bg { fill: var(--paper-2); }
+.ch-empty { font-size: 13px; color: var(--ink-3); }
+.ch-singles { margin-top: 12px; font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+.ch-singles b { color: var(--ink); font-weight: 600; }
 .ch-foot { margin-top: 20px; font-size: 12px; color: var(--ink-3); }
 .ch-tip { position: fixed; z-index: 60; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px/1.4 var(--sans); padding: 6px 9px; max-width: 260px; display: none; }
 .ch-tip b { font-weight: 600; }

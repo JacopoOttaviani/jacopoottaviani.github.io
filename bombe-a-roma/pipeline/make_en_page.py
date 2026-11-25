@@ -82,13 +82,15 @@ R = [
      "<p>The episodes were found through RomaToday's topic pages (“bombe”, “esplosioni”, “intimidazioni”, “attentati”) and the articles linked from them, then checked against the other outlets and against web searches by period and neighbourhood.</p>"),
     ('<a href="data/episodi.json" download>Dati JSON</a><a href="data/episodi.csv" download>Dati CSV</a>',
      '<a href="../data/episodes-en.json" download>JSON data</a><a href="../data/episodes-en.csv" download>CSV data</a>'),
-    # charts by municipio (above the method notes)
-    ('<h2 id="ch-title">Per municipio</h2>', '<h2 id="ch-title">By municipio</h2>'),
+    # charts by municipio and neighbourhood (above the method notes)
+    ('<h2 id="ch-title">Per municipio e quartiere</h2>', '<h2 id="ch-title">By municipio and neighbourhood</h2>'),
     ('aria-label="Filtra i grafici per anno"', 'aria-label="Filter the charts by year"'),
     ('<h3>I municipi</h3>', '<h3>The municipi</h3>'),
     ('<p class="ch-note">Il grigio segue il numero di episodi; ogni punto è un episodio.</p>', '<p class="ch-note">The grey follows the number of episodes; each dot is an episode.</p>'),
     ('<h3>Episodi per municipio</h3>', '<h3>Episodes by municipio</h3>'),
     ('<p class="ch-note">Tutti e 15 i municipi. La scala resta la stessa per ogni anno.</p>', '<p class="ch-note">All 15 municipi. The scale stays the same for every year.</p>'),
+    ('<h3>Quartieri con almeno due episodi</h3>', '<h3>Neighbourhoods with at least two episodes</h3>'),
+    ('<p class="ch-note">Il nome del quartiere è quello delle cronache; accanto, il municipio.</p>', '<p class="ch-note">Neighbourhood names are those used in the news reports; beside each, its municipio.</p>'),
     ('<p class="ch-foot">I conteggi sono assoluti, non per abitante.</p>', '<p class="ch-foot">The counts are absolute, not per resident.</p>'),
     # footer
     ('<p class="note">Base cartografica OpenFreeMap, © OpenMapTiles, dati © OpenStreetMap contributors · Episodi dagli articoli citati · Aggiornata al 24 novembre 2026</p>',

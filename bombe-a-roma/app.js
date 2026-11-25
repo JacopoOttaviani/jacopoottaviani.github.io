@@ -55,7 +55,9 @@
     geo: "../municipi.json", chAll: "All years",
     chSubAll: (e, upd) => `${e} from 2023 to ${upd}`, chSubYear: (e, y) => `${e} in ${y}`, chSubLast: (e, y, upTo) => `${e} in ${y}, up to ${upTo}`,
     chLegend: ["no episodes", "1–2", "3–7", "8 or more"],
-    chMapLabel: "Map of the 15 municipi of Rome with the number of episodes in each: ", chMunLabel: "Episodes by municipio: "
+    chEmpty: y => `No neighbourhood with two or more episodes in ${y}.`, chSingles: n => `One episode each (${n} neighbourhoods):`,
+    chMapLabel: "Map of the 15 municipi of Rome with the number of episodes in each: ", chMunLabel: "Episodes by municipio: ",
+    chQLabel: "Neighbourhoods with at least two episodes: "
   } : {
     data: "data/episodi.json",
     months: ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"],
@@ -85,7 +87,9 @@
     geo: "municipi.json", chAll: "Tutti gli anni",
     chSubAll: (e, upd) => `${e} dal 2023 al ${upd}`, chSubYear: (e, y) => `${e} nel ${y}`, chSubLast: (e, y, upTo) => `${e} nel ${y}, fino al ${upTo}`,
     chLegend: ["nessun episodio", "1–2", "3–7", "8 o più"],
-    chMapLabel: "Mappa dei 15 municipi di Roma con il numero di episodi in ciascuno: ", chMunLabel: "Episodi per municipio: "
+    chEmpty: y => `Nessun quartiere con due o più episodi nel ${y}.`, chSingles: n => `Un episodio ciascuno (${n} quartieri):`,
+    chMapLabel: "Mappa dei 15 municipi di Roma con il numero di episodi in ciascuno: ", chMunLabel: "Episodi per municipio: ",
+    chQLabel: "Quartieri con almeno due episodi: "
   };
   const CAT_CODE = Object.fromEntries(Object.entries(CAT_EN).map(([k, v]) => [v, k]));
   const PREC_CODE = Object.fromEntries(Object.entries(PREC_EN).map(([k, v]) => [v, k]));
@@ -501,10 +505,10 @@
   }
   update();
 
-  /* ── charts by municipio, above the method notes, with their own year buttons (one year at a time, independent of the
-     map filters). The map tooltip lists each municipio's neighbourhoods as named in the data, with the part in
-     brackets dropped ("Acilia (San Giorgio)" counts as Acilia; "Tuscolano (Don Bosco)" as Don Bosco). The bar scale stays that of
-     all the years, so years compare. ── */
+  /* ── charts by municipio and by neighbourhood, above the method notes, with their own year buttons (one year at a time,
+     independent of the map filters). Neighbourhood names are the ones in the data, with the part in brackets dropped
+     ("Acilia (San Giorgio)" counts as Acilia; "Tuscolano (Don Bosco)" as Don Bosco). The bar scales stay those of all the
+     years, so years compare. ── */
   const sec = document.getElementById("grafici");
   if (!sec) return;
   const ROM = "I II III IV V VI VII VIII IX X XI XII XIII XIV XV".split(" ");
@@ -528,6 +532,7 @@
   }
   const nice = v => { for (const s of [1, 2, 3, 5, 10, 20, 50]) { const m = Math.max(s, Math.ceil(v / s) * s); if (m / s <= 6) return [m, s]; } return [v, v]; };
   const [munMax, munStep] = nice(Math.max(...ROM.map(r => all(byM[r]))));
+  const [qMax, qStep] = nice(Math.max(...[...byQ.values()].map(all)));
 
   const chTip = document.createElement("div"); chTip.className = "ch-tip"; document.body.append(chTip);
   const show = (e, html) => {
@@ -629,6 +634,12 @@
     scaleMap();
     const mrows = ROM.map(r => ({ ...byM[r], r, label: "Municipio " + r, full: "Municipio " + r })).sort((a, b) => cnt(b) - cnt(a) || ROM.indexOf(a.r) - ROM.indexOf(b.r));
     bars(document.getElementById("ch-mun"), mrows, munMax, munStep, false, T.chMunLabel);
+    const q2 = [...byQ.values()].filter(q => cnt(q) >= 2).sort((a, b) => cnt(b) - cnt(a) || a.q.localeCompare(b.q, "it")).map(q => ({ ...q, label: q.q, sub: q.r, full: `${q.q} (Municipio ${q.r})` }));
+    bars(document.getElementById("ch-q"), q2, qMax, qStep, true, T.chQLabel);
+    const em = document.getElementById("ch-q-empty"); em.hidden = q2.length > 0; em.textContent = T.chEmpty(sel);
+    const ones = [...byQ.values()].filter(q => cnt(q) === 1).sort((a, b) => a.q.localeCompare(b.q, "it")), gm = {};
+    ones.forEach(q => (gm[q.r] = gm[q.r] || []).push(esc(q.q)));
+    document.getElementById("ch-singles").innerHTML = ones.length ? `<b>${T.chSingles(ones.length)}</b> ` + ROM.filter(r => gm[r]).map(r => `${gm[r].join(", ")} (${r})`).join("; ") + "." : "";
   }
   function render() {
     yb.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.y === sel));
