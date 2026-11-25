@@ -24,6 +24,7 @@ communicators worldwide.
 - Runs workshops on using AI in data journalism: https://jacopoottaviani.com/teaching.html
 
 ## Selected projects
+- Where bombs go off in Rome (Dove esplodono le bombe a Roma) — map of the paper bombs and homemade explosive devices set off in Rome since 2023, geolocated from news reports, with the sources for every episode: https://jacopoottaviani.com/bombe-a-roma/ (English: https://jacopoottaviani.com/bombe-a-roma/en/)
 - Atlante della Sicurezza — reported crime in Italy's 108 provincial capitals, 2006–2024, from official ISTAT and Eurostat data: https://atlantedellasicurezza.it/
 - Italia Fragile — Italy's hydrogeological fragility, built with Claude Fable 5 and agentic loops
 - Africa Mining Watch — satellite imagery and machine learning mapping illegal mining in Africa

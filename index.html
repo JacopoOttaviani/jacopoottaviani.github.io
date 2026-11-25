@@ -951,6 +951,20 @@ footer .mark { display: inline-block; width: 22px; height: 22px; vertical-align:
         </div>
       </div>
     </div>
+    <div class="cell" data-tags="maps inv dataviz">
+      <div class="card">
+        <div class="banner"><img src="assets/projects/bombe-a-roma.svg" alt="" loading="lazy"></div>
+        <div class="body">
+          <h3>Where bombs go off in Rome</h3>
+          <p>A map of the paper bombs and homemade explosive devices set off in Rome since 2023, against shops, bars, building entrances, homes and cars. Each episode is placed from the news reports that covered it and comes with its sources. Filter by year and target, press play to watch the attacks month by month, compare the municipi and neighbourhoods, and switch on the rest of the province. The data can be downloaded.</p>
+          <span class="award">🧨 Every episode with its sources</span>
+          <ul class="ktags"><li data-k="maps">Maps</li><li data-k="inv">Investigations</li><li data-k="dataviz">Dataviz</li></ul>
+          <div class="links">
+            <a class="plink" href="https://jacopoottaviani.com/bombe-a-roma/en/" target="_blank" rel="noopener">Visit →</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1018,7 +1032,7 @@ document.getElementById('year').textContent = _now;
 
 const revealIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
-}, { threshold: 0.12 });
+}, { threshold: 0, rootMargin: '0px 0px -10% 0px' });  /* top edge in view, not a share of the section: Selected projects is taller than eight screens on a phone */
 document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 
 /* ---- project cards: each one rises into view a beat after the one before it in the same batch ---- */
