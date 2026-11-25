@@ -56,7 +56,7 @@
     geo: "../municipi.json", chAll: "All years",
     chSubAll: (e, upd) => `${e} from 2023 to ${upd}`, chSubYear: (e, y) => `${e} in ${y}`, chSubLast: (e, y, upTo) => `${e} in ${y}, up to ${upTo}`,
     chLegend: ["no episodes", "1–2", "3–7", "8 or more"],
-    chEmpty: y => `No neighbourhood with two or more episodes in ${y}.`, chSingles: n => `One episode each (${n} neighbourhoods):`,
+    chEmpty: y => `No neighbourhood with two or more episodes in ${y}.`, chSingles: n => `${n} ${n === 1 ? "neighbourhood" : "neighbourhoods"} with a single episode not shown.`,
     chMapLabel: "Map of the 15 municipi of Rome with the number of episodes in each: ", chMunLabel: "Episodes by municipio: ",
     chQLabel: "Neighbourhoods with at least two episodes: "
   } : {
@@ -89,7 +89,7 @@
     geo: "municipi.json", chAll: "Tutti gli anni",
     chSubAll: (e, upd) => `${e} dal 2023 al ${upd}`, chSubYear: (e, y) => `${e} nel ${y}`, chSubLast: (e, y, upTo) => `${e} nel ${y}, fino al ${upTo}`,
     chLegend: ["nessun episodio", "1–2", "3–7", "8 o più"],
-    chEmpty: y => `Nessun quartiere con due o più episodi nel ${y}.`, chSingles: n => `Un episodio ciascuno (${n} quartieri):`,
+    chEmpty: y => `Nessun quartiere con due o più episodi nel ${y}.`, chSingles: n => `${n} ${n === 1 ? "quartiere" : "quartieri"} con un unico episodio non ${n === 1 ? "visualizzato" : "visualizzati"}.`,
     chMapLabel: "Mappa dei 15 municipi di Roma con il numero di episodi in ciascuno: ", chMunLabel: "Episodi per municipio: ",
     chQLabel: "Quartieri con almeno due episodi: "
   };
@@ -673,11 +673,10 @@
     const q2 = [...byQ.values()].filter(q => cnt(q) >= 2).sort((a, b) => cnt(b) - cnt(a) || a.q.localeCompare(b.q, "it")).map(q => ({ ...q, label: q.q, sub: q.r, full: `${q.q} (Municipio ${q.r})` }));
     bars(document.getElementById("ch-q"), q2, qMax, qStep, true, T.chQLabel);
     const em = document.getElementById("ch-q-empty"); em.hidden = q2.length > 0; em.textContent = T.chEmpty(sel);
-    const ones = [...byQ.values()].filter(q => cnt(q) === 1).sort((a, b) => a.q.localeCompare(b.q, "it")), gm = {};
-    ones.forEach(q => (gm[q.r] = gm[q.r] || []).push(q.q));  // plain text: it goes in with textContent
-    // the neighbourhoods with one episode join the chart's subtitle, after its own sentence (kept from the markup)
+    // the chart's subtitle says how many neighbourhoods with a single episode are left out, after its own sentence (kept from the markup)
+    const ones = [...byQ.values()].filter(q => cnt(q) === 1).length;
     const qn = document.getElementById("ch-q-note"); qn.dataset.base = qn.dataset.base || qn.textContent;
-    qn.textContent = qn.dataset.base + (ones.length ? " " + T.chSingles(ones.length) + " " + ROM.filter(r => gm[r]).map(r => `${gm[r].join(", ")} (${r})`).join("; ") + "." : "");
+    qn.textContent = qn.dataset.base + (ones ? " " + T.chSingles(ones) : "");
   }
   function render() {
     yb.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.y === sel));
