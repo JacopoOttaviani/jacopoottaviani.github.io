@@ -313,6 +313,13 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 .site-foot .home { font-weight: 600; font-size: 16px; letter-spacing: .01em; }
 .site-foot .mark { width: 24px; height: 24px; flex: none; }
 .site-foot .ico { width: 18px; height: 18px; flex: none; }
+/* "Ne hanno parlato": the outlets' logos, monochrome in the file (ink), turned light in dark mode */
+.site-foot .press { display: inline-flex; align-items: center; gap: 12px; }
+.site-foot .press > span { font: 600 12px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.site-foot .press img { display: block; height: 34px; width: auto; opacity: .85; }
+.site-foot .press a:hover img, .site-foot .press a:focus-visible img { opacity: 1; }
+:root[data-theme="dark"] .site-foot .press img { filter: invert(1); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .site-foot .press img { filter: invert(1); } }
 .site-foot .note { margin-left: auto; font: 400 12px/1.4 var(--sans); color: var(--ink-3); }
 
 /* charts by municipio and neighbourhood, above the method notes: their own year buttons (one year at a time), a small map

@@ -38,6 +38,7 @@ R = [
      'aria-label="Project icon: a paper bomb of brown parcel paper bound with tape, with a small Colosseum drawn on it and its fuse lit"'),
     ('<h1>Dove esplodono le bombe a Roma, <span class="h1-sub">quartiere per quartiere</span></h1>', '<h1>Where bombs go off in Rome, <span class="h1-sub">neighbourhood by neighbourhood</span></h1>'),
     ('<span>episodi</span>', '<span>episodes</span>'),
+    ('<p class="press"><span>Ne hanno parlato</span>', '<p class="press"><span>Featured in</span>'),
     # map, filters, list
     ('aria-label="Mappa degli episodi. L\'elenco a fianco riporta gli stessi episodi in forma di testo."', 'aria-label="Map of the episodes. The list beside it gives the same episodes as text."'),
     ('</span>episodi vicini: clic per ingrandire</span>', '</span>episodes close together: click to zoom in</span>'),
