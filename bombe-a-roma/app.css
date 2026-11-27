@@ -367,7 +367,8 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
 
 @media (max-width: 900px) {
   .charts { padding: 26px 16px 22px; }
-  .top { grid-template-columns: 1fr; padding: 18px 16px 14px; }
+  .top { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; padding: 18px 16px 14px; }  /* the counter stays beside the title, never under it */
+  h1, .h1-sub { text-wrap: balance; }  /* balanced lines, so "a Roma," does not end up alone */
   .logo { width: 62px; height: 62px; }
   .head-main { gap: 14px; align-items: flex-start; }
   .filters { padding: 12px 16px 12px; }
@@ -391,6 +392,16 @@ h1 { font: 600 clamp(30px, 3.6vw, 46px)/1.04 var(--head); letter-spacing: -.01em
   .site-foot .note { margin-left: 0; width: 100%; }
   .card { max-width: 270px !important; }
   .card .maplibregl-popup-content { max-height: 38vh; }
+}
+/* phones: to keep the counter beside the title, the icon, the title and the counter all shrink a little */
+@media (max-width: 559px) {
+  .top { column-gap: 12px; }
+  .logo { width: 48px; height: 48px; }
+  .head-main { gap: 10px; }
+  h1 { font-size: clamp(22px, 7vw, 30px); }
+  .totals div { min-width: 0; }
+  .totals b { font-size: clamp(44px, 15vw, 64px); }
+  .totals span { margin-top: 6px; font-size: 11px; }
 }
 /* the bar stays one row: the link labels go below 820px, the language names shorten to IT / EN below 520px,
    and below 460px the home link keeps only the Moka mark (its name stays in aria-label) */
